@@ -17,4 +17,6 @@ documentation for details.
 
    ai-instruction
    api/draft
-
+   dirtree
+   tutorial/index
+   config_detail/index
