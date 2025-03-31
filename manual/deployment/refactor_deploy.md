@@ -80,9 +80,27 @@ nb
 cd nonebot-maibot-adapter
 ```
 
-此时打开你的文件夹（这里是`nonebot-maibot-adapter`），手动把下载的的`nonebot-plugin-maibot-adapters`下的`nonebot_plugin_maibot_adapters`复制到`src\plugins`下。
+此时打开你的文件夹（这里是`nonebot-maibot-adapter`），手动把下载的的`nonebot-plugin-maibot-adapters`下的`nonebot_plugin_maibot_adapters`复制到`nonebot-maibot-adapter\src\plugins`下。
 
 到这里，nonebot adapter部署完成
+
+最终的文件夹结构应该类似这样：
+```
+.
+├── MaiMBot
+│   ├── changelogs
+│   ├── config
+│   ├── data
+│   ├── depends-data
+│   ├── src
+│   │   └── ...
+│   └── template
+├── maim_messages
+└── nonebot-maibot-adapter
+    └── src
+        └── plugins
+            └── nonebot_plugin_maibot_adapters
+```
 
 ### 五、Napcat 部署
 
