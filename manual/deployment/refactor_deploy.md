@@ -109,7 +109,7 @@ cd nonebot-maibot-adapter
 ### 六、配置 MaiBot 和 Nonebot adapter
 
 #### MaiBot配置
-1. 首先手动复制`template`文件夹中的`bot_config_template.toml`到`config`目录下并改名为`bot_config.toml`
+1. 在`MaiBot`文件夹中新建一个`config`文件夹，手动复制`template`文件夹中的`bot_config_template.toml`到`config`目录下并改名为`bot_config.toml`
 2. 然后手动复制`template`文件夹中的`template.env`到根目录并重命名为`.env`
 3. 打开`.env`并修改PORT为8000
 > <details>
