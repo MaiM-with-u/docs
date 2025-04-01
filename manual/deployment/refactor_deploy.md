@@ -123,7 +123,7 @@ cd nonebot-maibot-adapter
 4. 剩余的内容与原来的配置方法相同
 
 #### Nonebot adapter 配置
-- 这里提供两种方式连接napcat：正向与反向，**二者选其一即可**
+<!-- - 这里提供两种方式连接napcat：正向与反向，**二者选其一即可** -->
 ##### 正向连接
 1. 在Napcat中新建`websocket服务端`并设置端口为你想要的端口（这里以`8095`为例），`Host`设置为`0.0.0.0`
 2. 打开`nonebot-maibot-adapter`文件夹下的`.env`文件，配置如下：
@@ -145,7 +145,7 @@ ONEBOT_WS_URLS=["ws://127.0.0.1:8095"] #此处与Napcat端口相同
 > 然后把这里的18002修改为你设置的PORT
 > </details>
 
-##### 反向代理连接
+<!-- ##### 反向代理连接
 1. 在Napcat中新建`websocket客户端`并设置反向代理的url（这里以`ws://localhost:8096/onebot/v11/ws`为例）
 2. 打开`nonebot-maibot-adapter`文件夹下的`.env`文件，配置如下：
 ```ini
@@ -154,7 +154,7 @@ DRIVER=~fastapi+~websockets
 PORT=18002
 PORT=8096 # 此处与Napcat端口相同
 ```
-> 如果你想修改这里的 PORT=18002 配置，看上面的折叠部分
+> 如果你想修改这里的 PORT=18002 配置，看上面的折叠部分 -->
 
 ### 七、运行
 **如果你是正向连接的方式，那么先启动Napcat**，然后进入`nonebot-maibot-adapter`文件夹，在你的虚拟环境中运行
