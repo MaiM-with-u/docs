@@ -35,11 +35,11 @@ python -m venv MaiBotEnv
 
 2. 通过 git clone 将 [maim_message 包](https://github.com/MaiM-with-u/maim_message) clone 到本地
 
-3. 通过 git clone 将 [nonebot-plugin-maibot-adapters](https://github.com/Maple127667/nonebot-plugin-maibot-adapters) clone 到本地
+3. 通过 git clone 将 [nonebot-plugin-maibot-adapters](https://github.com/MaiM-with-u/nonebot-plugin-maibot-adapters) clone 到本地
 ```shell
 git clone https://github.com/MaiM-with-u/MaiBot.git
 git clone https://github.com/MaiM-with-u/maim_message.git
-git clone https://github.com/Maple127667/nonebot-plugin-maibot-adapters.git
+git clone https://github.com/MaiM-with-u/nonebot-plugin-maibot-adapters.git
 ```
 
 ### 三、依赖安装
