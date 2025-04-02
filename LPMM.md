@@ -20,6 +20,7 @@
 
 （同上样例，导入时10700K几乎跑满，峰值内存占用约3G）
 
+
 ## 配置
 
 ### 一，获取必要的文件
@@ -28,15 +29,21 @@
 对于开发者/没有已经编译好的包的用户而言，我们建议您自行编译
 
 ### Windows(x86_64)端
-请确定您电脑上有的C语言编译器：MSVC或者MinGW
+#### 环境准备
+1. 首先，在[C++ Build Tools](https://visualstudio.microsoft.com/zh-hans/visual-cpp-build-tools/)下载微软MSVC构建工具安装包
+2. 打开安装包，会自动安装Visual Studio Installer，安装完成后，打开Visual Studio Installer
+3. 选择上面的“单个组件”选项卡，搜索并选择以下组件：
+- MSVC v143 - VS 2022 C++ x64/x86 生成工具
+- Windows 10/11 SDK (根据您的电脑环境选择)
+- 适用于Windows的Cmake工具
+4. 点击“安装”按钮，开始安装这些组件
+5. 在[MinGW-w64 releases](https://github.com/niXman/mingw-builds-binaries/releases)下载符合您电脑环境的MinGW（注意看名称，要msvc版本的）
+6. 解压到任意目录，将解压后的目录添加到环境变量中
 
-MSVC/MinGW安装请自行寻找教程
 
 #### MSVC编译
-进入目录，使用**管理员权限**运行 `python setup.py build_ext --inplace`
+进入ib/quick_algo/目录，使用**管理员权限**运行 `python setup.py build_ext --inplace`
 
-#### MinGW编译
-待完成
 
 ### Windows(Arm)端
 无数据
