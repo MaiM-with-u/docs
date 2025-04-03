@@ -54,7 +54,7 @@ vim docker-config/mmc/.env
 HOST=0.0.0.0
 
 # 数据库连接配置
-MONGODB_HOST=mongodb  # 保持默认容器名称
+MONGODB_HOST=mongodb  # 修改为容器名称
 
 # API 密钥配置（根据实际情况填写）
 SILICONFLOW_KEY=sk-xxxxxx
@@ -68,15 +68,26 @@ vim docker-compose.yml
 - PRIVACY_AGREE=2402af06e133d2d10d9c6c643fdc9333 # 同意EULA
 ```
 
+当前配置完成后目录结构应如下
+```bash
+.
+├── docker-compose.yml
+└── docker-config
+    ├── adapters
+    │   └── .env
+    └── mmc
+        └── .env
+```
+
 ---
 
 ## 三、初始化容器环境
-### 3.1 首次启动容器
+### 3.1 首次启动容器生成剩余配置文件
 ```bash
 docker compose up -d && sleep 15 && docker compose down
 ```
 
-### 3.2 调整平台配置
+### 3.2 调整麦麦配置
 ```bash
 vim docker-config/mmc/bot_config.toml
 ```
@@ -97,7 +108,7 @@ Fastapi_url: str = "http://core:8000/api/message"  # 容器间内部通信
 
 ---
 
-## 四、启动完整服务
+## 四、启动麦麦
 ### 4.1 启动所有组件
 ```bash
 docker compose up -d
@@ -133,7 +144,7 @@ docker compose logs -f
 
 ### 5.2 Napcat配置入口
 访问 `http://<服务器IP>:6099` 完成 Napcat 的配置  
-网络配置使用websocket服务器，端口使用`8095`
+网络配置使用websocket服务器，端口使用`8095`，host填`0.0.0.0`
 
 ---
 
@@ -151,5 +162,3 @@ docker compose logs -f
    ```bash
    docker compose restart
    ```
-
-> 更多帮助请参考 [官方文档](https://docs.maimbot.org) 或提交 Issue 至项目仓库
