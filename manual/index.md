@@ -17,6 +17,7 @@ MaiMBot是一个功能强大的QQ群聊机器人，基于大语言模型提供�
   - [新手Linux服务器部署](/manual/deployment/linux_deploy_guide_for_beginners)
   - [refactor（MaimCore版）部署](/manual/deployment/refactor_deploy)
   - [new_knowledge版（LPMM版）说明](/manual/deployment/LPMM)
+  - [refactor（MaimCore版）docker部署](/manual/deployment/refactor_docker_deploy)
 ### 开发文档
 
 - [API参考](/develop/api/)
