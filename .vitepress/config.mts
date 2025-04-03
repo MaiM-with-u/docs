@@ -47,7 +47,7 @@ export default defineConfig({
             { text: '群晖NAS部署', link: '/manual/deployment/synology_deploy' },
             { text: '新手Linux部署', link: '/manual/deployment/linux_deploy_guide_for_beginners' },
             { text: 'refactor（MaimCore版）部署', link: '/manual/deployment/refactor_deploy'},
-            { text: 'refactor（MaimCore版）部署', link: '/manual/deployment/refactor_deploy'},
+            { text: 'new_knowledge版（LPMM版）说明', link: '/manual/deployment/LPMM'},
             { text: 'refactor（MaimCore版）docker部署', link: '/manual/deployment/refactor_docker_deploy'}
           ]
         },

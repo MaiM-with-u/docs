@@ -32,6 +32,12 @@
 
 - [refactor（MaimCore版）部署](/manual/deployment/refactor_deploy)
 
+### （测试）新知识库系统测试
+
+这个文档针对新的new_knowledge分支进行说明
+
+- [new_knowledge版（LPMM版）说明](/manual/deployment/LPMM)
+
 ## 部署前准备
 
 无论使用哪种部署方式，您都需要准备以下内容：
