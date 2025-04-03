@@ -159,6 +159,7 @@ docker compose logs -f
    docker compose down
    docker compose up -d
    ```
+   或：
    ```bash
    docker compose restart
    ```
