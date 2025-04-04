@@ -11,9 +11,10 @@ MaiMBot是一个功能强大的QQ群聊机器人，基于大语言模型提供�
 - [新手安装指南](/manual/installation/installation_cute)
 - [部署方法](/manual/deployment/)
   - [MaimCore版（0.6.0版）部署](/manual/deployment/mmc_deploy)
-  - [MaimCore版（0.6.0版）docker部署](/manual/deployment/docker_deploy_mmc)
+  - [MaimCore版（0.6.0版）docker部署](/manual/deployment/docker_deploy_mmc.md)
+  - [MaimCore版（0.6.0版）linux部署](/manual/deployment/mmc_deploy_linux.md)
   - [new_knowledge版（LPMM版）说明](/manual/deployment/LPMM)
-- [0.5.x部署方法（旧版）]
+- 0.5.x部署方法(旧版)
   - [Docker部署](/manual/deployment/docker_deploy)
   - [Linux手动部署](/manual/deployment/manual_deploy_linux)
   - [Windows手动部署](/manual/deployment/manual_deploy_windows)
