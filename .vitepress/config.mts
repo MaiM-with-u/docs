@@ -46,9 +46,8 @@ export default defineConfig({
             { text: 'Windows手动部署', link: '/manual/deployment/manual_deploy_windows' },
             { text: '群晖NAS部署', link: '/manual/deployment/synology_deploy' },
             { text: '新手Linux部署', link: '/manual/deployment/linux_deploy_guide_for_beginners' },
-            { text: 'refactor（MaimCore版）部署', link: '/manual/deployment/refactor_deploy'},
-            { text: 'new_knowledge版（LPMM版）说明', link: '/manual/deployment/LPMM'},
-            { text: 'refactor（MaimCore版）docker部署', link: '/manual/deployment/refactor_docker_deploy'}
+            { text: 'MaimCore版（0.6.0版）部署', link: '/manual/deployment/mmc_deploy'},
+            { text: 'new_knowledge版（LPMM版）说明', link: '/manual/deployment/LPMM'}
           ]
         },
         {
@@ -56,7 +55,8 @@ export default defineConfig({
           collapsed: false,
           items: [
             { text: '使用说明', link: '/manual/usage/' },
-            { text: '快速问答', link: '/manual/usage/fast_q_a' }
+            { text: '快速问答', link: '/manual/usage/fast_q_a' },
+            { text: '0.6.0版本更新Q&A', link: '/manual/usage/mmc_q_a' }
           ]
         }
       ],

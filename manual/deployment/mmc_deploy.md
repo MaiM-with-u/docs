@@ -1,4 +1,4 @@
-# 部署麦麦（refactor分支）
+# 部署麦麦（main 0.6.0 分支）
 
 ## ⚠️ 注意事项
 **本教程基于nonebot部署到QQ平台，不代表其他平台的部署方式相同**
@@ -44,11 +44,11 @@ git clone https://github.com/MaiM-with-u/nonebot-plugin-maibot-adapters.git
 
 ### 三、依赖安装
 
-1. 进入下载的麦麦repo文件夹，切换分支到refactor
+1. 进入下载的麦麦repo文件夹
 2. pip安装所需依赖
 ```shell
 cd MaiBot
-git checkout refactor
+git checkout main
 pip install -i https://mirrors.aliyun.com/pypi/simple -r .\\requirements.txt
 pip install -i https://mirrors.aliyun.com/pypi/simple nb-cli
 ```
@@ -165,4 +165,4 @@ nb run --reload
 ```shell
 python ./bot.py
 ```
-反向代理连接方式则是先运行adapter，再运行Napcat，最后是麦麦本体
+<!-- 反向代理连接方式则是先运行adapter，再运行Napcat，最后是麦麦本体 -->

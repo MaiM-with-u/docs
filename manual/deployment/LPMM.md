@@ -1,4 +1,4 @@
-# 麦麦知识库（新版）使用说明
+# 麦麦知识库（非0.6.0版，现在未启用）（新版）使用说明
 
 ## 注意事项
 
@@ -50,7 +50,29 @@
 无数据
 
 ### Linux端
-待完成
+首先安装gcc/g++编译器
+然后打开`src/plugins/knowledge/lib/quick_algo`下面的`setup.py`，修改编译参数如下
+```python
+ext_modules = [
+    Extension(
+        "pagerank",
+        sources=["pagerank.pyx", "pr.c"],
+        include_dirs=["."],
+        libraries=[],
+        language="c",
+        extra_compile_args=[
+            '-O3',
+            '-mavx',
+            '-fopenmp',
+            '-march=native'
+        ],
+        extra_link_args=[
+            '-fopenmp'
+        ]
+    )
+]
+```
+随后在你的环境（虚拟环境或者本机环境）中进入`src/plugins/knowledge/lib/quick_algo`目录运行`python setup.py build_ext --inplace`并等待编译完成
 
 # 配置LPMM
 把`template/lpmm_config_template.toml`复制到`config/lpmm_config.toml`，按照样例配置`provider`
@@ -85,3 +107,12 @@
 
 ### 使用
 将`bot_config.toml`中的`response`从`heart_flow`改为`reasoning`以启用新的知识库
+
+## 麦麦LPMM加速
+pip包中：
+
+如果你有不错的GPU，可以安装faiss-gpu版
+
+如果你有cuda，你甚至可以安装faiss-cu版
+
+安装方式暂时略
