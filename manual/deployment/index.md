@@ -8,12 +8,16 @@
 
 这个部署文档针对新的MaimCore(0.6.0)进行部署
 
-- [MaimCore版（0.6.0版）部署](/manual/deployment/mmc_deploy)
+- [MaimCore版（0.6.0版）部署](mmc_deploy)
 
 ### 新版MaimCore部署（docker）
 
 这个部署文档针对新的MaimCore(0.6.0)进行部署
 - [MaimCore版（0.6.0版）docker部署](docker_deploy_mmc)
+
+### 新版MaimCore部署（linux）
+这个文档针对新的new_knowledge分支进行说明
+- [MaimCore版（0.6.0版）linux部署](mmc_deploy_linux)
 
 ### （测试）新知识库系统测试
 
