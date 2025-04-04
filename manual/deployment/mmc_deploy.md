@@ -63,10 +63,10 @@ pip install -e .
 
 - 如果你按照上面的进行且没有关闭窗口，那么你应该在python环境/conda环境中，如果没有，请手动进入
 
-1. 在安装麦麦的文件夹下面运行`nb`命令
+1. 回到`MaiM-with-u`文件夹，在`MaiM-with-u`文件夹下面运行`nb`命令
 2. 用选择`创建一个NoneBot项目`并回车
 3. 选择`simple（插件开发者）`
-4. 项目名称任意，我们以`nonebot-maibot-adapter`为例输入（这与你后来生成的文件夹名称相同）
+4. 项目名称任意，我们以`mainonebot-adapter`为例输入（这与你后来生成的文件夹名称相同）
 5. 选中`OneBot V11（OneBot V11 协议）`，回车
 6. 驱动器选择`FastAPI（FastAPI 驱动器）`和`websockets（websockets 驱动器）`，回车
 7. 插件安装位置选择`在 "src" 文件夹中`，回车
@@ -75,19 +75,18 @@ pip install -e .
 10. 选择内置插件时**不选择任何内置插件**，直接回车
 
 ```shell
+cd ..
 nb
-# 中间手动操作
-cd nonebot-maibot-adapter
 ```
 
-此时打开你的文件夹（这里是`nonebot-maibot-adapter`），手动把下载的的`nonebot-plugin-maibot-adapters`下的`nonebot_plugin_maibot_adapters`复制到`nonebot-maibot-adapter\src\plugins`下。
+此时打开你的文件夹（这里是`Maim-with-u`文件夹下的`mainonebot-adapter`文件夹），手动把下载的的`nonebot-plugin-maibot-adapters`文件夹下的`nonebot_plugin_maibot_adapters`文件夹复制到`Maim-with-u\mainonebot-adapter\src\plugins`文件夹下。
 
 到这里，nonebot adapter部署完成
 
 最终的文件夹结构应该类似这样：
 ```
-.
-├── MaiMBot
+Maim-with-u
+├── MaiBot
 │   ├── changelogs
 │   ├── config
 │   ├── data
@@ -96,7 +95,7 @@ cd nonebot-maibot-adapter
 │   │   └── ...
 │   └── template
 ├── maim_messages
-└── nonebot-maibot-adapter
+└── mainonebot-adapter
     └── src
         └── plugins
             └── nonebot_plugin_maibot_adapters
