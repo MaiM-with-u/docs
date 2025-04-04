@@ -47,7 +47,7 @@ export default defineConfig({
             { text: 'new_knowledge版（LPMM版）说明', link: '/manual/deployment/LPMM'},
             {
               text:'0.5.x 部署方法（旧版）',
-              collapsed: false,
+              collapsed: true,
               items: [
                 { text: 'Docker部署（推荐）', link: '/manual/deployment/docker_deploy' },
                 { text: 'Linux手动部署', link: '/manual/deployment/manual_deploy_linux' },
