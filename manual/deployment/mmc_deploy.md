@@ -26,7 +26,7 @@ conda activate MaiBotEnv
 mkdir MaiM-with-u
 cd MaiM-with-u
 python -m venv MaiBotEnv
-\\MaiBotEnv\\Scripts\\activate
+.\\MaiBotEnv\\Scripts\\activate
 ```
 
 ### 二、获取必要的文件
