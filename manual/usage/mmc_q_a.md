@@ -41,5 +41,10 @@
 
 - 复制/data/emoji 到 0.6.0版本的/data/emoji
 
+## 没run.bat吗？
 
+- 没有，0.6.0使用了新的启动方式
+- 如果你是手动部署：
+- 激活你的python环境，然后来到麦麦根目录，执行python bot.py
+- 然后启动搭载了插件的nonebot端
 
