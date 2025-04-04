@@ -44,18 +44,18 @@ export default defineConfig({
             { text: 'MaimCore版（0.6.0版）部署', link: '/manual/deployment/mmc_deploy'},
             { text: 'MaimCore版（0.6.0版）docker部署(推荐)', link: '/manual/deployment/docker_deploy_mmc' },
             { text: 'MaimCore版（0.6.0版）linux部署', link: '/manual/deployment/mmc_deploy_linux' },
-            { text: 'new_knowledge版（LPMM版）说明', link: '/manual/deployment/LPMM'}
-          ]
-        },
-        {
-          text:'0.5.x 部署方法（旧版）',
-          collapsed: false,
-          items: [
-            { text: 'Docker部署（推荐）', link: '/manual/deployment/docker_deploy' },
-            { text: 'Linux手动部署', link: '/manual/deployment/manual_deploy_linux' },
-            { text: 'Windows手动部署', link: '/manual/deployment/manual_deploy_windows' },
-            { text: '群晖NAS部署', link: '/manual/deployment/synology_deploy' },
-            { text: '新手Linux部署', link: '/manual/deployment/linux_deploy_guide_for_beginners' },
+            { text: 'new_knowledge版（LPMM版）说明', link: '/manual/deployment/LPMM'},
+            {
+              text:'0.5.x 部署方法（旧版）',
+              collapsed: false,
+              items: [
+                { text: 'Docker部署（推荐）', link: '/manual/deployment/docker_deploy' },
+                { text: 'Linux手动部署', link: '/manual/deployment/manual_deploy_linux' },
+                { text: 'Windows手动部署', link: '/manual/deployment/manual_deploy_windows' },
+                { text: '群晖NAS部署', link: '/manual/deployment/synology_deploy' },
+                { text: '新手Linux部署', link: '/manual/deployment/linux_deploy_guide_for_beginners' },
+              ]
+            },
           ]
         },
         {
