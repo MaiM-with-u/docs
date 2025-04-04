@@ -165,4 +165,4 @@ nb run --reload
 ```shell
 python ./bot.py
 ```
-反向代理连接方式则是先运行adapter，再运行Napcat，最后是麦麦本体
+<!-- 反向代理连接方式则是先运行adapter，再运行Napcat，最后是麦麦本体 -->
