@@ -41,9 +41,9 @@ export default defineConfig({
           collapsed: false,
           items: [
             { text: '部署概览', link: '/manual/deployment/' },
-            { text: 'MaimCore版（0.6.0版）部署', link: '/manual/deployment/mmc_deploy'},
-            { text: 'MaimCore版（0.6.0版）docker部署(推荐)', link: '/manual/deployment/docker_deploy_mmc' },
-            { text: 'MaimCore版（0.6.0版）linux部署', link: '/manual/deployment/mmc_deploy_linux' },
+            { text: 'MaimCore版windows部署', link: '/manual/deployment/mmc_deploy'},
+            { text: 'MaimCore版docker部署(推荐)', link: '/manual/deployment/docker_deploy_mmc' },
+            { text: 'MaimCore版linux部署', link: '/manual/deployment/mmc_deploy_linux' },
             { text: 'new_knowledge版（LPMM版）说明', link: '/manual/deployment/LPMM'},
             {
               text:'0.5.x 部署方法（旧版）',
