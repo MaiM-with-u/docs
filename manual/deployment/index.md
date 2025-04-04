@@ -30,7 +30,7 @@
 
 这个部署文档针对新的refactor分支进行部署
 
-- [refactor（MaimCore版）部署](/manual/deployment/refactor_deploy)
+- [MaimCore版（0.6.0版）部署](/manual/deployment/mmc_deploy)
 
 ### （测试）新知识库系统测试
 
