@@ -43,6 +43,20 @@ PORT=18002
 ONEBOT_WS_URLS=["ws://napcat:8095"]
 EOF
 ```
+获取config.py
+```bash
+wget https://raw.githubusercontent.com/MaiM-with-u/nonebot-plugin-maibot-adapters/refs/heads/master/nonebot_plugin_maibot_adapters/config.py \
+     -O docker-config/adapters/config.py
+# 若 GitHub 直连不稳定，可使用镜像源：https://github.moeyy.xyz/https://raw.githubusercontent.com/MaiM-with-u/nonebot-plugin-maibot-adapters/refs/heads/master/nonebot_plugin_maibot_adapters/config.py
+```
+然后修改config.py
+```bash
+vim docker-config/adapters/config.py
+```
+```python
+# 修改config.py
+Fastapi_url: str = "http://core:8000/api/message"  # 容器间内部通信
+```
 
 ### 2.2 ✏️ 修改env配置
 ```bash
@@ -74,7 +88,8 @@ vim docker-compose.yml
 ├── docker-compose.yml
 └── docker-config
     ├── adapters
-    │   └── .env
+    │   ├── .env
+    │   └── config.py
     └── mmc
         └── .env
 ```
@@ -95,15 +110,6 @@ vim docker-config/mmc/bot_config.toml
 ```toml
 [platforms]
 nonebot-qq = "http://adapters:18002/api/message"  # 使用容器服务名通信
-```
-
-### 3.3 🔌 配置适配器路由
-```bash
-vim docker-config/adapters/plugins/nonebot_plugin_maibot_adapters/config.py
-```
-更新核心服务地址：
-```python
-Fastapi_url: str = "http://core:8000/api/message"  # 容器间内部通信
 ```
 
 ---
