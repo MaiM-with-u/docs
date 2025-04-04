@@ -47,7 +47,7 @@ export default defineConfig({
           ]
         },
         {
-          text:'0.5.x 部署方法（不推荐）',
+          text:'0.5.x 部署方法（旧版）',
           collapsed: false,
           items: [
             { text: 'Docker部署（推荐）', link: '/manual/deployment/docker_deploy' },
