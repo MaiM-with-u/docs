@@ -48,7 +48,6 @@ git clone https://github.com/MaiM-with-u/nonebot-plugin-maibot-adapters.git
 2. pip安装所需依赖
 ```shell
 cd MaiBot
-git checkout main
 pip install -i https://mirrors.aliyun.com/pypi/simple -r .\\requirements.txt
 pip install -i https://mirrors.aliyun.com/pypi/simple nb-cli
 ```
