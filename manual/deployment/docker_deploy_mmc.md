@@ -1,4 +1,4 @@
-# 🐳 在 Docker 上部署麦麦（refactor 分支 preview 版）
+# 🐳 在 Docker 上部署麦麦
 
 ## 📋 环境要求
 - ✅ 已安装 Docker 环境
@@ -15,7 +15,7 @@ mkdir -p maim-bot/docker-config/{mmc,adapters} && cd maim-bot
 
 ### 1.2 📥 获取 Docker 编排文件
 ```bash
-wget https://raw.githubusercontent.com/SengokuCola/MaiMBot/refactor/docker-compose.yml
+wget https://raw.githubusercontent.com/SengokuCola/MaiMBot/main/docker-compose.yml
 ```
 
 > 🔄 **备用下载方式**  
@@ -30,9 +30,9 @@ wget https://raw.githubusercontent.com/SengokuCola/MaiMBot/refactor/docker-compo
 ### 2.1 📝 准备配置文件模板
 ```bash
 # 获取核心组件配置模板
-wget https://raw.githubusercontent.com/MaiM-with-u/MaiBot/refactor/template/template.env \
+wget https://raw.githubusercontent.com/MaiM-with-u/MaiBot/main/template/template.env \
      -O docker-config/mmc/.env
-# 若 GitHub 直连不稳定，可使用镜像源：https://github.moeyy.xyz/https://raw.githubusercontent.com/MaiM-with-u/MaiBot/refactor/template/template.env
+# 若 GitHub 直连不稳定，可使用镜像源：https://github.moeyy.xyz/https://raw.githubusercontent.com/MaiM-with-u/MaiBot/main/template/template.env
 
 # 生成适配器环境配置
 cat > docker-config/adapters/.env << EOF
@@ -128,7 +128,7 @@ docker compose ps
 ```bash
 NAME                IMAGE                                COMMAND                  SERVICE    CREATED          STATUS          PORTS
 maim-bot-adapters   infinitycat/maimbot-adapter:latest   "/entrypoint.sh nb r…"   adapters   30 seconds ago   Up 18 seconds   0.0.0.0:18002->18002/tcp, [::]:18002->18002/tcp
-maim-bot-core       infinitycat/maimbot:refactor         "/MaiMBot/entrypoint…"   core       30 seconds ago   Up 17 seconds   0.0.0.0:8000->8000/tcp, [::]:8000->8000/tcp
+maim-bot-core       infinitycat/maimbot:latest         "/MaiMBot/entrypoint…"   core       30 seconds ago   Up 17 seconds   0.0.0.0:8000->8000/tcp, [::]:8000->8000/tcp
 maim-bot-mongo      mongo:latest                         "docker-entrypoint.s…"   mongodb    34 seconds ago   Up 25 seconds   0.0.0.0:27017->27017/tcp, [::]:27017->27017/tcp
 maim-bot-napcat     mlikiowa/napcat-docker:latest        "bash entrypoint.sh"     napcat     34 seconds ago   Up 25 seconds   0.0.0.0:6099->6099/tcp, [::]:6099->6099/tcp, 0.0.0.0:8095->8095/tcp, [::]:8095->8095/tcp
 ```
