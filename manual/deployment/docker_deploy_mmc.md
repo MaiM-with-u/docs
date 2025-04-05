@@ -40,7 +40,7 @@ ENVIRONMENT=dev
 DRIVER=~fastapi+~websockets
 HOST=0.0.0.0
 PORT=18002
-ONEBOT_WS_URLS=["ws://napcat:8095"]
+ONEBOT_WS_URLS=["ws://maim-bot-napcat:8095"]
 EOF
 ```
 获取config.py
@@ -55,7 +55,7 @@ vim docker-config/adapters/config.py
 ```
 ```python
 # 修改config.py
-Fastapi_url: str = "http://core:8000/api/message"  # 容器间内部通信
+Fastapi_url: str = "http://maim-bot-core:8000/api/message"  # 容器间内部通信
 ```
 
 ### 2.2 ✏️ 修改env配置
@@ -109,7 +109,7 @@ vim docker-config/mmc/bot_config.toml
 修改通信地址：
 ```toml
 [platforms]
-nonebot-qq = "http://adapters:18002/api/message"  # 使用容器服务名通信
+nonebot-qq = "http://maim-bot-adapters:18002/api/message"  # 使用容器服务名通信
 ```
 
 ---
