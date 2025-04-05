@@ -15,7 +15,7 @@ export default defineConfig({
     nav: [
       { text: '首页', link: '/' },
       { text: '用户手册', link: '/manual/' },
-      { text: '开发文档', link: '/develop/' },
+      // { text: '开发文档', link: '/develop/' },
       { text: 'GitHub', link: 'https://github.com/SengokuCola/MaiMBot' }
     ],
 
