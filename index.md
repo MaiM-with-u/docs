@@ -12,9 +12,9 @@ hero:
     - theme: brand
       text: 用户指南
       link: /manual/
-    - theme: alt
-      text: 开发文档
-      link: /develop/
+#    - theme: alt
+#      text: 开发文档
+#      link: /develop/
 features:
   - icon: 🧠
     title: 智能对话
