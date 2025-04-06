@@ -20,11 +20,11 @@ MaiMBot是一个功能强大的QQ群聊机器人，基于大语言模型提供�
   - [Windows手动部署](/manual/deployment/manual_deploy_windows)
   - [群晖NAS部署](/manual/deployment/synology_deploy)
   - [新手Linux服务器部署](/manual/deployment/linux_deploy_guide_for_beginners)
-### 开发文档
+<!-- ### 开发文档
 
 - [API参考](/develop/api/)
 - [开发指南](/develop/guide/ai-instruction)
-- [项目结构](/develop/structure/file_structure)
+- [项目结构](/develop/structure/file_structure) -->
 
 ## 特色功能
 
