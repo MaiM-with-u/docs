@@ -1,25 +1,25 @@
-# ÂóÂó GraphQL API ²Ý°¸
+# éº¦éº¦ GraphQL API è‰æ¡ˆ
 
-## ¸ÅÊö
+## æ¦‚è¿°
 
-±¾²Ý°¸ÊÇÎªÁËÉè¼ÆÓÃÓÚÅäÖÃ / ¼à¿Ø / ¹ÜÀíÂóÂóµÄ API¡£
+æœ¬è‰æ¡ˆæ˜¯ä¸ºäº†è®¾è®¡ç”¨äºŽé…ç½® / ç›‘æŽ§ / ç®¡ç†éº¦éº¦çš„ APIã€‚
 
-## Éè¼ÆÔ­Ôò
+## è®¾è®¡åŽŸåˆ™
 
-- ±¾APIÓ¦¸ÃÊÇ»ùÓÚ GraphQL µÄ
-- ±¾APIÓ¦¸ÃÊÇ¼òµ¥µÄ
-- ±¾APIÓ¦¸ÃÊÇ°²È«µÄ
-- ±¾APIÓ¦¸ÃÊÇÒ×ÓÚÎ¬»¤µÄ
-- ±¾APIÓ¦¸ÃÊÇÒ×ÓÚÎÄµµ»¯µÄ
+- æœ¬APIåº”è¯¥æ˜¯åŸºäºŽ GraphQL çš„
+- æœ¬APIåº”è¯¥æ˜¯ç®€å•çš„
+- æœ¬APIåº”è¯¥æ˜¯å®‰å…¨çš„
+- æœ¬APIåº”è¯¥æ˜¯æ˜“äºŽç»´æŠ¤çš„
+- æœ¬APIåº”è¯¥æ˜¯æ˜“äºŽæ–‡æ¡£åŒ–çš„
 
-## ÈÏÖ¤
+## è®¤è¯
 
--  ±¾APIÓ¦¸ÃÊÇ»ùÓÚTokenµÄÈÏÖ¤
--  ³ýÁË¹«¹² endpoint, ËùÓÐÇëÇóÍ³Ò»Ê¹ÓÃÇëÇóÍ· `Authorization: Bearer <token>` ½øÐÐÈÏÖ¤
+-  æœ¬APIåº”è¯¥æ˜¯åŸºäºŽTokençš„è®¤è¯
+-  é™¤äº†å…¬å…± endpoint, æ‰€æœ‰è¯·æ±‚ç»Ÿä¸€ä½¿ç”¨è¯·æ±‚å¤´ `Authorization: Bearer <token>` è¿›è¡Œè®¤è¯
 
-## ¹¦ÄÜ
+## åŠŸèƒ½
 
-### ×´Ì¬¸ÅÀÀ
+### çŠ¶æ€æ¦‚è§ˆ
 
-Ê×ÏÈ£¬ÎÒÃÇÐèÒªÒ»¸ö½Ó¿ÚÀ´»ñÈ¡ÂóÂóµÄ×´Ì¬¸ÅÀÀ£¬ÀýÈçµ±Ç°ÊÇ·ñÔÚÕý³£ÔËÐÐ,
-µ±Ç°µÄ Uptime, µ±Ç°µÄ°æ±¾, Ä£ÐÍµÄ Token ÏûºÄÇé¿öµÈ¡£
+é¦–å…ˆï¼Œæˆ‘ä»¬éœ€è¦ä¸€ä¸ªæŽ¥å£æ¥èŽ·å–éº¦éº¦çš„çŠ¶æ€æ¦‚è§ˆï¼Œä¾‹å¦‚å½“å‰æ˜¯å¦åœ¨æ­£å¸¸è¿è¡Œ,
+å½“å‰çš„ Uptime, å½“å‰çš„ç‰ˆæœ¬, æ¨¡åž‹çš„ Token æ¶ˆè€—æƒ…å†µç­‰ã€‚

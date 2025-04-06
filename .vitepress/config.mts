@@ -15,7 +15,7 @@ export default defineConfig({
     nav: [
       { text: '首页', link: '/' },
       { text: '用户手册', link: '/manual/' },
-      { text: '开发文档', link: '/develop/' },
+      // { text: '开发文档', link: '/develop/' },
       { text: 'GitHub', link: 'https://github.com/SengokuCola/MaiMBot' }
     ],
 
@@ -68,37 +68,37 @@ export default defineConfig({
           ]
         }
       ],
-      '/develop/': [
-        {
-          text: '开发文档',
-          items: [
-            { text: '介绍', link: '/develop/' }
-          ]
-        },
-        {
-          text: 'API参考',
-          collapsed: false,
-          items: [
-            { text: 'API概览', link: '/develop/api/' },
-            { text: 'API草案', link: '/develop/api/draft' }
-          ]
-        },
-        {
-          text: '项目结构',
-          collapsed: false,
-          items: [
-            { text: '架构概述', link: '/develop/structure/' },
-            { text: '文件结构', link: '/develop/structure/file_structure' }
-          ]
-        },
-        {
-          text: '开发指南',
-          collapsed: false,
-          items: [
-            { text: 'AI辅助开发', link: '/develop/guide/ai-instruction' }
-          ]
-        }
-      ]
+      // '/develop/': [
+      //   {
+      //     text: '开发文档',
+      //     items: [
+      //       { text: '介绍', link: '/develop/' }
+      //     ]
+      //   },
+      //   {
+      //     text: 'API参考',
+      //     collapsed: false,
+      //     items: [
+      //       { text: 'API概览', link: '/develop/api/' },
+      //       { text: 'API草案', link: '/develop/api/draft' }
+      //     ]
+      //   },
+      //   {
+      //     text: '项目结构',
+      //     collapsed: false,
+      //     items: [
+      //       { text: '架构概述', link: '/develop/structure/' },
+      //       { text: '文件结构', link: '/develop/structure/file_structure' }
+      //     ]
+      //   },
+      //   {
+      //     text: '开发指南',
+      //     collapsed: false,
+      //     items: [
+      //       { text: 'AI辅助开发', link: '/develop/guide/ai-instruction' }
+      //     ]
+      //   }
+      // ]
     },
 
     socialLinks: [

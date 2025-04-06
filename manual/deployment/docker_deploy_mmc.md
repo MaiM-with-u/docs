@@ -24,6 +24,9 @@ wget https://raw.githubusercontent.com/SengokuCola/MaiMBot/main/docker-compose.y
 > wget https://github.moeyy.xyz/https://raw.githubusercontent.com/SengokuCola/MaiMBot/main/docker-compose.yml
 > ```
 
+
+> 使用本地构建镜像请跳转这里[本地构建流程](#本地构建流程)
+
 ---
 
 ## ⚙️ 二、配置麦麦环境配置
@@ -43,6 +46,12 @@ PORT=18002
 ONEBOT_WS_URLS=["ws://napcat:8095"]
 EOF
 ```
+> 配置文件里的服务名如不可用可替换为容器名
+> - `ONEBOT_WS_URLS`配置可替换成`ws://maim-bot-napcat:8095`
+> - `Fastapi_url`配置可替换成`http://maim-bot-core:8000/api/message`
+> - `MONGODB_HOST`配置可替换成`maim-bot-mongo`
+> - `nonebot-qq`配置可替换成`http://maim-bot-adapters:18002/api/message`
+
 获取config.py
 ```bash
 wget https://raw.githubusercontent.com/MaiM-with-u/nonebot-plugin-maibot-adapters/refs/heads/master/nonebot_plugin_maibot_adapters/config.py \
@@ -180,3 +189,39 @@ docker compose logs -f
 > ```bash
 > docker compose logs -f
 > ```
+
+---
+## 本地构建流程
+### 一、准备必要的文件
+
+1. 通过 git clone 将 [麦麦 repo](https://github.com/MaiM-with-u/MaiBot) clone 到本地
+
+2. 通过 git clone 将 [maim_message 包](https://github.com/MaiM-with-u/maim_message) clone 到本地
+
+3. 通过 git clone 将 [nonebot-plugin-maibot-adapters](https://github.com/MaiM-with-u/nonebot-plugin-maibot-adapters) clone 到本地
+```shell
+git clone https://github.com/MaiM-with-u/MaiBot.git
+git clone https://github.com/MaiM-with-u/maim_message.git
+git clone https://github.com/MaiM-with-u/nonebot-plugin-maibot-adapters.git
+```
+> 如需切换分支在链接后面加`-b <分支名>`即可  
+
+复制`maim_message`到`MaiBot`和`nonebot-plugin-maibot-adapters`目录下
+```bash
+cp -r maim_message MaiBot/maim_message 
+cp -r maim_message nonebot-plugin-maibot-adapters/maim_message
+```
+拉取所需的镜像
+```bash
+sudo docker pull python:3.13.2-slim-bookworm
+sudo docker pull ghcr.io/astral-sh/uv:latest
+sudo docker pull infinitycat/adapter-bottom:latest
+```
+运行构建
+```bash
+cd MaiBot
+sudo docker build -t mmc:local .
+cd ../nonebot-plugin-maibot-adapters
+sudo docker build -t adapters:local
+```
+想要使用本地构建将`docker-compose.yml`的`image`替换即可
