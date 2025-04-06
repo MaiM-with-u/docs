@@ -222,6 +222,6 @@ sudo docker pull infinitycat/adapter-bottom:latest
 cd MaiBot
 sudo docker build -t mmc:local .
 cd ../nonebot-plugin-maibot-adapters
-sudo docker build -t adapters:local
+sudo docker build -t adapters:local .
 ```
 想要使用本地构建将`docker-compose.yml`的`image`替换即可
