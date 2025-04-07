@@ -1,35 +1,63 @@
-# MaiMBot Documentation
+# MaiMBot 文档
 
-This repository contains the official documentation for MaiMBot, an intelligent chatbot for QQ groups featuring LLM-based conversation capabilities, memory systems, and emotional expression.
+本仓库为 MaiMBot 的官方文档。MaiMBot 是一个智能聊天机器人，专为 QQ 群设计，具有基于 LLM 的对话能力、记忆系统和情感表达功能。
 
-## About the Documentation
+## 关于文档
 
-This documentation site is built with [VitePress](https://vitepress.dev/) and covers everything you need to know about installing, configuring, and deploying MaiMBot.
+此文档站点使用 [VitePress](https://vitepress.dev/) 构建，涵盖了安装、部署、配置以及开发（未完成） MaiMBot 所需的所有内容。
 
-## Documentation Sections
+## 文档部分
 
-- Installation guides (standard and beginner-friendly)
-- API reference
-- Deployment methods (Docker, Linux, Windows, Synology NAS)
-- FAQs and troubleshooting
-- File structure and configuration
+### 文档目录
 
-## Local Development
+- **安装指南**
+    提供标准版和新手友好版的安装步骤，帮助用户快速上手。
+
+- **API 参考（未完成）**
+    详细介绍 MaiMBot 提供的 API 接口及其使用方法。
+
+- **部署方法**
+    涵盖多种部署方式，包括 Docker、Linux、Windows 和群晖 NAS。
+
+- **常见问题解答和故障排除**
+    收录常见问题及其解决方案，帮助用户排查和解决问题。
+
+- **文件结构和配置**
+    说明项目的文件结构及配置方法，便于用户自定义和扩展。
+
+## 本地开发
+
+### 本地部署要求
+使用Nodejs安装对应依赖
 
 ```bash
-# Install dependencies
+# 安装依赖
 pnpm install
 
-# Start development server
+# 启动开发服务器
 pnpm docs:dev
 
-# Build for production
+# 构建生产版本
 pnpm docs:build
 
-# Preview production build
+# 预览生产版本
 pnpm docs:preview
 ```
 
-## Contributing
+## 贡献
 
-Contributions to improve the documentation are welcome! Please feel free to submit pull requests or open issues for any improvements or corrections.
+### 完整方式
+如果你想要修改文档，首先fork在修改后提出PR即可。
+
+如果你想要添加文件，在fork后添加你写的文档并放入对应目录（或者新建目录），修改各级的index.md使其包含您的文档。
+
+然后找到`.vitepress`下的`config.mts`文件，修改其中的导航使其能正确导航到你的文件。
+
+随后发起PR即可
+
+### 懒人方式
+如果你想要修改文档，首先fork在修改后提出PR即可。
+
+如果你想要添加文件，在fork后添加你写的文档并放入根目录，随后发起PR，说明你想放置的目录位置。
+
+若PR通过，我们会手动帮你配置各类目录
