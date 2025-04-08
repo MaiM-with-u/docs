@@ -39,11 +39,12 @@ python3 --version
 如果版本低于3.10，请更新Python版本。
 
 ```bash
+# 此处以 Python 3.12 为例
 # Ubuntu/Debian
 sudo apt update
 sudo apt install python3.12 python3.12-venv
 # 如执行了这一步，建议在执行时将python3指向python3.12
-# 更新替代方案，设置 python3.9 为默认的 python3 版本:
+# 更新替代方案，设置 python3.12 为默认的 python3 版本:
 sudo update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.12
 sudo update-alternatives --config python3
 ```
@@ -136,7 +137,7 @@ maimai
 
 ###  **安装并启动MongoDB**
 
-- 安装与启动：Debian参考[官方文档](https://docs.mongodb.com/manual/tutorial/install-mongodb-on-debian/)，Ubuntu参考[官方文档](https://docs.mongodb.com/manual/tutorial/install-mongodb-on-ubuntu/)
+- 安装与启动：参考[MongoDB文档](https://www.mongodb.com/zh-cn/docs/manual/administration/install-on-linux/)，自行选择系统类型
 - 默认连接本地27017端口
 
 ---
@@ -145,10 +146,11 @@ maimai
 
 ###  **安装NapCat框架**
 
-- 参考[NapCat官方文档](https://www.napcat.wiki/guide/boot/Shell#napcat-installer-linux%E4%B8%80%E9%94%AE%E4%BD%BF%E7%94%A8%E8%84%9A%E6%9C%AC-%E6%94%AF%E6%8C%81ubuntu-20-debian-10-centos9)安装
+- 请参考NapCatQQ文档：[Shell版](https://www.napcat.wiki/guide/boot/Shell)、[Framework版](https://www.napcat.wiki/guide/boot/Framework),任选一种即可
 
 -  使用QQ小号登录，添加websocket服务器，port使用`8095`，host使用默认即`0.0.0.0`  
 
+> [!IMPORTANT]
 > 配置示例：
 > ![](/images/napcat_websocket.png)
 
@@ -166,9 +168,11 @@ mkdir config
 cp template/bot_config_template.toml config/bot_config.toml
 cp template/template.env .env
 ```
-复制完成后根据需要进行配置修改
-> 配置文件修改请参考请前往 [🎀 新手配置指南](/manual/installation/installation_cute) 或 [⚙️ 标准配置指南](/manual/installation/installation_standard) 
-> 或根据配置文件注释自行修改
+复制完成后请根据需要进行配置修改
+::: tip
+配置文件修改请参考请前往 [🎀 新手配置指南](/manual/installation/installation_cute) 或 [⚙️ 标准配置指南](/manual/installation/installation_standard) 
+或根据配置文件注释自行修改
+:::
 
 > <details>
 > <summary>如果你想修改.env的PORT为其他或者出现了端口冲突，点开这里</summary>
@@ -216,6 +220,8 @@ nb run --reload
 ```
 
 ---
+
+### 后台运行麦麦
 如需在后台运行请使用screen
 启动麦麦核心前运行`screen -S mmc`
 ```bash
@@ -236,3 +242,22 @@ source ../MaiBotEnv/bin/activate
 # 运行adapter
 nb run --reload
 ```
+
+## 命令速查表
+
+| 命令 | 用途 |
+|------|------|
+| `source MaiBotEnv/bin/activate` | 激活Python虚拟环境（使用venv） |
+| `conda activate MaiBotEnv` | 激活Python虚拟环境（使用conda） |
+| `python3 bot.py` | 启动麦麦核心 |
+| `nb run --reload` | 启动nonebot适配器(带热重载) |
+
+后台运行相关：
+| 命令 | 用途 |
+|------|------|
+| `screen -S mmc` | 创建一个名为mmc的screen会话运行麦麦核心 |
+| `screen -S mmc-adapter` | 创建一个名为mmc-adapter的screen会话运行适配器 |
+| `Ctrl+a d` | 退出当前screen会话(程序继续在后台运行) |
+| `screen -r mmc` | 重新连接到mmc会话 |
+| `screen -r mmc-adapter` | 重新连接到mmc-adapter会话 |
+| `screen -ls` | 查看所有screen会话列表 |

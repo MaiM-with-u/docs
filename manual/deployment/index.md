@@ -8,16 +8,16 @@
 
 这个部署文档针对新的MaimCore(0.6.0)进行部署
 
-- [MaimCore版windows部署](mmc_deploy)
+- [MaimCore版Windows部署](mmc_deploy)
 
-### 新版MaimCore部署（docker）
+### 新版MaimCore部署（Docker）
 
 这个部署文档针对新的MaimCore(0.6.0)进行部署
-- [MaimCore版docker部署(推荐)](docker_deploy_mmc)
+- [MaimCore版Docker部署(推荐)](docker_deploy_mmc)
 
-### 新版MaimCore部署（linux）
+### 新版MaimCore部署（Linux）
 这个部署文档针对新的MaimCore(0.6.0)进行部署
-- [MaimCore版linux部署](mmc_deploy_linux)
+- [MaimCore版Linux部署](mmc_deploy_linux)
 
 ### （测试）新知识库系统测试
 
@@ -26,7 +26,8 @@
 - [new_knowledge版（LPMM版）说明](/manual/deployment/LPMM)
 
 ---
-> 下面是0.5.x部署方式(旧版)
+
+::: details 点击查看0.5.x部署方式(旧版)
 ### Docker 部署 (推荐)
 
 [Docker 部署](./docker_deploy) 是最推荐的部署方式，它能够提供最一致的运行环境和最简单的更新流程。如果您熟悉 Docker，或愿意学习基本的 Docker 操作，这是首选方案。
@@ -49,7 +50,7 @@
 
 **适合人群**：没有太多技术背景但想尝试部署的用户，或使用特定设备的用户。
 
-
+:::
 
 ## 部署前准备
 

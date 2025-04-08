@@ -10,6 +10,8 @@ OS: Windows10 或 Windows11
 ## 部署步骤
 
 ### 一、环境配置
+两种方式任选其一
+
 #### Conda 版
 假定你已经安装好了Conda，只需要创建一个虚拟环境即可
 然后我们创建一个安装麦麦的文件夹（以MaiM-with-u为例）
@@ -102,7 +104,11 @@ Maim-with-u
 
 ### 五、Napcat 部署
 
-略
+- 请参考NapCatQQ文档：[Shell版](https://www.napcat.wiki/guide/boot/Shell)、[Framework版](https://www.napcat.wiki/guide/boot/Framework),任选一种即可
+
+> [!IMPORTANT]
+> 配置示例：
+> ![](/images/napcat_websocket.png) 
 
 ### 六、配置 MaiBot 和 Nonebot adapter
 
