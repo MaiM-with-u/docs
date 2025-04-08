@@ -12,9 +12,9 @@ hero:
     - theme: brand
       text: 用户指南
       link: /manual/
-#    - theme: alt
-#      text: 开发文档
-#      link: /develop/
+    - theme: alt
+      text: 开发文档
+      link: /develop/
 features:
   - icon: 🧠
     title: 智能对话
@@ -48,13 +48,8 @@ MaiMBot 是一个基于大语言模型的智能QQ群聊机器人，具有自然�
   - [部署方法](/manual/deployment/)
   - [使用指南](/manual/usage/)
   
-[//]: # (- **[开发文档]&#40;/develop/&#41;** - 面向开发者的API参考和开发指南)
-
-[//]: # (  - [API参考]&#40;/develop/api/&#41;)
-
-[//]: # (  - [项目结构]&#40;/develop/structure/&#41;)
-
-[//]: # (  - [开发指南]&#40;/develop/guide/ai-instruction&#41;)
+- **[开发文档](/develop/)** - 面向开发者的API参考和开发指南
+  - [项目结构](/develop/structure/)
 
 ## 开始使用
 
