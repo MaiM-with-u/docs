@@ -22,7 +22,7 @@
 
     - 3.**或者**使用[一键包](https://github.com/MaiM-with-u/MaiBot/releases/tag/EasyInstall-windows)
 
-    - 4.**如果**出现未知错误，删除原来数据库里 messages 和 chat_sreams 中 所有内容
+- 4.**如果**出现未知错误，删除原来数据库里 messages 和 chat_streams 中 所有内容
 
 ## 我原来的配置文件怎么办？
 
