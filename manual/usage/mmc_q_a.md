@@ -5,22 +5,24 @@
 
 
 ## 如何更新0.6.0 ❓
-
+::: warning
 - *不要*直接覆盖！
 
 - *不要*pull后直接启动！
+
+:::
 
 -----------------------------------
 
 - 你该怎么做：
 
-- 1.新建文件夹
+    - 1.新建文件夹
 
-- 2.重新进行完整安装流程，参考教程[0.6.0版本部署教程](../deployment/mmc_deploy.md)
+    - 2.重新进行完整安装流程，参考教程[0.6.0版本部署教程](../deployment/mmc_deploy.md)
 
-- 3.**或者**使用一键包
+    - 3.**或者**使用[一键包](https://github.com/MaiM-with-u/MaiBot/releases/tag/EasyInstall-windows)
 
-- 4.**如果**出现未知错误，删除原来数据库里 messages 和 chat_sreams 中 所有内容
+- 4.**如果**出现未知错误，删除原来数据库里 messages 和 chat_streams 中 所有内容
 
 ## 我原来的配置文件怎么办？
 
@@ -45,7 +47,7 @@
 
 - 没有，0.6.0使用了新的启动方式
 - 如果你是手动部署：
-- 激活你的python环境，然后来到麦麦根目录，执行python bot.py
-- 然后启动napcat
-- 然后启动搭载了插件的nonebot端
+    - 激活你的python环境，然后来到麦麦根目录，执行`python bot.py`
+    - 然后启动napcat
+    - 再启动搭载了插件的nonebot端
 

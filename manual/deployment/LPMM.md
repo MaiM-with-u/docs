@@ -2,7 +2,7 @@
 
 ## 注意事项
 
-::: warning
+::: danger 提醒
 请仔细阅读以下注意事项，以免引起不必要的麻烦与支出
 :::
 
@@ -50,7 +50,34 @@
 无数据
 
 ### Linux端
-首先安装gcc/g++编译器
+1. 首先安装gcc/g++编译器
+```bash
+# 根据系统，打开终端输入命令
+# 基于Debian的系统（如Ubuntu、Linux Mint等）
+
+# 更新软件包索引
+sudo apt update
+# 运行以下命令来安装`gcc`和`g++`：
+sudo apt install build-essential
+
+
+# 基于Red Hat的系统（如Fedora、CentOS、RHEL等）
+
+# 更新软件包索引
+sudo dnf check-update
+# 安装`gcc`和`g++`
+sudo dnf install gcc gcc-c++
+# 如果使用的是`yum`，将`dnf`替换为`yum`即可
+
+
+# 验证安装
+# 安装完成后，可以通过以下命令验证`gcc`和`g++`是否安装成功：
+gcc --version
+g++ --version
+# 如果安装成功，会显示`gcc`和`g++`的版本信息。
+
+```
+
 然后打开`src/plugins/knowledge/lib/quick_algo`下面的`setup.py`，修改编译参数如下
 ```python
 ext_modules = [
@@ -77,7 +104,7 @@ ext_modules = [
 # 配置LPMM
 把`template/lpmm_config_template.toml`复制到`config/lpmm_config.toml`，按照样例配置`provider`
 :::tip
-实体提取，RDF提取的模型不建议使用32B以下的小模型，否则提取效果非常差而且及其可能失败
+实体提取、RDF提取的模型不建议使用32B以下的小模型，否则提取效果非常差而且极其可能失败
 :::
 
 ## 麦麦学习知识
