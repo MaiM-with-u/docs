@@ -28,15 +28,6 @@ export default defineConfig({
           ]
         },
         {
-          text: '安装配置',
-          collapsed: false,
-          items: [
-            { text: '安装指南', link: '/manual/installation/' },
-            { text: '标准安装教程', link: '/manual/installation/installation_standard' },
-            { text: '萌新安装教程', link: '/manual/installation/installation_cute' }
-          ]
-        },
-        {
           text: '部署方法',
           collapsed: false,
           items: [
@@ -56,6 +47,14 @@ export default defineConfig({
                 { text: '新手Linux部署', link: '/manual/deployment/old/linux_deploy_guide_for_beginners' },
               ]
             },
+          ]
+        },
+        {
+          text: '配置方法',
+          collapsed: false,
+          items: [
+            { text: '配置指南', link: '/manual/configuration/' },
+            { text: '标准配置教程', link: '/manual/configuration/configuration_standard' }
           ]
         },
         {

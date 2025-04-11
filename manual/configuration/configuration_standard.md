@@ -20,9 +20,6 @@ SILICONFLOW_BASE_URL=https://api.siliconflow.cn/v1/  # 硅基流动API地址
 
 DEEP_SEEK_KEY=your_key          # DeepSeek API密钥
 DEEP_SEEK_BASE_URL=https://api.deepseek.com/v1  # DeepSeek API地址
-
-CHAT_ANY_WHERE_KEY=your_key     # ChatAnyWhere API密钥
-CHAT_ANY_WHERE_BASE_URL=https://api.chatanywhere.tech/v1  # ChatAnyWhere API地址
 ```
 
 ### 在bot_config.toml中引用API凭证
