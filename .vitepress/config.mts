@@ -49,11 +49,11 @@ export default defineConfig({
               text:'0.5.x 部署方法（旧版）',
               collapsed: true,
               items: [
-                { text: 'Docker部署（推荐）', link: '/manual/deployment/docker_deploy' },
-                { text: 'Linux手动部署', link: '/manual/deployment/manual_deploy_linux' },
-                { text: 'Windows手动部署', link: '/manual/deployment/manual_deploy_windows' },
-                { text: '群晖NAS部署', link: '/manual/deployment/synology_deploy' },
-                { text: '新手Linux部署', link: '/manual/deployment/linux_deploy_guide_for_beginners' },
+                { text: 'Docker部署（推荐）', link: '/manual/deployment/old/docker_deploy' },
+                { text: 'Linux手动部署', link: '/manual/deployment/old/manual_deploy_linux' },
+                { text: 'Windows手动部署', link: '/manual/deployment/old/manual_deploy_windows' },
+                { text: '群晖NAS部署', link: '/manual/deployment/old/synology_deploy' },
+                { text: '新手Linux部署', link: '/manual/deployment/old/linux_deploy_guide_for_beginners' },
               ]
             },
           ]

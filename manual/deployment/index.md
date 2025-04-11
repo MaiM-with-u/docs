@@ -30,7 +30,7 @@
 ::: details 点击查看0.5.x部署方式(旧版)
 ### Docker 部署 (推荐)
 
-[Docker 部署](./docker_deploy) 是最推荐的部署方式，它能够提供最一致的运行环境和最简单的更新流程。如果您熟悉 Docker，或愿意学习基本的 Docker 操作，这是首选方案。
+[Docker 部署](./old/docker_deploy) 是最推荐的部署方式，它能够提供最一致的运行环境和最简单的更新流程。如果您熟悉 Docker，或愿意学习基本的 Docker 操作，这是首选方案。
 
 **适合人群**：有一定技术基础，熟悉或愿意学习 Docker 的用户。
 
@@ -38,15 +38,15 @@
 
 如果您更喜欢直接在系统中运行 MaiMBot，我们提供了多种手动部署的教程：
 
-- [Linux 手动部署指南](./manual_deploy_linux)
-- [Windows 手动部署指南](./manual_deploy_windows)
+- [Linux 手动部署指南](./old/manual_deploy_linux)
+- [Windows 手动部署指南](./old/manual_deploy_windows)
 
 **适合人群**：有一定技术基础，更喜欢直接控制系统的用户。
 
 ### 特定环境部署
 
-- [新手 Linux 服务器部署指南](./linux_deploy_guide_for_beginners) - 面向纯新手的详细教程
-- [群晖 NAS 部署指南](./synology_deploy) - 专为群晖 NAS 用户设计的教程
+- [新手 Linux 服务器部署指南](./old/linux_deploy_guide_for_beginners) - 面向纯新手的详细教程
+- [群晖 NAS 部署指南](./old/synology_deploy) - 专为群晖 NAS 用户设计的教程
 
 **适合人群**：没有太多技术背景但想尝试部署的用户，或使用特定设备的用户。
 

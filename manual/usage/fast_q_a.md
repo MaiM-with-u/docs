@@ -2,10 +2,6 @@
 
 这个文件用来记录一些常见的新手问题。
 
-## 完整安装教程
-
-[MaiMbot简易配置教程](https://www.bilibili.com/video/BV1zsQ5YCEE6)
-
 ## Api相关问题
 
 - 为什么显示:"缺失必要的API KEY" ❓

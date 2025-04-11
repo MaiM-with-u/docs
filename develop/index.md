@@ -10,6 +10,7 @@
   - [文件结构](/develop/structure/file_structure)
   - 项目结构
 - API参考
+- [插件构建指南](/develop/plugin_develop/index)
 - [贡献指南](#贡献指南v1-0)
 <!-- ## 开发者指南
 
