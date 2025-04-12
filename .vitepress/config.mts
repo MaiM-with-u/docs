@@ -28,34 +28,34 @@ export default defineConfig({
           ]
         },
         {
-          text: '安装配置',
-          collapsed: false,
-          items: [
-            { text: '安装指南', link: '/manual/installation/' },
-            { text: '标准安装教程', link: '/manual/installation/installation_standard' },
-            { text: '萌新安装教程', link: '/manual/installation/installation_cute' }
-          ]
-        },
-        {
           text: '部署方法',
           collapsed: false,
           items: [
             { text: '部署概览', link: '/manual/deployment/' },
-            { text: 'MaimCore版windows部署', link: '/manual/deployment/mmc_deploy'},
-            { text: 'MaimCore版docker部署(推荐)', link: '/manual/deployment/docker_deploy_mmc' },
+            { text: 'MaimCore版windows部署', link: '/manual/deployment/mmc_deploy_windows'},
+            { text: 'MaimCore版docker部署(推荐)', link: '/manual/deployment/mmc_docker_deploy' },
             { text: 'MaimCore版linux部署', link: '/manual/deployment/mmc_deploy_linux' },
             { text: 'new_knowledge版（LPMM版）说明', link: '/manual/deployment/LPMM'},
+            { text: '使用旧版adapter的windows部署', link: '/manual/deployment/old/mmc_deploy_windows_old'},
             {
               text:'0.5.x 部署方法（旧版）',
               collapsed: true,
               items: [
-                { text: 'Docker部署（推荐）', link: '/manual/deployment/docker_deploy' },
-                { text: 'Linux手动部署', link: '/manual/deployment/manual_deploy_linux' },
-                { text: 'Windows手动部署', link: '/manual/deployment/manual_deploy_windows' },
-                { text: '群晖NAS部署', link: '/manual/deployment/synology_deploy' },
-                { text: '新手Linux部署', link: '/manual/deployment/linux_deploy_guide_for_beginners' },
+                { text: 'Docker部署（推荐）', link: '/manual/deployment/old/docker_deploy' },
+                { text: 'Linux手动部署', link: '/manual/deployment/old/manual_deploy_linux' },
+                { text: 'Windows手动部署', link: '/manual/deployment/old/manual_deploy_windows' },
+                { text: '群晖NAS部署', link: '/manual/deployment/old/synology_deploy' },
+                { text: '新手Linux部署', link: '/manual/deployment/old/linux_deploy_guide_for_beginners' },
               ]
             },
+          ]
+        },
+        {
+          text: '配置方法',
+          collapsed: false,
+          items: [
+            { text: '配置指南', link: '/manual/configuration/' },
+            { text: '标准配置教程', link: '/manual/configuration/configuration_standard' }
           ]
         },
         {

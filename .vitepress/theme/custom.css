@@ -1,0 +1,4 @@
+.vp-doc .custom_hr{
+    border: none;
+    border-top: 4px solid var(--vp-c-divider) !important;
+}
