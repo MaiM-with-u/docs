@@ -4,7 +4,7 @@
 
 ## 安装指南
 
-### [标准配置教程](./installation_standard)
+### [标准配置教程](./configuration_standard)
 
 这份指南详细介绍了：
 

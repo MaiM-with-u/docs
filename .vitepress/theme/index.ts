@@ -5,6 +5,7 @@ import DefaultTheme from 'vitepress/theme'
 import './style.css'
 import './blockquote.css'
 import './custom-block.css'
+import './custom.css'
 
 export default {
   extends: DefaultTheme,
