@@ -18,7 +18,7 @@
 
     - 1.新建文件夹
 
-    - 2.重新进行完整安装流程，参考教程[0.6.0版本部署教程](../deployment/mmc_deploy.md)
+    - 2.重新进行完整安装流程，参考教程[0.6.0版本部署教程](/manual/deployment/mmc_deploy_windows)
 
     - 3.**或者**使用[一键包](https://github.com/MaiM-with-u/MaiBot/releases/tag/EasyInstall-windows)
 

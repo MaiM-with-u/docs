@@ -6,13 +6,13 @@ MaiMBot是一个功能强大的QQ群聊机器人，基于大语言模型提供�
 
 ### 用户手册
 
-- [部署方法](/manual/deployment/)
+- [部署方法](/manual/deployment/index)
   - [MaimCore版Windows部署](/manual/deployment/mmc_deploy_windows)
   - [MaimCore版Docker部署（推荐）](/manual/deployment/mmc_docker_deploy)
-  - [MaimCore版Linux部署](/manual/deployment/mmc_deploy_linux.md)
+  - [MaimCore版Linux部署](/manual/deployment/mmc_deploy_linux)
   - [new_knowledge版（LPMM版）说明](/manual/deployment/LPMM)
   - [使用旧版adapter的windows部署](/manual/deployment/old/mmc_deploy_windows_old)
-- [配置指南](/manual/configuration)
+- [配置指南](/manual/configuration/index)
   - [标准配置教程](/manual/configuration/configuration_standard)
 - [使用指南](/manual/usage/index)
   - [快速问答](/manual/usage/fast_q_a)
@@ -20,10 +20,10 @@ MaiMBot是一个功能强大的QQ群聊机器人，基于大语言模型提供�
 
 ::: details 0.5.x部署方法(旧版)
   - [Docker部署](/manual/deployment/old/docker_deploy)
-  - [Linux手动部署](/manual/deployment/manual_deploy_linux)
-  - [Windows手动部署](/manual/deployment/manual_deploy_windows)
-  - [群晖NAS部署](/manual/deployment/synology_deploy)
-  - [新手Linux服务器部署](/manual/deployment/linux_deploy_guide_for_beginners)
+  - [Linux手动部署](/manual/deployment/old/manual_deploy_linux)
+  - [Windows手动部署](/manual/deployment/old/manual_deploy_windows)
+  - [群晖NAS部署](/manual/deployment/old/synology_deploy)
+  - [新手Linux服务器部署](/manual/deployment/old/linux_deploy_guide_for_beginners)
 :::
 
 ## 特色功能

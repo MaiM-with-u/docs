@@ -103,7 +103,7 @@ Maim-with-u
 ::: details 如果你想修改这个PORT为其他，点开这里
 找到 MaiBot-Napcat-Adapter 下的 config.toml ，打开，修改 MaiBot_Server 字段中的 port 为你想要的端口号
 :::
-4. 剩余的内容参考[配置指南](/manual/configuration)
+4. 剩余的内容参考[配置指南](/manual/configuration/index)
 
 #### MaiBot Napcat adapter 配置
 

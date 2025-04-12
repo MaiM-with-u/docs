@@ -110,7 +110,7 @@ cp template/bot_config_template.toml config/bot_config.toml
 cp template/template.env .env
 ```
 复制完成后打开`.env`并修改PORT为8000
-随后前往[配置指南](/manual/configuration)完成配置
+随后前往[配置指南](/manual/configuration/index)完成配置
 
 ::: details 如果你想修改这个PORT为其他，点开这里
 找到 MaiBot-Napcat-Adapter 下的 config.toml ，打开，修改 MaiBot_Server 字段中的 port 为你想要的端口号
