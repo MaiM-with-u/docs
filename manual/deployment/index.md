@@ -4,19 +4,19 @@
 
 ## 部署方式选择
 
+本部署文档针对新的MaimCore (>=0.6.0) 进行部署
+
 ### 新版MaimCore部署
 
-这个部署文档针对新的MaimCore(0.6.0)进行部署
-
-- [MaimCore版Windows部署](mmc_deploy)
+- [MaimCore版Windows部署](mmc_deploy_windows)
+- [使用旧版adapter的windows部署](./old/mmc_deploy_windows_old)
 
 ### 新版MaimCore部署（Docker）
 
-这个部署文档针对新的MaimCore(0.6.0)进行部署
-- [MaimCore版Docker部署(推荐)](docker_deploy_mmc)
+- [MaimCore版Docker部署(推荐)](mmc_docker_deploy)
 
 ### 新版MaimCore部署（Linux）
-这个部署文档针对新的MaimCore(0.6.0)进行部署
+
 - [MaimCore版Linux部署](mmc_deploy_linux)
 
 ### （测试）新知识库系统测试
@@ -58,10 +58,7 @@
 
 1. **API密钥**：在部署前，需要获取 API 密钥（建议使用硅基流动）
 2. **QQ机器人**：准备一个专用于机器人的QQ账号
-3. **数据库**：所有部署方式都需要 MongoDB 数据库
-4. **配置文件**：所有部署都需要配置 `.env.prod` 和 `bot_config.toml` 文件
-
-详细的配置指南请参考 [标准配置指南](/manual/installation/installation_standard) 或 [萌新配置指南](/manual/installation/installation_cute)。
+3. **数据库**：所有部署方式都需要 MongoDB 数据库，安装方式可以自行查询
 
 ## 故障排除
 

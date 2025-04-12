@@ -5,6 +5,7 @@
 
 ## 系统要求
 python >= 3.10
+
 OS: Windows10 或 Windows11
 
 ## 部署步骤

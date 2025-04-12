@@ -32,10 +32,11 @@ export default defineConfig({
           collapsed: false,
           items: [
             { text: '部署概览', link: '/manual/deployment/' },
-            { text: 'MaimCore版windows部署', link: '/manual/deployment/mmc_deploy'},
-            { text: 'MaimCore版docker部署(推荐)', link: '/manual/deployment/docker_deploy_mmc' },
+            { text: 'MaimCore版windows部署', link: '/manual/deployment/mmc_deploy_windows'},
+            { text: 'MaimCore版docker部署(推荐)', link: '/manual/deployment/mmc_docker_deploy' },
             { text: 'MaimCore版linux部署', link: '/manual/deployment/mmc_deploy_linux' },
             { text: 'new_knowledge版（LPMM版）说明', link: '/manual/deployment/LPMM'},
+            { text: '使用旧版adapter的windows部署', link: '/manual/deployment/old/mmc_deploy_windows_old'},
             {
               text:'0.5.x 部署方法（旧版）',
               collapsed: true,
