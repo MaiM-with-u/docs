@@ -73,7 +73,9 @@ uv pip install -i https://mirrors.aliyun.com/pypi/simple -r requirements.txt
 ```
 ## 四、MaiBot Napcat Adapter 部署
 
-进入MaiBot-Napcat-Adapter文件夹，然后复制`template`文件夹下的template_config.toml到根目录下
+进入`MaiBot-Napcat-Adapter`文件夹，然后复制`template`文件夹下的`template_config.toml`到Adapter的根目录下
+
+<hr class="custom_hr"/>
 
 最终的文件夹结构应该类似这样：
 ```

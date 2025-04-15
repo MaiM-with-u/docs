@@ -72,9 +72,11 @@ pip install -i https://mirrors.aliyun.com/pypi/simple -r .\\requirements.txt
 ```
 ### 四、Napcat adapter 部署
 
-打开你的文件夹（这里是`Maim-with-u`文件夹下的`MaiBot-Napcat-Adapter`文件夹），找到`template`下的`template_config.toml`复制到根目录，改名为`config.toml`
+打开你的文件夹（这里是`Maim-with-u`文件夹下的`MaiBot-Napcat-Adapter`文件夹），找到`template`下的`template_config.toml`复制到Adapter的根目录，改名为`config.toml`
 
-最终的文件夹结构应该类似这样：
+<hr class="custom_hr"/>
+
+最终部署完成后的文件夹结构应该类似这样：
 ```
 Maim-with-u
 ├── MaiBot
