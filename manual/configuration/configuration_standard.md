@@ -26,7 +26,7 @@ DEEP_SEEK_BASE_URL=https://api.deepseek.com/v1  # DeepSeek API地址
 ```toml
 [model.llm_reasoning]
 name = "Pro/deepseek-ai/DeepSeek-R1"
-provider = "SILICONFLOW"         # 引用.env.prod中定义的宏
+provider = "SILICONFLOW"         # 引用.env中定义的宏
 ```
 
 如需切换到其他API服务，只需修改引用：
@@ -39,7 +39,7 @@ provider = "DEEP_SEEK"           # 使用DeepSeek provider
 
 ## 配置文件详解
 
-### 环境配置文件 (.env.prod)
+### 环境配置文件 (.env)
 
 ```ini
 HOST=127.0.0.1
