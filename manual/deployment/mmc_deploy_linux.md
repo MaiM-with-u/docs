@@ -73,7 +73,9 @@ uv pip install -i https://mirrors.aliyun.com/pypi/simple -r requirements.txt
 ```
 ## 四、MaiBot Napcat Adapter 部署
 
-进入MaiBot-Napcat-Adapter文件夹，然后复制`template`文件夹下的template_config.toml到根目录下
+进入`MaiBot-Napcat-Adapter`文件夹，然后复制`template`文件夹下的`template_config.toml`到Adapter的根目录下
+
+<hr class="custom_hr"/>
 
 最终的文件夹结构应该类似这样：
 ```
@@ -128,14 +130,14 @@ cp template/template.env .env
     - `[MaiBot_Server]`字段的port,应该与麦麦本体的`.env`中的`PORT`相同
 ```toml
 [Napcat_Server] # Napcat连接的ws服务设置
-host = "localhost" # Napcat设定的url地址
-port = 8095        # Napcat设定的ws端口
+host = "localhost" # Napcat设定的主机地址
+port = 8095        # Napcat设定的端口
 heartbeat = 30     # 与Napcat设置的心跳相同（按秒计）
 
 [MaiBot_Server] # 连接麦麦的ws服务设置
 platform_name = "qq" # 标识adapter的名称（必填）
-host = "localhost"   # 麦麦在.env文件中设置的url地址
-port = 8000          # 麦麦在.env文件中设置的ws端口
+host = "localhost"   # 麦麦在.env文件中设置的主机地址，即HOST字段
+port = 8000          # 麦麦在.env文件中设置的端口，即PORT字段
 ```
 
 ## 启动麦麦

@@ -91,6 +91,13 @@ export default defineConfig({
             { text: '文件结构', link: '/develop/structure/file_structure' }
           ]
         },
+        {
+          text: '插件开发',
+          collapsed: false,
+          items: [
+            { text: '开发综述', link: '/develop/plugin_develop/'}
+          ]
+        }
         // {
         //   text: '开发指南',
         //   collapsed: false,
