@@ -11,43 +11,40 @@ OS: Windows10 或 Windows11
 
 ## 部署步骤
 
-### 一、环境配置
-两种方式任选其一
+### 一、获取必要的文件
 
-#### Conda 版
-假定你已经安装好了Conda，只需要创建一个python**版本大于等于3.10**的虚拟环境即可
-然后我们创建一个安装麦麦的文件夹（以MaiM-with-u为例）
-```shell
-conda create -n MaiBotEnv python=3.12
-conda activate MaiBotEnv
-mkdir MaiM-with-u
-```
-
-#### 虚拟环境版
-首先，在[官网](https://www.python.org/)下载python，并安装**大于等于3.10的版本**并添加系统变量。
-随后执行以下操作
-1. 新建一个你想要安装麦麦的文件夹（以MaiM-with-u为例）
-2. 进入文件夹，创建python虚拟环境并激活
+1. 创建 `MaiM-with-u` 文件夹并进入
+1. 通过 git clone 将 [麦麦 repo](https://github.com/MaiM-with-u/MaiBot) clone 到本地
+2. 通过 git clone 将 [maim_message 包](https://github.com/MaiM-with-u/maim_message) clone 到本地
+3. 通过 git clone 将 [MaiBot-Napcat-Adapter](https://github.com/MaiM-with-u/MaiBot-Napcat-Adapter) clone 到本地
 ```shell
 mkdir MaiM-with-u
 cd MaiM-with-u
-python -m venv MaiBotEnv
-.\\MaiBotEnv\\Scripts\\activate
-```
-
-### 二、获取必要的文件
-
-1. 通过 git clone 将 [麦麦 repo](https://github.com/MaiM-with-u/MaiBot) clone 到本地
-
-2. 通过 git clone 将 [maim_message 包](https://github.com/MaiM-with-u/maim_message) clone 到本地
-
-3. 通过 git clone 将 [MaiBot-Napcat-Adapter](https://github.com/MaiM-with-u/MaiBot-Napcat-Adapter) clone 到本地
-
-```shell
 git clone https://github.com/MaiM-with-u/MaiBot.git
 git clone https://github.com/MaiM-with-u/maim_message.git
 git clone https://github.com/MaiM-with-u/MaiBot-Napcat-Adapter.git
 
+```
+
+### 一、环境配置
+
+两种方式任选其一
+
+#### Conda 版
+
+假定你已经安装好了Conda，只需要创建一个python**版本大于等于3.10**的虚拟环境即可。
+```shell
+conda create -n MaiBotEnv python=3.12
+conda activate MaiBotEnv
+```
+
+#### 虚拟环境版
+
+1. 首先，在[官网](https://www.python.org/)下载python，并安装**大于等于3.10的版本**并添加系统变量。  
+2. 随后在 `MaiM-with-u` 文件夹创建Python虚拟环境并激活
+```shell
+python -m venv MaiBot\venv
+.\MaiBot\venv\Scripts\activate
 ```
 
 ### 三、依赖安装
@@ -56,19 +53,19 @@ git clone https://github.com/MaiM-with-u/MaiBot-Napcat-Adapter.git
 2. pip安装所需依赖
 ```shell
 cd MaiBot
-pip install -i https://mirrors.aliyun.com/pypi/simple -r .\\requirements.txt
+pip install -i https://mirrors.aliyun.com/pypi/simple -r .\requirements.txt
 ```
 3. 随后回到上一级文件夹（此处为MaiM-with-u），再进入maim_message文件夹，安装这个包
 ```shell
 cd ..
 cd maim_message
-pip install -e .
+pip install  -i https://mirrors.aliyun.com/pypi/simple  -e .
 ```
 3. 随后回到上一级文件夹（此处为MaiM-with-u），再进入MaiBot-NapCat-Adapter文件夹，安装依赖
 ```shell
 cd ..
 cd MaiBot-Napcat-Adapter
-pip install -i https://mirrors.aliyun.com/pypi/simple -r .\\requirements.txt
+pip install -i https://mirrors.aliyun.com/pypi/simple -r .\requirements.txt
 ```
 ### 四、Napcat adapter 部署
 
@@ -130,13 +127,17 @@ port = 8000          # 麦麦在.env文件中设置的端口，即PORT字段
 ```
 
 ### 七、运行
-首先启动Napcat
+1. 首先启动Napcat
 
-随后进入麦麦本体的文件夹，运行
+2. 随后进入麦麦本体的文件夹，运行
 ```shell
-python ./bot.py
+# 因为已经激活虚拟环境，无需再次激活
+# .\venv\Scripts\activate
+python .\bot.py
 ```
-然后打开一个新的窗口，进入Adapter的文件夹，运行
+3. 然后打开一个新的窗口，进入Adapter的文件夹，运行
 ```shell
-python ./main.py
+#激活在Maibot文件夹下的虚拟环境
+..\Maibot\venv\Scripts\activate
+python .\main.py
 ```
