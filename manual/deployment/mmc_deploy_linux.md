@@ -2,7 +2,22 @@
 
 - 以下内容假设你对Linux系统有一定的了解，如果觉得难以理解，请用Windows系统部署[Windows系统部署指南](mmc_deploy_windows)
 
-## 一、环境配置
+## 一、 克隆麦麦，获取必要的文件
+1. 通过 git clone 将 [麦麦 repo](https://github.com/MaiM-with-u/MaiBot) clone 到本地
+
+2. 通过 git clone 将 [maim_message 包](https://github.com/MaiM-with-u/maim_message) clone 到本地
+
+3. 通过 git clone 将 [MaiBot-Napcat-Adapter](https://github.com/MaiM-with-u/MaiBot-Napcat-Adapter) clone 到本地
+```bash
+# 创建一个文件夹
+mkdir maimai
+cd maimai
+git clone https://github.com/MaiM-with-u/MaiBot.git
+git clone https://github.com/MaiM-with-u/maim_message.git
+git clone https://github.com/MaiM-with-u/MaiBot-Napcat-Adapter.git
+```
+
+## 二、环境配置
 
 ### 1️. 确认Python版本
 
@@ -29,30 +44,17 @@ sudo update-alternatives --config python3
 
 ### 2. 创建虚拟环境
 ```bash
-# 创建一个文件夹
-mkdir maimai
 # 方法1：使用venv(推荐)
-python3 -m venv MaiBotEnv
-source MaiBotEnv/bin/activate  # 激活环境
+python3 -m venv MaiBot/venv
+source MaiBot/venv/bin/activate  # 激活环境
 
 # 方法2：使用conda（需先安装Miniconda或Anaconda）
-mkdir maimai
 wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
 bash Miniconda3-latest-Linux-x86_64.sh
 conda create -n MaiBotEnv python=3.12
 conda activate MaiBotEnv
 ```
-## 二、 克隆麦麦，获取必要的文件
-1. 通过 git clone 将 [麦麦 repo](https://github.com/MaiM-with-u/MaiBot) clone 到本地
 
-2. 通过 git clone 将 [maim_message 包](https://github.com/MaiM-with-u/maim_message) clone 到本地
-
-3. 通过 git clone 将 [MaiBot-Napcat-Adapter](https://github.com/MaiM-with-u/MaiBot-Napcat-Adapter) clone 到本地
-```bash
-git clone https://github.com/MaiM-with-u/MaiBot.git
-git clone https://github.com/MaiM-with-u/maim_message.git
-git clone https://github.com/MaiM-with-u/MaiBot-Napcat-Adapter.git
-```
 ## 三、依赖安装
 ```bash
 cd MaiBot
@@ -162,7 +164,7 @@ python3 main.py
 cd MaiBot
 # 启动一个screen
 screen -S mmc
-source ../MaiBotEnv/bin/activate  # 激活环境
+source ../MaiBot/venv/bin/activate  # 激活环境
 # 运行mmc
 python3 bot.py
 ```
@@ -172,7 +174,7 @@ python3 bot.py
 ```bash
 cd ../MaiBot-Napcat-Adapter
 screen -S mmc-adapter
-source ../MaiBotEnv/bin/activate
+source ../MaiBot/venv/bin/activate
 # 运行adapter
 python3 main.py
 ```
@@ -181,7 +183,7 @@ python3 main.py
 
 | 命令 | 用途 |
 |------|------|
-| `source MaiBotEnv/bin/activate` | 激活Python虚拟环境（使用venv） |
+| `source MaiBot/venv/bin/activate` | 激活Python虚拟环境（使用venv） |
 | `conda activate MaiBotEnv` | 激活Python虚拟环境（使用conda） |
 | `python3 bot.py` | 启动麦麦核心 |
 | `python3 main.py` | 启动Napcat适配器|
