@@ -1,23 +1,32 @@
-# MaiMBot 部署指南
+# MaiBot 部署指南
 
-本章节将介绍多种部署 MaiMBot 的方法，您可以根据自己的需求和环境选择合适的方式。
+本章节将介绍多种部署 MaiBot 的方法，您可以根据自己的需求和环境选择合适的方式。
+
+## 安装前须知
+
+### 你必须要准备好的
+
+1. 电脑一台：windos/Linux/Mac 任意
+2. 一个QQ小号（请自行了解QQ机器人风险）
+3. 安装好的mongoDB数据库，关于怎么安装，请百度
+4. AI大模型的可以使用的API Key
 
 ## 部署方式选择
 
-本部署文档针对新的MaimCore (>=0.6.0) 进行部署
+本部署文档针对新的MaiCore (>=0.6.0) 进行部署
 
-### 新版MaimCore部署
+### 新版MaiCore部署
 
-- [MaimCore版Windows部署](mmc_deploy_windows)
+- [MaiCore版Windows部署](mmc_deploy_windows)
 - [使用旧版adapter的windows部署](./old/mmc_deploy_windows_old)
 
-### 新版MaimCore部署（Docker）
+### 新版MaiCore部署（Docker）
 
-- [MaimCore版Docker部署(推荐)](mmc_docker_deploy)
+- [MaiCore版Docker部署(推荐)](mmc_docker_deploy)
 
-### 新版MaimCore部署（Linux）
+### 新版MaiCore部署（Linux）
 
-- [MaimCore版Linux部署](mmc_deploy_linux)
+- [MaiCore版Linux部署](mmc_deploy_linux)
 
 ### （测试）新知识库系统测试
 
@@ -36,7 +45,7 @@
 
 ### 手动部署
 
-如果您更喜欢直接在系统中运行 MaiMBot，我们提供了多种手动部署的教程：
+如果您更喜欢直接在系统中运行 MaiBot，我们提供了多种手动部署的教程：
 
 - [Linux 手动部署指南](./old/manual_deploy_linux)
 - [Windows 手动部署指南](./old/manual_deploy_windows)
@@ -52,13 +61,7 @@
 
 :::
 
-## 部署前准备
 
-无论使用哪种部署方式，您都需要准备以下内容：
-
-1. **API密钥**：在部署前，需要获取 API 密钥（建议使用硅基流动）
-2. **QQ机器人**：准备一个专用于机器人的QQ账号
-3. **数据库**：所有部署方式都需要 MongoDB 数据库，安装方式可以自行查询
 
 ## 故障排除
 

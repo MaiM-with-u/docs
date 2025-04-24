@@ -1,15 +1,16 @@
-# MaiMBot 文档中心
+# MaiBot 文档中心
 
-MaiMBot是一个功能强大的QQ群聊机器人，基于大语言模型提供智能对话、记忆系统和情感表达能力。
+MaiBot是一个功能强大的聊天智能体，基于大语言模型提供智能对话、记忆系统和情感表达能力。
+
 
 ## 文档导航
 
 ### 用户手册
 
-- [部署方法](/manual/deployment/index)
-  - [MaimCore版Windows部署](/manual/deployment/mmc_deploy_windows)
-  - [MaimCore版Docker部署（推荐）](/manual/deployment/mmc_docker_deploy)
-  - [MaimCore版Linux部署](/manual/deployment/mmc_deploy_linux)
+- [安装方法](/manual/deployment/index)
+  - [Windows 安装](/manual/deployment/mmc_deploy_windows)
+  - [Docker 安装（推荐）](/manual/deployment/mmc_docker_deploy)
+  - [Linux 安装](/manual/deployment/mmc_deploy_linux)
   - [new_knowledge版（LPMM版）说明](/manual/deployment/LPMM)
   - [使用旧版adapter的windows部署](/manual/deployment/old/mmc_deploy_windows_old)
 - [配置指南](/manual/configuration/index)
