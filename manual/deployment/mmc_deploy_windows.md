@@ -14,14 +14,12 @@ OS: Windows10 或 Windows11
 ### 一、获取必要的文件
 
 1. 创建 `MaiM-with-u` 文件夹并进入
-1. 通过 git clone 将 [麦麦 repo](https://github.com/MaiM-with-u/MaiBot) clone 到本地
-2. 通过 git clone 将 [maim_message 包](https://github.com/MaiM-with-u/maim_message) clone 到本地
+2. 通过 git clone 将 [麦麦 repo](https://github.com/MaiM-with-u/MaiBot) clone 到本地
 3. 通过 git clone 将 [MaiBot-Napcat-Adapter](https://github.com/MaiM-with-u/MaiBot-Napcat-Adapter) clone 到本地
 ```shell
 mkdir MaiM-with-u
 cd MaiM-with-u
 git clone https://github.com/MaiM-with-u/MaiBot.git
-git clone https://github.com/MaiM-with-u/maim_message.git
 git clone https://github.com/MaiM-with-u/MaiBot-Napcat-Adapter.git
 
 ```
@@ -53,19 +51,13 @@ python -m venv MaiBot\venv
 2. pip安装所需依赖
 ```shell
 cd MaiBot
-pip install -i https://mirrors.aliyun.com/pypi/simple -r .\requirements.txt
-```
-3. 随后回到上一级文件夹（此处为MaiM-with-u），再进入maim_message文件夹，安装这个包
-```shell
-cd ..
-cd maim_message
-pip install  -i https://mirrors.aliyun.com/pypi/simple  -e .
+pip install -i https://mirrors.aliyun.com/pypi/simple -r .\requirements.txt --upgrade
 ```
 3. 随后回到上一级文件夹（此处为MaiM-with-u），再进入MaiBot-NapCat-Adapter文件夹，安装依赖
 ```shell
 cd ..
 cd MaiBot-Napcat-Adapter
-pip install -i https://mirrors.aliyun.com/pypi/simple -r .\requirements.txt
+pip install -i https://mirrors.aliyun.com/pypi/simple -r .\requirements.txt --upgrade
 ```
 ### 四、Napcat adapter 部署
 
@@ -84,7 +76,6 @@ Maim-with-u
 │   ├── src
 │   │   └── ...
 │   └── template
-├── maim_message
 └── MaiBot-Napcat-Adapter
     └── ...
 ```

@@ -97,6 +97,14 @@ export default defineConfig({
           items: [
             { text: '开发综述', link: '/develop/plugin_develop/'}
           ]
+        },
+        {
+          text: 'Maim_Message参考',
+          collapsed: false,
+          items: [
+            { text: 'Maim_Message概述', link: '/develop/maim_message/' },
+            { text: 'Message_Base', link: '/develop/maim_message/message_base' },
+          ]
         }
         // {
         //   text: '开发指南',
