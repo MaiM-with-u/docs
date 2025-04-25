@@ -2,6 +2,7 @@
 
 ## 📋 环境要求
 - ✅ 已安装 Docker 环境
+   - 如果没有 Docker 环境，请参考[获取 Docker](https://docs.docker.net.cn/get-started/get-docker/)
 - ⚙️ 最低系统配置：2 核 CPU / 2GB 内存 / 5GB 磁盘空间
 - 🐧 本教程测试环境：Ubuntu Server 24.04 LTS
 
@@ -114,6 +115,41 @@ vim docker-compose.yml
 ```bash
 docker compose up -d && sleep 15 && docker compose down
 ```
+
+:::details Docker 镜像拉取速度缓慢解决方案
+可以通过配置镜像源解决
+- macOS/Windows（使用 Docker Desktop）
+   - 打开 Docker Desktop 程序，点击右上角齿轮图标进入设置
+   - 点击`Docker Engine`，你会看到一个输入框
+   - 在输入框中，填入以下内容：
+   ```json
+   {
+  "registry-mirrors": [
+    "https://docker.1ms.run",
+    "https://docker.1panel.live",
+    "https://docker.ketches.cn"
+     ]
+   }
+   ```
+   注意：如果输入框内没有内容，你可以直接复制以上所有内容并粘贴。但如果输入框内的内容非空，请确保在保留原有内容的基础上，将新的镜像源添加到 `registry-mirrors` 数组中。
+   搞不懂？把以上内容和你原来的`daemon.json`文件内容（就是输入框内的文字）发给AI，让它帮你修改
+   - 修改完成后，点击右下角的`Apply & restart`重启Docker，再次运行`docker compose up -d && sleep 15 && docker compose down`即可
+- Linux（使用命令行）
+   - 在终端中执行以下命令 **（注意：此操作会覆盖`/etc/docker/daemon.json`文件中的现有内容）**
+   ```bash
+   echo '{
+  "registry-mirrors": [
+    "https://docker.1ms.run",
+    "https://docker.1panel.live",
+    "https://docker.ketches.cn"
+     ]
+   }' | sudo tee /etc/docker/daemon.json
+   ```
+   - 重启 Docker 服务以使配置生效
+   ```bash
+   sudo systemctl restart docker
+   ```
+:::
 
 ### 3.2 🔧 调整麦麦配置
 ```bash

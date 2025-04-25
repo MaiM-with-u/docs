@@ -142,7 +142,7 @@ host = "localhost"   # 麦麦在.env文件中设置的主机地址，即HOST字�
 port = 8000          # 麦麦在.env文件中设置的端口，即PORT字段
 ```
 
-## 启动麦麦
+## 七、启动麦麦
 
 ### 启动麦麦核心
 到MaiBot下运行`python3 bot.py`
