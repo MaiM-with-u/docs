@@ -59,19 +59,13 @@ conda activate MaiBotEnv
 ```bash
 cd MaiBot
 pip install uv
-uv pip install -i https://mirrors.aliyun.com/pypi/simple -r requirements.txt
-```
-回到上一级文件夹，再进入maim_message文件夹，安装这个包
-```bash
-cd ..
-cd maim_message
-uv pip install -i https://mirrors.aliyun.com/pypi/simple -e .
+uv pip install -i https://mirrors.aliyun.com/pypi/simple -r requirements.txt --upgrade
 ```
 回到上一级文件夹，再进入MaiBot-Napcat-Adapter文件夹，安装依赖
 ```bash
 cd ..
 cd MaiBot-Napcat-Adapter
-uv pip install -i https://mirrors.aliyun.com/pypi/simple -r requirements.txt
+uv pip install -i https://mirrors.aliyun.com/pypi/simple -r requirements.txt --upgrade
 ```
 ## 四、MaiBot Napcat Adapter 部署
 
@@ -90,7 +84,6 @@ maimai
 │   ├── src
 │   │   └── ...
 │   └── template
-├── maim_message
 └── MaiBot-Napcat-Adapter
     └── ...
 ```

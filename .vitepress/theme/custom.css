@@ -2,3 +2,7 @@
     border: none;
     border-top: 4px solid var(--vp-c-divider) !important;
 }
+
+.vp-doc .indent{
+    text-indent: 2em;
+}
