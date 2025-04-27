@@ -1,5 +1,5 @@
 # Maim_Message Message Class
-这是MaiBot Core的消息基础类，是Adapter发送和接受的消息的基础数据结构。
+这是Maim_Message的消息基础类，是Adapter发送和接受的消息的基础数据结构。
 ## class Seg:
 这是可以递归的消息基本单元，用于表示消息的不同部分与不同类型
 ```python
@@ -24,6 +24,10 @@ class Seg:
 `type="image"`时`data`为图片的base64无头编码。
 
 `type="emoji"`时`data`为表情图片的base64无头编码。
+
+`type="voice"`时`data`为wav无压缩格式语音的base64无头编码。
+
+`type="reply"`时`data`为被回复对象的message_id。
 
 `type="seglist"`时`data`为一个Seg列表。
 
@@ -171,7 +175,19 @@ class BaseMessageInfo:
 
 `template_info`: 标记消息的模板信息，可选
 
-`additional_config`: 标记消息的附加配置，可选。例如`maimcore_reply_probability_gain`，表示回复概率增益（100%为1），其配置应该基于MaiBot Core可以接受的配置进行填写。详情请参见MaiBot Core代码
+`additional_config`: 标记消息的附加配置，可选。其配置应该基于下游可接受的配置进行填写。
+
+| 现在可使用的配置项 | 可选值 | 说明 |
+| --- | --- | ---|
+| `maimcore_reply_probability_gain`* | 任意数值 | 回复概率增益（100%为1）|
+| `allow_tts` | `True`/`False` | 是否允许使用TTS语音** |
+| `original_text`*** | 任意字符串 | 从TTS Adapter返回的语音数据中携带的原始文字数据 |
+
+>*: 由于代码开发，暂时停用
+>
+>**: 需要自行配置相应的TTS引擎，同时有对应的TTS Adapter
+>
+>***: 本项由[maimbot_tts_adapter](https://github.com/tcmofashi/maimbot_tts_adapter)返回，MaiBot Core本体不支持
 
 `to_dict`: 将BaseMessageInfo对象转换为字典，不必自行调用。
 
