@@ -104,6 +104,7 @@ export default defineConfig({
           items: [
             { text: 'Maim_Message概述', link: '/develop/maim_message/' },
             { text: 'Message_Base', link: '/develop/maim_message/message_base' },
+            { text: 'Router', link: '/develop/maim_message/router'}
           ]
         }
         // {
