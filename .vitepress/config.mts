@@ -96,7 +96,7 @@ export default defineConfig({
           collapsed: false,
           items: [
             { text: '开发综述', link: '/develop/plugin_develop/'},
-            { text: 'Adapter 开发指南'}
+            { text: 'Adapter 开发指南', link: '/develop/plugin_develop/develop_plugin'},
           ]
         },
         {
