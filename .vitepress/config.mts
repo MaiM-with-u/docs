@@ -35,7 +35,7 @@ export default defineConfig({
             { text: 'MaimCore版windows部署', link: '/manual/deployment/mmc_deploy_windows'},
             { text: 'MaimCore版docker部署(推荐)', link: '/manual/deployment/mmc_docker_deploy' },
             { text: 'MaimCore版linux部署', link: '/manual/deployment/mmc_deploy_linux' },
-            { text: 'new_knowledge版（LPMM版）说明', link: '/manual/deployment/LPMM'},
+            { text: '新版知识库LPMM说明', link: '/manual/deployment/LPMM'},
             { text: '使用旧版adapter的windows部署', link: '/manual/deployment/old/mmc_deploy_windows_old'},
             {
               text:'0.5.x 部署方法（旧版）',
@@ -95,14 +95,15 @@ export default defineConfig({
           text: '插件开发',
           collapsed: false,
           items: [
-            { text: '开发综述', link: '/develop/plugin_develop/'}
+            { text: '开发综述', link: '/develop/plugin_develop/'},
+            { text: 'Adapter 开发指南'}
           ]
         },
         {
           text: 'Maim_Message参考',
           collapsed: false,
           items: [
-            { text: 'Maim_Message概述', link: '/develop/maim_message/' },
+            { text: 'Maim_Message 概述', link: '/develop/maim_message/' },
             { text: 'Message_Base', link: '/develop/maim_message/message_base' },
             { text: 'Router', link: '/develop/maim_message/router'}
           ]

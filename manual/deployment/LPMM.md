@@ -1,4 +1,4 @@
-# 麦麦知识库（非0.6.0版，现在未启用）（新版）使用说明
+# 麦麦知识库（LPMM，新版）使用说明
 
 ## 注意事项
 
@@ -20,16 +20,17 @@
 
 （同上样例，导入时10700K几乎跑满，峰值内存占用约3G）
 
-**本知识库与旧版（暂时）不兼容**
+**本知识库与旧版（暂时）不兼容**，如果需要将旧版数据库中内容迁移到新版，请重新导入
 
 ## 配置
 
-### 一，获取必要的文件
-如果你使用的平台在[github release](https://github.com/MaiM-with-u/MaiMBot-LPMM/releases)中已经有编译好的包，推荐直接下载进行部署。
-
-对于开发者/没有已经编译好的包的用户而言，我们建议您自行编译
-
-### Windows(x86_64)端
+### 一，安装环境
+对于windows_x86_64平台的用户，请使用pip进行直接安装。（已经包含在MaiBot的requirements.txt中，正常应该已经安装）
+```bash
+pip install quick_algo
+```
+如果你多次尝试后，发现确实没有对应你平台的版本，可以选择不使用新版知识库，或者参考下面的内容进行过手动编译。
+### Windows端
 #### 环境准备
 1. 首先，在[C++ Build Tools](https://visualstudio.microsoft.com/zh-hans/visual-cpp-build-tools/)下载微软MSVC构建工具安装包
 2. 打开安装包，会自动安装Visual Studio Installer，安装完成后，打开Visual Studio Installer
@@ -43,7 +44,11 @@
 
 
 #### MSVC编译
-进入ib/quick_algo/目录，使用**管理员权限**运行 `python setup.py build_ext --inplace`
+首先安装根目录下的`requirements.txt`中的依赖
+```bash
+pip install -i https://mirrors.aliyun.com/pypi/simple -r requirements.txt --upgrade
+```
+随后进入`lib/quick_algo/`目录，使用**管理员权限**运行 `python build_lib.py --cleanup --cythonize --install`
 
 
 ### Windows(Arm)端
@@ -77,29 +82,10 @@ g++ --version
 # 如果安装成功，会显示`gcc`和`g++`的版本信息。
 
 ```
-
-然后打开`src/plugins/knowledge/lib/quick_algo`下面的`setup.py`，修改编译参数如下
-```python
-ext_modules = [
-    Extension(
-        "pagerank",
-        sources=["pagerank.pyx", "pr.c"],
-        include_dirs=["."],
-        libraries=[],
-        language="c",
-        extra_compile_args=[
-            '-O3',
-            '-mavx',
-            '-fopenmp',
-            '-march=native'
-        ],
-        extra_link_args=[
-            '-fopenmp'
-        ]
-    )
-]
+然后运行
+```bash
+python build_lib.py --cleanup --cythonize --install
 ```
-随后在你的环境（虚拟环境或者本机环境）中进入`src/plugins/knowledge/lib/quick_algo`目录运行`python setup.py build_ext --inplace`并等待编译完成
 
 # 配置LPMM
 把`template/lpmm_config_template.toml`复制到`config/lpmm_config.toml`，按照样例配置`provider`
@@ -108,10 +94,13 @@ ext_modules = [
 :::
 
 ## 麦麦学习知识
+::: tip
+知识库使用的文本必须以txt方式存储
+:::
 ### 分段
 首先，确保你的文本分段良好。
 
-分段方式：按照同一主题，设置一个大段落，每个段落之间有一个空行。比如下面的例子：
+分段方式：按照同一主题，设置一个大段落，每个段落之间有一个空行。相邻的自然段将认为是一个大段落。比如下面的例子：
 
 ```
 精神状态良好：形容自己精神状态良好的反讽，实际精神状态非常不稳定。
@@ -127,13 +116,22 @@ ext_modules = [
 社死：形容某个人在公共场合出现时，因某种原因感到极其尴尬和不好意思，表现出了人们在社会交往中的种种尴尬情景。
 ```
 
-随后把原始文件改名为`raw.txt`放到`src/plugins/knowledge/src/scripts`，用`text_pre_precess.py`进行处理（实际上就是根据大段落拆分为json文件）
+随后把原始文件放到`data/lpmm_raw_data`，用`text_pre_precess.py`进行处理（实际上就是根据大段落拆分为json文件）
+```bash
+python text_pre_process.py
+```
 
 ### 提取
-将上一步中生成的`import.json`放到根目录的`data`文件夹下（存表情包的那个），在根目录下运行`info_extraction.py`，等待结束后，在根目录运行`import_openie.py`，等待知识库生成。
+在根目录运行`info_extraction.py`，提取知识
+```bash
+python info_extraction.py
+```
 
-### 使用
-将`bot_config.toml`中的`response`从`heart_flow`改为`reasoning`以启用新的知识库
+### 导入
+在根目录运行`import_openie.py`，导入知识
+```bash
+python import_openie.py
+```
 
 ## 麦麦LPMM加速
 pip包中：
@@ -142,4 +140,11 @@ pip包中：
 
 如果你有cuda，你甚至可以安装faiss-cu版
 
-安装方式暂时略
+安装方式：
+```bash
+pip uninstall faiss-cpu
+# 装gpu版
+pip install faiss-gpu
+# 装cuda版
+pip install faiss-cu
+```

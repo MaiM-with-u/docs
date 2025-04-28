@@ -50,6 +50,8 @@ MaiMBot 是一个基于大语言模型的智能QQ群聊机器人，具有自然�
   
 - **[开发文档](/develop/)** - 面向开发者的API参考和开发指南
   - [项目结构](/develop/structure/)
+  - [Adapter 开发](/develop/plugin_develop/)
+  - [maim_message 参考](/develop/maim_message/)
 
 ## 开始使用
 
