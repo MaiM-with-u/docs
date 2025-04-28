@@ -21,9 +21,9 @@ class Seg:
 
 `type="text"`时`data`为字符串。
 
-`type="image"`时`data`为图片的base64无头编码。
+`type="image"`时`data`为图片的base64**无头编码**。
 
-`type="emoji"`时`data`为表情图片的base64无头编码。
+`type="emoji"`时`data`为表情图片的base64**无头编码**。
 
 `type="voice"`时`data`为wav无压缩格式语音的base64无头编码。
 

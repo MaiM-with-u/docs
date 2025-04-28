@@ -4,6 +4,10 @@
 **本教程为部署到QQ平台的教程，不代表其他平台的部署方式相同**
 :::
 
+::: tip
+高版本（0.6.3+）版本启用了新版知识库，使用说明在[这里](/manual/deployment/LPMM)
+:::
+
 ## 系统要求
 python >= 3.10
 
@@ -53,6 +57,9 @@ python -m venv MaiBot\venv
 cd MaiBot
 pip install -i https://mirrors.aliyun.com/pypi/simple -r .\requirements.txt --upgrade
 ```
+::: tip
+如果你在这里发现`quick_algo`安装失败，请参考[LPMM 使用说明](/manual/deployment/LPMM)中手动编译的部分
+:::
 3. 随后回到上一级文件夹（此处为MaiM-with-u），再进入MaiBot-NapCat-Adapter文件夹，安装依赖
 ```shell
 cd ..
