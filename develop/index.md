@@ -8,7 +8,7 @@
 
 - [文件与项目结构](/develop/structure/index)
   - [文件结构](/develop/structure/file_structure)
-  - 项目结构
+  - [消息处理流程](/develop/structure/message_flow_direction)
 - API参考
 - [Adapter 开发指南](/develop/plugin_develop/)
 - [Maim_Message参考](/develop/maim_message/index)
