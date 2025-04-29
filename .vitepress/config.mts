@@ -88,7 +88,8 @@ export default defineConfig({
           collapsed: false,
           items: [
             { text: '架构概述', link: '/develop/structure/' },
-            { text: '文件结构', link: '/develop/structure/file_structure' }
+            { text: '文件结构', link: '/develop/structure/file_structure' },
+            { text: '消息处理流程', link: '/develop/structure/message_flow_direction' },
           ]
         },
         {
