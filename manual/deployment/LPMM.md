@@ -185,7 +185,7 @@ mkdir -p data/MaiMBot/lpmm_raw_data
 
 然后运行命令：
 ```bash
-docker run -it -v ./data/MaiMBot:/MaiMBot/data -v ./docker-config/mmc:/MaiMBot/config -v ./docker-config/mmc/.env:/MaiMBot/.env --network maim-bot_maim_bot  --entrypoint bash infinitycat/maimbot:dev "scripts/run_lpmm.sh"
+docker run -it -v ./data/MaiMBot:/MaiMBot/data -v ./docker-config/mmc:/MaiMBot/config -v ./docker-config/mmc/.env:/MaiMBot/.env --network maim-bot_maim_bot  --entrypoint bash sengokucola/maimbot:main "scripts/run_lpmm.sh"
 ```
 :::tip
 注意此处的`network`配置，应为你的core所在的docker网络，可使用`docker network ls`查找你的网络名称，名称后面有`maim_bot`字样的网络即为你的core所在网络  
