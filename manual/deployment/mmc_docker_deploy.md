@@ -200,20 +200,19 @@ docker compose logs -f
 
 1. 通过 git clone 将 [麦麦 repo](https://github.com/MaiM-with-u/MaiBot) clone 到本地
 
-2. 通过 git clone 将 [maim_message 包](https://github.com/MaiM-with-u/maim_message) clone 到本地
+2. 通过 git clone 将 [MaiMBot-LPMM 包](https://github.com/MaiM-with-u/MaiMBot-LPMM) clone 到本地
 
 3. 通过 git clone 将 [MaiBot-Napcat-Adapter](https://github.com/MaiM-with-u/MaiBot-Napcat-Adapter) clone 到本地
 ```shell
 git clone https://github.com/MaiM-with-u/MaiBot.git
-git clone https://github.com/MaiM-with-u/maim_message.git
+git clone https://github.com/MaiM-with-u/MaiMBot-LPMM.git MaiMBot-LPMM
 git clone https://github.com/MaiM-with-u/MaiBot-Napcat-Adapter.git
 ```
 > 如需切换分支在链接后面加`-b <分支名>`即可  
 
-复制`maim_message`到`MaiBot`和`MaiBot-Napcat-Adapter`目录下
+复制`MaiMBot-LPMM`到`MaiBot`目录下
 ```bash
-cp -r maim_message MaiBot/maim_message 
-cp -r maim_message MaiBot-Napcat-Adapter/maim_message
+cp -r MaiMBot-LPMM MaiBot/MaiMBot-LPMM 
 ```
 拉取所需的镜像
 ```bash
