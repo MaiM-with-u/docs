@@ -58,7 +58,7 @@ conda activate MaiBotEnv
 ## 三、依赖安装
 ```bash
 cd MaiBot
-pip install uv
+pip install uv -i https://mirrors.aliyun.com/pypi/simple
 uv pip install -i https://mirrors.aliyun.com/pypi/simple -r requirements.txt --upgrade
 ```
 回到上一级文件夹，再进入MaiBot-Napcat-Adapter文件夹，安装依赖
