@@ -135,6 +135,9 @@ python import_openie.py
 ```
 
 ## 麦麦LPMM加速
+:::tip
+GPU加速仅适用于Linux
+:::
 pip包中：
 
 如果你有cuda，你可以根据你的cuda版本安装`faiss-gpu-cu12`或者`faiss-gpu-cu11`
