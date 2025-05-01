@@ -1,4 +1,4 @@
-# 🔧 配置指南
+# 🔧 配置指南（最新版）
 
 ## 简介
 
@@ -155,7 +155,9 @@ schedule_temperature = 0.2 # 日程表温度，建议0.2-0.5
 time_zone = "Asia/Shanghai" # 给你的机器人设置时区，可以解决运行电脑时区和国内时区不同的情况，或者模拟国外留学生日程
 ```
 
-以上部分是有关麦麦的设定，可以参考注释进行设置
+以上部分是有关麦麦的各种设定，包括人格核心，人格侧像，兴趣爱好。这里也是配置日程表生成的地方。
+
+如果你想让麦麦使用不同的时区，那么配置最后一行，但是要按照标准时区格式来写，比如`Asia/Shanghai`等
 
 <hr class="custom_hr"/>
 
@@ -169,34 +171,17 @@ nonebot-qq="http://127.0.0.1:18002/api/message"
 <hr class="custom_hr"/>
 
 ```toml
-[response] #使用哪种回复策略
-response_mode = "heart_flow" # 回复策略，可选值：heart_flow（心流），reasoning（推理）
+[chat] #麦麦的聊天通用设置
+allow_focus_mode = true # 是否允许专注聊天状态
+# 是否启用heart_flowC(HFC)模式
+# 启用后麦麦会自主选择进入heart_flowC模式(持续一段时间），进行主动的观察和回复，并给出回复，比较消耗token
+base_normal_chat_num = 3 # 最多允许多少个群进行普通聊天
+base_focused_chat_num = 2 # 最多允许多少个群进行专注聊天
 
-#推理回复参数
-model_r1_probability = 0.7 # 麦麦回答时选择主要回复模型1 模型的概率
-model_v3_probability = 0.3 # 麦麦回答时选择次要回复模型2 模型的概率
-
-[heartflow] # 注意：可能会消耗大量token，请谨慎开启，仅会使用v3模型
-sub_heart_flow_update_interval = 60 # 子心流更新频率，间隔 单位秒
-sub_heart_flow_freeze_time = 100 # 子心流冻结时间，超过这个时间没有回复，子心流会冻结，间隔 单位秒
-sub_heart_flow_stop_time = 500 # 子心流停止时间，超过这个时间没有回复，子心流会停止，间隔 单位秒
-heart_flow_update_interval = 300 # 心流更新频率，间隔 单位秒
-
-```
-
-心流相关设置，配置麦麦脑内思考内容的频率，使用的模型等
-
-其中的主要回复模型和次要回复模型对应下面的主次模型配置
-
-<hr class="custom_hr"/>
-
-```toml
-[message]
-max_context_size = 12 # 麦麦获得的上文数量，建议12，太短太长都会导致脑袋尖尖
-emoji_chance = 0.2 # 麦麦使用表情包的概率
-thinking_timeout = 60 # 麦麦最长思考时间，超过这个时间的思考会放弃
-max_response_length = 256 # 麦麦回答的最大token数
+observation_context_size = 15 # 观察到的最长上下文大小,建议15，太短太长都会导致脑袋尖尖
 message_buffer = true # 启用消息缓冲器？启用此项以解决消息的拆分问题，但会使麦麦的回复延迟
+
+# 以下是消息过滤，可以根据规则过滤特定消息，将不会读取这些消息
 ban_words = [
     # "403","张三"
     ]
@@ -207,52 +192,72 @@ ban_msgs_regex = [
     #"\\d{4}-\\d{2}-\\d{2}", # 匹配日期
     # "\\[CQ:at,qq=\\d+\\]" # 匹配@
 ]
+
 ```
 
-配置麦麦收发相关内容
+心流相关设置，配置麦麦的部分聊天行为。`base_normal_chat_num`和`base_focused_chat_num`分别是**普通聊天和专注聊天的最大群聊数量**。有需要可以修改此处。
 
-消息缓冲器是为了解决麦麦接收分条发送的消息后过快进入思考，导致回复答非所问的问题，但是会导致回复略有延迟
+`ban_words`和`ban_msgs_regex`是消息屏蔽词配置，麦麦遇到便会直接忽略这些消息。
+
+`message_buffer`是消息缓冲器，启用后会将分条发送的消息合并为一条消息再进行思考和回复，但是会导致麦麦回复延迟增加。
 
 <hr class="custom_hr"/>
 
 ```toml
-[willing]
-willing_mode = "classical" # 回复意愿模式 经典模式
-# willing_mode = "dynamic" # 动态模式(不兼容，需要维护)
-# willing_mode = "custom" # 自定义模式（可自行调整
+[normal_chat] #普通聊天
+#一般回复参数
+model_reasoning_probability = 0.7 # 麦麦回答时选择推理模型 模型的概率
+model_normal_probability = 0.3 # 麦麦回答时选择一般模型 模型的概率
+
+emoji_chance = 0.2 # 麦麦一般回复时使用表情包的概率，设置为1让麦麦自己决定发不发
+thinking_timeout = 100 # 麦麦最长思考时间，超过这个时间的思考会放弃（往往是api反应太慢）
+
+willing_mode = "classical" # 回复意愿模式 —— 经典模式：classical，动态模式：dynamic，mxp模式：mxp，自定义模式：custom（需要你自己实现）
 response_willing_amplifier = 1 # 麦麦回复意愿放大系数，一般为1
 response_interested_rate_amplifier = 1 # 麦麦回复兴趣度放大系数,听到记忆里的内容时放大系数
 down_frequency_rate = 3 # 降低回复频率的群组回复意愿降低系数 除法
-emoji_response_penalty = 0.1 # 表情包回复惩罚系数，设为0为不回复单个表情包，减少单独回复表情包的概率
+emoji_response_penalty = 0 # 表情包回复惩罚系数，设为0为不回复单个表情包，减少单独回复表情包的概率
 mentioned_bot_inevitable_reply = false # 提及 bot 必然回复
 at_bot_inevitable_reply = false # @bot 必然回复
+
+[focus_chat] #专注聊天
+reply_trigger_threshold = 3.5 # 专注聊天触发阈值，越低越容易进入专注聊天
+default_decay_rate_per_second = 0.98 # 默认衰减率，越大衰减越快，越高越难进入专注聊天
+consecutive_no_reply_threshold = 3 # 连续不回复的阈值，越低越容易结束专注聊天
 ```
 
-麦麦回复的意愿计算方法配置与参数
+这里配置的是两种聊天方式行为的参数，具体内容基本上可以参考注释进行配置。
 
 <hr class="custom_hr"/>
 
 ```toml
 [emoji]
-max_emoji_num = 120 # 表情包最大数量
+max_emoji_num = 40 # 表情包最大数量
 max_reach_deletion = true # 开启则在达到最大数量时删除表情包，关闭则达到最大数量时不删除，只是不会继续收集表情包
-check_interval = 30 # 检查表情包（注册，破损，删除）的时间间隔(分钟)
-auto_save = true  # 是否保存表情包和图片
-enable_check = false  # 是否启用表情包过滤
-check_prompt = "符合公序良俗" # 表情包过滤要求
+check_interval = 10 # 检查表情包（注册，破损，删除）的时间间隔(分钟)
+save_pic = false # 是否保存图片
+save_emoji = false # 是否保存表情包
+steal_emoji = true # 是否偷取表情包，让麦麦可以发送她保存的这些表情包
+enable_check = false  # 是否启用表情包过滤，只有符合该要求的表情包才会被保存
+check_prompt = "符合公序良俗" # 表情包过滤要求，只有符合该要求的表情包才会被保存
 
 [memory]
 build_memory_interval = 2000 # 记忆构建间隔 单位秒   间隔越低，麦麦学习越多，但是冗余信息也会增多
-build_memory_distribution = [4.0,2.0,0.6,24.0,8.0,0.4] # 记忆构建分布，参数：分布1均值，标准差，权重，分布2均值，标准差，权重
-build_memory_sample_num = 10 # 采样数量，数值越高记忆采样次数越多
-build_memory_sample_length = 20 # 采样长度，数值越高一段记忆内容越丰富
+build_memory_distribution = [6.0,3.0,0.6,32.0,12.0,0.4] # 记忆构建分布，参数：分布1均值，标准差，权重，分布2均值，标准差，权重
+build_memory_sample_num = 8 # 采样数量，数值越高记忆采样次数越多
+build_memory_sample_length = 40 # 采样长度，数值越高一段记忆内容越丰富
 memory_compress_rate = 0.1 # 记忆压缩率 控制记忆精简程度 建议保持默认,调高可以获得更多信息，但是冗余信息也会增多
 
 forget_memory_interval = 1000 # 记忆遗忘间隔 单位秒   间隔越低，麦麦遗忘越频繁，记忆更精简，但更难学习
 memory_forget_time = 24 #多长时间后的记忆会被遗忘 单位小时 
 memory_forget_percentage = 0.01 # 记忆遗忘比例 控制记忆遗忘程度 越大遗忘越多 建议保持默认
 
-memory_ban_words = [ #不希望记忆的词
+consolidate_memory_interval = 1000 # 记忆整合间隔 单位秒   间隔越低，麦麦整合越频繁，记忆更精简
+consolidation_similarity_threshold = 0.7 # 相似度阈值
+consolidation_check_percentage = 0.01 # 检查节点比例
+
+#不希望记忆的词，已经记忆的不会受到影响
+memory_ban_words = [ 
     # "403","张三"
 ]
 
@@ -286,10 +291,11 @@ min_freq=9 # 最小字频阈值
 tone_error_rate=0.1 # 声调错误概率
 word_replace_rate=0.006 # 整词替换概率
 
-[response_spliter]
-enable_response_spliter = true # 是否启用回复分割器
-response_max_length = 100 # 回复允许的最大长度
+[response_splitter]
+enable_response_splitter = true # 是否启用回复分割器
+response_max_length = 256 # 回复允许的最大长度
 response_max_sentence_num = 4 # 回复允许的最大句子数
+enable_kaomoji_protection = false # 是否启用颜文字保护
 
 [remote] #发送统计信息，主要是看全球有多少只麦麦
 enable = true
@@ -299,7 +305,11 @@ enable_friend_chat = false # 是否启用好友聊天
 pfc_chatting = false # 是否启用PFC聊天，该功能仅作用于私聊，与回复模式独立
 ```
 
-此部分可以参考注释进行配置
+此部分可以参考注释进行配置。
+
+`enable_kaomoji_protection`是颜文字保护，防止在处理时将颜文字分割导致错误，如果你想让你的Bot使用颜文字，建议开启。
+
+`pfc_chatting`是PFC聊天模式，开启后会使用一种新的判断逻辑判断是否进行聊天和聊天内容。
 
 <hr class="custom_hr"/>
 
@@ -313,52 +323,64 @@ pfc_chatting = false # 是否启用PFC聊天，该功能仅作用于私聊，与
 # stream = <true|false> : 用于指定模型是否是使用流式输出
 # 如果不指定，则该项是 False
 
-[model.llm_reasoning] #只在回复模式为reasoning时启用
+#这个模型必须是推理模型
+[model.llm_reasoning] # 一般聊天模式的推理回复模型
 name = "Pro/deepseek-ai/DeepSeek-R1"
-# name = "Qwen/QwQ-32B"
 provider = "SILICONFLOW"
-pri_in = 4 #模型的输入价格（非必填，可以记录消耗）
-pri_out = 16 #模型的输出价格（非必填，可以记录消耗）
+pri_in = 1.0 #模型的输入价格（非必填，可以记录消耗）
+pri_out = 4.0 #模型的输出价格（非必填，可以记录消耗）
 
-#非推理模型
-
-[model.llm_normal] #V3 回复模型1 主要回复模型
+[model.llm_normal] #V3 回复模型 专注和一般聊天模式共用的回复模型
 name = "Pro/deepseek-ai/DeepSeek-V3"
 provider = "SILICONFLOW"
 pri_in = 2 #模型的输入价格（非必填，可以记录消耗）
 pri_out = 8 #模型的输出价格（非必填，可以记录消耗）
+#默认temp 0.2 如果你使用的是老V3或者其他模型，请自己修改temp参数
+temp = 0.2 #模型的温度，新V3建议0.1-0.3
 
-[model.llm_emotion_judge] #表情包判断 
-name = "Qwen/Qwen2.5-14B-Instruct"
-provider = "SILICONFLOW"
-pri_in = 0.7
-pri_out = 0.7
-
-[model.llm_topic_judge] #记忆主题判断：建议使用qwen2.5 7b
+[model.llm_topic_judge] #主题判断模型：建议使用qwen2.5 7b
 name = "Pro/Qwen/Qwen2.5-7B-Instruct"
 provider = "SILICONFLOW"
-pri_in = 0
-pri_out = 0
+pri_in = 0.35
+pri_out = 0.35
 
-[model.llm_summary_by_topic] #概括模型，建议使用qwen2.5 32b 及以上
+[model.llm_summary] #概括模型，建议使用qwen2.5 32b 及以上
 name = "Qwen/Qwen2.5-32B-Instruct"
 provider = "SILICONFLOW"
 pri_in = 1.26
 pri_out = 1.26
 
-[model.moderation] #内容审核，开发中
-name = ""
-provider = "SILICONFLOW"
-pri_in = 1.0
-pri_out = 2.0
-
-# 识图模型
-
-[model.vlm] #图像识别 
+[model.vlm] # 图像识别模型
 name = "Pro/Qwen/Qwen2.5-VL-7B-Instruct"
 provider = "SILICONFLOW"
 pri_in = 0.35
 pri_out = 0.35
+
+[model.llm_heartflow] # 用于控制麦麦是否参与聊天的模型
+name = "Qwen/Qwen2.5-32B-Instruct"
+provider = "SILICONFLOW"
+pri_in = 1.26
+pri_out = 1.26
+
+[model.llm_observation] #观察模型，压缩聊天内容，建议用免费的
+# name = "Pro/Qwen/Qwen2.5-7B-Instruct"
+name = "Qwen/Qwen2.5-7B-Instruct"
+provider = "SILICONFLOW"
+pri_in = 0
+pri_out = 0
+
+[model.llm_sub_heartflow] #心流：认真水群时,生成麦麦的内心想法，必须使用具有工具调用能力的模型
+name = "Pro/deepseek-ai/DeepSeek-V3"
+provider = "SILICONFLOW"
+pri_in = 2
+pri_out = 8
+temp = 0.3 #模型的温度，新V3建议0.1-0.3
+
+[model.llm_plan] #决策：认真水群时,负责决定麦麦该做什么
+name = "Pro/deepseek-ai/DeepSeek-V3"
+provider = "SILICONFLOW"
+pri_in = 2
+pri_out = 8
 
 #嵌入模型
 
@@ -368,29 +390,41 @@ provider = "SILICONFLOW"
 pri_in = 0
 pri_out = 0
 
-[model.llm_observation] #观察模型，建议用免费的：建议使用qwen2.5 7b
-# name = "Pro/Qwen/Qwen2.5-7B-Instruct"
-name = "Qwen/Qwen2.5-7B-Instruct"
-provider = "SILICONFLOW"
-pri_in = 0
-pri_out = 0
 
-[model.llm_sub_heartflow] #子心流：建议使用V3级别
+#私聊PFC：需要开启PFC功能，默认三个模型均为硅基流动v3，如果需要支持多人同时私聊或频繁调用，建议把其中的一个或两个换成官方v3或其它模型，以免撞到429
+
+#PFC决策模型
+[model.llm_PFC_action_planner]
+name = "Pro/deepseek-ai/DeepSeek-V3"
+provider = "SILICONFLOW"
+temp = 0.3
+pri_in = 2
+pri_out = 8
+
+#PFC聊天模型
+[model.llm_PFC_chat]
+name = "Pro/deepseek-ai/DeepSeek-V3"
+provider = "SILICONFLOW"
+temp = 0.3
+pri_in = 2
+pri_out = 8
+
+#PFC检查模型
+[model.llm_PFC_reply_checker]
 name = "Pro/deepseek-ai/DeepSeek-V3"
 provider = "SILICONFLOW"
 pri_in = 2
 pri_out = 8
 
-[model.llm_heartflow] #心流：建议使用qwen2.5 32b
-# name = "Pro/Qwen/Qwen2.5-7B-Instruct"
-name = "Qwen/Qwen2.5-32B-Instruct"
-provider = "SILICONFLOW"
-pri_in = 1.26
-pri_out = 1.26
-
 ```
 
-这部分是对使用的模型进行配置，对应模型的用途已经写在注释中
+这部分是对使用的模型进行配置，对应模型的用途已经写在注释中。
+
+::: warning
+`llm_reasoning`必须使用推理模型。
+
+`llm_sub_heartflow`和`llm_plan`必须使用具有工具调用能力（Function call）的模型。具体可以查询各大平台的官方文档。
+:::
 
 ## 注意事项
 
