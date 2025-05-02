@@ -117,22 +117,40 @@ python build_lib.py --cleanup --cythonize --install
 社死：形容某个人在公共场合出现时，因某种原因感到极其尴尬和不好意思，表现出了人们在社会交往中的种种尴尬情景。
 ```
 
-随后把原始文件放到`data/lpmm_raw_data`，用`text_pre_precess.py`进行处理（实际上就是根据大段落拆分为json文件）
+新版LPMM进行了改进：
+
+首先，把原始文件放到`data/lpmm_raw_data`
+然后运行：
 ```bash
-python text_pre_process.py
+python ./scripts/text_pre_process.py
+```
+然后你会在`data/imported_lpmm_data`目录下看到一个`月-日-时-分-imported-data.json`文件，里面是处理好的数据。
+
+当然，你也可以把其他人分享出来的imported-data.json文件放到`data/imported_lpmm_data`目录下，直接使用。
+
+这个文件命名不再像之前一样必须严格规范，可以使用自己喜欢的命名方式。但需要保证文件后缀为`.json`。
+
+随后，运行
+```bash
+python ./scripts/info_extraction.py
+```
+来进行实体提取。
+
+提取结束后，你会在`data/openie`目录下看到一个`月-日-时-分-openie.json`文件，里面是提取好的OpenIE数据。
+
+当然，你也可以把其他人分享出来的openie.json文件放到`data/openie`目录下，直接使用。
+
+这个文件命名不再像之前一样必须严格规范，可以使用自己喜欢的命名方式。但需要保证文件后缀为`.json`。
+
+最后，运行
+```bash
+python ./scripts/import_openie.py
 ```
 
-### 提取
-在根目录运行`info_extraction.py`，提取知识
-```bash
-python info_extraction.py
-```
+来进行最后的知识图谱导入。
 
-### 导入
-在根目录运行`import_openie.py`，导入知识
-```bash
-python import_openie.py
-```
+导入完成后，如果可以在data文件夹下看见rag和embedding两个文件夹，说明导入成功。
+
 
 ## 麦麦LPMM加速
 :::tip
