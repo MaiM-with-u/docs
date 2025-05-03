@@ -105,7 +105,7 @@ class FormatInfo:
     def from_dict(cls, data: Dict) -> "FormatInfo":
 ```
 
-`content_format`: 标记Adapter可以发送的格式信息，**必填**，默认为空，填写告诉MaiBot Core将会接受的格式信息。
+`content_format`: 标记本条消息包含的内容类型，**必填**，默认为空，告诉MaiBot Core此条消息包含的内容的类型。
 
 `accept_format`: 标记Adapter可以接受的格式信息，**必填**，默认为空，告诉MaiBot Core可以发送的格式信息。
 

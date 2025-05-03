@@ -107,7 +107,7 @@ user_info = UserInfo(
 构造示例：
 ```python
 format_info = FormatInfo(
-    content_format=["text", "image"],  # 可发送的格式
+    content_format=["text", "image"],  # 消息中包含的格式
     accept_format=["text", "image"]   # 可接收的格式
 )
 ```
@@ -238,6 +238,11 @@ def construct_message_to_maimcore(platform_name: str, user_id: int, group_id: in
         Seg("text", text_content),
         # 可以添加其他 Seg, 如 Seg("image", "base64data...")
     ])
+    format_info = {
+        "content_format": ["text"], # 本样例消息中包含了text格式
+        "accept_format": ["text", "image"]
+    }
+    message_info.format_info = format_info
     return MessageBase(message_info=message_info, message_segment=message_segment)
 
 # 6. 运行并发送消息
