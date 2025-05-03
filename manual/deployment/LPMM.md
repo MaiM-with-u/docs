@@ -122,7 +122,7 @@ python build_lib.py --cleanup --cythonize --install
 首先，把原始文件放到`data/lpmm_raw_data`
 然后运行：
 ```bash
-python ./scripts/text_pre_process.py
+python ./scripts/raw_data_preprocessor.py
 ```
 然后你会在`data/imported_lpmm_data`目录下看到一个`月-日-时-分-imported-data.json`文件，里面是处理好的数据。
 
