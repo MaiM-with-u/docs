@@ -19,6 +19,10 @@ SILICONFLOW_KEY=your_key        # 硅基流动API密钥
 SILICONFLOW_BASE_URL=https://api.siliconflow.cn/v1/  # 硅基流动API地址
 DEEP_SEEK_KEY=your_key          # DeepSeek API密钥
 DEEP_SEEK_BASE_URL=https://api.deepseek.com/v1  # DeepSeek API地址
+
+#或者你也可以自定义使用其他API宏
+ALIYUNCS_KEY=your_key
+ALIYUNCS_BASE_URL=https://dashscope.aliyuncs.com/compatible-mode/v1 # 阿里云API地址
 ```
 
 ### 在bot_config.toml中引用API凭证
@@ -37,6 +41,16 @@ name = "deepseek-reasoner"       # 改成对应的模型名称，这里为Deepse
 provider = "DEEP_SEEK"           # 使用DeepSeek provider
 ```
 
+另一个使用阿里云的例子：
+
+```toml
+#这个模型必须是推理模型
+[model.llm_reasoning] # 一般聊天模式的推理回复模型
+name = "deepseek-r1"
+provider = "ALIYUNCS"
+pri_in = 1.0 #模型的输入价格（非必填，可以记录消耗）
+pri_out = 4.0 #模型的输出价格（非必填，可以记录消耗）
+```
 ## 配置文件详解
 
 ### 环境配置文件 (.env)
@@ -429,14 +443,20 @@ pri_out = 8
 ## 注意事项
 
 1. API密钥安全：
-   - 妙善保管API密钥
-   - 不要将含有密钥的配置文件上传至公开仓库
+    - 妙善保管API密钥
+    - 不要将含有密钥的配置文件上传至公开仓库
 
 2. 配置修改：
-   - 修改配置后需重启服务
-   - 使用默认服务(硅基流动)时无需修改模型配置
-   - QQ号和群号使用数字格式(机器人QQ号除外)
+    - 修改配置后需重启服务
+    - 使用默认服务(硅基流动)时无需修改模型配置
+    - QQ号和群号使用数字格式(机器人QQ号除外)
+    - **模型名称可能更新，需定期检查控制台模型名**
 
 3. 其他说明：
-   - 项目处于测试阶段，可能存在未知问题
-   - 建议初次使用保持默认配置
+    - 项目处于测试阶段，可能存在未知问题
+    - 建议初次使用保持默认配置
+
+4. 错误排查：
+    - `401` 错误：检查 `ALIYUNCS_KEY` 是否有效
+    - `404` 错误：确认 `ALIYUNCS_BASE_URL` 路径正确
+    - 超时错误：检查网络配置是否允许访问阿里云API域名

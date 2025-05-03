@@ -18,6 +18,7 @@ MaiBot是一个功能强大的聊天智能体，基于大语言模型提供智�
 - [使用指南](/manual/usage/index)
   - [快速问答](/manual/usage/fast_q_a)
   - [0.6.0版本更新Q&A](/manual/usage/mmc_q_a)
+  - [MongoDB备份方法](/manual/usage/mongodb_backup)
 
 ::: details 0.5.x部署方法(旧版)
   - [Docker部署](/manual/deployment/old/docker_deploy)
