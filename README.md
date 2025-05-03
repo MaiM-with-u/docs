@@ -1,10 +1,10 @@
-# MaiMBot 文档
+# MaiBot 文档
 
-本仓库为 MaiMBot 的官方文档。MaiMBot 是一个智能聊天机器人，专为 QQ 群设计，具有基于 LLM 的对话能力、记忆系统和情感表达功能。
+本仓库为 MaiBot 的官方文档。MaiBot 是一个智能聊天机器人，专为 QQ 群设计，具有基于 LLM 的对话能力、记忆系统和情感表达功能。
 
 ## 关于文档
 
-此文档站点使用 [VitePress](https://vitepress.dev/) 构建，涵盖了安装、部署、配置以及开发（未完成） MaiMBot 所需的所有内容。
+此文档站点使用 [VitePress](https://vitepress.dev/) 构建，涵盖了安装、部署、配置以及开发（未完成） MaiBot 所需的所有内容。
 
 ## 文档部分
 
@@ -14,7 +14,7 @@
     提供标准版和新手友好版的安装步骤，帮助用户快速上手。
 
 - **API 参考（未完成）**
-    详细介绍 MaiMBot 提供的 API 接口及其使用方法。
+    详细介绍 MaiBot 提供的 API 接口及其使用方法。
 
 - **部署方法**
     涵盖多种部署方式，包括 Docker、Linux、Windows 和群晖 NAS。

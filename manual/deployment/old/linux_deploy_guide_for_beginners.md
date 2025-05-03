@@ -1,6 +1,6 @@
 # 新手 Linux 服务器部署指南
 
-本文是针对完全的 Linux 服务器新手编写的详细部署教程。如果你之前从未接触过 Linux 服务器，但想尝试部署 MaiMBot，这篇教程将一步步引导你完成整个过程。
+本文是针对完全的 Linux 服务器新手编写的详细部署教程。如果你之前从未接触过 Linux 服务器，但想尝试部署 MaiBot，这篇教程将一步步引导你完成整个过程。
 
 ## 基础知识
 
@@ -42,7 +42,7 @@ sudo apt install -y git curl python3 python3-pip python3-venv
 
 ### 步骤 4：安装 Docker
 
-Docker 是一种容器化技术，可以让我们更容易地部署 MaiMBot。
+Docker 是一种容器化技术，可以让我们更容易地部署 MaiBot。
 
 ```bash
 # 安装 Docker
@@ -61,11 +61,11 @@ exit
 
 重新连接到服务器。
 
-### 步骤 5：克隆 MaiMBot 仓库
+### 步骤 5：克隆 MaiBot 仓库
 
 ```bash
-git clone https://github.com/SengokuCola/MaiMBot.git
-cd MaiMBot
+git clone https://github.com/MaiM-with-u/MaiBot.git
+cd MaiBot
 ```
 
 ### 步骤 6：配置机器人
@@ -104,17 +104,17 @@ nano bot_config.toml
 
 同样，编辑完成后按 `Ctrl+X`，然后按 `Y` 再按 `Enter` 保存文件。
 
-### 步骤 7：启动 MaiMBot
+### 步骤 7：启动 MaiBot
 
 ```bash
 docker-compose up -d
 ```
 
-这个命令会在后台启动 MaiMBot 及其所有依赖服务。
+这个命令会在后台启动 MaiBot 及其所有依赖服务。
 
 ### 步骤 8：配置 NapCat
 
-NapCat 是一个 QQ 机器人框架，MaiMBot 通过它与 QQ 通信。
+NapCat 是一个 QQ 机器人框架，MaiBot 通过它与 QQ 通信。
 
 1. 在浏览器中访问 `http://你的服务器IP:6099`
 2. 使用终端查看 token：
@@ -159,18 +159,18 @@ docker logs 容器名称
    docker logs maimbot
    ```
 
-### 如何更新 MaiMBot？
+### 如何更新 MaiBot？
 
 ```bash
-cd MaiMBot
+cd MaiBot
 git pull
 docker-compose up -d --build
 ```
 
-### 如何停止 MaiMBot？
+### 如何停止 MaiBot？
 
 ```bash
-cd MaiMBot
+cd MaiBot
 docker-compose down
 ```
 
@@ -178,7 +178,7 @@ docker-compose down
 
 ### 设置开机自启
 
-如果你希望服务器重启后 MaiMBot 自动启动，可以设置 Docker 服务开机自启：
+如果你希望服务器重启后 MaiBot 自动启动，可以设置 Docker 服务开机自启：
 
 ```bash
 sudo systemctl enable docker
@@ -203,4 +203,4 @@ scp 用户名@服务器IP:服务器文件路径 本地路径
 - 做好备份：定期备份你的配置文件和数据
 - 学习基础命令：掌握 `ls`、`cd`、`mkdir`、`rm`、`cat` 等基本命令会让你的操作更顺畅
 
-希望这份指南能帮助你成功部署 MaiMBot！如果遇到问题，不要害怕尝试，Linux 的学习曲线可能有些陡峭，但掌握它会非常有价值。
+希望这份指南能帮助你成功部署 MaiBot！如果遇到问题，不要害怕尝试，Linux 的学习曲线可能有些陡峭，但掌握它会非常有价值。

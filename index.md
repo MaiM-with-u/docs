@@ -1,13 +1,13 @@
 ---
 layout: home
-title: MaiMBot 文档中心
+title: MaiBot 文档中心
 hero:
-  name: MaiMBot
+  name: MaiBot
   text: 智能、多功能的QQ群聊机器人
   tagline: 基于大语言模型的聊天机器人，具有记忆系统和情感表达能力
   image:
     src: /images/maimai.png
-    alt: MaiMBot
+    alt: MaiBot
   actions:
     - theme: brand
       text: 用户指南
@@ -36,9 +36,9 @@ features:
     details: 定期更新和改进，不断增强功能与性能
 ---
 
-## 关于 MaiMBot
+## 关于 MaiBot
 
-MaiMBot 是一个基于大语言模型的智能QQ群聊机器人，具有自然对话、记忆系统和情感表达能力，能够为您的QQ群带来丰富的交互体验。
+MaiBot 是一个基于大语言模型的智能QQ群聊机器人，具有自然对话、记忆系统和情感表达能力，能够为您的QQ群带来丰富的交互体验。
 
 ## 快速导航
 
@@ -62,5 +62,5 @@ MaiMBot 是一个基于大语言模型的智能QQ群聊机器人，具有自然�
 ## 获取支持
 
 - 浏览[快速问答](/manual/usage/fast_q_a)解决常见问题
-- 访问[GitHub仓库](https://github.com/SengokuCola/MaiMBot)提交问题或贡献代码
+- 访问[GitHub仓库](https://github.com/MaiM-with-u/MaiBot)提交问题或贡献代码
 - 加入用户交流群获取帮助
