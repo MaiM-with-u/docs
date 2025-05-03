@@ -14,7 +14,7 @@
 - 建议先单独创建好一个文件夹并进入，作为工作目录
 
 ```bash
-wget https://raw.githubusercontent.com/SengokuCola/MaiMBot/main/docker-compose.yml -O docker-compose.yml
+wget https://raw.githubusercontent.com/MaiM-with-u/MaiBot/main/docker-compose.yml -O docker-compose.yml
 ```
 
 - 若需要启用MongoDB数据库的用户名和密码，可进入docker-compose.yml，取消MongoDB处的注释并修改变量旁 `=` 后方的值为你的用户名和密码\
@@ -50,7 +50,7 @@ NAPCAT_UID=$(id -u) NAPCAT_GID=$(id -g) docker-compose up -d
 docker restart maimbot  # 若修改过容器名称则替换maimbot为你自定的名称
 ```
 
-- 下方命令可以但不推荐，只是同时重启NapCat、MongoDB、MaiMBot三个服务
+- 下方命令可以但不推荐，只是同时重启NapCat、MongoDB、MaiBot三个服务
 
 ```bash
 NAPCAT_UID=$(id -u) NAPCAT_GID=$(id -g) docker compose restart

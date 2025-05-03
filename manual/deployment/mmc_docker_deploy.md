@@ -205,7 +205,7 @@ docker compose logs -f
 3. 通过 git clone 将 [MaiBot-Napcat-Adapter](https://github.com/MaiM-with-u/MaiBot-Napcat-Adapter) clone 到本地
 ```shell
 git clone https://github.com/MaiM-with-u/MaiBot.git
-git clone https://github.com/MaiM-with-u/MaiMBot-LPMM.git MaiMBot-LPMM
+git clone https://github.com/MaiM-with-u/MaiMBot-LPMM.git
 git clone https://github.com/MaiM-with-u/MaiBot-Napcat-Adapter.git
 ```
 > 如需切换分支在链接后面加`-b <分支名>`即可  

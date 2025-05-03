@@ -1,10 +1,10 @@
-# MaiMBot API 参考
+# MaiBot API 参考
 
-MaiMBot提供了GraphQL API，允许开发者以编程方式与机器人交互，获取信息，并控制机器人的行为。本文档提供了API的完整参考。
+MaiBot提供了GraphQL API，允许开发者以编程方式与机器人交互，获取信息，并控制机器人的行为。本文档提供了API的完整参考。
 
 ## API 概述
 
-MaiMBot API 使用GraphQL，这是一种灵活的API查询语言，允许客户端精确指定所需的数据。与传统的REST API相比，GraphQL提供了更高的效率和灵活性。
+MaiBot API 使用GraphQL，这是一种灵活的API查询语言，允许客户端精确指定所需的数据。与传统的REST API相比，GraphQL提供了更高的效率和灵活性。
 
 ### 基本概念
 
@@ -14,7 +14,7 @@ MaiMBot API 使用GraphQL，这是一种灵活的API查询语言，允许客户�
 
 ## 身份验证
 
-所有API请求都需要身份验证。MaiMBot使用基于令牌的身份验证系统。
+所有API请求都需要身份验证。MaiBot使用基于令牌的身份验证系统。
 
 ```bash
 Authorization: Bearer YOUR_API_TOKEN

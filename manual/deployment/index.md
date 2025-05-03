@@ -32,7 +32,7 @@
 
 这个文档针对新的new_knowledge分支进行说明
 
-- [new_knowledge版（LPMM版）说明](/manual/deployment/LPMM)
+- [new_knowledge版（LPMM版）说明](/manual/deployment/lpmm)
 
 ---
 

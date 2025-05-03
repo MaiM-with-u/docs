@@ -11,7 +11,7 @@ MaiBot是一个功能强大的聊天智能体，基于大语言模型提供智�
   - [Windows 安装](/manual/deployment/mmc_deploy_windows)
   - [Docker 安装（推荐）](/manual/deployment/mmc_docker_deploy)
   - [Linux 安装](/manual/deployment/mmc_deploy_linux)
-  - [new_knowledge版（LPMM版）说明](/manual/deployment/LPMM)
+  - [new_knowledge版（LPMM版）说明](/manual/deployment/lpmm)
   - [使用旧版adapter的windows部署](/manual/deployment/old/mmc_deploy_windows_old)
 - [配置指南](/manual/configuration/index)
   - [标准配置教程](/manual/configuration/configuration_standard)
@@ -57,4 +57,4 @@ MaiBot是一个功能强大的聊天智能体，基于大语言模型提供智�
 </div>
 
 
-![MaiMBot](/avatars/MaiM.png)
+![MaiBot](/avatars/MaiM.png)
