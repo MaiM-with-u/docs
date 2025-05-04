@@ -22,7 +22,6 @@ mongodump --uri "mongodb://user:passwd@localhost:27017/" --out ./backup
 
 执行完后，会在你调出控制台的地方创建一个backup文件夹，你的数据就在这里
 
-
 ## 二、使用 `mongorestore` 恢复数据
 备份后可用 `mongorestore` 恢复数据：
 你需要在上一步的backup文件同目录打开控制台输入此命令即可。

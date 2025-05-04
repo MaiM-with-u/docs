@@ -112,7 +112,6 @@ format_info = FormatInfo(
 )
 ```
 
-
 ## 构造下游消息的内容
 
 本部分是必填的部分，是一个Seg包装的消息体。
@@ -281,7 +280,6 @@ async def run_client():
         await router_task
     except asyncio.CancelledError:
         print("Router 任务已被取消。")
-
 
 if __name__ == "__main__":
     try:

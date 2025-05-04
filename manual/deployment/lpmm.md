@@ -32,7 +32,6 @@
 对于Linux平台用户，需要下载gcc/g++编译器，跳转链接:[Linux环境使用方法](#linux环境)  
 对于Docker用户配置完成后可以直接运行脚本（LPMM已预编译于镜像中），跳转链接:[Docker的LPMM食用方式](#docker的lpmm食用方式)
 
-
 ```bash
 pip install quick_algo
 ```
@@ -57,7 +56,6 @@ pip install quick_algo
 
 首先安装根目录下的`requirements.txt`中的依赖
 
-
 ```bash
 pip install -i https://mirrors.aliyun.com/pypi/simple -r requirements.txt --upgrade
 ```
@@ -73,7 +71,6 @@ pip install -i https://mirrors.aliyun.com/pypi/simple -r requirements.txt --upgr
 1. 首先安装gcc/g++编译器  
    基于Debian的系统（如Ubuntu、Linux Mint等）
 
-
 ```bash
 # 更新软件包索引
 sudo apt update
@@ -82,7 +79,6 @@ sudo apt install build-essential
 ```
 
 基于Red Hat的系统（如Fedora、CentOS、RHEL等）
-
 
 ```bash
 # 更新软件包索引
@@ -102,7 +98,6 @@ g++ --version
 ```
 
 然后激活MaiBot下的虚拟环境，运行:
-
 
 ```bash
 source ./venv/bin/activate #激活MaiBot虚拟环境

@@ -8,7 +8,6 @@
 
 **本文假设读者已具备一定的 Docker 基础知识。若您对 Docker 不熟悉，建议先参考相关教程或文档进行学习，或选择使用 [📬Linux手动部署指南](./manual_deploy_linux.md) 或 [📬Windows手动部署指南](./manual_deploy_windows.md) 。**
 
-
 ### 1. 获取Docker配置文件
 
 - 建议先单独创建好一个文件夹并进入，作为工作目录
@@ -37,7 +36,6 @@ NAPCAT_UID=$(id -u) NAPCAT_GID=$(id -g) docker compose up -d
 # 旧版Docker中可能找不到docker compose，请使用docker-compose工具替代
 NAPCAT_UID=$(id -u) NAPCAT_GID=$(id -g) docker-compose up -d
 ```
-
 
 ### 3. 修改配置并重启Docker
 
@@ -68,7 +66,6 @@ NAPCAT_UID=$(id -u) NAPCAT_GID=$(id -g) docker-compose restart
 (若修改过容器名称则替换maimbot为你自定的名称)
 
 ### 5. 部署完成，愉快地和麦麦对话吧!
-
 
 ### 6. 更新镜像与容器
 
