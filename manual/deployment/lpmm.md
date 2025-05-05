@@ -11,8 +11,8 @@
 2. **知识提取时，需要将文本大量输入大模型，越长的文本消耗越大，产生的花费越高**
 
    来自群友的惨痛经历：600万字全剧情，提取选用deepseek v3 0324，消耗约40元，望各位以此为戒。  
-   如果要求不高建议采用32B~72B小的大模型来提取(人话:省钱)。  
-   （如果仍然想要选用deepseek v3来进行提取，笔者在此推荐[deepseek](https://www.deepseek.com/)，[上下文硬盘缓存](https://api-docs.deepseek.com/zh-cn/guides/kv_cache)会帮助你节约金钱）
+   如果要求不高建议采用32B~72B小的大模型来提取，但是不建议使用32B以下的小模型，否则提取效果非常差而且极其可能失败。
+   （如果仍然想要选用deepseek v3来进行提取，笔者在此推荐[DeepSeek](https://www.deepseek.com/)，[上下文硬盘缓存](https://api-docs.deepseek.com/zh-cn/guides/kv_cache)会帮助你节约金钱）
 
 3. **知识导入时，会大量发送请求，可能会撞到请求速度上限，请注意选用的模型（可用本地embedding模型）**
 
@@ -29,8 +29,8 @@
 ### 安装环境
 
 对于windows_x86_64平台的用户，请使用pip进行直接安装。（已经包含在MaiBot的requirements.txt中）  
-对于Linux平台用户，需要下载gcc/g++编译器[Linux环境使用方法](#linux环境)  
-对于Docker用户配置完成后可以直接运行脚本（LPMM已预编译于镜像中）跳转链接[Docker的LPMM食用方式](#docker的lpmm食用方式)
+对于Linux平台用户，需要下载gcc/g++编译器，跳转链接:[Linux环境使用方法](#linux环境)  
+对于Docker用户配置完成后可以直接运行脚本（LPMM已预编译于镜像中），跳转链接:[Docker的LPMM食用方式](#docker的lpmm食用方式)
 
 ```bash
 pip install quick_algo
@@ -97,9 +97,10 @@ g++ --version
 # 如果安装成功，会显示`gcc`和`g++`的版本信息。
 ```
 
-然后运行
+然后激活MaiBot下的虚拟环境，运行:
 
 ```bash
+source ./venv/bin/activate #激活MaiBot虚拟环境
 pip install quick-algo
 ```
 
@@ -114,7 +115,7 @@ pip install quick-algo
 ## 麦麦学习知识
 
 ::: tip
-知识库使用的文本必须以txt形式存储
+知识库使用的文本必须以txt格式存储
 :::
 
 ### 分段
@@ -137,7 +138,7 @@ pip install quick-algo
 社死：形容某个人在公共场合出现时，因某种原因感到极其尴尬和不好意思，表现出了人们在社会交往中的种种尴尬情景。
 ```
 
-::: warning
+::: warning 警告
 **输入数据的分割质量将直接影响知识图谱的构建效果，请确保对话段落语义完整！**
 :::
 
@@ -145,42 +146,47 @@ pip install quick-algo
 
 新版LPMM进行了改进：
 
-首先，把原始文件放到`data/lpmm_raw_data`
-然后运行：
+首先，把原始文件放到`data/lpmm_raw_data`(没有请自行创建)
+激活虚拟环境(已激活请跳过)：
+
+```bash
+#Windows下:
+.\MaiBot\venv\Scripts\activate
+#Liunx环境:
+source ./venv/bin/activate
+```
+
+运行`raw_data_preprocessor.py`开始分割文本
 
 ```bash
 python ./scripts/raw_data_preprocessor.py
 ```
 
-然后你会在`data/imported_lpmm_data`目录下看到一个`月-日-时-分-imported-data.json`文件，里面是处理好的数据。
+你会在`data/imported_lpmm_data`目录下看到一个`当前月-日-时-分-imported-data.json`文件，里面是处理好的数据。
 
 当然，你也可以把其他人分享出来的imported-data.json文件放到`data/imported_lpmm_data`目录下，直接使用。
 
 这个文件命名不再像之前一样必须严格规范，可以使用自己喜欢的命名方式。但需要保证文件后缀为`.json`。
 
-随后，运行
+随后，运行`info_extraction.py`来进行实体提取。
 
 ```bash
 python ./scripts/info_extraction.py
 ```
 
-来进行实体提取。
-
 提取结束后，你会在`data/openie`目录下看到一个`月-日-时-分-openie.json`文件，里面是提取好的OpenIE数据。
 
-当然，你也可以把其他人分享出来的openie.json文件放到`data/openie`目录下，直接使用。
+同样，你也可以把其他人分享出来的openie.json文件放到`data/openie`目录下，直接使用。
 
 这个文件命名不再像之前一样必须严格规范，可以使用自己喜欢的命名方式。但需要保证文件后缀为`.json`。
 
-最后，运行
+最后，运行`import_openie.py`来进行最后的知识图谱导入。
 
 ```bash
 python ./scripts/import_openie.py
 ```
 
-来进行最后的知识图谱导入。
-
-导入完成后，如果可以在data文件夹下看见rag和embedding两个文件夹，说明导入成功。
+导入完成后，如果可以在data文件夹下看见`rag`和`embedding`两个文件夹，说明导入成功。
 
 ## 麦麦LPMM加速
 
@@ -191,6 +197,7 @@ GPU加速仅适用于系统为Linux,NVIDIA RTX20系及以上显卡及专业卡
 安装方式：
 
 ```bash
+# 卸载cpu版
 pip uninstall faiss-cpu
 # 装cuda11版
 pip install faiss-gpu-cu11
