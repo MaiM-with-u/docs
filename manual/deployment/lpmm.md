@@ -26,9 +26,8 @@
 
 ## 配置
 
-### 安装环境
-
-对于windows_x86_64平台的用户，请使用pip进行直接安装。（已经包含在MaiBot的requirements.txt中）  
+### 安装
+对于windows_x86_64平台的用户，**请使用pip进行直接安装**。（已经包含在MaiBot的requirements.txt中）  
 对于Linux平台用户，需要下载gcc/g++编译器，跳转链接:[Linux环境使用方法](#linux环境)  
 对于Docker用户配置完成后可以直接运行脚本（LPMM已预编译于镜像中），跳转链接:[Docker的LPMM食用方式](#docker的lpmm食用方式)
 
@@ -36,7 +35,9 @@
 pip install quick_algo
 ```
 
-如果你多次尝试后，发现确实没有对应你平台的版本，可以选择不使用新版知识库，或者参考下面的内容进行手动编译。
+如果你多次尝试后，**发现确实没有对应你平台的版本**，可以选择不使用新版知识库，或者参考下面的内容进行手动编译。
+
+::: details 手动编译
 
 ### Windows环境
 
@@ -64,7 +65,7 @@ pip install -i https://mirrors.aliyun.com/pypi/simple -r requirements.txt --upgr
 
 ### Windows(Arm)环境
 
-暂不支持
+无数据
 
 ### Linux环境
 
@@ -103,7 +104,7 @@ g++ --version
 source ./venv/bin/activate #激活MaiBot虚拟环境
 pip install quick-algo
 ```
-
+:::
 ## 配置LPMM
 
 把`template/lpmm_config_template.toml`复制到`config/lpmm_config.toml`，按照样例配置`provider`
