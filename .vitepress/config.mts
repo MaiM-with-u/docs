@@ -5,16 +5,6 @@ import { withMermaid } from "vitepress-plugin-mermaid";
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
-  vite: {
-    plugins: [
-      groupIconVitePlugin(),
-    ]
-  },
-  markdown: {
-    config(md) {
-      md.use(groupIconMdPlugin)
-    },
-  },
   title: "MaiMBot 文档中心",
   description: "MaiMBot 开发与使用的全方位指南",
   head: [
@@ -29,7 +19,7 @@ export default defineConfig({
       { text: '首页', link: '/' },
       { text: '用户手册', link: '/manual/' },
       // { text: '开发文档', link: '/develop/' },
-      { text: 'GitHub', link: 'https://github.com/SengokuCola/MaiMBot' }
+      { text: 'GitHub', link: 'https://github.com/MaiM-with-u/MaiBot' }
     ],
 
     sidebar: {
@@ -45,11 +35,11 @@ export default defineConfig({
           collapsed: false,
           items: [
             { text: '部署概览', link: '/manual/deployment/' },
-            { text: 'MaimCore版windows部署', link: '/manual/deployment/mmc_deploy_windows'},
-            { text: 'MaimCore版docker部署(推荐)', link: '/manual/deployment/mmc_docker_deploy' },
-            { text: 'MaimCore版linux部署', link: '/manual/deployment/mmc_deploy_linux' },
-            { text: '新版知识库LPMM说明', link: '/manual/deployment/LPMM'},
-            { text: '使用旧版adapter的windows部署', link: '/manual/deployment/old/mmc_deploy_windows_old'},
+            { text: 'MaimCore版Windows部署', link: '/manual/deployment/mmc_deploy_windows'},
+            { text: 'MaimCore版Linux部署', link: '/manual/deployment/mmc_deploy_linux' },
+            { text: 'MaimCore版Docker部署(推荐)', link: '/manual/deployment/mmc_docker_deploy' },
+            { text: '新版知识库LPMM说明', link: '/manual/deployment/lpmm'},
+            { text: '旧版Adapter的Windows部署', link: '/manual/deployment/old/mmc_deploy_windows_old'},
             {
               text:'0.5.x 部署方法（旧版）',
               collapsed: true,
@@ -143,7 +133,7 @@ export default defineConfig({
     },
 
     socialLinks: [
-      { icon: 'github', link: 'https://github.com/SengokuCola/MaiMBot' }
+      { icon: 'github', link: 'https://github.com/MaiM-with-u/MaiBot' }
     ],
 
     lastUpdated: {

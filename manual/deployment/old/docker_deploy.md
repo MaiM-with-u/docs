@@ -8,13 +8,12 @@
 
 **本文假设读者已具备一定的 Docker 基础知识。若您对 Docker 不熟悉，建议先参考相关教程或文档进行学习，或选择使用 [📬Linux手动部署指南](./manual_deploy_linux.md) 或 [📬Windows手动部署指南](./manual_deploy_windows.md) 。**
 
-
 ### 1. 获取Docker配置文件
 
 - 建议先单独创建好一个文件夹并进入，作为工作目录
 
 ```bash
-wget https://raw.githubusercontent.com/SengokuCola/MaiMBot/main/docker-compose.yml -O docker-compose.yml
+wget https://raw.githubusercontent.com/MaiM-with-u/MaiBot/main/docker-compose.yml -O docker-compose.yml
 ```
 
 - 若需要启用MongoDB数据库的用户名和密码，可进入docker-compose.yml，取消MongoDB处的注释并修改变量旁 `=` 后方的值为你的用户名和密码\
@@ -38,7 +37,6 @@ NAPCAT_UID=$(id -u) NAPCAT_GID=$(id -g) docker compose up -d
 NAPCAT_UID=$(id -u) NAPCAT_GID=$(id -g) docker-compose up -d
 ```
 
-
 ### 3. 修改配置并重启Docker
 
 - 请前往[配置指南](/manual/configuration/index) 完成`.env.prod`与`bot_config.toml`配置文件的编写\
@@ -50,7 +48,7 @@ NAPCAT_UID=$(id -u) NAPCAT_GID=$(id -g) docker-compose up -d
 docker restart maimbot  # 若修改过容器名称则替换maimbot为你自定的名称
 ```
 
-- 下方命令可以但不推荐，只是同时重启NapCat、MongoDB、MaiMBot三个服务
+- 下方命令可以但不推荐，只是同时重启NapCat、MongoDB、MaiBot三个服务
 
 ```bash
 NAPCAT_UID=$(id -u) NAPCAT_GID=$(id -g) docker compose restart
@@ -68,7 +66,6 @@ NAPCAT_UID=$(id -u) NAPCAT_GID=$(id -g) docker-compose restart
 (若修改过容器名称则替换maimbot为你自定的名称)
 
 ### 5. 部署完成，愉快地和麦麦对话吧!
-
 
 ### 6. 更新镜像与容器
 

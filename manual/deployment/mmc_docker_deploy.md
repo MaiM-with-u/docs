@@ -29,7 +29,6 @@ wget https://raw.githubusercontent.com/SengokuCola/MaiMBot/main/docker-compose.y
 > wget https://github.moeyy.xyz/https://raw.githubusercontent.com/SengokuCola/MaiMBot/main/docker-compose.yml
 > ```
 
-
 > 使用本地构建镜像请跳转这里[本地构建流程](#本地构建流程)
 
 ---
@@ -55,7 +54,6 @@ wget https://github.com/MaiM-with-u/MaiBot-Napcat-Adapter/raw/refs/heads/main/te
 
 [//]: # (> - `ONEBOT_WS_URLS`配置可替换成`ws://maim-bot-napcat:8095`)
 [//]: # (> - `nonebot-qq`配置可替换成`http://maim-bot-adapters:18002/api/message`)
-
 
 ### 2.2 ✏️ 修改相关配置
 ```bash
@@ -188,7 +186,6 @@ docker compose logs -f
    docker stats
    ```
 
-
 > 💡 提示：遇到问题时可以查看日志获取更多信息：
 > ```bash
 > docker compose logs -f
@@ -205,7 +202,7 @@ docker compose logs -f
 3. 通过 git clone 将 [MaiBot-Napcat-Adapter](https://github.com/MaiM-with-u/MaiBot-Napcat-Adapter) clone 到本地
 ```shell
 git clone https://github.com/MaiM-with-u/MaiBot.git
-git clone https://github.com/MaiM-with-u/MaiMBot-LPMM.git MaiMBot-LPMM
+git clone https://github.com/MaiM-with-u/MaiMBot-LPMM.git
 git clone https://github.com/MaiM-with-u/MaiBot-Napcat-Adapter.git
 ```
 > 如需切换分支在链接后面加`-b <分支名>`即可  

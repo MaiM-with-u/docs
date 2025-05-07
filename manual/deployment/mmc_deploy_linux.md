@@ -1,19 +1,16 @@
-# 📦 Linux手动部署MaiMbot麦麦（main 0.6版）
+# 📦 Linux部署MaiMbot麦麦（main 0.6版）
 
 - 以下内容假设你对Linux系统有一定的了解，如果觉得难以理解，请用Windows系统部署[Windows系统部署指南](mmc_deploy_windows)
 
 ## 一、 克隆麦麦，获取必要的文件
 1. 通过 git clone 将 [麦麦 repo](https://github.com/MaiM-with-u/MaiBot) clone 到本地
 
-2. 通过 git clone 将 [maim_message 包](https://github.com/MaiM-with-u/maim_message) clone 到本地
-
-3. 通过 git clone 将 [MaiBot-Napcat-Adapter](https://github.com/MaiM-with-u/MaiBot-Napcat-Adapter) clone 到本地
+2. 通过 git clone 将 [MaiBot-Napcat-Adapter](https://github.com/MaiM-with-u/MaiBot-Napcat-Adapter) clone 到本地
 ```bash
 # 创建一个文件夹
 mkdir maimai
 cd maimai
 git clone https://github.com/MaiM-with-u/MaiBot.git
-git clone https://github.com/MaiM-with-u/maim_message.git
 git clone https://github.com/MaiM-with-u/MaiBot-Napcat-Adapter.git
 ```
 
@@ -24,8 +21,6 @@ git clone https://github.com/MaiM-with-u/MaiBot-Napcat-Adapter.git
 需确保Python版本为3.10及以上
 
 ```bash
-python --version
-# 或
 python3 --version
 ```
 
@@ -61,6 +56,9 @@ cd MaiBot
 pip install uv -i https://mirrors.aliyun.com/pypi/simple
 uv pip install -i https://mirrors.aliyun.com/pypi/simple -r requirements.txt --upgrade
 ```
+::: tip
+如果你在这里发现`quick_algo`安装失败，请参考[LPMM 使用说明](/manual/deployment/lpmm)中手动编译的部分
+:::
 回到上一级文件夹，再进入MaiBot-Napcat-Adapter文件夹，安装依赖
 ```bash
 cd ..

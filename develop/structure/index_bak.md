@@ -1,14 +1,14 @@
-# MaiMBot 项目结构
+# MaiBot 项目结构
 
-本文档介绍了MaiMBot项目的整体架构、主要组件和文件组织结构，帮助开发者快速理解项目并进行二次开发。
+本文档介绍了MaiBot项目的整体架构、主要组件和文件组织结构，帮助开发者快速理解项目并进行二次开发。
 
 ## 项目架构概述
 
-MaiMBot采用模块化设计，由多个相互独立但协同工作的组件构成。以下是整体架构概览：
+MaiBot采用模块化设计，由多个相互独立但协同工作的组件构成。以下是整体架构概览：
 
 ```mermaid
 graph TD
-    A[MaiMBot] --> B[通信层]
+    A[MaiBot] --> B[通信层]
     A --> C[核心引擎]
     A --> D[记忆系统]
     A --> E[意愿表达系统]
@@ -83,7 +83,7 @@ graph TD
 以下是主要目录的简要说明：
 
 ```
-MaiMBot/
+MaiBot/
 ├── api/                 # API服务接口
 ├── bot/                 # 核心机器人逻辑
 │   ├── commands/        # 命令处理模块
@@ -104,7 +104,7 @@ MaiMBot/
 
 ## 配置文件说明
 
-MaiMBot使用两个主要配置文件：
+MaiBot使用两个主要配置文件：
 
 ### .env.prod
 
@@ -161,22 +161,22 @@ group_welcome = true
 sequenceDiagram
     participant User
     participant NapCat
-    participant MaiMBot
+    participant MaiBot
     participant Memory
     participant AI
     participant Database
     
     User->>NapCat: 发送消息
-    NapCat->>MaiMBot: 转发消息
-    MaiMBot->>MaiMBot: 预处理消息
-    MaiMBot->>Memory: 检索相关记忆
-    Memory->>MaiMBot: 返回上下文
-    MaiMBot->>AI: 发送请求
-    AI->>MaiMBot: 返回回复
-    MaiMBot->>MaiMBot: 后处理回复
-    MaiMBot->>Memory: 更新记忆
-    MaiMBot->>Database: 存储对话
-    MaiMBot->>NapCat: 发送回复
+    NapCat->>MaiBot: 转发消息
+    MaiBot->>MaiBot: 预处理消息
+    MaiBot->>Memory: 检索相关记忆
+    Memory->>MaiBot: 返回上下文
+    MaiBot->>AI: 发送请求
+    AI->>MaiBot: 返回回复
+    MaiBot->>MaiBot: 后处理回复
+    MaiBot->>Memory: 更新记忆
+    MaiBot->>Database: 存储对话
+    MaiBot->>NapCat: 发送回复
     NapCat->>User: 展示回复
 ```
 
@@ -185,20 +185,20 @@ sequenceDiagram
 ```mermaid
 sequenceDiagram
     participant System
-    participant MaiMBot
+    participant MaiBot
     participant Database
     participant NapCat
     participant Models
     
-    System->>MaiMBot: 启动
-    MaiMBot->>MaiMBot: 加载配置
-    MaiMBot->>Database: 连接数据库
-    Database->>MaiMBot: 连接成功
-    MaiMBot->>Models: 初始化模型
-    Models->>MaiMBot: 初始化完成
-    MaiMBot->>NapCat: 建立连接
-    NapCat->>MaiMBot: 连接成功
-    MaiMBot->>System: 启动完成
+    System->>MaiBot: 启动
+    MaiBot->>MaiBot: 加载配置
+    MaiBot->>Database: 连接数据库
+    Database->>MaiBot: 连接成功
+    MaiBot->>Models: 初始化模型
+    Models->>MaiBot: 初始化完成
+    MaiBot->>NapCat: 建立连接
+    NapCat->>MaiBot: 连接成功
+    MaiBot->>System: 启动完成
 ```
 
 ## 性能考量
@@ -212,7 +212,7 @@ sequenceDiagram
 
 ## 扩展开发指南
 
-如需扩展MaiMBot功能，您可以：
+如需扩展MaiBot功能，您可以：
 
 1. 添加新的命令处理器
 2. 实现自定义消息处理逻辑

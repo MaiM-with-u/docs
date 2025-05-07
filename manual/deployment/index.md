@@ -32,7 +32,7 @@
 
 这个文档针对新的new_knowledge分支进行说明
 
-- [new_knowledge版（LPMM版）说明](/manual/deployment/LPMM)
+- [new_knowledge版（LPMM版）说明](/manual/deployment/lpmm)
 
 ---
 
@@ -60,8 +60,6 @@
 **适合人群**：没有太多技术背景但想尝试部署的用户，或使用特定设备的用户。
 
 :::
-
-
 
 ## 故障排除
 
