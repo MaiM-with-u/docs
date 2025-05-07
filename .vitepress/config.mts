@@ -2,8 +2,8 @@ import { defineConfig } from 'vitepress'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
-  title: "MaiBot 文档中心",
-  description: "MaiBot 开发与使用的全方位指南",
+  title: "MaiMBot 文档中心",
+  description: "MaiMBot 开发与使用的全方位指南",
   head: [
     ['link', { rel: 'icon', href: '/avatars/MaiM.png' }]
   ],
@@ -65,7 +65,17 @@ export default defineConfig({
             { text: '使用说明', link: '/manual/usage/' },
             { text: '快速问答', link: '/manual/usage/fast_q_a' },
             { text: '0.6.0版本更新Q&A', link: '/manual/usage/mmc_q_a' },
-            { text: 'MongoDB数据库备份', link: '/manual/usage/mongodb_backup'}
+            { text: 'MongoDB数据库备份', link: 'manual/usage/mongodb_backup.md' },
+          ]
+        },
+        {
+          text: '其他',
+          collapsed: false,
+          items: [
+            { text: '常见问题', link: '/manual/other/' },
+            { text: '如何避免提出0/1问题', link: '/manual/other/questions-with-yes-or-no-answers' },
+            { text: '提问的艺术(麦麦版本)', link: '/manual/other/ask_art' },
+
           ]
         }
       ],
@@ -133,3 +143,6 @@ export default defineConfig({
     },
   }
 })
+
+
+
