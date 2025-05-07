@@ -83,7 +83,8 @@ export default defineConfig({
         {
           text: '开发文档',
           items: [
-            { text: '介绍', link: '/develop/' }
+            { text: '介绍', link: '/develop/' },
+            { text: '开发者与代码规范', link: '/develop/develop_standard' },
           ]
         },
         // {
