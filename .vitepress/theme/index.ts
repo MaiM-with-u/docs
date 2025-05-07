@@ -6,6 +6,7 @@ import './style.css'
 import './blockquote.css'
 import './custom-block.css'
 import './custom.css'
+import 'virtual:group-icons.css'
 
 export default {
   extends: DefaultTheme,
