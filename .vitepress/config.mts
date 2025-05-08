@@ -64,6 +64,7 @@ export default defineConfig({
           items: [
             { text: '使用说明', link: '/manual/usage/' },
             { text: '快速问答', link: '/manual/usage/fast_q_a' },
+            { text: 'LPMM知识库OpenIE文件格式说明', link: 'manual/usage/lpmm_knowledge_template' },
             { text: '0.6.0版本更新Q&A', link: '/manual/usage/mmc_q_a' },
             { text: 'MongoDB数据库备份', link: 'manual/usage/mongodb_backup.md' },
           ]
