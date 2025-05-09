@@ -15,7 +15,15 @@ export default defineConfig({
     nav: [
       { text: '首页', link: '/' },
       { text: '用户手册', link: '/manual/' },
+      { text: '常见问题', link: '/faq/' },
       // { text: '开发文档', link: '/develop/' },
+      { text: '官方Q群', items: [
+        { text: '一群', link: 'https://qm.qq.com/q/VQ3XZrWgMs' },
+        { text: '二群', link: 'https://qm.qq.com/q/RzmCiRtHEW' },
+        { text: '三群', link: 'https://qm.qq.com/q/wlH5eT8OmQ' },
+        { text: '四群', link: 'https://qm.qq.com/q/fRdCbMXkGY' },
+        { text: '五群', link: 'https://qm.qq.com/q/JxvHZnxyec' },
+      ]},
       { text: 'GitHub', link: 'https://github.com/MaiM-with-u/MaiBot' }
     ],
 
@@ -32,11 +40,10 @@ export default defineConfig({
           collapsed: false,
           items: [
             { text: '部署概览', link: '/manual/deployment/' },
-            { text: 'MaimCore版Windows部署', link: '/manual/deployment/mmc_deploy_windows'},
-            { text: 'MaimCore版Linux部署', link: '/manual/deployment/mmc_deploy_linux' },
-            { text: 'MaimCore版Docker部署(推荐)', link: '/manual/deployment/mmc_docker_deploy' },
-            { text: '新版知识库LPMM说明', link: '/manual/deployment/lpmm'},
-            { text: '旧版Adapter的Windows部署', link: '/manual/deployment/old/mmc_deploy_windows_old'},
+            { text: 'Windows部署', link: '/manual/deployment/mmc_deploy_windows'},
+            { text: 'Linux部署', link: '/manual/deployment/mmc_deploy_linux' },
+            { text: 'Docker部署(推荐)', link: '/manual/deployment/mmc_deploy_docker' },
+            { text: 'Adapter部署(旧版)', link: '/manual/deployment/old/mmc_deploy_windows_old'},
             {
               text:'0.5.x 部署方法（旧版）',
               collapsed: true,
@@ -55,7 +62,8 @@ export default defineConfig({
           collapsed: false,
           items: [
             { text: '配置指南', link: '/manual/configuration/' },
-            { text: '标准配置教程', link: '/manual/configuration/configuration_standard' }
+            { text: '标准配置教程', link: '/manual/configuration/configuration_standard' },
+            { text: 'LPMM说明', link: '/manual/configuration/lpmm' },
           ]
         },
         {
@@ -63,9 +71,7 @@ export default defineConfig({
           collapsed: false,
           items: [
             { text: '使用说明', link: '/manual/usage/' },
-            { text: '快速问答', link: '/manual/usage/fast_q_a' },
             { text: 'LPMM知识库OpenIE文件格式说明', link: 'manual/usage/lpmm_knowledge_template' },
-            { text: '0.6.0版本更新Q&A', link: '/manual/usage/mmc_q_a' },
             { text: 'MongoDB数据库备份', link: 'manual/usage/mongodb_backup.md' },
           ]
         },
@@ -73,10 +79,33 @@ export default defineConfig({
           text: '其他',
           collapsed: false,
           items: [
-            { text: '常见问题', link: '/manual/other/' },
-            { text: '如何避免提出0/1问题', link: '/manual/other/questions-with-yes-or-no-answers' },
             { text: '提问的艺术(麦麦版本)', link: '/manual/other/ask_art' },
+            { text: '如何避免提出0/1问题', link: '/manual/other/questions-with-yes-or-no-answers' },
 
+          ]
+        }
+      ],
+      '/faq/': [
+        {
+          text: 'FAQ首页',
+          items: [
+            { text: '介绍', link: '/faq/' }
+          ]
+        },
+        {
+          text: 'MaiBot相关问题',
+          collapsed: false,
+          items: [
+            { text: '快速问答', link: '/faq/maibot/fast_q_a' },
+            { text: 'LPMM说明', link: '/faq/maibot/lpmm' },
+            { text: '旧版说明', link: '/faq/maibot/old' }
+          ]
+        },
+        {
+          text: 'Adapter相关问题',
+          collapsed: false,
+          items: [
+            { text: '介绍', link: '/faq/maibot-napcat-adapter/' }
           ]
         }
       ],

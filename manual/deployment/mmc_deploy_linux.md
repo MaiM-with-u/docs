@@ -1,6 +1,6 @@
-# 📦 Linux部署MaiMbot麦麦（main 0.6版）
+# 📦 Linux 部署
 
-- 以下内容假设你对Linux系统有一定的了解，如果觉得难以理解，请用Windows系统部署[Windows系统部署指南](mmc_deploy_windows)
+- 以下内容假设你对Linux系统有一定的了解，如果觉得难以理解，请用Docker部署[Docker部署指南](mmc_deploy_docker)或者使用Windows系统部署[Windows部署指南](mmc_deploy_windows)
 
 ## 一、 克隆麦麦，获取必要的文件
 1. 通过 git clone 将 [麦麦 repo](https://github.com/MaiM-with-u/MaiBot) clone 到本地

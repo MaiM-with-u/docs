@@ -1,4 +1,4 @@
-# 📦 Windows部署MaiMbot麦麦（main 0.6版）
+# 📦 Windows 部署
 
 ::: warning
 **本教程为部署到QQ平台的教程，不代表其他平台的部署方式相同**
