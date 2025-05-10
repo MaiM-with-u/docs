@@ -1,4 +1,4 @@
-# MaiBot 文档中心
+# 📄 MaiBot 文档中心
 
 MaiBot是一个功能强大的聊天智能体，基于大语言模型提供智能对话、记忆系统和情感表达能力。
 
@@ -10,17 +10,21 @@ MaiBot是一个功能强大的聊天智能体，基于大语言模型提供智�
   - [部署概览](/manual/deployment/)
   - [Windows部署](/manual/deployment/mmc_deploy_windows)
   - [Linux部署](/manual/deployment/mmc_deploy_linux)
-  - [Docker部署(推荐)](/manual/deployment/mmc_docker_deploy)
-  - [LPMM说明](/manual/deployment/lpmm)
-  - [旧版Adapter的Windows部署](/manual/deployment/old/mmc_deploy_windows_old)
+  - [Docker部署(推荐)](/manual/deployment/mmc_deploy_docker)
+  - [Adapter部署(旧版)](/manual/deployment/old/mmc_deploy_windows_old)
+
 - **配置方法**
   - [配置指南](/manual/configuration/)
   - [标准配置教程](/manual/configuration/configuration_standard)
+  - [LPMM导入文件格式](/manual/configuration/lpmm_knowledge_template)
+
 - **使用指南**
-  - [使用说明](/manual/usage/)
-  - [LPMM知识库OpenIE文件格式说明](manual/usage/lpmm_knowledge_template)
-  - [MongoDB数据库备份](manual/usage/mongodb_backup.md)
+  - [麦麦使用说明](/manual/usage/)
+  - [LPMM使用说明](/manual/usage/lpmm)
+  - [备份你的麦麦](/manual/usage/backup)
+
 - **其他**
+  - [最终用户许可协议](/manual/other/EULA)
   - [提问的艺术(麦麦版本)](/manual/other/ask_art)
   - [如何避免提出0/1问题](/manual/other/questions-with-yes-or-no-answers)
 
@@ -31,7 +35,6 @@ MaiBot是一个功能强大的聊天智能体，基于大语言模型提供智�
   - [群晖NAS部署](/manual/deployment/old/synology_deploy)
   - [新手Linux服务器部署](/manual/deployment/old/linux_deploy_guide_for_beginners)
 :::
-
 ## 特色功能
 
 <div class="features">

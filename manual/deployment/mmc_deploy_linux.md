@@ -57,7 +57,7 @@ pip install uv -i https://mirrors.aliyun.com/pypi/simple
 uv pip install -i https://mirrors.aliyun.com/pypi/simple -r requirements.txt --upgrade
 ```
 ::: tip
-如果你在这里发现`quick_algo`安装失败，请参考[LPMM 使用说明](/manual/deployment/lpmm)中手动编译的部分
+如果你在这里发现`quick_algo`安装失败，请参考[LPMM 使用说明](/manual/usage/lpmm)中手动编译的部分
 :::
 回到上一级文件夹，再进入MaiBot-Napcat-Adapter文件夹，安装依赖
 ```bash
