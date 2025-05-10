@@ -98,7 +98,7 @@ export default defineConfig({
           text: 'MaiBot相关',
           collapsed: false,
           items: [
-            { text: '安装与运行', link: '/faq/maibot/install_runing' },
+            { text: '安装与运行', link: '/faq/maibot/install_running' },
             { text: '备份与更新', link: '/faq/maibot/backup_update' },
             { text: 'LPMM说明', link: '/faq/maibot/lpmm' }
           ]

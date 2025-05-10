@@ -43,7 +43,7 @@ MaiBot 是一个基于大语言模型的智能QQ群聊机器人，具有自然�
 ## 快速导航
 
 - **[用户手册](/manual/)** - 面向普通用户的安装、配置和使用指南
-  - [常见问题](/faq)
+  - [常见问题](/faq/)
   - [部署方法](/manual/deployment/)
   - [配置指南](/manual/configuration/)
   - [使用指南](/manual/usage/)
@@ -61,6 +61,6 @@ MaiBot 是一个基于大语言模型的智能QQ群聊机器人，具有自然�
 
 ## 获取支持
 
-- 浏览[常见问题](/faq)解决常见问题
+- 浏览[常见问题](/faq/)解决常见问题
 - 访问[GitHub仓库](https://github.com/MaiM-with-u/MaiBot)提交问题或贡献代码
 - 加入用户交流群获取帮助
