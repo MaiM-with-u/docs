@@ -1,4 +1,4 @@
-# MaiBot 文档中心
+# 📄 MaiBot 文档中心
 
 MaiBot是一个功能强大的聊天智能体，基于大语言模型提供智能对话、记忆系统和情感表达能力。
 
@@ -6,18 +6,27 @@ MaiBot是一个功能强大的聊天智能体，基于大语言模型提供智�
 
 ### 用户手册
 
-- [安装方法](/manual/deployment/index)
-  - [Windows 安装](/manual/deployment/mmc_deploy_windows)
-  - [Docker 安装（推荐）](/manual/deployment/mmc_docker_deploy)
-  - [Linux 安装](/manual/deployment/mmc_deploy_linux)
-  - [new_knowledge版（LPMM版）说明](/manual/deployment/lpmm)
-  - [使用旧版adapter的windows部署](/manual/deployment/old/mmc_deploy_windows_old)
-- [配置指南](/manual/configuration/index)
+- **部署方法**
+  - [部署概览](/manual/deployment/)
+  - [Windows部署](/manual/deployment/mmc_deploy_windows)
+  - [Linux部署](/manual/deployment/mmc_deploy_linux)
+  - [Docker部署(推荐)](/manual/deployment/mmc_deploy_docker)
+  - [Adapter部署(旧版)](/manual/deployment/old/mmc_deploy_windows_old)
+
+- **配置方法**
+  - [配置指南](/manual/configuration/)
   - [标准配置教程](/manual/configuration/configuration_standard)
-- [使用指南](/manual/usage/index)
-  - [快速问答](/manual/usage/fast_q_a)
-  - [0.6.0版本更新Q&A](/manual/usage/mmc_q_a)
-  - [MongoDB备份方法](/manual/usage/mongodb_backup)
+  - [LPMM导入文件格式](/manual/configuration/lpmm_knowledge_template)
+
+- **使用指南**
+  - [麦麦使用说明](/manual/usage/)
+  - [LPMM使用说明](/manual/usage/lpmm)
+  - [备份你的麦麦](/manual/usage/backup)
+
+- **其他**
+  - [最终用户许可协议](/manual/other/EULA)
+  - [提问的艺术(麦麦版本)](/manual/other/ask_art)
+  - [如何避免提出0/1问题](/manual/other/questions-with-yes-or-no-answers)
 
 ::: details 0.5.x部署方法(旧版)
   - [Docker部署](/manual/deployment/old/docker_deploy)
@@ -26,7 +35,6 @@ MaiBot是一个功能强大的聊天智能体，基于大语言模型提供智�
   - [群晖NAS部署](/manual/deployment/old/synology_deploy)
   - [新手Linux服务器部署](/manual/deployment/old/linux_deploy_guide_for_beginners)
 :::
-
 ## 特色功能
 
 <div class="features">

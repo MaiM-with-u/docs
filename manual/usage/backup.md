@@ -1,4 +1,27 @@
-# MongoDB 数据库备份与恢复
+# 📄 MaiBot备份与恢复
+
+MaiBot数据存储主要分两个部分， `MongoDB` 数据库和 `MaiBot` 目录文件夹,此页面会告诉你如何备份 `MongoDB` ，需要备份的文件夹或文件。
+
+## 一、MaiBot 备份与恢复
+
+MaiBot 文件夹结构：
+```
+MaiBot/
+├── data/
+│   ├── emoji
+│   └── personality
+├── config/
+│   └── bot_config.toml
+├── .env
+└── ...
+```
+### 1. `data` 文件夹 (强烈推荐)
+- 用于存储表情包，人格，知识库等。
+### 2. `bot_config.toml`文件 (强烈推荐)
+- 用于存储人设、调用的大模型信息等设置。
+### 3. `.env` 文件
+- 存储AI云服务提供商的KEY API、数据库用户名密码等。
+## 二、MongoDB 数据库备份与恢复
 
 MongoDB 官方提供了两种主要的备份工具：**mongodump/mongorestore** 和 **文件系统快照**
 
@@ -10,7 +33,7 @@ MongoDB 官方提供了两种主要的备份工具：**mongodump/mongorestore** 
 
 然后添加进系统path变量里面
 
-## 一、使用 `mongodump` 备份数据
+### 1. 使用 `mongodump` 备份数据
 `mongodump` 是 MongoDB 官方提供的命令行备份工具，可以将数据导出为 BSON/JSON 格式。
 ```bash
 #无密码
@@ -22,7 +45,7 @@ mongodump --uri "mongodb://user:passwd@localhost:27017/" --out ./backup
 
 执行完后，会在你调出控制台的地方创建一个backup文件夹，你的数据就在这里
 
-## 二、使用 `mongorestore` 恢复数据
+### 2. 使用 `mongorestore` 恢复数据
 备份后可用 `mongorestore` 恢复数据：
 你需要在上一步的backup文件同目录打开控制台输入此命令即可。
 ```bash

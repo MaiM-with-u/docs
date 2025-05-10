@@ -1,6 +1,6 @@
-# 📦 Linux部署MaiMbot麦麦（main 0.6版）
+# 📦 Linux 部署
 
-- 以下内容假设你对Linux系统有一定的了解，如果觉得难以理解，请用Windows系统部署[Windows系统部署指南](mmc_deploy_windows)
+- 以下内容假设你对Linux系统有一定的了解，如果觉得难以理解，请用Docker部署[Docker部署指南](mmc_deploy_docker)或者使用Windows系统部署[Windows部署指南](mmc_deploy_windows)
 
 ## 一、 克隆麦麦，获取必要的文件
 1. 通过 git clone 将 [麦麦 repo](https://github.com/MaiM-with-u/MaiBot) clone 到本地
@@ -57,7 +57,7 @@ pip install uv -i https://mirrors.aliyun.com/pypi/simple
 uv pip install -i https://mirrors.aliyun.com/pypi/simple -r requirements.txt --upgrade
 ```
 ::: tip
-如果你在这里发现`quick_algo`安装失败，请参考[LPMM 使用说明](/manual/deployment/lpmm)中手动编译的部分
+如果你在这里发现`quick_algo`安装失败，请参考[LPMM 使用说明](/manual/usage/lpmm)中手动编译的部分
 :::
 回到上一级文件夹，再进入MaiBot-Napcat-Adapter文件夹，安装依赖
 ```bash

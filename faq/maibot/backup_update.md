@@ -1,6 +1,6 @@
-# 0.6.0版本更新Q&A
+# MaiBot Q&A
 
-这个文件用来说明该次更新的问题
+这个页面用来说明从0.5.x更新到0.6.x更新的问题
 
 ## 如何更新0.6.0 ❓
 ::: warning
@@ -16,7 +16,7 @@
 
     - 1.新建文件夹
 
-    - 2.重新进行完整安装流程，参考教程[0.6.0版本部署教程](/manual/deployment/mmc_deploy_windows)
+    - 2.重新进行完整安装流程，参考教程[0.6.x版本部署教程](/manual/deployment/mmc_deploy_windows)
 
     - 3.**或者**使用[一键包](https://github.com/MaiM-with-u/MaiBot/releases/tag/EasyInstall-windows)
 

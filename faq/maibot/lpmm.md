@@ -1,5 +1,7 @@
 # MaiBot Q&A
 
+这个页面用于记录LPMM相关的问题
+
 ## LPMM有关问题
 
 ### LPMM知识库导入时出现ConnectionError
