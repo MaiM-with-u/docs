@@ -5,7 +5,7 @@
 ## 目录
 
 ### MaiBot相关
-- [安装与运行](/faq/maibot/install_runing)
+- [安装与运行](/faq/maibot/install_running)
 - [备份与更新](/faq/maibot/backup_update)
 - [LPMM说明](/faq/maibot/lpmm)
 
