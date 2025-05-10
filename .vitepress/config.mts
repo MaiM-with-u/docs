@@ -83,8 +83,7 @@ export default defineConfig({
           items: [
             { text: '最终用户许可协议', link: '/manual/other/EULA' },
             { text: '提问的艺术(麦麦版本)', link: '/manual/other/ask_art' },
-            { text: '如何避免提出0/1问题', link: '/manual/other/questions-with-yes-or-no-answers' },
-
+            { text: '提问的艺术(简要版)', link: '/manual/other/ez_ask_art' },
           ]
         }
       ],
