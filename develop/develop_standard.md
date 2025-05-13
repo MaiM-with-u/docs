@@ -17,6 +17,13 @@
 2. 对于类生命周期内的异步任务，请使用`asyncio.create_task()`创建协程处理，并在合适的位置处理异常，并使用`Task.cancel()`和`await`确保任务完成退出；
 3. 对于业务逻辑中串行的异步任务，请使用`await`来创建协程处理并阻塞业务逻辑直至任务结束。
 
+### Import 规范
+首先我们定义一个“包”：认为每一个直接含有python代码文件的文件夹都是一个包。
+1. 所有的`import`语句请放在文件的最上方，除非你需要动态导入某个模块或者`try import`。
+2. 对于每个包，包内的文件的互相导入请使用相对路径导入，如`import .config`或者`from .config import Config`。
+3. 对于跨包文件导入，请使用绝对路径导入，如`from package.module import Class`。
+4. 请使用Ruff检查是否有没有用到的`import`语句，如果有，请删除这条`import`语句。
+
 ## 开发者规范
 
 ### 审阅PR
