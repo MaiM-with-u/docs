@@ -90,7 +90,7 @@ port = 8000          # 麦麦在.env文件中设置的ws端口
 ### 2.3 📜 取消注释docker-compose.yml的eula
 ```bash
 vim docker-compose.yml
-# 取消注释以下两行（26-27行）
+# 取消注释以下两行（23-24行）
 - EULA_AGREE=35362b6ea30f12891d46ef545122e84a  # 同意EULA
 - PRIVACY_AGREE=2402af06e133d2d10d9c6c643fdc9333 # 同意EULA
 ```
