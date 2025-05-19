@@ -1,4 +1,5 @@
 import { defineConfig } from 'vitepress'
+import { MermaidPlugin, MermaidMarkdown } from "vitepress-plugin-mermaid";
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
@@ -57,6 +58,18 @@ export default defineConfig({
                 { text: '新手Linux部署', link: '/manual/deployment/old/linux_deploy_guide_for_beginners' },
               ]
             },
+          ]
+        },
+        {
+          text: 'Adapter 广场',
+          collapsed: false,
+          items: [
+            { text: 'Adapters 文档中心', link: '/manual/adapters'},
+            { text: 'MaiBot Napcat Adapter', link: '/manual/adapters/napcat'},
+            { text: 'MaiBot TTS Adapter', collapsed: true, items: [
+              { text: '基本介绍', link: '/manual/adapters/tts/' },
+              { text: 'GPT_Sovits TTS', link: '/manual/adapters/tts/gpt_sovits'},
+            ]},
           ]
         },
         {
@@ -176,5 +189,19 @@ export default defineConfig({
         timeStyle: "short",
       },
     },
-  }
+  },
+  markdown: {
+    config(md) {
+      md.use(MermaidMarkdown);
+    },
+  },
+  vite: {
+    plugins: [MermaidPlugin()],
+    optimizeDeps: {
+      include: ['mermaid'],
+    },
+    ssr: {
+      noExternal: ['mermaid'],
+    },
+  },
 })
