@@ -117,7 +117,12 @@ cp template/template.env .env
 > [!IMPORTANT]
 > 配置示例：
 > ![](/images/napcat_websockets_client.png)
-2. 打开`MaiBot-Napcat-Adapter`文件夹下的`config.toml`，配置`[Napcat_Server]`、`[MaiBot_Server]`、`[Napcat]`字段
+2. 从模版复制配置文件
+```bash
+cd MaiBot-Napcat-Adapter/
+cp template/template_config.toml config.toml
+```
+3. 打开`config.toml`，配置`[Napcat_Server]`、`[MaiBot_Server]`、`[Napcat]`字段
     - `[Napcat_Server]`字段的port,应该与Napcat设置的反向代理的url相同（这里是8095）
     - `[Napcat_Server]`字段的heartbeat,应该与Napcat设置的反向代理的心跳间隔相同（注意，Napcat中的间隔为毫秒，填入时请转化为秒，这里是30）
     - `[MaiBot_Server]`字段的port,应该与麦麦本体的`.env`中的`PORT`相同
