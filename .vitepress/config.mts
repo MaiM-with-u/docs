@@ -27,7 +27,10 @@ export default defineConfig({
           { text: '五群', link: 'https://qm.qq.com/q/JxvHZnxyec' },
         ]
       },
-      { text: 'GitHub', link: 'https://github.com/MaiM-with-u/MaiBot' }
+      { text: 'GitHub', items: [
+        { text: 'MaiBot', link: 'https://github.com/MaiM-with-u/MaiBot' },
+        { text: 'MaiBot Docs', link: 'https://github.com/MaiM-with-u/docs'}
+      ]}
     ],
 
     sidebar: {
