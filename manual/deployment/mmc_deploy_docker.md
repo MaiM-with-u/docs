@@ -160,7 +160,7 @@ docker compose logs -f
 访问 `http://<服务器IP>:6099` 完成 Napcat 的配置
 > 网络配置使用`websocket客户端`，`url`为`ws://adapters:8095`
 > 例：
-> ![Napcat配置](/public/images/mmc-napcat-client.png)
+> ![Napcat配置](/images/mmc-napcat-client.png)
 
 ---
 

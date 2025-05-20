@@ -32,7 +32,7 @@ export default defineConfig({
         { text: 'MaiBot Docs', link: 'https://github.com/MaiM-with-u/docs'}
       ]}
     ],
-
+    outline: [1,4],
     sidebar: {
       '/manual/': [
         {
