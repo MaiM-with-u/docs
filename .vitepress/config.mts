@@ -72,6 +72,8 @@ export default defineConfig({
             { text: 'MaiBot TTS Adapter', collapsed: true, items: [
               { text: '基本介绍', link: '/manual/adapters/tts/' },
               { text: 'GPT_Sovits TTS', link: '/manual/adapters/tts/gpt_sovits'},
+              { text: '豆包 TTS', link: '/manual/adapters/tts/doubao_tts'},
+              { text: '千问Omni TTS', link: '/manual/adapters/tts/qwen_omni'},
             ]},
           ]
         },
