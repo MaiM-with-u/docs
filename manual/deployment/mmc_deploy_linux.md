@@ -2,6 +2,10 @@
 
 - 以下内容假设你对Linux系统有一定的了解，如果觉得难以理解，请用Docker部署[Docker部署指南](mmc_deploy_docker)或者使用Windows系统部署[Windows部署指南](mmc_deploy_windows)
 
+## 📋 环境要求
+- ⚙️ 最低系统配置：2 核 CPU / 2GB 内存 / 5GB 磁盘空间
+- 🐧 本教程测试环境：Debian Server 12.0 64bit
+
 ## 一、 克隆麦麦，获取必要的文件
 1. 通过 git clone 将 [麦麦 repo](https://github.com/MaiM-with-u/MaiBot) clone 到本地
 
@@ -16,7 +20,7 @@ git clone https://github.com/MaiM-with-u/MaiBot-Napcat-Adapter.git
 
 ## 二、环境配置
 
-### 1️. 确认Python版本
+### 确认Python版本
 
 需确保Python版本为3.10及以上
 
@@ -37,13 +41,14 @@ sudo update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.12
 sudo update-alternatives --config python3
 ```
 
-### 2. 创建虚拟环境
+### 创建虚拟环境
+方法1：使用venv(推荐)
 ```bash
-# 方法1：使用venv(推荐)
-python3 -m venv MaiBot/venv
+python3 -m venv MaiBot/venv      # 创建虚拟环境    
 source MaiBot/venv/bin/activate  # 激活环境
-
-# 方法2：使用conda（需先安装Miniconda或Anaconda）
+```
+方法2：使用conda（需先安装Miniconda或Anaconda）
+```bash
 wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
 bash Miniconda3-latest-Linux-x86_64.sh
 conda create -n MaiBotEnv python=3.12
@@ -67,7 +72,11 @@ uv pip install -i https://mirrors.aliyun.com/pypi/simple -r requirements.txt --u
 ```
 ## 四、MaiBot Napcat Adapter 部署
 
-进入`MaiBot-Napcat-Adapter`文件夹，然后复制`template`文件夹下的`template_config.toml`到Adapter的根目录下
+在`MaiBot-Napcat-Adapter`文件夹中
+```bash
+# 复制并重命名文件
+cp template/template_config.toml config.toml
+```
 
 <hr class="custom_hr"/>
 
@@ -83,7 +92,8 @@ maimai
 │   │   └── ...
 │   └── template
 └── MaiBot-Napcat-Adapter
-    └── ...
+    ├── config.toml
+    └── template
 ```
 
 ## 五、NapCat配置
@@ -105,7 +115,7 @@ cp template/bot_config_template.toml config/bot_config.toml
 cp template/template.env .env
 ```
 复制完成后打开`.env`并修改PORT为8000
-随后前往[配置指南](/manual/configuration/index)完成配置
+随后前往[配置指南(最新版)](/manual/configuration/configuration_standard)完成配置
 
 ::: details 如果你想修改这个PORT为其他，点开这里
 找到 MaiBot-Napcat-Adapter 下的 config.toml ，打开，修改 MaiBot_Server 字段中的 port 为你想要的端口号
@@ -134,6 +144,44 @@ port = 8000          # 麦麦在.env文件中设置的端口，即PORT字段
 ```
 3. 其余字段请参考 Napcat Adapter 的[配置指南](/manual/adapters/napcat)
 
+## 七、配置MongoDB（将在下个版本移除）
+### 安装MongoDB
+1. 安装依赖工具
+```bash
+# Ubuntu/Debian
+sudo apt update # 更新apt
+sudo apt install -y gnupg curl wget # 下载工具
+```
+2. 导入 MongoDB 官方 GPG 密钥
+```bash
+# 下载并添加密钥（兼容 Debian/Ubuntu）
+curl -fsSL https://pgp.mongodb.com/server-7.0.asc | sudo gpg -o /usr/share/keyrings/mongodb-server-7.0.gpg --dearmor
+```
+3. 添加 MongoDB 官方仓库
+```bash
+# 根据系统版本自动匹配仓库（以 Ubuntu 22.04/Debian 12 为例）
+# 如果是其他版本，将 `jammy`（Ubuntu）或 `bookworm`（Debian）替换为你的系统代号
+OS_CODENAME=$(lsb_release -sc)  # 自动获取系统代号
+echo "deb [ arch=amd64,arm64 signed-by=/usr/share/keyrings/mongodb-server-7.0.gpg ] https://repo.mongodb.org/apt/${OS_CODENAME:0:6}/mongodb-org/7.0 main" | sudo tee /etc/apt/sources.list.d/mongodb-org-7.0.list
+```
+4. 更新仓库并安装 MongoDB
+```bash
+sudo apt update
+sudo apt install -y mongodb-org
+```
+### 启动与验证服务
+1. 启动 MongoDB 服务
+```bash
+sudo systemctl start mongod
+sudo systemctl enable mongod  # 开机自启
+```
+2. 检查运行状态并测试连接
+```bash
+sudo systemctl status mongod  
+# 应显示 "Active: active (running)"
+mongosh --eval "show dbs"  
+# 应列出默认数据库（admin, local）
+```
 ## 启动麦麦
 
 ### 启动麦麦核心
@@ -160,7 +208,9 @@ source ../MaiBot/venv/bin/activate  # 激活环境
 # 运行mmc
 python3 bot.py
 ```
-> 按:Ctrl+a, 再按:d, 即可退出screen, 此时,程序仍在后台执行;  
+> 等待程序运行至eula检查部分，输入`同意`或`confirmed`，代表已经阅读并确认同意更新后的EULA和隐私条款
+
+> 按`Ctrl+a`, 再按`d`, 即可退出screen, 此时,程序仍在后台执行;  
 
 启动麦麦的adapter
 ```bash
