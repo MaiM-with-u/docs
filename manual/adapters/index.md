@@ -9,4 +9,4 @@ Hi!👋 欢迎来到麦麦的 Adapters 文档中心。
 ## 适配器列表
 - [Napcat Adapter](./napcat)
 - [MaiBot TTS Adapter](./tts/)
-- 麦麦微信Adapter
+- 微信Adapter

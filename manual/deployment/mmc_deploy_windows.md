@@ -123,6 +123,7 @@ platform_name = "qq" # 标识adapter的名称（必填）
 host = "localhost"   # 麦麦在.env文件中设置的主机地址，即HOST字段
 port = 8000          # 麦麦在.env文件中设置的端口，即PORT字段
 ```
+3. 其余字段请参考 Napcat Adapter 的[配置指南](/manual/adapters/napcat)
 
 ### 七、运行
 1. 首先启动Napcat
