@@ -16,5 +16,5 @@
 ### 心流处理逻辑
 - 请参照src/hartflow/README.md 其中有非常详细的逻辑解释
 ### PFC处理逻辑
-- <del>（PFC的逻辑，下次再来探索吧（x）</del>
-- 自己看源码（√）
+- 1.自己看源码
+- 2.问问神奇的[AI](https://deepwiki.com/DrSmoothl/MaiBot)
