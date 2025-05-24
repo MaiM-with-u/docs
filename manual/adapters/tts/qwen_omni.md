@@ -2,7 +2,7 @@
 
 这个模块，对接的是 Qwen 多模态模型提供的TTS语音合成服务哦！
 
-首先，我们需要先从`template_configs/Qwen_omni_template.toml`复制一份配置文件模板到`config/Qwen_omni.toml`。
+首先，我们需要先从`template_configs/Qwen_omni_template.toml`复制一份配置文件模板到`configs/Qwen_omni.toml`。
 
 ```toml
 api_key = "your_api_key" # API密钥

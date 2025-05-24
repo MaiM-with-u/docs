@@ -4,7 +4,7 @@
 
 下面是这个模块的配置说明：这个模块是用来连接 GPT_Sovits 的 TTS，样例配置文件在`template`文件夹下面哦~
 
-在开始之前，大家需要先把 `template_configs/gpt_sovits.toml` 这个样板复制到 `config/gpt_sovits.toml`，然后按照自己的心意调整配置文件~
+在开始之前，大家需要先把 `template_configs/gpt_sovits.toml` 这个样板复制到 `configs/gpt_sovits.toml`，然后按照自己的心意调整配置文件~
 
 ```toml
 [pipeline]

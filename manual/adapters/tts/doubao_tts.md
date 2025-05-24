@@ -2,7 +2,7 @@
 
 这个模块，对接的是 豆包 TTS 提供的TTS语音合成服务哦！
 
-首先，我们需要先从`template_configs/Doubao_tts_template.toml`复制一份配置文件模板到`config/Doubao_tts.toml`。
+首先，我们需要先从`template_configs/Doubao_tts_template.toml`复制一份配置文件模板到`configs/Doubao_tts.toml`。
 
 ```toml
 # 注：所有标有 [*] 的都请参考官方文档 https://www.volcengine.com/docs/6561/1257584 进行配置与解读

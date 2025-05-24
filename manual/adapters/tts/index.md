@@ -28,7 +28,9 @@ python main.py
 
 相比于Napcat适配器，TTS适配器的配置文会复杂那么一丢丢，但是百灵相信各位能够看懂，并且成功克服所有困难，让自己的小机器人开口说话的喵！
 
-TTS适配器的所有配置样例文件都在`template`文件夹下面，各位可以根据自己的喜好和需求，选择不同的语音服务提供商。
+TTS适配器的所有配置样例文件都在`template_configs`文件夹下面，各位可以根据自己的喜好和需求，选择不同的语音服务提供商。
+
+首先，我们需要先从`template_configs/base_template.toml`复制一份配置文件模板到`configs/base.toml`。
 
 首先，百灵来介绍一下基础配置文件 `base.toml` 。
 ```toml
