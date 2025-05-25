@@ -11,5 +11,6 @@
 
 ### Adapter相关
 - [Napcat Adapter](/faq/maibot-napcat-adapter/)
+- [MaiBot TTS Adapter](/faq/maibot-tts-adapter/)
 
 更多问题正在整理中，敬请期待！

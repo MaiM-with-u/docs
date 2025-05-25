@@ -17,7 +17,7 @@ export default defineConfig({
       { text: '首页', link: '/' },
       { text: '用户手册', link: '/manual/' },
       { text: '常见问题', link: '/faq/' },
-      // { text: '开发文档', link: '/develop/' },
+      { text: '开发文档', link: '/develop/' },
       {
         text: '官方Q群', items: [
           { text: '一群', link: 'https://qm.qq.com/q/VQ3XZrWgMs' },
@@ -27,12 +27,14 @@ export default defineConfig({
           { text: '五群', link: 'https://qm.qq.com/q/JxvHZnxyec' },
         ]
       },
-      { text: 'GitHub', items: [
-        { text: 'MaiBot', link: 'https://github.com/MaiM-with-u/MaiBot' },
-        { text: 'MaiBot Docs', link: 'https://github.com/MaiM-with-u/docs'}
-      ]}
+      {
+        text: 'GitHub', items: [
+          { text: 'MaiBot', link: 'https://github.com/MaiM-with-u/MaiBot' },
+          { text: 'MaiBot Docs', link: 'https://github.com/MaiM-with-u/docs' }
+        ]
+      }
     ],
-    outline: [1,4],
+    outline: [1, 4],
     sidebar: {
       '/manual/': [
         {
@@ -67,14 +69,16 @@ export default defineConfig({
           text: 'Adapter 广场',
           collapsed: false,
           items: [
-            { text: 'Adapters 文档中心', link: '/manual/adapters'},
-            { text: 'MaiBot Napcat Adapter', link: '/manual/adapters/napcat'},
-            { text: 'MaiBot TTS Adapter', collapsed: true, items: [
-              { text: '基本介绍', link: '/manual/adapters/tts/' },
-              { text: 'GPT_Sovits TTS', link: '/manual/adapters/tts/gpt_sovits'},
-              { text: '豆包 TTS', link: '/manual/adapters/tts/doubao_tts'},
-              { text: '千问Omni TTS', link: '/manual/adapters/tts/qwen_omni'},
-            ]},
+            { text: 'Adapters 文档中心', link: '/manual/adapters' },
+            { text: 'MaiBot Napcat Adapter', link: '/manual/adapters/napcat' },
+            {
+              text: 'MaiBot TTS Adapter', collapsed: true, items: [
+                { text: '基本介绍', link: '/manual/adapters/tts/' },
+                { text: 'GPT_Sovits TTS', link: '/manual/adapters/tts/gpt_sovits' },
+                { text: '豆包 TTS', link: '/manual/adapters/tts/doubao_tts' },
+                { text: '千问Omni TTS', link: '/manual/adapters/tts/qwen_omni' },
+              ]
+            },
           ]
         },
         {
@@ -105,6 +109,7 @@ export default defineConfig({
           ]
         }
       ],
+
       '/faq/': [
         {
           text: '常见问题',
@@ -125,12 +130,12 @@ export default defineConfig({
           text: 'Adapter相关',
           collapsed: false,
           items: [
-            { text: 'Napcat Adapter', link: '/faq/maibot-napcat-adapter/' }
+            { text: 'Napcat Adapter', link: '/faq/maibot-napcat-adapter/' },
+            { text: 'TTS适配器常见问题', link: '/faq/maibot-tts-adapter/' },
           ]
         }
-
-
       ],
+
       '/develop/': [
         {
           text: '开发文档',
