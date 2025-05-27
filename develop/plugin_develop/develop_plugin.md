@@ -21,6 +21,10 @@ Adapter的工作流程如下：
 
 接下来，本指南将会介绍如何实现Adapter与MaiBot Core的通信部分。
 
+## 处理上游消息
+**对于任何针对0.7.0以后版本的 MaiBot Adapter，你应该在 Adapter 侧实现一个聊天的黑白名单。**
+
+在0.7.0版本以后，MaiBot 将不再检查消息是否存在于黑白名单中。
 ## 构造下游消息元数据
 
 这部分将会使用`maim_message`库中的`MessageBaseInfo`类来构造下游消息的元数据。
