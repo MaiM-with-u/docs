@@ -51,6 +51,7 @@ provider = "ALIYUNCS"
 pri_in = 1.0 #模型的输入价格（非必填，可以记录消耗）
 pri_out = 4.0 #模型的输出价格（非必填，可以记录消耗）
 ```
+
 ## 配置文件详解
 
 ### 环境配置文件 (.env)
@@ -60,35 +61,6 @@ HOST=127.0.0.1
 PORT=8000
 ```
 这部分负责配置MaiBot监听的端口和地址
-
-<hr class="custom_hr"/>
-
-```ini
-# 默认配置
-# 如果工作在Docker下，请改成 MONGODB_HOST=mongodb
-MONGODB_HOST=127.0.0.1
-MONGODB_PORT=27017
-DATABASE_NAME=MegBot
-
-# 也可以使用 URI 连接数据库（优先级比上面的高）
-# MONGODB_URI=mongodb://127.0.0.1:27017/MegBot
-
-# MongoDB 认证信息，若需要认证，请取消注释以下三行并填写正确的信息
-# MONGODB_USERNAME=user
-# MONGODB_PASSWORD=password
-# MONGODB_AUTH_SOURCE=admin
-```
-这部分负责配置MaiBot所连接的MongoDB服务
-
-`MONGODB_HOST`为MongoDB服务的主机地址
-
-`MONGODB_PORT`为MongoDB服务的监听端口
-
-`DATABASE_NAME`为MongoDB中MaiBot所使用的数据库名字，如果没有，MaiBot会自动创建
-
-支持使用MongoURI，需要取消注释并修改`MONGODB_URI`
-
-如果需要认证，取消注释并设置`MONGODB_USERNAME`，`MONGODB_PASSWORD`和`MONGODB_AUTH_SOURCE`
 
 <hr class="custom_hr"/>
 
@@ -110,95 +82,74 @@ SILICONFLOW_KEY=
 
 比如，`DEEP_SEEK`的`BASE_URL`为`DEEP_SEEK_BASE_URL`，`KEY`为`DEEP_SEEK_KEY`
 
+详细内容参考上文。
+
 ### 机器人配置文件 (bot_config.toml)
 
 ```toml
 [bot]
-qq = 114514
+qq_account = 1145141919810
 nickname = "麦麦"
 alias_names = ["麦叠", "牢麦"]
 ```
 这里配置Maibot对应的qq号和昵称，以及别名
 
-通过昵称或别名呼叫麦麦均能引起麦麦注意
+通过昵称或别名呼叫麦麦均能引起麦麦注意。
 
 <hr class="custom_hr"/>
 
 ```toml
-[groups]
-talk_allowed = [
-    123,
-    123,
-]  #可以回复消息的群号码
-talk_frequency_down = []  #降低回复频率的群号码
-ban_user_id = []  #禁止回复和读取消息的QQ号
-```
-这里配置允许说话的群聊，以及其他群设置，参见注释
-
-<hr class="custom_hr"/>
-
-```toml
-[personality] #未完善
-personality_core = "用一句话或几句话描述人格的核心特点" # 建议20字以内，谁再写3000字小作文敲谁脑袋
+[personality]
+personality_core = "用一句话或几句话描述人格的核心特点" # 建议50字以内
 personality_sides = [
     "用一句话或几句话描述人格的一些细节",
     "用一句话或几句话描述人格的一些细节",
     "用一句话或几句话描述人格的一些细节",
-    "用一句话或几句话描述人格的一些细节",
-    "用一句话或几句话描述人格的一些细节",
-]# 条数任意
+]
 
-[identity] #アイデンティティがない 生まれないらららら
-# 兴趣爱好 未完善，有些条目未使用
+# 身份特点
+#アイデンティティがない 生まれないらららら
+[identity] 
 identity_detail = [
     "身份特点",
     "身份特点",
-]# 条数任意
-#外貌特征
-height = 170 # 身高 单位厘米
-weight = 50 # 体重 单位千克
-age = 20 # 年龄 单位岁
-gender = "男" # 性别
-appearance = "用几句话描述外貌特征" # 外貌特征
-
-[schedule]
-enable_schedule_gen = true # 是否启用日程表(尚未完成)
-prompt_schedule_gen = "用几句话描述描述性格特点或行动规律，这个特征会用来生成日程表"
-schedule_doing_update_interval = 900 # 日程表更新间隔 单位秒
-schedule_temperature = 0.2 # 日程表温度，建议0.2-0.5
-time_zone = "Asia/Shanghai" # 给你的机器人设置时区，可以解决运行电脑时区和国内时区不同的情况，或者模拟国外留学生日程
+]
 ```
 
-以上部分是有关麦麦的各种设定，包括人格核心，人格侧像，兴趣爱好。这里也是配置日程表生成的地方。
+这部分是麦麦的核心人设部分。负责描述麦麦的核心人格特点和身份特点。
 
-如果你想让麦麦使用不同的时区，那么配置最后一行，但是要按照标准时区格式来写，比如`Asia/Shanghai`等
+- `personality_core`是麦麦人格的核心特点，建议50字以内。
+
+- `personality_sides`是麦麦人格的一些细节描述，可以有多条。**但是不能为0哦！**
+
+- `identity_detail`是麦麦的身份特点，可以描述外貌，性别，身高，职业，属性等等描述。同样可以有很多条，**但是不能为0哦！**
 
 <hr class="custom_hr"/>
 
 ```toml
-[platforms] # 必填项目，填写每个平台适配器提供的链接
-nonebot-qq="http://127.0.0.1:18002/api/message"
+[expression]
+# 表达方式
+expression_style = "描述麦麦说话的表达风格，表达习惯"
+enable_expression_learning = true # 是否启用表达学习，麦麦会学习人类说话风格
+learning_interval = 600 # 学习间隔 单位秒
 ```
 
-这里是给旧版的adapter兼容，以后可能会更改。
+本部分配置麦麦的表达方式和学习习惯。开启后麦麦会学习人类的说话风格。
 
 <hr class="custom_hr"/>
 
 ```toml
 [chat] #麦麦的聊天通用设置
-allow_focus_mode = true # 是否允许专注聊天状态
-# 是否启用heart_flowC(HFC)模式
-# 启用后麦麦会自主选择进入heart_flowC模式(持续一段时间），进行主动的观察和回复，并给出回复，比较消耗token
-base_normal_chat_num = 3 # 最多允许多少个群进行普通聊天
-base_focused_chat_num = 2 # 最多允许多少个群进行专注聊天
+chat_mode = "normal" # 聊天模式 —— 普通模式：normal，专注模式：focus，在普通模式和专注模式之间自动切换
 
-observation_context_size = 15 # 观察到的最长上下文大小,建议15，太短太长都会导致脑袋尖尖
-message_buffer = true # 启用消息缓冲器？启用此项以解决消息的拆分问题，但会使麦麦的回复延迟
+auto_focus_threshold = 1 # 自动切换到专注聊天的阈值，越低越容易进入专注聊天
+exit_focus_threshold = 1 # 自动退出专注聊天的阈值，越低越容易退出专注聊天
 
+[message_receive]
 # 以下是消息过滤，可以根据规则过滤特定消息，将不会读取这些消息
 ban_words = [
     # "403","张三"
-    ]
+]
 
 ban_msgs_regex = [
     # 需要过滤的消息（原始消息）匹配的正则表达式，匹配到的消息将被过滤（支持CQ码），若不了解正则表达式请勿修改
@@ -206,41 +157,69 @@ ban_msgs_regex = [
     #"\\d{4}-\\d{2}-\\d{2}", # 匹配日期
     # "\\[CQ:at,qq=\\d+\\]" # 匹配@
 ]
-
 ```
 
-心流相关设置，配置麦麦的部分聊天行为。`base_normal_chat_num`和`base_focused_chat_num`分别是**普通聊天和专注聊天的最大群聊数量**。有需要可以修改此处。
+这部分是麦麦的聊天模式和消息过滤设置。
 
-`ban_words`和`ban_msgs_regex`是消息屏蔽词配置，麦麦遇到便会直接忽略这些消息。
+- `chat_mode`可以设置为`normal`（普通聊天）、`focus`（专注聊天）或者`auto`（自动切换）。这个选项决定麦麦的聊天方式。
 
-`message_buffer`是消息缓冲器，启用后会将分条发送的消息合并为一条消息再进行思考和回复，但是会导致麦麦回复延迟增加。
+对于`normal`模式，麦麦会使用自动的触发系统判断回复，详细的配置在`[normal_chat]`中。
+
+对于`focus`模式，麦麦会使用大模型判断回复和使用各类插件与工具，详细的配置在`[focus_chat]`中。
+
+- `auto_focus_threshold`和`exit_focus_threshold`分别是自动切换到专注聊天和退出专注聊天的阈值，数值越低越容易进入或退出专注聊天。
+- `ban_words`是禁止的词汇列表，麦麦会过滤掉包含这些词汇的消息。
+- `ban_msgs_regex`是禁止的消息正则表达式列表，麦麦会过滤掉匹配这些正则表达式的消息。
 
 <hr class="custom_hr"/>
 
 ```toml
 [normal_chat] #普通聊天
 #一般回复参数
-model_reasoning_probability = 0.7 # 麦麦回答时选择推理模型 模型的概率
-model_normal_probability = 0.3 # 麦麦回答时选择一般模型 模型的概率
-
+normal_chat_first_probability = 0.3 # 麦麦回答时选择首要模型的概率（与之相对的，次要模型的概率为1 - normal_chat_first_probability）
+max_context_size = 15 #上下文长度
 emoji_chance = 0.2 # 麦麦一般回复时使用表情包的概率，设置为1让麦麦自己决定发不发
-thinking_timeout = 100 # 麦麦最长思考时间，超过这个时间的思考会放弃（往往是api反应太慢）
+thinking_timeout = 120 # 麦麦最长思考时间，超过这个时间的思考会放弃（往往是api反应太慢）
 
-willing_mode = "classical" # 回复意愿模式 —— 经典模式：classical，动态模式：dynamic，mxp模式：mxp，自定义模式：custom（需要你自己实现）
+willing_mode = "classical" # 回复意愿模式 —— 经典模式：classical，mxp模式：mxp，自定义模式：custom（需要你自己实现）
+talk_frequency = 1 # 麦麦回复频率，一般为1，默认频率下，30分钟麦麦回复30条（约数）
+
 response_willing_amplifier = 1 # 麦麦回复意愿放大系数，一般为1
 response_interested_rate_amplifier = 1 # 麦麦回复兴趣度放大系数,听到记忆里的内容时放大系数
-down_frequency_rate = 3 # 降低回复频率的群组回复意愿降低系数 除法
+
 emoji_response_penalty = 0 # 表情包回复惩罚系数，设为0为不回复单个表情包，减少单独回复表情包的概率
 mentioned_bot_inevitable_reply = false # 提及 bot 必然回复
 at_bot_inevitable_reply = false # @bot 必然回复
 
-[focus_chat] #专注聊天
-reply_trigger_threshold = 3.5 # 专注聊天触发阈值，越低越容易进入专注聊天
-default_decay_rate_per_second = 0.98 # 默认衰减率，越大衰减越快，越高越难进入专注聊天
-consecutive_no_reply_threshold = 3 # 连续不回复的阈值，越低越容易结束专注聊天
+down_frequency_rate = 3 # 降低回复频率的群组回复意愿降低系数 除法
+talk_frequency_down_groups = []  #降低回复频率的群号码
+
 ```
 
-这里配置的是两种聊天方式行为的参数，具体内容基本上可以参考注释进行配置。
+这里配置的是`normal`模式下的聊天参数。大部分可以根据注释直接配置。
+
+<hr class="custom_hr"/>
+
+```toml
+[focus_chat] #专注聊天
+think_interval = 3 # 思考间隔 单位秒，可以有效减少消耗
+
+observation_context_size = 15 # 观察到的最长上下文大小,建议15，太短太长都会导致脑袋尖尖
+compressed_length = 5 # 不能大于observation_context_size,心流上下文压缩的最短压缩长度，超过心流观察到的上下文长度，会压缩，最短压缩长度为5
+compress_length_limit = 5 #最多压缩份数，超过该数值的压缩上下文会被删除
+
+[focus_chat_processor] # 专注聊天处理器，打开可以实现更多功能，但是会增加token消耗
+self_identify_processor = true # 是否启用自我识别处理器
+tool_use_processor = false # 是否启用工具使用处理器
+working_memory_processor = false # 是否启用工作记忆处理器
+```
+
+这部分配置的是`focus`模式下的聊天参数。
+
+`chat_processor`是专注聊天处理器，开启后可以实现更多功能，但是会增加token消耗。
+- `self_identify_processor`是自我识别处理器，开启后麦麦会尝试识别自己是谁。
+- `tool_use_processor`是工具使用处理器，开启后麦麦可以使用工具。
+- `working_memory_processor`是工作记忆处理器，开启后麦麦会使用工作记忆。
 
 <hr class="custom_hr"/>
 

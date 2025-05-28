@@ -104,8 +104,13 @@ export default defineConfig({
           collapsed: false,
           items: [
             { text: '最终用户许可协议', link: '/manual/other/EULA' },
-            { text: '提问的艺术(麦麦版本)', link: '/manual/other/ask_art' },
-            { text: '提问的艺术(简要版)', link: '/manual/other/ez_ask_art' },
+            { text: '如何高效提问', link: '/manual/other/how-to-ask-questions' },
+            {
+              text: '文章集', collapsed: true, items: [
+                { text: '一篇小文', link: '/manual/other/ask_art'},
+                { text: '如何避免0/1问题', link: '/manual/other/questions-with-yes-or-no-answers' },
+              ]
+            }
           ]
         }
       ],

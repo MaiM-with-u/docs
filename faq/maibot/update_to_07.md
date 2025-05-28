@@ -5,6 +5,10 @@
 ## 0.7.x版本的主要变化
 1. 配置文件
 2. 数据库
+3. Napcat Adapter
+
+
+**以及，我们很可惜的告诉你，现在PFC功能暂时失效了，所以如果你是PFC用户，那么请暂时不要升级到0.7.x版本。**
 
 因此，我们逐一讲解一下升级的方法。
 
@@ -32,3 +36,6 @@ python scripts/mongodb_to_sqlite.py
 ::: tip
 如果你是喜欢追`dev`分支的用户，那么使用这个脚本之前，需要你先删除原来的`data/maibot.db`文件，否则脚本可能会报错。
 :::
+
+### Napcat Adapter升级
+现在控制麦麦消息是否接收已经不再位于 MaiBot 本体了，而是位于 Adapter 的配置文件了，请参照 Napcat Adapter [配置文件指南](/manual/adapters/napcat)进行配置和更新
