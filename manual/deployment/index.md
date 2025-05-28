@@ -8,8 +8,7 @@
 
 1. 电脑一台：Windows/Linux/Mac 任意
 2. 一个QQ小号（请自行了解QQ机器人风险）
-3. 安装好的mongoDB数据库，关于怎么安装，请百度
-4. AI大模型的可以使用的API Key
+3. AI大模型的可以使用的API Key
 
 ## 部署方式选择
 
@@ -27,7 +26,7 @@
 
 - [MaiCore版Linux部署](mmc_deploy_linux)
 
-### Docker 部署（推荐）
+### Docker 部署
 
 - [MaiCore版Docker部署(推荐)](mmc_deploy_docker)
 
@@ -38,6 +37,8 @@
 ---
 
 ::: details 点击查看0.5.x部署方式(旧版)
+
+本部分需要使用MongoDB作为数据库，安装请自行探索。
 
 ### Docker 部署 (推荐)
 

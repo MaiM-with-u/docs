@@ -97,9 +97,6 @@ Maim-with-u
 1. 在`MaiBot`文件夹中新建一个`config`文件夹，手动复制`template`文件夹中的`bot_config_template.toml`到`config`目录下并改名为`bot_config.toml`
 2. 然后手动复制`template`文件夹中的`template.env`到根目录并重命名为`.env`
 3. 打开`.env`并修改PORT为8000
-::: details 如果你想修改这个PORT为其他，点开这里
-找到 MaiBot-Napcat-Adapter 下的 config.toml ，打开，修改 MaiBot_Server 字段中的 port 为你想要的端口号
-:::
 4. 剩余的内容参考[配置指南](/manual/configuration/index)
 
 #### MaiBot Napcat adapter 配置
@@ -111,7 +108,7 @@ Maim-with-u
 2. 打开`MaiBot-Napcat-Adapter`文件夹下的`config.toml`，配置`[Napcat_Server]`、`[MaiBot_Server]`、`[Napcat]`字段
     - `[Napcat_Server]`字段的port,应该与Napcat设置的反向代理的url相同（这里是8095）
     - `[Napcat_Server]`字段的heartbeat,应该与Napcat设置的反向代理的心跳间隔相同（注意，Napcat中的间隔为毫秒，填入时请转化为秒，这里是30）
-    - `[MaiBot_Server]`字段的port,应该与麦麦本体的`.env`中的`PORT`相同
+    - `[MaiBot_Server]`字段的port,应该与麦麦本体的`.env`中的`PORT`相同（此处为8000）
 ```toml
 [Napcat_Server] # Napcat连接的ws服务设置
 host = "localhost" # Napcat设定的主机地址

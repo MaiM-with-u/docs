@@ -50,7 +50,7 @@ export default defineConfig({
             { text: '部署概览', link: '/manual/deployment/' },
             { text: 'Windows部署', link: '/manual/deployment/mmc_deploy_windows' },
             { text: 'Linux部署', link: '/manual/deployment/mmc_deploy_linux' },
-            { text: 'Docker部署(推荐)', link: '/manual/deployment/mmc_deploy_docker' },
+            { text: 'Docker部署', link: '/manual/deployment/mmc_deploy_docker' },
             { text: 'Adapter部署(旧版)', link: '/manual/deployment/old/mmc_deploy_windows_old' },
             {
               text: '0.5.x旧版部署方法',
@@ -122,7 +122,7 @@ export default defineConfig({
           collapsed: false,
           items: [
             { text: '安装与运行', link: '/faq/maibot/install_running' },
-            { text: '备份与更新', link: '/faq/maibot/backup_update' },
+            { text: '旧版更新', link: '/faq/maibot/update_to_07' },
             { text: 'LPMM说明', link: '/faq/maibot/lpmm' }
           ]
         },

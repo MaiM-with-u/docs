@@ -6,7 +6,7 @@
 
 ### MaiBot相关
 - [安装与运行](/faq/maibot/install_running)
-- [备份与更新](/faq/maibot/backup_update)
+- [旧版更新](/faq/maibot/update_to_07)
 - [LPMM说明](/faq/maibot/lpmm)
 
 ### Adapter相关

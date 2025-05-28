@@ -117,10 +117,6 @@ cp template/template.env .env
 复制完成后打开`.env`并修改PORT为8000
 随后前往[配置指南(最新版)](/manual/configuration/configuration_standard)完成配置
 
-::: details 如果你想修改这个PORT为其他，点开这里
-找到 MaiBot-Napcat-Adapter 下的 config.toml ，打开，修改 MaiBot_Server 字段中的 port 为你想要的端口号
-:::
-
 ### MaiBot Napcat Adapter 配置
 
 1. 在Napcat中新建`websocket客户端`并设置反向代理的url（这里以`ws://localhost:8095/`为例）
@@ -130,7 +126,7 @@ cp template/template.env .env
 2. 打开`MaiBot-Napcat-Adapter`文件夹下的`config.toml`，配置`[Napcat_Server]`、`[MaiBot_Server]`、`[Napcat]`字段
     - `[Napcat_Server]`字段的port,应该与Napcat设置的反向代理的url相同（这里是8095）
     - `[Napcat_Server]`字段的heartbeat,应该与Napcat设置的反向代理的心跳间隔相同（注意，Napcat中的间隔为毫秒，填入时请转化为秒，这里是30）
-    - `[MaiBot_Server]`字段的port,应该与麦麦本体的`.env`中的`PORT`相同
+    - `[MaiBot_Server]`字段的port,应该与麦麦本体的`.env`中的`PORT`相同（此处为8000）
 ```toml
 [Napcat_Server] # Napcat连接的ws服务设置
 host = "localhost" # Napcat设定的主机地址

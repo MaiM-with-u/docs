@@ -1,27 +1,27 @@
 # 📄 MaiBot备份与恢复
 
-MaiBot数据存储主要分两个部分， `MongoDB` 数据库和 `MaiBot` 目录文件夹,此页面会告诉你如何备份 `MongoDB` ，需要备份的文件夹或文件。
-
-## 一、MaiBot 备份与恢复
+MaiBot数据均存储在`data`文件夹中
 
 MaiBot 文件夹结构：
 ```
 MaiBot/
 ├── data/
-│   ├── emoji
-│   └── personality
 ├── config/
 │   └── bot_config.toml
 ├── .env
 └── ...
 ```
-### 1. `data` 文件夹 (强烈推荐)
-- 用于存储表情包，人格，知识库等。
-### 2. `bot_config.toml`文件 (强烈推荐)
-- 用于存储人设、调用的大模型信息等设置。
+因此，你想要备份麦麦，需要备份以下内容：
+
+### 1. `data` 文件夹
+- 用于存储表情包，知识库，聊天数据等。
+### 2. `bot_config.toml`文件
+- 用于存储人设、调用的大模型信息等机器人设置。
 ### 3. `.env` 文件
 - 存储AI云服务提供商的KEY API、数据库用户名密码等。
-## 二、MongoDB 数据库备份与恢复
+
+::: details 如果你使用的是低于0.7.0版本的MaiBot，那么点开这里
+### MongoDB 数据库备份与恢复
 
 MongoDB 官方提供了两种主要的备份工具：**mongodump/mongorestore** 和 **文件系统快照**
 
@@ -52,3 +52,4 @@ mongodump --uri "mongodb://user:passwd@localhost:27017/" --out ./backup
 mongorestore --uri "mongodb://localhost:27017/" --dir ./backup
 ```
 
+:::
