@@ -6,19 +6,19 @@
 
 ### 用户手册
 
-- **部署方法**
-  - [部署概览](/manual/deployment/)
-  - [Windows部署](/manual/deployment/mmc_deploy_windows)
-  - [Linux部署](/manual/deployment/mmc_deploy_linux)
-  - [Docker部署(推荐)](/manual/deployment/mmc_deploy_docker)
+- **部署**
+  - [部署概览（部署前请先阅读）](/manual/deployment/)
+  - [Windows](/manual/deployment/mmc_deploy_windows)
+  - [Linux](/manual/deployment/mmc_deploy_linux)
+  - [Docker](/manual/deployment/mmc_deploy_docker)
   - [Adapter部署(旧版)](/manual/deployment/old/mmc_deploy_windows_old)
 
-- **配置方法**
+- **配置**
   - [配置指南](/manual/configuration/)
   - [标准配置教程](/manual/configuration/configuration_standard)
   - [LPMM导入文件格式](/manual/configuration/lpmm_knowledge_template)
 
-- **使用指南**
+- **使用**
   - [麦麦使用说明](/manual/usage/)
   - [LPMM使用说明](/manual/usage/lpmm)
   - [备份你的麦麦](/manual/usage/backup)
