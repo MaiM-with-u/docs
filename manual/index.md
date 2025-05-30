@@ -7,13 +7,10 @@
 ### 用户手册
 
 - **部署**
-  - [部署概览（部署前请先阅读）](/manual/deployment/)
-  - [Windows](/manual/deployment/mmc_deploy_windows)
-  - [Linux](/manual/deployment/mmc_deploy_linux)
-  - [Docker](/manual/deployment/mmc_deploy_docker)
-  - [Adapter部署(旧版)](/manual/deployment/old/mmc_deploy_windows_old)
+[如何在你的电脑安装麦麦](/manual/deployment/)
 
 - **配置**
+如何自定义和配置你的麦麦
   - [配置指南](/manual/configuration/)
   - [标准配置教程](/manual/configuration/configuration_standard)
   - [LPMM导入文件格式](/manual/configuration/lpmm_knowledge_template)
