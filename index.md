@@ -3,8 +3,8 @@ layout: home
 title: MaiBot 文档中心
 hero:
   name: MaiBot
-  text: 智能、多功能的QQ群聊机器人
-  tagline: 基于大语言模型的聊天机器人，具有记忆系统和情感表达能力
+  text: 多模型、拟人化、可扩展的智能体
+  tagline: 多种模型协作，仿生的思考规划架构，模块化设计和内部扩展性带来拟人化的交互体验
   image:
     src: /images/maimai.png
     alt: MaiBot
@@ -20,28 +20,24 @@ hero:
       link: /develop/
 features:
   - icon: 🧠
-    title: 智能对话
-    details: 基于先进LLM模型的自然语言理解与生成能力
+    title: 好多LLM
+    details: 基于多个LLM配合协作，带来自然语言理解与生成能力
   - icon: 💾
-    title: 记忆系统
-    details: 长短期记忆结合，记住与用户的互动历史
+    title: 能够记点东西
+    details: 能记住交流中发生的事，也能记住人类是怎么说话的
   - icon: ❤️
-    title: 情感表达
-    details: 丰富的情感状态和个性化表达方式
+    title: 仿生的思考
+    details: 参考认知科学理论的模块化设计，并可以进行拓展
   - icon: 🔧
     title: 灵活配置
     details: 支持多种API服务，个性化设置轻松实现
   - icon: 🚢
     title: 多种部署
-    details: 支持Docker、Linux、Windows和NAS等多种部署方式
+    details: 支持启动器、Docker、Linux、Windows等多种部署方式
   - icon: 🔄
     title: 持续更新
     details: 定期更新和改进，不断增强功能与性能
 ---
-
-## 关于 MaiBot
-
-MaiBot 是一个基于大语言模型的智能QQ群聊机器人，具有自然对话、记忆系统和情感表达能力，能够为您的QQ群带来丰富的交互体验。
 
 ## 快速导航
 

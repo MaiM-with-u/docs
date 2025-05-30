@@ -1,6 +1,6 @@
-# 📄 MaiCore 文档中心
+# 📄 MaiBot 文档中心
 
-MaiCore是一个功能强大的聊天智能体核心，基于大语言模型提供智能对话、记忆系统和情感表达能力。
+在这个页面中，你讲了解到如何部署，配置和使用MaiBot
 
 ## 文档导航
 
@@ -35,33 +35,5 @@ MaiCore是一个功能强大的聊天智能体核心，基于大语言模型提�
   - [群晖NAS部署](/manual/deployment/old/synology_deploy)
   - [新手Linux服务器部署](/manual/deployment/old/linux_deploy_guide_for_beginners)
 :::
-## 特色功能
-
-<div class="features">
-  <div class="feature">
-    <h3>🧠 智能对话</h3>
-    <p>基于先进LLM模型的自然语言理解与生成能力</p>
-  </div>
-  <div class="feature">
-    <h3>💾 记忆系统</h3>
-    <p>长短期记忆结合，记住与用户的互动历史</p>
-  </div>
-  <div class="feature">
-    <h3>❤️ 情感表达</h3>
-    <p>丰富的情感状态和个性化表达方式</p>
-  </div>
-  <div class="feature">
-    <h3>🔧 灵活配置</h3>
-    <p>支持多种API服务，个性化设置轻松实现</p>
-  </div>
-  <div class="feature">
-    <h3>🚢 多种部署</h3>
-    <p>支持Docker、Linux、Windows和NAS等多种部署方式</p>
-  </div>
-  <div class="feature">
-    <h3>🔄 持续更新</h3>
-    <p>定期更新和改进，不断增强功能与性能</p>
-  </div>
-</div>
 
 ![MaiBot](/avatars/MaiM.png)
