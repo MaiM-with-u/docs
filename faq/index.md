@@ -6,6 +6,7 @@
 
 ### MaiBot相关
 - [安装与运行](/faq/maibot/install_running)
+- [怎样调整麦麦的行为？](/faq/maibot/settings)
 - [旧版更新](/faq/maibot/update_to_07)
 - [LPMM说明](/faq/maibot/lpmm)
 

@@ -10,7 +10,8 @@
   - [文件结构](/develop/structure/file_structure)
   - [消息处理流程](/develop/structure/message_flow_direction)
 - API参考
-- [Adapter 开发指南](/develop/plugin_develop/)
+- [Adapter 开发指南](/develop/adapter_develop/)
+- [(0.7.x) 插件开发指南v0.1](/develop/plugin_develop/)
 - [Maim_Message参考](/develop/maim_message/index)
 - [开发者与代码规范](/develop/develop_standard)
 - [贡献指南](#贡献指南v1-0)
