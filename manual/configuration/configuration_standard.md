@@ -3,7 +3,10 @@
 ## 简介
 
 这个配置文件主要涉及麦麦的所有行为表现
+
 （如果你要配置哪些群可以聊天，需要到适配器设置中配置）
+
+如果你要了解模型配置的内容，包括该选用哪些模型，请参考[bot_config模型配置教程](./configuration_model_standard)
 
 ## 配置文件详解
 
@@ -16,20 +19,19 @@ alias_names = ["麦叠", "牢麦"]
 这里配置Maibot对应的qq号和昵称，以及别名
 
 通过昵称或别名呼叫麦麦均能引起麦麦注意。
+如果不配置将无法正常识别at和呼叫
 
 <hr class="custom_hr"/>
 
 ```toml
 [personality]
-personality_core = "用一句话或几句话描述人格的核心特点" # 建议50字以内
+personality_core = "用一句话或几句话描述人格的核心特点"
 personality_sides = [
     "用一句话或几句话描述人格的一些细节",
     "用一句话或几句话描述人格的一些细节",
     "用一句话或几句话描述人格的一些细节",
 ]
 
-# 身份特点
-#アイデンティティがない 生まれないらららら
 [identity] 
 identity_detail = [
     "身份特点",
@@ -55,7 +57,8 @@ enable_expression_learning = true # 是否启用表达学习，麦麦会学习�
 learning_interval = 600 # 学习间隔 单位秒
 ```
 
-本部分配置麦麦的表达方式和学习习惯。开启后麦麦会学习人类的说话风格。
+- `expression_style`会影响麦麦的说话风格
+- `enable_expression_learning`开启后麦麦会学习群友的说话风格
 
 <hr class="custom_hr"/>
 
@@ -129,6 +132,9 @@ observation_context_size = 15 # 观察到的最长上下文大小,建议15，太
 compressed_length = 5 # 不能大于observation_context_size,心流上下文压缩的最短压缩长度，超过心流观察到的上下文长度，会压缩，最短压缩长度为5
 compress_length_limit = 5 #最多压缩份数，超过该数值的压缩上下文会被删除
 
+parallel_processing = true #是否平行处理记忆，开启可以节省时间和token
+processor_max_time = 20 #处理器超时时间，开启可以防止回复时间过长
+
 [focus_chat_processor] # 专注聊天处理器，打开可以实现更多功能，但是会增加token消耗
 self_identify_processor = true # 是否启用自我识别处理器
 tool_use_processor = false # 是否启用工具使用处理器
@@ -140,7 +146,7 @@ working_memory_processor = false # 是否启用工作记忆处理器
 `chat_processor`是专注聊天处理器，开启后可以实现更多功能，但是会增加token消耗。
 - `self_identify_processor`是自我识别处理器，开启后麦麦会尝试识别自己是谁。
 - `tool_use_processor`是工具使用处理器，开启后麦麦可以使用工具。
-- `working_memory_processor`是工作记忆处理器，开启后麦麦会使用工作记忆。
+- `working_memory_processor`是工作记忆处理器，开启后麦麦会使用工作记忆。消耗量较高，不建议开启
 
 <hr class="custom_hr"/>
 
@@ -191,7 +197,7 @@ reaction = "有人说你是人机或者机器人，否定这一事实，攻击�
 [[keywords_reaction.rules]] # 就像这样复制
 enable = false # 仅作示例，不会触发
 keywords = ["测试关键词回复","test",""]
-reaction = "回答“测试成功”"
+reaction = "回答"测试成功""
 
 [[keywords_reaction.rules]] # 使用正则表达式匹配句式
 enable = false # 仅作示例，不会触发
@@ -211,134 +217,37 @@ response_max_length = 256 # 回复允许的最大长度
 response_max_sentence_num = 4 # 回复允许的最大句子数
 enable_kaomoji_protection = false # 是否启用颜文字保护
 
-[remote] #发送统计信息，主要是看全球有多少只麦麦
-enable = true
-
-[experimental] #实验性功能，不一定完善或者根本不能用
-enable_friend_chat = false # 是否启用好友聊天
-pfc_chatting = false # 是否启用PFC聊天，该功能仅作用于私聊，与回复模式独立
 ```
 
 此部分可以参考注释进行配置。
 
 `enable_kaomoji_protection`是颜文字保护，防止在处理时将颜文字分割导致错误，如果你想让你的Bot使用颜文字，建议开启。
 
-`pfc_chatting`是PFC聊天模式，开启后会使用一种新的判断逻辑判断是否进行聊天和聊天内容。
-
 <hr class="custom_hr"/>
 
 ```toml
-#下面的模型若使用硅基流动则不需要更改，使用ds官方则改成.env自定义的宏，使用自定义模型则选择定位相似的模型自己填写
-#推理模型
+[maim_message]
+auth_token = [] # 认证令牌，用于API验证，为空则不启用验证
+# 以下项目若要使用需要打开use_custom，并单独配置maim_message的服务器
+use_custom = false # 是否启用自定义的maim_message服务器，注意这需要设置新的端口，不能与.env重复
+host="127.0.0.1"
+port=8090
+mode="ws" # 支持ws和tcp两种模式
+use_wss = false # 是否使用WSS安全连接，只支持ws模式
+cert_file = "" # SSL证书文件路径，仅在use_wss=true时有效
+key_file = "" # SSL密钥文件路径，仅在use_wss=true时有效
 
-# 额外字段
-# 下面的模型有以下额外字段可以添加：
+[telemetry] #发送统计信息，主要是看全球有多少只麦麦
+enable = true
 
-# stream = <true|false> : 用于指定模型是否是使用流式输出
-# 如果不指定，则该项是 False
-
-#这个模型必须是推理模型
-[model.llm_reasoning] # 一般聊天模式的推理回复模型
-name = "Pro/deepseek-ai/DeepSeek-R1"
-provider = "SILICONFLOW"
-pri_in = 1.0 #模型的输入价格（非必填，可以记录消耗）
-pri_out = 4.0 #模型的输出价格（非必填，可以记录消耗）
-
-[model.llm_normal] #V3 回复模型 专注和一般聊天模式共用的回复模型
-name = "Pro/deepseek-ai/DeepSeek-V3"
-provider = "SILICONFLOW"
-pri_in = 2 #模型的输入价格（非必填，可以记录消耗）
-pri_out = 8 #模型的输出价格（非必填，可以记录消耗）
-#默认temp 0.2 如果你使用的是老V3或者其他模型，请自己修改temp参数
-temp = 0.2 #模型的温度，新V3建议0.1-0.3
-
-[model.llm_topic_judge] #主题判断模型：建议使用qwen2.5 7b
-name = "Pro/Qwen/Qwen2.5-7B-Instruct"
-provider = "SILICONFLOW"
-pri_in = 0.35
-pri_out = 0.35
-
-[model.llm_summary] #概括模型，建议使用qwen2.5 32b 及以上
-name = "Qwen/Qwen2.5-32B-Instruct"
-provider = "SILICONFLOW"
-pri_in = 1.26
-pri_out = 1.26
-
-[model.vlm] # 图像识别模型
-name = "Pro/Qwen/Qwen2.5-VL-7B-Instruct"
-provider = "SILICONFLOW"
-pri_in = 0.35
-pri_out = 0.35
-
-[model.llm_heartflow] # 用于控制麦麦是否参与聊天的模型
-name = "Qwen/Qwen2.5-32B-Instruct"
-provider = "SILICONFLOW"
-pri_in = 1.26
-pri_out = 1.26
-
-[model.llm_observation] #观察模型，压缩聊天内容，建议用免费的
-# name = "Pro/Qwen/Qwen2.5-7B-Instruct"
-name = "Qwen/Qwen2.5-7B-Instruct"
-provider = "SILICONFLOW"
-pri_in = 0
-pri_out = 0
-
-[model.llm_sub_heartflow] #心流：认真水群时,生成麦麦的内心想法，必须使用具有工具调用能力的模型
-name = "Pro/deepseek-ai/DeepSeek-V3"
-provider = "SILICONFLOW"
-pri_in = 2
-pri_out = 8
-temp = 0.3 #模型的温度，新V3建议0.1-0.3
-
-[model.llm_plan] #决策：认真水群时,负责决定麦麦该做什么
-name = "Pro/deepseek-ai/DeepSeek-V3"
-provider = "SILICONFLOW"
-pri_in = 2
-pri_out = 8
-
-#嵌入模型
-
-[model.embedding] #嵌入
-name = "BAAI/bge-m3"
-provider = "SILICONFLOW"
-pri_in = 0
-pri_out = 0
-
-
-#私聊PFC：需要开启PFC功能，默认三个模型均为硅基流动v3，如果需要支持多人同时私聊或频繁调用，建议把其中的一个或两个换成官方v3或其它模型，以免撞到429
-
-#PFC决策模型
-[model.llm_PFC_action_planner]
-name = "Pro/deepseek-ai/DeepSeek-V3"
-provider = "SILICONFLOW"
-temp = 0.3
-pri_in = 2
-pri_out = 8
-
-#PFC聊天模型
-[model.llm_PFC_chat]
-name = "Pro/deepseek-ai/DeepSeek-V3"
-provider = "SILICONFLOW"
-temp = 0.3
-pri_in = 2
-pri_out = 8
-
-#PFC检查模型
-[model.llm_PFC_reply_checker]
-name = "Pro/deepseek-ai/DeepSeek-V3"
-provider = "SILICONFLOW"
-pri_in = 2
-pri_out = 8
-
+[experimental] #实验性功能
+debug_show_chat_mode = false # 是否在回复后显示当前聊天模式
+enable_friend_chat = false # 是否启用好友聊天
 ```
+高级设置，包含一些调试功能
 
-这部分是对使用的模型进行配置，对应模型的用途已经写在注释中。
 
-::: warning
-`llm_reasoning`必须使用推理模型。
-
-`llm_sub_heartflow`和`llm_plan`必须使用具有工具调用能力（Function call）的模型。具体可以查询各大平台的官方文档。
-:::
+<hr class="custom_hr"/>
 
 ## 注意事项
 

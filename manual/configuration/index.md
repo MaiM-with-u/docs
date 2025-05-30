@@ -5,13 +5,15 @@
 MaiBot 使用以下两个主要配置文件：
 
 1. **`.env`** - 环境配置文件，包含 API 密钥信息。
-2. **`bot_config.toml`** - 机器人行为配置文件，包含机器人的名称、性格设定及功能开关。
+2. **`bot_config.toml`** - MaiBot行为配置文件，包含机器人的名称、性格设定及功能开关。
 
 为了让MaiBot连接上qq等其他平台，你还需要编辑对应的适配器的配置文件
 
 ## 配置文件详细说明
 
 [bot_config配置教程](./configuration_standard)
+
+[bot_config模型配置教程](./configuration_model_standard)
 
 [.env配置教程](./configuration_env_standard.md)
 
