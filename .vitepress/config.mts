@@ -167,11 +167,18 @@ export default defineConfig({
           ]
         },
         {
+          text: '适配器开发',
+          collapsed: false,
+          items: [
+            { text: '开发综述', link: '/develop/adapter_develop/' },
+            { text: 'Adapter 开发指南', link: '/develop/adapter_develop/develop_adapter' },
+          ]
+        },
+        {
           text: '插件开发',
           collapsed: false,
           items: [
-            { text: '开发综述', link: '/develop/plugin_develop/' },
-            { text: 'Adapter 开发指南', link: '/develop/plugin_develop/develop_plugin' },
+            { text: '开发指南（草稿）', link: '/develop/plugin_develop/' },
           ]
         },
         {
