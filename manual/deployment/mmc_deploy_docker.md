@@ -132,7 +132,7 @@ docker compose up -d
 ```bash
 docker compose ps
 ```
-正常应显示 3 个容器（maim-bot-core、maim-bot-adapters、maim-bot-mongo、maim-bot-napcat）状态为 `running`
+正常应显示 4 个容器（maim-bot-core、maim-bot-adapters、maim-bot-mongo、maim-bot-napcat）状态为 `running`
 ```bash                                                                                                                                                                                                                                                                              
 NAME                IMAGE                           COMMAND                  SERVICE    CREATED          STATUS          PORTS
 maim-bot-adapters   unclas/maimbot-adapter:latest   "python main.py"         adapters   34 minutes ago   Up 34 minutes   8095/tcp
@@ -193,7 +193,7 @@ docker compose logs -f
 
 ---
 ## 本地构建流程
-### 一、准备必要的文件
+### 准备必要的文件
 
 1. 通过 git clone 将 [麦麦 repo](https://github.com/MaiM-with-u/MaiBot) clone 到本地
 
