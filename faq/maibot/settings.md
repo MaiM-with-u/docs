@@ -1,5 +1,23 @@
 # 这里有一些让你的麦麦更加符合你的需求的帮助
 
+## 如何开启麦麦的禁言和画图功能
+
+麦麦的画图和禁言功能目前作为示例插件，默认不启用
+
+所有的插件功能只在focus模式下有效（或auto进入focus模式之后）
+
+如果需要开启禁言插件
+ - 首先麦麦必须是管理员
+ - 你需要安装最新适配器
+ - MMC安装目录/src/plugins/test_plugin/actions/mute_action.py文件中第26行，将`default = False`改为`default = True`
+
+如果需要开启豆包绘图插件
+ - 你必须在火山平台开通绘图服务获得key
+ - MMC安装目录/src/plugins/test_plugin_pic/actions/pic_action.py文件中第37行，将`default = False`改为`default = True`
+ - 修改后，至少启动一次focus模式
+ - 将你的绘图key填写到同文件夹的后缀为.toml的配置文件中，重启
+
+
 ## 我对麦麦的说话风格不满意，我想要调整它
 
 你可以从**两个方法**调整它，一个是 **表达风格**和**人设**，另一个是你使用的**AI模型**

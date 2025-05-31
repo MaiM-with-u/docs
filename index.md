@@ -39,27 +39,7 @@ features:
     details: 定期更新和改进，不断增强功能与性能
 ---
 
-## 快速导航
-
-- **[用户手册](/manual/)** - 面向普通用户的安装、配置和使用指南
-  - [常见问题](/faq/)
-  - [部署方法](/manual/deployment/)
-  - [配置指南](/manual/configuration/)
-  - [使用指南](/manual/usage/)
-  
-- **[开发文档](/develop/)** - 面向开发者的API参考和开发指南
-  - [项目结构](/develop/structure/)
-  - [Adapter 开发](/develop/plugin_develop/)
-  - [maim_message 参考](/develop/maim_message/)
-
-## 开始使用
-
-1. 查看[安装指南](/manual/configuration/configuration_standard)配置机器人
-2. 选择适合您的[部署方式](/manual/deployment/)启动机器人
-3. 参考[使用指南](/manual/usage/)了解如何与机器人互动
-
 ## 获取支持
 
-- 浏览[常见问题](/faq/)解决常见问题
 - 访问[GitHub仓库](https://github.com/MaiM-with-u/MaiBot)提交问题或贡献代码
 - 加入用户交流群获取帮助
