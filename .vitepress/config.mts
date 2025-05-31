@@ -128,7 +128,8 @@ export default defineConfig({
           items: [
             { text: '安装与运行', link: '/faq/maibot/install_running' },
             { text: '旧版更新', link: '/faq/maibot/update_to_07' },
-            { text: 'LPMM说明', link: '/faq/maibot/lpmm' }
+            { text: 'LPMM说明', link: '/faq/maibot/lpmm' },
+            { text: '麦麦部分配置详细说明', link: '/faq/maibot/settings'}
           ]
         },
         {
@@ -149,14 +150,6 @@ export default defineConfig({
             { text: '开发者与代码规范', link: '/develop/develop_standard' },
           ]
         },
-        // {
-        //   text: 'API参考',
-        //   collapsed: false,
-        //   items: [
-        //     { text: 'API概览', link: '/develop/api/' },
-        //     { text: 'API草案', link: '/develop/api/draft' }
-        //   ]
-        // },
         {
           text: '项目结构',
           collapsed: false,
@@ -167,11 +160,18 @@ export default defineConfig({
           ]
         },
         {
+          text: '适配器开发',
+          collapsed: false,
+          items: [
+            { text: '开发综述', link: '/develop/adapter_develop/' },
+            { text: 'Adapter 开发指南', link: '/develop/adapter_develop/develop_adapter' },
+          ]
+        },
+        {
           text: '插件开发',
           collapsed: false,
           items: [
-            { text: '开发综述', link: '/develop/plugin_develop/' },
-            { text: 'Adapter 开发指南', link: '/develop/plugin_develop/develop_plugin' },
+            { text: '开发指南（草稿）', link: '/develop/plugin_develop/' },
           ]
         },
         {
@@ -180,7 +180,8 @@ export default defineConfig({
           items: [
             { text: 'Maim_Message 概述', link: '/develop/maim_message/' },
             { text: 'Message_Base', link: '/develop/maim_message/message_base' },
-            { text: 'Router', link: '/develop/maim_message/router' }
+            { text: 'Router', link: '/develop/maim_message/router' },
+            { text: '命令参数表', link: '/develop/maim_message/command_args'}
           ]
         }
         // {

@@ -31,6 +31,7 @@ class Seg:
 
 `type="seglist"`时`data`为一个Seg列表。
 
+`type="command"`时，`data`为一个字典，包含命令的名称和参数。详细的参数列表在[Seg Command 列表](/develop/maim_message/command_args)
 </div>
 
 `from_dict`: 将字典转换为Seg对象，适用于从字典格式的数据中创建Seg对象，不必自行调用进行解析。
