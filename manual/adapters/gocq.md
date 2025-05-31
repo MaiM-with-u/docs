@@ -51,14 +51,14 @@ level = "INFO" # 日志等级（DEBUG, INFO, WARNING, ERROR）
 - `port`：gocq 设定的端口，通常为 `8080`。
 - `heartbeat`：与 gocq 设置的心跳相同（按秒计），通常为 `30`。
 
-这部分的`host`和`port`组合起来，就是在Napcat中设置的ws服务地址，猫猫建议大家使用默认值。
+这部分的`host`和`port`组合起来，就是在gocq中设置的ws服务地址，猫猫建议大家使用默认值。
 
 ### MaiBot_Server
 - `platform_name`：标识 adapter 的名称，通常为 `qq`。
 - `host`：麦麦在 `.env` 文件中设置的主机地址，即 `HOST` 字段。
 - `port`：麦麦在 `.env` 文件中设置的端口，即 `PORT` 字段。
 
-这个`platform_name`是用来标识适配器的，因为Napcat适配器是专门为QQ设计的，所以猫猫建议大家使用`qq`，当然你也可以使用其他的名称。
+这个`platform_name`是用来标识适配器的，因为gocq适配器是专门为QQ设计的，所以猫猫建议大家使用`qq`，当然你也可以使用其他的名称。
 
 ### Chat
 - `group_list_type`：群组名单类型，可选为：`whitelist`（白名单），`blacklist`（黑名单）。
