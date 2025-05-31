@@ -128,7 +128,8 @@ export default defineConfig({
           items: [
             { text: '安装与运行', link: '/faq/maibot/install_running' },
             { text: '旧版更新', link: '/faq/maibot/update_to_07' },
-            { text: 'LPMM说明', link: '/faq/maibot/lpmm' }
+            { text: 'LPMM说明', link: '/faq/maibot/lpmm' },
+            { text: '麦麦部分配置详细说明', link: '/faq/maibot/settings'}
           ]
         },
         {
