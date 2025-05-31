@@ -149,14 +149,6 @@ export default defineConfig({
             { text: '开发者与代码规范', link: '/develop/develop_standard' },
           ]
         },
-        // {
-        //   text: 'API参考',
-        //   collapsed: false,
-        //   items: [
-        //     { text: 'API概览', link: '/develop/api/' },
-        //     { text: 'API草案', link: '/develop/api/draft' }
-        //   ]
-        // },
         {
           text: '项目结构',
           collapsed: false,
@@ -187,7 +179,8 @@ export default defineConfig({
           items: [
             { text: 'Maim_Message 概述', link: '/develop/maim_message/' },
             { text: 'Message_Base', link: '/develop/maim_message/message_base' },
-            { text: 'Router', link: '/develop/maim_message/router' }
+            { text: 'Router', link: '/develop/maim_message/router' },
+            { text: '命令参数表', link: '/develop/maim_message/command_args'}
           ]
         }
         // {
