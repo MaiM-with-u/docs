@@ -1,6 +1,7 @@
 # MaiBot GoCQ Adapter 文档
 
 这个适配器不容易被腾讯制裁！（审阅人：未经广泛测试，一家之言，大家可以试试）
+zhiyucn补充：实际上是因人而异
 
 ## GoCQ 配置
 ### 安装 GoCQ
@@ -54,3 +55,4 @@ python main.py
 ```
 ### 配置 GoCQ Adapter
 此 Go-CQ Adapter基于 Napcat Adapter 二次修改的，配置与其类似，这里就不再赘述。
+注意：Napcat_server项被替换为了gocq_server项
