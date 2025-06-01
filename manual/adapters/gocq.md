@@ -55,4 +55,4 @@ python main.py
 ```
 ### 配置 GoCQ Adapter
 此 Go-CQ Adapter基于 Napcat Adapter 二次修改的，配置与其类似，这里就不再赘述。
-注意：Napcat_server项被替换为了gocq_server项
+警告：与Napcat Adapter不同的是，这里的Napcat_server项在跟进Napcat Adapter的更新后，被替换为了gocq_server项，从旧版本升级到新版本时，一定要注意修改配置。
