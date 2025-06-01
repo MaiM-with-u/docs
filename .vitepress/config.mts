@@ -71,6 +71,7 @@ export default defineConfig({
           items: [
             { text: 'Adapters 文档中心', link: '/manual/adapters' },
             { text: 'MaiBot Napcat Adapter', link: '/manual/adapters/napcat' },
+            { text: 'GO-CQ Adapter', link: '/manual/adapters/gocq' },
             {
               text: 'MaiBot TTS Adapter', collapsed: true, items: [
                 { text: '基本介绍', link: '/manual/adapters/tts/' },
