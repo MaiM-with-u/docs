@@ -7,7 +7,7 @@ zhiyucn补充：实际上是因人而异
 ### 安装 GoCQ
 首先，你需要安装 GoCQ 本身，以下列出了一些不同的GoCQ版本：  
 [AstralGocq](https://github.com/ProtocolScience/AstralGocq)  
-[gocq-http(New)](https://github.com/LagrangeDev/go-cqhttp)
+[gocq-http(New)](https://github.com/LagrangeDev/go-cqhttp)  
 在这些项目中的release页面下载对应的版本，这里只提供Windows版本的安装教程。  
 
 ### 配置GoCQ
