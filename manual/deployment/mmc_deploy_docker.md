@@ -8,7 +8,7 @@
 ---
 
 ::: warning
-**升级到0.6.2时由于跟换了adapter需要重新拉取docker-compose.yml和adapter相关配置(adapter配置方法见[修改相关配置](#⚙%EF%B8%8F-二、麦麦环境配置))，  
+**升级到0.6.2时由于更换了adapter需要重新拉取docker-compose.yml和adapter相关配置(adapter配置方法见[修改相关配置](#⚙%EF%B8%8F-二、麦麦环境配置))，  
 新版的adapter需要将napcat改为客户端([配置示例](#_5-2-⚙%EF%B8%8F-napcat配置入口))**
 :::
 

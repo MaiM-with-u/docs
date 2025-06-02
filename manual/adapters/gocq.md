@@ -1,12 +1,13 @@
 # MaiBot GoCQ Adapter 文档
 
 这个适配器不容易被腾讯制裁！（审阅人：未经广泛测试，一家之言，大家可以试试）
+zhiyucn补充：实际上是因人而异
 
 ## GoCQ 配置
 ### 安装 GoCQ
 首先，你需要安装 GoCQ 本身，以下列出了一些不同的GoCQ版本：  
 [AstralGocq](https://github.com/ProtocolScience/AstralGocq)  
-[gocq-http(New)](https://github.com/LagrangeDev/go-cqhttp)
+[gocq-http(New)](https://github.com/LagrangeDev/go-cqhttp)  
 在这些项目中的release页面下载对应的版本，这里只提供Windows版本的安装教程。  
 
 ### 配置GoCQ
@@ -54,3 +55,4 @@ python main.py
 ```
 ### 配置 GoCQ Adapter
 此 Go-CQ Adapter基于 Napcat Adapter 二次修改的，配置与其类似，这里就不再赘述。
+警告：与Napcat Adapter不同的是，这里的Napcat_server项在跟进Napcat Adapter的更新后，被替换为了gocq_server项，从旧版本升级到新版本时，一定要注意修改配置。
