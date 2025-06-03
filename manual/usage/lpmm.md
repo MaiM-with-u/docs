@@ -5,7 +5,7 @@
 ::: danger 提醒
 请仔细阅读以下注意事项，以免引起不必要的麻烦与支出
 :::
-
+:::info
 1. **知识提取前，请确保你的文本分段良好，没有奇怪字符，否则提取结果可能很不理想甚至会导致提取失败**
 
 2. **知识提取时，需要将文本大量输入大模型，越长的文本消耗越大，产生的花费越高**
@@ -22,55 +22,32 @@
 
    （同上样例：导入时10700K几乎跑满，峰值内存占用约3G）
 
-5. **本知识库与旧版（暂时）不兼容**，如果需要将旧版数据库中内容迁移到新版，请重新导入
+5. **本知识库与旧版不兼容**，如果需要将旧版数据库中内容迁移到新版，请重新导入
+:::
 
-## 配置
 
-### 安装
-对于windows_x86_64平台的用户，**请使用pip进行直接安装**。（已经包含在MaiBot的requirements.txt中）  
-对于Linux平台用户，需要下载gcc/g++编译器，跳转链接:[Linux环境使用方法](#linux环境)  
-对于Docker用户配置完成后可以直接运行脚本（LPMM已预编译于镜像中），跳转链接:[Docker的LPMM食用方式](#docker的lpmm食用方式)
+## 安装
+对于 Windows_x86_64 平台的用户，**请使用pip进行直接安装**。（已经包含在MaiBot的requirements.txt中，无需手动）  
 
+对于 Linux 平台用户，需要下载gcc/g++编译器，跳转链接: [Linux环境使用方法](#linux)  
+
+对于 MacOS 平台用户请直接参考[这个链接](/manual/usage/compile_and_install)的 MacOS 手动编译部分
+
+对于Docker用户配置完成后可以直接运行脚本（LPMM已预编译于镜像中），跳转链接: [Docker的LPMM食用方式](#docker的lpmm食用方式)
+::: tip
+如果你多次尝试安装后，**发现确实没有对应你平台的版本**，请参考[这个链接](/manual/usage/compile_and_install)的内容进行手动编译。
+:::
+
+### Windows
+直接运行以下命令：
 ```bash
 pip install quick_algo
 ```
 
-如果你多次尝试后，**发现确实没有对应你平台的版本**，可以选择不使用新版知识库，或者参考下面的内容进行手动编译。
+### Linux
+1. 首先安装gcc/g++编译器
 
-::: details 手动编译
-
-### Windows环境
-
-#### 环境准备
-
-1. 首先，在[C++ Build Tools](https://visualstudio.microsoft.com/zh-hans/visual-cpp-build-tools/)下载微软MSVC构建工具安装包
-2. 打开安装包，会自动安装Visual Studio Installer，安装完成后，打开Visual Studio Installer
-3. 选择上面的"单个组件"选项卡，搜索并选择以下组件：
-   - MSVC v143 - VS 2022 C++ x64/x86 生成工具
-   - Windows 10/11 SDK (根据您的电脑环境选择)
-   - 适用于Windows的Cmake工具
-4. 点击"安装"按钮，开始安装这些组件
-5. 在[MinGW-w64 releases](https://github.com/niXman/mingw-builds-binaries/releases)下载符合您电脑环境的MinGW（注意看名称，要msvc版本的）
-6. 解压到任意目录，将解压后的目录添加到环境变量中
-
-#### MSVC编译
-
-首先安装根目录下的`requirements.txt`中的依赖
-
-```bash
-pip install -i https://mirrors.aliyun.com/pypi/simple -r requirements.txt --upgrade
-```
-
-随后进入`lib/quick_algo/`目录，使用**管理员权限**运行 `python build_lib.py --cleanup --cythonize --install`
-
-### Windows(Arm)环境
-
-无数据
-
-### Linux环境
-
-1. 首先安装gcc/g++编译器  
-   基于Debian的系统（如Ubuntu、Linux Mint等）
+基于Debian的系统（如Ubuntu、Linux Mint等）
 
 ```bash
 # 更新软件包索引
@@ -90,33 +67,36 @@ sudo dnf install gcc gcc-c++
 ```
 
 2. 验证安装
-安装完成后，可以通过以下命令验证`gcc`和`g++`是否安装成功：
+
+安装完成后，可以通过以下命令验证`gcc`和`g++`是否安装成功，如果安装成功，会显示`gcc`和`g++`的版本信息。
 
 ```bash
 gcc --version
 g++ --version
-# 如果安装成功，会显示`gcc`和`g++`的版本信息。
 ```
 
-然后激活MaiBot下的虚拟环境，运行:
+3. 安装 LPMM 必备库`quick_algo`
+
+激活你使用的虚拟环境，运行:
 
 ```bash
 source ./venv/bin/activate #激活MaiBot虚拟环境
 pip install quick-algo
 ```
-:::
+
+
 ## 配置LPMM
 
-把`template/lpmm_config_template.toml`复制到`config/lpmm_config.toml`，按照样例配置`provider`
+把`template/lpmm_config_template.toml`复制到`config/lpmm_config.toml`，按照样例配置`provider`和使用的模型。
 
-:::tip
-实体提取、RDF提取的模型不建议使用32B以下的小模型，否则提取效果非常差而且极其可能失败
-:::
+其对应的说明均存在于配置文件注释中，此处略。
 
 ## 麦麦学习知识
 
 ::: tip
-知识库使用的文本必须以txt格式存储
+1. 知识库使用的文本必须以txt格式存储
+
+2. 实体提取、RDF提取的模型不建议使用32B以下的小模型，否则提取效果非常差而且极其可能失败
 :::
 
 ### 分段
@@ -148,7 +128,7 @@ pip install quick-algo
 新版LPMM进行了改进：
 
 首先，把原始文件放到`data/lpmm_raw_data`(没有请自行创建)
-激活虚拟环境(已激活请跳过)：
+激活虚拟环境(**已激活请跳过**)：
 
 ```bash
 #Windows下:

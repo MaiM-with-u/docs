@@ -97,6 +97,7 @@ export default defineConfig({
           items: [
             { text: '麦麦使用说明', link: '/manual/usage/' },
             { text: 'LPMM使用说明', link: '/manual/usage/lpmm' },
+            { text: 'LPMM手动编译说明', link: '/manual/usage/compile_and_install'},
             { text: '备份你的麦麦', link: '/manual/usage/backup.md' },
           ]
         },
