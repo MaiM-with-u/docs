@@ -10,15 +10,21 @@
 
 在麦麦plugin文件夹中的示例插件新增了mute_action动作和pic_action动作，你可以参考其中的代码
 
-
 在**之后的更新**中，会兼容normal_chat aciton，更多的自定义组件，tool，和/help式指令
-
 
 ## 基本步骤
 
 1. 在`src/plugins/你的插件名/actions/`目录下创建插件文件
 2. 继承`PluginAction`基类
 3. 实现`process`方法
+4. 在`src/plugins/你的插件名/__init__.py`中导入你的插件类，确保插件能被正确加载
+
+```python
+# src/plugins/你的插件名/__init__.py
+from .actions.your_action import YourAction
+
+__all__ = ["YourAction"]
+```
 
 ## 插件结构示例
 
@@ -80,15 +86,12 @@ data为发送内容
 ### 2. 使用表达器发送消息
 
 ```python
-
 await self.send_message_by_expressor("你好")
 
 await self.send_message_by_expressor(f"禁言{target} {duration}秒，因为{reason}")
-
 ```
 将消息通过表达器发送，使用LLM组织成符合bot语言风格的内容并发送
 只能发送文本
-
 
 ### 3. 获取聊天类型
 
@@ -103,10 +106,36 @@ messages = self.get_recent_messages(count=5)  # 获取最近5条消息
 # 返回格式: [{"sender": "发送者", "content": "内容", "timestamp": 时间戳}, ...]
 ```
 
-### 4. 获取动作参数
+### 5. 获取动作参数
 
 ```python
 param_value = self.action_data.get("param_name", "默认值")
+```
+
+### 6. 获取可用模型
+
+```python
+models = self.get_available_models()  # 返回所有可用的模型配置
+# 返回格式: {"model_name": {"config": "value", ...}, ...}
+```
+
+### 7. 使用模型生成内容
+
+```python
+success, response, reasoning, model_name = await self.generate_with_model(
+    prompt="你的提示词",
+    model_config=models["model_name"],  # 从get_available_models获取的模型配置
+    max_tokens=2000,  # 可选，最大生成token数
+    request_type="plugin.generate",  # 可选，请求类型标识
+    temperature=0.7,  # 可选，温度参数
+    # 其他模型特定参数...
+)
+```
+
+### 8. 获取用户ID
+
+```python
+platform, user_id = await self.get_user_id_by_person_name("用户名")
 ```
 
 ### 日志记录
