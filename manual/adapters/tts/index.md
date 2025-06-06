@@ -16,7 +16,7 @@
 
 
 ## 安装步骤
-安装这个适配器也十分简单喵，就像安装Napcat适配器一样，只需要从Github上的[仓库](https://github.com/MaiM-with-u/maimbot_tts_adapter)下载适配器文件，然后安装好依赖，再进行一些配置，最后启动就可以啦~。
+安装这个适配器也十分简单喵，就像安装Napcat适配器一样，只需要从Github上的[仓库](https://github.com/MaiM-with-u/maimbot_tts_adapter)下载适配器文件，然后安装好依赖，再进行一些配置，最后启动就可以啦~
 ```bash
 git clone https://github.com/MaiM-with-u/maimbot_tts_adapter.git
 cd maimbot_tts_adapter
