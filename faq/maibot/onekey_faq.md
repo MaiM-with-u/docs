@@ -34,13 +34,13 @@ private_list = [123456789, 987654321]  # 支持多个QQ号
 
 ### 📱 表情包
 
-**存放路径：** `maibot → date → emoji`
+**存放路径：** `maibot → data → emoji`
 
 将表情包文件放入此目录即可使用。
 
 ### 📚 知识库
 
-**存放路径：** `maibot → date → lpmm_raw_date`
+**存放路径：** `maibot → data → lpmm_raw_data`
 
 **使用方法：** 直接将知识文件拖入该文件夹即可
 
