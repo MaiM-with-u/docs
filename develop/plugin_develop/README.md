@@ -52,7 +52,7 @@ MaiBot插件系统（v0.2）提供了多种扩展机器人功能的方式，主�
 ```python
 # 基本动作结构
 from src.chat.actions.plugin_action import PluginAction, register_action, ActionActivationType
-from src.chat.chat_mode import ChatMode
+from src.chat.actions.base_action import ChatMode
 
 @register_action
 class YourAction(PluginAction):
