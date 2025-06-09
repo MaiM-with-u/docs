@@ -1,10 +1,14 @@
 # API参考
 
-插件可以使用`PluginAction`基类提供的以下API方法。这些方法可以帮助插件与系统交互、发送消息、获取信息等。
+本文档提供了MaiBot插件系统可用的API方法。这些方法可以帮助插件与系统交互、发送消息、获取信息等。
 
-## 消息发送
+## 动作(Action)系统API
 
-### 1. 直接发送消息
+以下API可用于`PluginAction`类的实现中：
+
+### 消息发送
+
+#### 1. 直接发送消息
 
 ```python
 await self.send_message(type="text", data="你好")
@@ -34,7 +38,7 @@ await self.send_message(
 )
 ```
 
-### 2. 使用表达器发送消息
+#### 2. 使用表达器发送消息
 
 ```python
 await self.send_message_by_expressor("你好")
@@ -54,9 +58,9 @@ await self.send_message_by_expressor(f"禁言{target} {duration}秒，因为{rea
 
 **注意**：表达器只能发送文本消息，不支持其他类型。
 
-## 信息获取
+### 信息获取
 
-### 1. 获取聊天类型
+#### 1. 获取聊天类型
 
 ```python
 chat_type = self.get_chat_type()
@@ -77,7 +81,7 @@ elif chat_type == "private":
     # 私聊逻辑
 ```
 
-### 2. 获取最近消息
+#### 2. 获取最近消息
 
 ```python
 messages = self.get_recent_messages(count=5)
@@ -102,7 +106,7 @@ for msg in messages:
     # 处理消息...
 ```
 
-### 3. 获取动作参数
+#### 3. 获取动作参数
 
 ```python
 param_value = self.action_data.get("param_name", "默认值")
@@ -125,7 +129,7 @@ duration = self.action_data.get("duration", "60")
 reason = self.action_data.get("reason", "未指定原因")
 ```
 
-### 4. 获取用户ID
+#### 4. 获取用户ID
 
 ```python
 platform, user_id = await self.get_user_id_by_person_name("用户名")
@@ -149,9 +153,9 @@ except Exception as e:
     logger.error(f"{self.log_prefix} 获取用户ID失败: {e}")
 ```
 
-## 模型调用
+### 模型调用
 
-### 1. 获取可用模型
+#### 1. 获取可用模型
 
 ```python
 models = self.get_available_models()
@@ -171,7 +175,7 @@ for model_name, config in models.items():
     logger.info(f"可用模型: {model_name}")
 ```
 
-### 2. 使用模型生成内容
+#### 2. 使用模型生成内容
 
 ```python
 success, response, reasoning, model_name = await self.generate_with_model(
@@ -211,6 +215,127 @@ else:
     return False, "分析失败"
 ```
 
+### 动作存储功能
+
+#### 存储动作信息
+
+```python
+await self.store_action_info(
+    action_build_into_prompt=False,
+    action_prompt_display="动作描述",
+    action_done=True
+)
+```
+
+将动作执行的信息记录到数据库中，用于历史记录和上下文构建。
+
+**参数**:
+- `action_build_into_prompt` (bool): 是否构建到提示中，当设置为`True`时，该动作信息将被包含在后续与LLM的对话中
+- `action_prompt_display` (str): 动作在提示中的显示内容，人类可读的描述
+- `action_done` (bool): 动作是否已完成，默认为`True`
+
+**存储内容**:
+- 动作ID（基于时间戳和thinking_id生成）
+- 执行时间
+- 动作名称
+- 动作数据
+- 执行状态
+- 是否构建到提示中
+- 动作提示显示内容
+- 聊天上下文信息
+
+**示例**:
+
+```python
+# 执行禁言操作后存储信息
+await self.send_message(
+    type="command",
+    data={"name": "GROUP_BAN", "args": {"qq_id": str(user_id), "duration": duration_str}},
+    display_message=f"尝试禁言了 {target} {time_str}",
+)
+
+# 存储动作信息到数据库
+await self.store_action_info(
+    action_build_into_prompt=False,  # 不将禁言动作构建到提示中
+    action_prompt_display=f"你尝试禁言了 {target} {time_str}，理由：{reason}",
+    action_done=True
+)
+```
+
+**应用场景**:
+- **动作历史记录**：记录机器人执行过的所有动作，便于审计和调试
+- **上下文构建**：通过`action_build_into_prompt=True`，将重要的动作信息加入到与LLM的对话上下文中
+- **用户交互历史**：记录机器人与用户的交互历史
+- **动作状态追踪**：通过`action_done`参数追踪动作的执行状态
+
+**最佳实践**:
+- 只有对后续对话有重要影响的动作才应设置`action_build_into_prompt=True`
+- 提供清晰的`action_prompt_display`，使用人类可读的格式
+- 避免在动作数据中存储大量信息
+
+## 命令(Command)系统API
+
+以下API可用于`BaseCommand`类的实现中：
+
+### 消息发送
+
+#### 发送消息
+
+```python
+await chat_stream.send_message("消息内容")
+```
+
+向用户发送消息。
+
+**参数**:
+- `message` (str): 要发送的消息内容
+
+**示例**:
+
+```python
+await chat_stream.send_message("命令执行成功")
+await chat_stream.send_message(f"投掷骰子结果: {result}")
+```
+
+### 参数处理
+
+命令参数通过`execute`方法的`args`参数传递，通常需要手动解析。
+
+**示例**:
+
+```python
+async def execute(self, chat_stream, args):
+    # 解析参数
+    if not args:
+        # 处理空参数情况
+        await chat_stream.send_message("请提供参数")
+        return False
+        
+    # 处理参数
+    parts = args.split()
+    first_arg = parts[0] if parts else ""
+    second_arg = parts[1] if len(parts) > 1 else ""
+    
+    # 使用参数
+    await chat_stream.send_message(f"参数1: {first_arg}, 参数2: {second_arg}")
+    return False
+```
+
+### 返回值
+
+`execute`方法的返回值决定是否继续处理消息：
+
+- `True`: 继续正常的消息处理流程（通常不使用）
+- `False`: 不继续处理消息（大多数命令使用这个）
+
+**示例**:
+
+```python
+async def execute(self, chat_stream, args):
+    await chat_stream.send_message("命令已执行")
+    return False  # 不继续处理消息
+```
+
 ## 日志记录
 
 ```python
@@ -229,42 +354,30 @@ logger.info(f"{self.log_prefix} 你的日志信息")
 **示例**:
 
 ```python
+# 在动作类中
 logger = get_logger("your_action_name")
-
-# 在类中使用
 logger.info(f"{self.log_prefix} 开始处理")
-logger.warning(f"{self.log_prefix} 发现潜在问题: {issue}")
-logger.error(f"{self.log_prefix} 处理失败: {e}")
+
+# 在命令类中
+logger = get_logger("your_command_name")
+logger.info(f"执行命令: {args}")
 ```
 
 ## 属性访问
 
-### 1. 日志前缀
+### 动作类属性
 
 ```python
-self.log_prefix
+self.log_prefix  # 日志前缀
+self.session_id  # 会话ID
 ```
 
-获取日志前缀，包含动作名称和会话ID，便于日志追踪。
-
-**示例**:
+### 命令类属性
 
 ```python
-logger.info(f"{self.log_prefix} 处理开始")
-```
-
-### 2. 会话ID
-
-```python
-self.session_id
-```
-
-获取当前会话的唯一标识符。
-
-**示例**:
-
-```python
-logger.debug(f"处理会话 {self.session_id} 的请求")
+self.name        # 命令名称
+self.description # 命令描述
+self.usage       # 使用方法
 ```
 
 ## 最佳实践
