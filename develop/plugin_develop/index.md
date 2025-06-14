@@ -25,7 +25,7 @@ MaiBot插件系统（v0.2）提供了多种扩展机器人功能的方式，主�
 ### Actions系统
 2. [激活系统](./activation_system.md) - 动作激活机制详解
 3. [插件结构示例](./plugin_examples.md) - 常见插件类型的代码示例
-4. [配置模式推荐](./config_recommendations.md) - 推荐的配置模式和使用场景
+4. [配置模式推荐](./config_mode.md) - 推荐的配置模式和使用场景
 
 ### 命令系统
 5. [命令处理系统](./command_system.md) - 命令系统的实现和使用方法
