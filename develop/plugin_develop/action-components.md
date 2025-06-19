@@ -128,146 +128,21 @@ action_require = [
 associated_types = ["text", "emoji", "image"]
 ```
 
-### 4. 新API导入必须项
-
-使用新插件系统时，必须导入所需的API模块：
-
-```python
-# 导入新API模块
-from src.plugin_system.apis import generator_api, send_api, emoji_api
-
-# 如果需要使用其他API
-from src.plugin_system.apis import llm_api, database_api, message_api
-```
-
-### 5. 动作记录必须项
-
-每个 Action 在执行完成后，**必须**使用 `store_action_info` 记录动作信息：
+### 4. 执行方法必须项
 
 ```python
 async def execute(self) -> Tuple[bool, str]:
-    # ... 执行动作的代码 ...
-  
-    if success:
-        # 存储动作信息 - 使用新API格式
-        await self.store_action_info(
-            action_build_into_prompt=True,  # 让麦麦知道这个动作
-            action_prompt_display=f"执行了xxx动作，参数：{param}",  # 动作描述
-            action_done=True,  # 动作是否完成
-        )
-        return True, "动作执行成功"
-```
-
-> ⚠️ **重要提示**：新API格式中不再需要手动传递 `thinking_id` 等参数，BaseAction会自动处理。
-
-## 🚀 新API使用指南
-
-### 📨 消息发送API
-
-新的消息发送API更加简洁，自动处理群聊/私聊逻辑：
-
-```python
-class MessageAction(BaseAction):
-    async def execute(self) -> Tuple[bool, str]:
-        # 发送文本消息 - 自动判断群聊/私聊
-        await self.send_text("Hello World!")
-  
-        # 发送表情包
-        emoji_base64 = await emoji_api.get_by_description("开心")
-        if emoji_base64:
-            await self.send_emoji(emoji_base64)
-  
-        # 发送图片
-        await self.send_image(image_base64)
-  
-        # 发送自定义类型消息
-        await self.send_custom("video", video_data, typing=True)
-  
-        return True, "消息发送完成"
-```
-
-### 🤖 智能生成API (replyer_1)
-
-使用replyer_1生成个性化内容：
-
-```python
-class SmartReplyAction(BaseAction):
-    async def execute(self) -> Tuple[bool, str]:
-        # 构建生成参数
-        reply_data = {
-            "text": "请生成一个友好的回复",
-            "style": "casual",
-            "topic": "日常聊天",
-            "replyer_name": "replyer_1"  # 指定使用replyer_1
-        }
-  
-        # 使用generator_api生成回复
-        success, reply_set = await generator_api.generate_reply(
-            chat_stream=self.chat_stream,
-            action_data=reply_data,
-            platform=self.platform,
-            chat_id=self.chat_id,
-            is_group=self.is_group
-        )
-  
-        if success and reply_set:
-            # 提取并发送文本回复
-            for reply_type, reply_content in reply_set:
-                if reply_type == "text":
-                    await self.send_text(reply_content)
-                elif reply_type == "emoji":
-                    await self.send_emoji(reply_content)
+    """
+    执行Action的主要逻辑
     
-            # 记录动作
-            await self.store_action_info(
-                action_build_into_prompt=True,
-                action_prompt_display=f"使用replyer_1生成了智能回复",
-                action_done=True
-            )
+    Returns:
+        Tuple[bool, str]: (是否成功, 执行结果描述)
+    """
+    # 执行动作的代码
+    success = True
+    message = "动作执行成功"
     
-            return True, "智能回复生成成功"
-        else:
-            return False, "回复生成失败"
-```
-
-### ⚙️ 配置访问API
-
-使用便捷的配置访问方法：
-
-```python
-class ConfigurableAction(BaseAction):
-    async def execute(self) -> Tuple[bool, str]:
-        # 获取插件配置 - 支持嵌套键访问
-        enable_feature = self.get_config("features.enable_smart_mode", False)
-        max_length = self.get_config("limits.max_text_length", 200)
-        style = self.get_config("behavior.response_style", "friendly")
-  
-        if enable_feature:
-            # 启用高级功能
-            pass
-  
-        return True, "配置获取成功"
-```
-
-### 📊 数据库API
-
-使用新的数据库API存储和查询数据：
-
-```python
-class DataAction(BaseAction):
-    async def execute(self) -> Tuple[bool, str]:
-        # 使用database_api
-        from src.plugin_system.apis import database_api
-  
-        # 存储数据
-        await database_api.store_action_info(
-            chat_stream=self.chat_stream,
-            action_name=self.action_name,
-            action_data=self.action_data,
-            # ... 其他参数
-        )
-  
-        return True, "数据存储完成"
+    return success, message
 ```
 
 ## 🔧 激活类型详解
@@ -286,28 +161,8 @@ class GreetingAction(BaseAction):
     keyword_case_sensitive = False  # 不区分大小写
   
     async def execute(self) -> Tuple[bool, str]:
-        # 可选：使用replyer_1生成个性化问候
-        if self.get_config("greeting.use_smart_reply", False):
-            greeting_data = {
-                "text": "生成一个友好的问候语",
-                "replyer_name": "replyer_1"
-            }
-    
-            success, reply_set = await generator_api.generate_reply(
-                chat_stream=self.chat_stream,
-                action_data=greeting_data
-            )
-    
-            if success:
-                for reply_type, content in reply_set:
-                    if reply_type == "text":
-                        await self.send_text(content)
-                        break
-                return True, "发送智能问候"
-  
-        # 传统问候方式
-        await self.send_text("你好！很高兴见到你！")
-        return True, "发送问候"
+        # 执行问候逻辑
+        return True, "发送了问候"
 ```
 
 ### LLM_JUDGE激活
@@ -330,26 +185,8 @@ class HelpAction(BaseAction):
     """
   
     async def execute(self) -> Tuple[bool, str]:
-        # 使用replyer_1生成帮助内容
-        help_data = {
-            "text": "用户需要帮助，请提供适当的帮助信息",
-            "help_type": self.action_data.get("help_type", "general"),
-            "replyer_name": "replyer_1"
-        }
-  
-        success, reply_set = await generator_api.generate_reply(
-            chat_stream=self.chat_stream,
-            action_data=help_data
-        )
-  
-        if success:
-            for reply_type, content in reply_set:
-                if reply_type == "text":
-                    await self.send_text(content)
-            return True, "提供了帮助"
-        else:
-            await self.send_text("我来帮助你！有什么问题吗？")
-            return True, "提供了默认帮助"
+        # 执行帮助逻辑
+        return True, "提供了帮助"
 ```
 
 ### RANDOM激活
@@ -365,11 +202,181 @@ class SurpriseAction(BaseAction):
     random_activation_probability = 0.1  # 10%概率激活
   
     async def execute(self) -> Tuple[bool, str]:
-        import random
-  
-        surprises = ["🎉", "✨", "🌟", "💝", "🎈"]
-        selected = random.choice(surprises)
-  
-        await self.send_emoji(selected)
-        return True, f"发送了惊喜表情: {selected}"
+        # 执行惊喜动作
+        return True, "发送了惊喜内容"
 ```
+
+### ALWAYS激活
+
+永远激活，常用于核心功能：
+
+```python
+class CoreAction(BaseAction):
+    focus_activation_type = ActionActivationType.ALWAYS
+    normal_activation_type = ActionActivationType.ALWAYS
+    
+    async def execute(self) -> Tuple[bool, str]:
+        # 执行核心功能
+        return True, "执行了核心功能"
+```
+
+### NEVER激活
+
+从不激活，用于临时禁用：
+
+```python
+class DisabledAction(BaseAction):
+    focus_activation_type = ActionActivationType.NEVER
+    normal_activation_type = ActionActivationType.NEVER
+    
+    async def execute(self) -> Tuple[bool, str]:
+        # 这个方法不会被调用
+        return False, "已禁用"
+```
+
+## 📚 BaseAction内置属性和方法
+
+### 内置属性
+
+```python
+class MyAction(BaseAction):
+    def __init__(self):
+        # 消息相关属性
+        self.message          # 当前消息对象
+        self.chat_stream      # 聊天流对象
+        self.user_id          # 用户ID
+        self.user_nickname    # 用户昵称
+        self.platform         # 平台类型 (qq, telegram等)
+        self.chat_id          # 聊天ID
+        self.is_group         # 是否群聊
+        
+        # Action相关属性
+        self.action_data      # Action执行时的数据
+        self.thinking_id      # 思考ID
+        self.matched_groups   # 匹配到的组(如果有正则匹配)
+```
+
+### 内置方法
+
+```python
+class MyAction(BaseAction):
+    # 配置相关
+    def get_config(self, key: str, default=None):
+        """获取配置值"""
+        pass
+    
+    # 消息发送相关
+    async def send_text(self, text: str):
+        """发送文本消息"""
+        pass
+    
+    async def send_emoji(self, emoji_base64: str):
+        """发送表情包"""
+        pass
+    
+    async def send_image(self, image_base64: str):
+        """发送图片"""
+        pass
+    
+    # 动作记录相关
+    async def store_action_info(self, **kwargs):
+        """记录动作信息"""
+        pass
+```
+
+## 🎯 完整Action示例
+
+```python
+from src.plugin_system import BaseAction, ActionActivationType, ChatMode
+from typing import Tuple
+
+class ExampleAction(BaseAction):
+    """示例Action - 展示完整的Action结构"""
+    
+    # === 激活控制 ===
+    focus_activation_type = ActionActivationType.LLM_JUDGE
+    normal_activation_type = ActionActivationType.KEYWORD
+    mode_enable = ChatMode.ALL
+    parallel_action = False
+    
+    # 关键词激活配置
+    activation_keywords = ["示例", "测试", "example"]
+    keyword_case_sensitive = False
+    
+    # LLM判断提示词
+    llm_judge_prompt = "当用户需要示例或测试功能时激活"
+    
+    # 随机激活概率（如果使用RANDOM类型）
+    random_activation_probability = 0.2
+    
+    # === 基本信息 ===
+    action_name = "example_action"
+    action_description = "这是一个示例Action，用于演示Action的完整结构"
+    
+    # === 功能定义 ===
+    action_parameters = {
+        "content": "要处理的内容",
+        "type": "处理类型",
+        "options": "可选配置"
+    }
+    
+    action_require = [
+        "用户需要示例功能时使用",
+        "适合用于测试和演示",
+        "不要在正式对话中频繁使用"
+    ]
+    
+    associated_types = ["text", "emoji"]
+    
+    async def execute(self) -> Tuple[bool, str]:
+        """执行示例Action"""
+        try:
+            # 获取Action参数
+            content = self.action_data.get("content", "默认内容")
+            action_type = self.action_data.get("type", "default")
+            
+            # 获取配置
+            enable_feature = self.get_config("example.enable_advanced", False)
+            max_length = self.get_config("example.max_length", 100)
+            
+            # 执行具体逻辑
+            if action_type == "greeting":
+                await self.send_text(f"你好！这是示例内容：{content}")
+            elif action_type == "info":
+                await self.send_text(f"信息：{content[:max_length]}")
+            else:
+                await self.send_text("执行了示例Action")
+            
+            # 记录动作信息
+            await self.store_action_info(
+                action_build_into_prompt=True,
+                action_prompt_display=f"执行了示例动作：{action_type}",
+                action_done=True
+            )
+            
+            return True, f"示例Action执行成功，类型：{action_type}"
+            
+        except Exception as e:
+            return False, f"执行失败：{str(e)}"
+```
+
+## 🎯 最佳实践
+
+### 1. Action设计原则
+
+- **单一职责**：每个Action只负责一个明确的功能
+- **智能激活**：合理选择激活类型，避免过度激活
+- **清晰描述**：提供准确的`action_require`帮助LLM决策
+- **错误处理**：妥善处理执行过程中的异常情况
+
+### 2. 性能优化
+
+- **激活控制**：使用合适的激活类型减少不必要的LLM调用
+- **并行执行**：谨慎设置`parallel_action`，避免冲突
+- **资源管理**：及时释放占用的资源
+
+### 3. 调试技巧
+
+- **日志记录**：在关键位置添加日志
+- **参数验证**：检查`action_data`的有效性
+- **配置测试**：测试不同配置下的行为

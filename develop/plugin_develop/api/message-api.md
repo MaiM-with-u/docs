@@ -1,398 +1,311 @@
-# 📡 消息API
+# 消息API
 
-## 📖 概述
+> 消息API提供了强大的消息查询、计数和格式化功能，让你轻松处理聊天消息数据。
 
-消息API提供了发送各种类型消息的接口，支持文本、表情、图片等多种消息类型。新版API格式更加简洁直观，自动处理群聊/私聊判断。
-
-## 🔄 基础消息发送
-
-### 发送文本消息
+## 导入方式
 
 ```python
-# 新API格式 - 自动判断群聊/私聊
-await self.send_text("这是一条文本消息")
-
-# 发送多行文本
-message = """
-这是第一行
-这是第二行
-这是第三行
-"""
-await self.send_text(message.strip())
+from src.plugin_system.apis import message_api
 ```
 
-### 发送表情消息
+## 功能概述
 
+消息API主要提供三大类功能：
+- **消息查询** - 按时间、聊天、用户等条件查询消息
+- **消息计数** - 统计新消息数量
+- **消息格式化** - 将消息转换为可读格式
+
+---
+
+## 消息查询API
+
+### 按时间查询消息
+
+#### `get_messages_by_time(start_time, end_time, limit=0, limit_mode="latest")`
+
+获取指定时间范围内的消息
+
+**参数：**
+- `start_time` (float): 开始时间戳
+- `end_time` (float): 结束时间戳  
+- `limit` (int): 限制返回消息数量，0为不限制
+- `limit_mode` (str): 限制模式，`"earliest"`获取最早记录，`"latest"`获取最新记录
+
+**返回：** `List[Dict[str, Any]]` - 消息列表
+
+**示例：**
 ```python
-# 新API格式 - 发送表情
-await self.send_emoji("😊")
-await self.send_emoji("🎉") 
-await self.send_emoji("👋")
+import time
+
+# 获取最近24小时的消息
+now = time.time()
+yesterday = now - 24 * 3600
+messages = message_api.get_messages_by_time(yesterday, now, limit=50)
 ```
 
-### 发送特定类型消息
+### 按聊天查询消息
 
+#### `get_messages_by_time_in_chat(chat_id, start_time, end_time, limit=0, limit_mode="latest")`
+
+获取指定聊天中指定时间范围内的消息
+
+**参数：**
+- `chat_id` (str): 聊天ID
+- 其他参数同上
+
+**示例：**
 ```python
-# 发送图片
-await self.send_type("image", "https://example.com/image.jpg")
-
-# 发送音频
-await self.send_type("audio", "audio_file_path")
-
-# 发送视频
-await self.send_type("video", "video_file_path")
-
-# 发送文件
-await self.send_type("file", "file_path")
-```
-
-## 🎯 跨目标消息发送
-
-### 使用send_api模块发送消息
-
-```python
-# 导入send_api
-from src.plugin_system.apis import send_api
-
-# 向指定群聊发送文本消息
-success = await send_api.text_to_group(
-    text="这是发送到群聊的消息",
-    group_id="123456789",
-    platform="qq"
-)
-
-# 向指定用户发送私聊消息
-success = await send_api.text_to_user(
-    text="这是私聊消息",
-    user_id="987654321", 
-    platform="qq"
-)
-
-# 向指定群聊发送表情
-success = await send_api.emoji_to_group(
-    emoji="😊",
-    group_id="123456789",
-    platform="qq"
-)
-
-# 向指定用户发送表情
-success = await send_api.emoji_to_user(
-    emoji="🎉",
-    user_id="987654321",
-    platform="qq"
+# 获取某个群聊最近的100条消息
+messages = message_api.get_messages_by_time_in_chat(
+    chat_id="123456789", 
+    start_time=yesterday, 
+    end_time=now, 
+    limit=100
 )
 ```
 
-### 通用目标消息发送
+#### `get_messages_by_time_in_chat_inclusive(chat_id, start_time, end_time, limit=0, limit_mode="latest")`
 
+获取指定聊天中指定时间范围内的消息（包含边界时间点）
+
+与 `get_messages_by_time_in_chat` 类似，但包含边界时间戳的消息。
+
+#### `get_recent_messages(chat_id, hours=24.0, limit=100, limit_mode="latest")`
+
+获取指定聊天中最近一段时间的消息（便捷方法）
+
+**参数：**
+- `chat_id` (str): 聊天ID
+- `hours` (float): 最近多少小时，默认24小时
+- `limit` (int): 限制返回消息数量，默认100条
+- `limit_mode` (str): 限制模式
+
+**示例：**
 ```python
-# 向任意目标发送任意类型消息
-success = await send_api.message_to_target(
-    message_type="text",           # 消息类型
-    content="消息内容",            # 消息内容
-    platform="qq",                # 平台
-    target_id="123456789",        # 目标ID
-    is_group=True,                # 是否为群聊
-    display_message="显示消息"     # 可选：显示消息
+# 获取最近6小时的消息
+recent_messages = message_api.get_recent_messages(
+    chat_id="123456789", 
+    hours=6.0, 
+    limit=50
 )
 ```
 
-## 📨 消息类型支持
+### 按用户查询消息
 
-### 支持的消息类型
+#### `get_messages_by_time_in_chat_for_users(chat_id, start_time, end_time, person_ids, limit=0, limit_mode="latest")`
 
-| 类型 | 说明 | 新API方法 | send_api方法 |
-|-----|------|----------|-------------|
-| `text` | 普通文本消息 | `await self.send_text()` | `await send_api.text_to_group()` |
-| `emoji` | 表情消息 | `await self.send_emoji()` | `await send_api.emoji_to_group()` |
-| `image` | 图片消息 | `await self.send_type("image", url)` | `await send_api.message_to_target()` |
-| `audio` | 音频消息 | `await self.send_type("audio", path)` | `await send_api.message_to_target()` |
-| `video` | 视频消息 | `await self.send_type("video", path)` | `await send_api.message_to_target()` |
-| `file` | 文件消息 | `await self.send_type("file", path)` | `await send_api.message_to_target()` |
+获取指定聊天中指定用户在指定时间范围内的消息
 
-### 新API格式示例
+**参数：**
+- `chat_id` (str): 聊天ID
+- `start_time` (float): 开始时间戳
+- `end_time` (float): 结束时间戳
+- `person_ids` (list): 用户ID列表
+- `limit` (int): 限制返回消息数量
+- `limit_mode` (str): 限制模式
 
+**示例：**
 ```python
-class ExampleAction(BaseAction):
-    async def execute(self) -> Tuple[bool, str]:
-        # 文本消息 - 最常用
-        await self.send_text("普通文本消息")
-        
-        # 表情消息 - 直接方法
-        await self.send_emoji("🎉")
-        
-        # 图片消息
-        await self.send_type("image", "/path/to/image.jpg")
-        
-        # 音频消息
-        await self.send_type("audio", "/path/to/audio.mp3")
-        
-        # 文件消息
-        await self.send_type("file", "/path/to/document.pdf")
-        
-        return True, "发送了多种类型的消息"
+# 获取特定用户的消息
+user_messages = message_api.get_messages_by_time_in_chat_for_users(
+    chat_id="123456789",
+    start_time=yesterday,
+    end_time=now,
+    person_ids=["user1", "user2"]
+)
 ```
 
-## 🔍 消息信息获取
+#### `get_messages_by_time_for_users(start_time, end_time, person_ids, limit=0, limit_mode="latest")`
 
-### 获取当前消息信息
+获取指定用户在所有聊天中指定时间范围内的消息
 
+### 其他查询方法
+
+#### `get_random_chat_messages(start_time, end_time, limit=0, limit_mode="latest")`
+
+随机选择一个聊天，返回该聊天在指定时间范围内的消息
+
+#### `get_messages_before_time(timestamp, limit=0)`
+
+获取指定时间戳之前的消息
+
+#### `get_messages_before_time_in_chat(chat_id, timestamp, limit=0)`
+
+获取指定聊天中指定时间戳之前的消息
+
+#### `get_messages_before_time_for_users(timestamp, person_ids, limit=0)`
+
+获取指定用户在指定时间戳之前的消息
+
+---
+
+## 消息计数API
+
+### `count_new_messages(chat_id, start_time=0.0, end_time=None)`
+
+计算指定聊天中从开始时间到结束时间的新消息数量
+
+**参数：**
+- `chat_id` (str): 聊天ID
+- `start_time` (float): 开始时间戳
+- `end_time` (float): 结束时间戳，如果为None则使用当前时间
+
+**返回：** `int` - 新消息数量
+
+**示例：**
 ```python
-# 新API格式 - 直接属性访问
-class ExampleCommand(BaseCommand):
-    async def execute(self) -> Tuple[bool, str]:
-        # 用户信息
-        user_id = self.user_id
-        user_nickname = self.user_nickname
-        
-        # 聊天信息
-        is_group_chat = self.is_group
-        chat_id = self.chat_id
-        platform = self.platform
-        
-        # 消息内容
-        message_text = self.message.processed_plain_text
-        
-        # 构建信息显示
-        info = f"""
-👤 用户: {user_nickname}({user_id})
-💬 类型: {'群聊' if is_group_chat else '私聊'}
-📱 平台: {platform}
-📝 内容: {message_text}
-        """.strip()
-        
-        await self.send_text(info)
-        return True, "显示了消息信息"
+# 计算最近1小时的新消息数
+import time
+now = time.time()
+hour_ago = now - 3600
+new_count = message_api.count_new_messages("123456789", hour_ago, now)
+print(f"最近1小时有{new_count}条新消息")
 ```
 
-### 获取群聊信息（如果适用）
+### `count_new_messages_for_users(chat_id, start_time, end_time, person_ids)`
 
+计算指定聊天中指定用户从开始时间到结束时间的新消息数量
+
+---
+
+## 消息格式化API
+
+### `build_readable_messages_to_str(messages, **options)`
+
+将消息列表构建成可读的字符串
+
+**参数：**
+- `messages` (List[Dict[str, Any]]): 消息列表
+- `replace_bot_name` (bool): 是否将机器人的名称替换为"你"，默认True
+- `merge_messages` (bool): 是否合并连续消息，默认False
+- `timestamp_mode` (str): 时间戳显示模式，`"relative"`或`"absolute"`，默认`"relative"`
+- `read_mark` (float): 已读标记时间戳，用于分割已读和未读消息，默认0.0
+- `truncate` (bool): 是否截断长消息，默认False
+- `show_actions` (bool): 是否显示动作记录，默认False
+
+**返回：** `str` - 格式化后的可读字符串
+
+**示例：**
 ```python
-# 在Action或Command中检查群聊信息
-if self.is_group:
-    group_info = self.message.message_info.group_info
-    if group_info:
-        group_id = group_info.group_id
-        group_name = getattr(group_info, 'group_name', '未知群聊')
-        
-        await self.send_text(f"当前群聊: {group_name}({group_id})")
-else:
-    await self.send_text("当前是私聊对话")
+# 获取消息并格式化为可读文本
+messages = message_api.get_recent_messages("123456789", hours=2)
+readable_text = message_api.build_readable_messages_to_str(
+    messages,
+    replace_bot_name=True,
+    merge_messages=True,
+    timestamp_mode="relative"
+)
+print(readable_text)
 ```
 
-## 🌐 平台支持
+### `build_readable_messages_with_details(messages, **options)` 异步
 
-### 支持的平台
+将消息列表构建成可读的字符串，并返回详细信息
 
-| 平台 | 标识 | 说明 |
-|-----|------|------|
-| QQ | `qq` | QQ聊天平台 |
-| 微信 | `wechat` | 微信聊天平台 |
-| Discord | `discord` | Discord聊天平台 |
+**参数：** 与 `build_readable_messages_to_str` 类似，但不包含 `read_mark` 和 `show_actions`
 
-### 平台适配示例
+**返回：** `Tuple[str, List[Tuple[float, str, str]]]` - 格式化字符串和详细信息元组列表(时间戳, 昵称, 内容)
 
+**示例：**
 ```python
-class PlatformAdaptiveAction(BaseAction):
-    async def execute(self) -> Tuple[bool, str]:
-        # 获取当前平台
-        current_platform = self.platform
-        
-        # 根据平台调整消息格式
-        if current_platform == "qq":
-            await self.send_text("[QQ] 这是QQ平台的消息")
-            await self.send_emoji("🐧")  # QQ企鹅表情
-        elif current_platform == "wechat":
-            await self.send_text("【微信】这是微信平台的消息")
-            await self.send_emoji("💬")  # 微信气泡表情
-        elif current_platform == "discord":
-            await self.send_text("**Discord** 这是Discord平台的消息")
-            await self.send_emoji("🎮")  # Discord游戏表情
-        else:
-            await self.send_text(f"未知平台: {current_platform}")
-        
-        return True, f"发送了{current_platform}平台适配消息"
+# 异步获取详细格式化信息
+readable_text, details = await message_api.build_readable_messages_with_details(
+    messages,
+    timestamp_mode="absolute"
+)
+
+for timestamp, nickname, content in details:
+    print(f"{timestamp}: {nickname} 说: {content}")
 ```
 
-## 🎨 消息格式化和高级功能
+### `get_person_ids_from_messages(messages)` 异步
 
-### 长消息分割
+从消息列表中提取不重复的用户ID列表
 
+**参数：**
+- `messages` (List[Dict[str, Any]]): 消息列表
+
+**返回：** `List[str]` - 用户ID列表
+
+**示例：**
 ```python
-# 自动处理长消息分割
-long_message = "这是一条很长的消息..." * 100
-
-# 新API会自动处理长消息分割
-await self.send_text(long_message)
+# 获取参与对话的所有用户ID
+messages = message_api.get_recent_messages("123456789")
+person_ids = await message_api.get_person_ids_from_messages(messages)
+print(f"参与对话的用户: {person_ids}")
 ```
 
-### 消息模板和格式化
+---
+
+## 完整使用示例
+
+### 场景1：统计活跃度
 
 ```python
-class TemplateMessageAction(BaseAction):
-    async def execute(self) -> Tuple[bool, str]:
-        # 使用配置中的消息模板
-        template = self.get_config("messages.greeting_template", "你好 {username}！")
-        
-        # 格式化消息
-        formatted_message = template.format(
-            username=self.user_nickname,
-            time=datetime.now().strftime("%H:%M"),
-            platform=self.platform
-        )
-        
-        await self.send_text(formatted_message)
-        
-        # 根据配置决定是否发送表情
-        if self.get_config("messages.include_emoji", True):
-            await self.send_emoji("😊")
-        
-        return True, "发送了模板化消息"
+import time
+from src.plugin_system.apis import message_api
+
+async def analyze_chat_activity(chat_id: str):
+    """分析聊天活跃度"""
+    now = time.time()
+    day_ago = now - 24 * 3600
+    
+    # 获取最近24小时的消息
+    messages = message_api.get_recent_messages(chat_id, hours=24)
+    
+    # 统计消息数量
+    total_count = len(messages)
+    
+    # 获取参与用户
+    person_ids = await message_api.get_person_ids_from_messages(messages)
+    
+    # 格式化消息内容
+    readable_text = message_api.build_readable_messages_to_str(
+        messages[-10:],  # 最后10条消息
+        merge_messages=True,
+        timestamp_mode="relative"
+    )
+    
+    return {
+        "total_messages": total_count,
+        "active_users": len(person_ids),
+        "recent_chat": readable_text
+    }
 ```
 
-### 条件消息发送
+### 场景2：查看特定用户的历史消息
 
 ```python
-class ConditionalMessageAction(BaseAction):
-    async def execute(self) -> Tuple[bool, str]:
-        # 根据用户类型发送不同消息
-        if self.is_group:
-            await self.send_text(f"群聊消息 - 当前群成员: @{self.user_nickname}")
-        else:
-            await self.send_text(f"私聊消息 - 你好 {self.user_nickname}！")
-        
-        # 根据时间发送不同表情
-        from datetime import datetime
-        hour = datetime.now().hour
-        
-        if 6 <= hour < 12:
-            await self.send_emoji("🌅")  # 早上
-        elif 12 <= hour < 18:
-            await self.send_emoji("☀️")  # 下午
-        else:
-            await self.send_emoji("🌙")  # 晚上
-        
-        return True, "发送了条件化消息"
+def get_user_history(chat_id: str, user_id: str, days: int = 7):
+    """获取用户最近N天的消息历史"""
+    now = time.time()
+    start_time = now - days * 24 * 3600
+    
+    # 获取特定用户的消息
+    user_messages = message_api.get_messages_by_time_in_chat_for_users(
+        chat_id=chat_id,
+        start_time=start_time,
+        end_time=now,
+        person_ids=[user_id],
+        limit=100
+    )
+    
+    # 格式化为可读文本
+    readable_history = message_api.build_readable_messages_to_str(
+        user_messages,
+        replace_bot_name=False,
+        timestamp_mode="absolute"
+    )
+    
+    return readable_history
 ```
 
-## 🛠️ 高级消息发送功能
+---
 
-### 批量消息发送
+## 注意事项
 
-```python
-class BatchMessageAction(BaseAction):
-    async def execute(self) -> Tuple[bool, str]:
-        messages = [
-            ("text", "第一条消息"),
-            ("emoji", "🎉"),
-            ("text", "第二条消息"),
-            ("emoji", "✨")
-        ]
-        
-        for msg_type, content in messages:
-            if msg_type == "text":
-                await self.send_text(content)
-            elif msg_type == "emoji":
-                await self.send_emoji(content)
-            
-            # 可选：添加延迟避免消息发送过快
-            import asyncio
-            await asyncio.sleep(0.5)
-        
-        return True, "发送了批量消息"
-```
-
-### 错误处理和重试
-
-```python
-class ReliableMessageAction(BaseAction):
-    async def execute(self) -> Tuple[bool, str]:
-        max_retries = 3
-        retry_count = 0
-        
-        while retry_count < max_retries:
-            try:
-                await self.send_text("重要消息")
-                return True, "消息发送成功"
-            except Exception as e:
-                retry_count += 1
-                logger.warning(f"消息发送失败 (尝试 {retry_count}/{max_retries}): {e}")
-                
-                if retry_count < max_retries:
-                    import asyncio
-                    await asyncio.sleep(1)  # 等待1秒后重试
-        
-        return False, "消息发送失败，已达到最大重试次数"
-```
-
-## 📝 最佳实践
-
-### 1. 消息发送最佳实践
-
-```python
-# ✅ 好的做法
-class GoodMessageAction(BaseAction):
-    async def execute(self) -> Tuple[bool, str]:
-        # 1. 检查配置
-        if not self.get_config("features.enable_messages", True):
-            return True, "消息功能已禁用"
-        
-        # 2. 简洁的消息发送
-        await self.send_text("简洁明了的消息")
-        
-        # 3. 适当的表情使用
-        if self.get_config("features.enable_emoji", True):
-            await self.send_emoji("😊")
-        
-        return True, "消息发送完成"
-
-# ❌ 避免的做法
-class BadMessageAction(BaseAction):
-    async def execute(self) -> Tuple[bool, str]:
-        # 避免：过长的消息
-        await self.send_text("这是一条非常非常长的消息" * 50)
-        
-        # 避免：过多的表情
-        for emoji in ["😊", "🎉", "✨", "🌟", "💫"]:
-            await self.send_emoji(emoji)
-        
-        return True, "发送了糟糕的消息"
-```
-
-### 2. 错误处理
-
-```python
-# ✅ 推荐的错误处理
-class SafeMessageAction(BaseAction):
-    async def execute(self) -> Tuple[bool, str]:
-        try:
-            message = self.get_config("messages.default", "默认消息")
-            await self.send_text(message)
-            return True, "消息发送成功"
-        except Exception as e:
-            logger.error(f"消息发送失败: {e}")
-            # 可选：发送备用消息
-            await self.send_text("消息发送遇到问题，请稍后再试")
-            return False, f"发送失败: {str(e)}"
-```
-
-### 3. 性能优化
-
-```python
-# ✅ 性能友好的消息发送
-class OptimizedMessageAction(BaseAction):
-    async def execute(self) -> Tuple[bool, str]:
-        # 合并多个短消息为一条长消息
-        parts = [
-            "第一部分信息",
-            "第二部分信息", 
-            "第三部分信息"
-        ]
-        
-        combined_message = "\n".join(parts)
-        await self.send_text(combined_message)
-        
-        return True, "发送了优化的消息"
-```
-
-通过新的API格式，消息发送变得更加简洁高效！ 
+1. **时间戳格式**：所有时间参数都使用Unix时间戳（float类型）
+2. **异步函数**：`build_readable_messages_with_details` 和 `get_person_ids_from_messages` 是异步函数，需要使用 `await`
+3. **性能考虑**：查询大量消息时建议设置合理的 `limit` 参数
+4. **消息格式**：返回的消息是字典格式，包含时间戳、发送者、内容等信息
+5. **用户ID**：`person_ids` 参数接受字符串列表，用于筛选特定用户的消息 
