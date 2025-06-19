@@ -8,10 +8,28 @@
 
 ## 📖 目录
 
-1. [配置定义：Schema驱动的配置系统](#配置定义schema驱动的配置系统)
-2. [配置访问：在Action和Command中使用配置](#配置访问在action和command中使用配置)
-3. [完整示例：从定义到使用](#完整示例从定义到使用)
-4. [最佳实践与注意事项](#最佳实践与注意事项)
+1. [配置架构变更说明](#配置架构变更说明)
+2. [配置定义：Schema驱动的配置系统](#配置定义schema驱动的配置系统)
+3. [配置访问：在Action和Command中使用配置](#配置访问在action和command中使用配置)
+4. [完整示例：从定义到使用](#完整示例从定义到使用)
+5. [最佳实践与注意事项](#最佳实践与注意事项)
+
+---
+
+## 配置架构变更说明
+
+- **`_manifest.json`** - 负责插件的**元数据信息**（静态）
+  - 插件名称、版本、描述
+  - 作者信息、许可证
+  - 仓库链接、关键词、分类
+  - 组件列表、兼容性信息
+
+- **`config.toml`** - 负责插件的**运行时配置**（动态）
+  - `enabled` - 是否启用插件
+  - 功能参数配置
+  - 组件启用开关
+  - 用户可调整的行为参数
+
 
 ---
 
@@ -101,7 +119,7 @@ class MutePlugin(BasePlugin):
 
     # 步骤1: 定义配置节的描述
     config_section_descriptions = {
-        "plugin": "插件基本信息配置",
+        "plugin": "插件启用配置",
         "components": "组件启用控制",
         "mute": "核心禁言功能配置",
         "smart_mute": "智能禁言Action的专属配置",
@@ -111,10 +129,7 @@ class MutePlugin(BasePlugin):
     # 步骤2: 使用ConfigField定义详细的配置Schema
     config_schema = {
         "plugin": {
-            "name": ConfigField(type=str, default="mute_plugin", description="插件名称", required=True),
-            "version": ConfigField(type=str, default="2.0.0", description="插件版本号"),
-            "enabled": ConfigField(type=bool, default=False, description="是否启用插件"),
-            "description": ConfigField(type=str, default="群聊禁言管理插件", description="插件描述", required=True)
+            "enabled": ConfigField(type=bool, default=False, description="是否启用插件")
         },
         "components": {
             "enable_smart_mute": ConfigField(type=bool, default=True, description="是否启用智能禁言Action"),
@@ -170,20 +185,11 @@ class MutePlugin(BasePlugin):
 # mute_plugin - 自动生成的配置文件
 # 群聊禁言管理插件，提供智能禁言功能
 
-# 插件基本信息配置
+# 插件启用配置
 [plugin]
-
-# 插件名称 (必需)
-name = "mute_plugin"
-
-# 插件版本号
-version = "2.0.0"
 
 # 是否启用插件
 enabled = false
-
-# 插件描述 (必需)
-description = "群聊禁言管理插件"
 
 
 # 组件启用控制
@@ -378,7 +384,7 @@ class GreetingPlugin(BasePlugin):
 
     # 配置节描述
     config_section_descriptions = {
-        "plugin": "插件基本信息",
+        "plugin": "插件启用配置",
         "greeting": "问候功能配置",
         "features": "功能开关配置",
         "messages": "消息模板配置"
@@ -387,8 +393,7 @@ class GreetingPlugin(BasePlugin):
     # 配置Schema定义
     config_schema = {
         "plugin": {
-            "enabled": ConfigField(type=bool, default=True, description="是否启用插件"),
-            "version": ConfigField(type=str, default="1.0.0", description="插件版本")
+            "enabled": ConfigField(type=bool, default=True, description="是否启用插件")
         },
         "greeting": {
             "template": ConfigField(
