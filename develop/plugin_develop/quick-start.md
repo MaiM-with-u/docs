@@ -345,6 +345,15 @@ class HelloWorldPlugin(BasePlugin):
 >
 > 我们需要在插件代码中定义配置Schema，让系统自动生成配置文件。
 
+#### 📄 配置架构说明
+
+在新的插件系统中，我们采用了**职责分离**的设计：
+
+- **`_manifest.json`** - 插件元数据（名称、版本、描述、作者等）
+- **`config.toml`** - 运行时配置（启用状态、功能参数等）
+
+这样避免了信息重复，提高了维护性。
+
 首先，在插件类中定义配置Schema：
 
 ```python
@@ -363,7 +372,7 @@ class HelloWorldPlugin(BasePlugin):
 
     # 配置节描述
     config_section_descriptions = {
-        "plugin": "插件基本信息",
+        "plugin": "插件启用配置",
         "greeting": "问候功能配置",
         "time": "时间查询配置"
     }
@@ -371,8 +380,6 @@ class HelloWorldPlugin(BasePlugin):
     # 配置Schema定义
     config_schema = {
         "plugin": {
-            "name": ConfigField(type=str, default="hello_world_plugin", description="插件名称"),
-            "version": ConfigField(type=str, default="1.0.0", description="插件版本"),
             "enabled": ConfigField(type=bool, default=True, description="是否启用插件")
         },
         "greeting": {

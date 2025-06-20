@@ -31,8 +31,7 @@ from src.plugin_system import BasePlugin, PythonDependency, register_plugin
 
 @register_plugin
 class MyPlugin(BasePlugin):
-    plugin_name = "my_plugin"
-    plugin_description = "我的示例插件"
+    name = "my_plugin"
     
     # 声明Python包依赖
     python_dependencies = [
@@ -324,14 +323,3 @@ for plugin_name, status in result['plugin_status'].items():
    print("安装日志:", result['install_log'])
    print("失败详情:", result['failed_installs'])
    ```
-
-## 🔗 相关文档
-
-- [🚀 快速开始指南](quick-start.md) - 创建你的第一个插件
-- [⚡ Action组件详解](action-components.md) - Action开发指南
-- [💻 Command组件详解](command-components.md) - Command开发指南
-- [📋 开发规范](development-standards.md) - 代码规范和最佳实践
-
----
-
-通过依赖管理系统，你的插件将更加健壮和易于维护。开始使用这些功能让你的插件开发更加高效吧！ 🚀 

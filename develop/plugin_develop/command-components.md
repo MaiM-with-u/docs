@@ -509,6 +509,4 @@ async def execute(self) -> Tuple[bool, Optional[str]]:
 - ✅ 智能建议和帮助
 - ✅ 随机化的互动
 
----
 
-🎉 **现在你已经掌握了Command组件开发的完整知识！继续学习 [API参考](api/) 来了解所有可用的接口。**
