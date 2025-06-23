@@ -49,6 +49,9 @@ enabled = ["GPT_Sovits"]
 [tts_base_config]
 stream_mode = false  # 是否启用流式输出
 post_process = false # 是否启用后处理（现阶段无效）
+
+[debug]
+logging_level = "INFO" # 日志级别
 ```
 
 在开始详细的配置讲解之前，百灵先用一个示意图，给各位展示一下 Napcat 适配器、TTS 适配器和 MaiBot 核心之间的数据流：
@@ -112,6 +115,11 @@ use_tts = true
 - `post_process`：是否启用后处理（现阶段无效）。
 
 这两个配置百灵要求你不要改动，除非你知道自己在做什么。实际作用请参考代码。
+
+### `debug` 调试配置
+这个字段现在只用来标识日志级别。
+
+- `logging_level`：日志级别，默认为 `INFO` 。
 
 ::: tip 百灵疑难解答小贴士
 如果你在使用过程中遇到了问题，你可以看一看[疑难解答](/faq/maibot-tts-adapter/index)
