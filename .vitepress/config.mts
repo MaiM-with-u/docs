@@ -175,20 +175,23 @@ export default defineConfig({
           collapsed: false,
           items: [
             { text: '开发指南', link: '/develop/plugin_develop/' },
-            { text: '快速开始', link: '/develop/plugin_develop/quick_start'},
-            {
-              text: 'Actions 系统',
+            { text: '快速开始', link: '/develop/plugin_develop/quick-start'},
+            { text: 'Actions系统', link: '/develop/plugin_develop/action-components' },
+            { text: '命令处理系统', link: '/develop/plugin_develop/command-components' },
+            { text: '配置管理指南', link: '/develop/plugin_develop/configuration-guide' },
+            { text: 'Manifest系统指南', link: '/develop/plugin_develop/manifest-guide' },
+            { text: 'API参考',
               collapsed: true,
               items: [
-                { text: '动作激活系统', link: '/develop/plugin_develop/activation_system' },
-                { text: '插件结构示例', link: '/develop/plugin_develop/plugin_examples' },
-                { text: '配置模式说明', link: '/develop/plugin_develop/config_mode' },
+                { text: '发送API', link: '/develop/plugin_develop/api/send-api' },
+                { text: '消息API', link: '/develop/plugin_develop/api/message-api' },
+                { text: '聊天流API', link: '/develop/plugin_develop/api/chat-api' },
+                { text: 'LLM API', link: '/develop/plugin_develop/api/llm-api' },
+                { text: '回复生成器API', link: '/develop/plugin_develop/api/generator-api' },
+                { text: '表情包API', link: '/develop/plugin_develop/api/emoji-api' },
               ]
             },
-            { text: '命令处理系统', link: '/develop/plugin_develop/command_system' },
-            { text: '迁移指南', link: '/develop/plugin_develop/migration_guide' },
-            { text: 'API参考', link: '/develop/plugin_develop/api_reference' },
-            { text: '最佳实践', link: '/develop/plugin_develop/best_practices' },
+
           ]
         },
         {
