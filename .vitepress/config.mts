@@ -51,6 +51,7 @@ export default defineConfig({
             { text: 'Windows部署', link: '/manual/deployment/mmc_deploy_windows' },
             { text: 'Linux部署', link: '/manual/deployment/mmc_deploy_linux' },
             { text: 'Docker部署', link: '/manual/deployment/mmc_deploy_docker' },
+            { text: 'Android部署', link: '/manual/deployment/mmc_deploy_android' },
             { text: 'Adapter部署(旧版)', link: '/manual/deployment/old/mmc_deploy_windows_old' },
             {
               text: '0.5.x旧版部署方法',
