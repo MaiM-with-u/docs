@@ -37,6 +37,7 @@ private_list = [] # 私聊名单
 # 当private_list_type为whitelist时，只有私聊名单中的用户可以聊天
 # 当private_list_type为blacklist时，私聊名单中的任何用户无法聊天
 ban_user_id = [] # 全局禁止名单（全局禁止名单中的用户无法进行任何聊天）
+ban_qq_bot = false # 是否屏蔽QQ官方机器人
 enable_poke = true # 是否启用戳一戳功能
 
 [Voice] # 发送语音设置
@@ -77,6 +78,9 @@ level = "INFO" # 日志等级（DEBUG, INFO, WARNING, ERROR）
 - `ban_user_id`：全局禁止名单（全局禁止名单中的用户无法进行任何聊天）。
 
 这部分的设置是一个全局禁止名单，任何在这个名单中的用户都无法与机器人进行任何聊天，无论他是不是在群聊中尝试与机器人交互。
+
+- `ban_qq_bot`：是否屏蔽 QQ 官方机器人。
+如果你不希望 QQ 官方机器人与 MaiBot 交互，可以将这个选项设置为 `true`。
 
 - `enable_poke`：是否启用戳一戳功能。
 
