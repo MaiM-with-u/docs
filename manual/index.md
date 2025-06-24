@@ -8,7 +8,7 @@
 
 - **部署**
 
-[如何在你的电脑安装麦麦](/manual/deployment/)
+[如何在你的电脑/手机安装麦麦](/manual/deployment/)
 
 - **配置**
 

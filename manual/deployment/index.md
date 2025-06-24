@@ -20,6 +20,9 @@
 - [Docker部署](mmc_deploy_docker)
 
 
+- [Android部署](mmc_deploy_android)
+
+
 - [使用旧版adapter的windows部署](./old/mmc_deploy_windows_old)
 
 ::: tip
