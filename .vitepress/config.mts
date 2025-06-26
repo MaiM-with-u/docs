@@ -176,10 +176,12 @@ export default defineConfig({
           items: [
             { text: '开发指南', link: '/develop/plugin_develop/' },
             { text: '快速开始', link: '/develop/plugin_develop/quick-start'},
+            { text: 'Manifest系统指南', link: '/develop/plugin_develop/manifest-guide' },
             { text: 'Actions系统', link: '/develop/plugin_develop/action-components' },
             { text: '命令处理系统', link: '/develop/plugin_develop/command-components' },
+            { text: '工具系统', link: '/develop/plugin_develop/tool-system' },
             { text: '配置管理指南', link: '/develop/plugin_develop/configuration-guide' },
-            { text: 'Manifest系统指南', link: '/develop/plugin_develop/manifest-guide' },
+            { text: '依赖管理', link: '/develop/plugin_develop/dependency-management' },
             { text: 'API参考',
               collapsed: true,
               items: [
@@ -189,6 +191,10 @@ export default defineConfig({
                 { text: 'LLM API', link: '/develop/plugin_develop/api/llm-api' },
                 { text: '回复生成器API', link: '/develop/plugin_develop/api/generator-api' },
                 { text: '表情包API', link: '/develop/plugin_develop/api/emoji-api' },
+                { text: '配置API', link: '/develop/plugin_develop/api/config-api' },
+                { text: '数据库API', link: '/develop/plugin_develop/api/database-api' },
+                { text: '人格API', link: '/develop/plugin_develop/api/person-api' },
+                { text: '工具API', link: '/develop/plugin_develop/api/utils-api' },
               ]
             },
 
