@@ -10,4 +10,5 @@ Hi!👋 欢迎来到麦麦的 Adapters 文档中心。
 - [Napcat Adapter](./napcat)
 - [Gocq Adapter](./gocq)
 - [MaiBot TTS Adapter](./tts/)
-- 微信Adapter
+- 微信-autowx Adapter
+- 微信- Adapter
