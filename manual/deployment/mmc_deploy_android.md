@@ -35,7 +35,7 @@ apt install sudo vim git python3-dev python3.12-venv build-essential screen
 ```
 
 ::: details root 方法
-直接使用root用户操作所有命令可能有巨大的安全风险（**尤其是新手！**），下述命令会创建一个 sudo 账户。此步骤可跳过但**不建议**。
+直接使用root用户操作所有命令可能有巨大的安全风险（**尤其是新手！**），下述命令会创建一个账户。此步骤可跳过但**不建议**。
 
 替换 `<username>` 为你的用户名，输入两次密码后可以全部按回车留空。**密码输入后不显示是正常的。**
 ```bash
