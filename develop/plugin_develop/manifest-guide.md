@@ -38,7 +38,11 @@ MaiBot插件系统现在强制要求每个插件都必须包含一个 `_manifest
   "description": "插件功能描述",
   "author": {
     "name": "作者名称"
-  }
+  },
+    "host_application": {
+    "min_version": "0.8.0",
+    "max_version": "0.8.0"
+  },
 }
 ```
 
@@ -49,10 +53,6 @@ MaiBot插件系统现在强制要求每个插件都必须包含一个 `_manifest
 ```json
 {
   "license": "MIT",
-  "host_application": {
-    "min_version": "1.0.0",
-    "max_version": "4.0.0"
-  },
   "homepage_url": "https://github.com/your-repo",
   "repository_url": "https://github.com/your-repo",
   "keywords": ["关键词1", "关键词2"],
