@@ -84,10 +84,25 @@ export default defineConfig({
           ]
         },
         {
+          text: '插件广场',
+          collapsed: false,
+          items: [
+            { text: '插件概述', link: '/manual/plugins/' },
+          ]
+        },
+        {
           text: '配置方法',
           collapsed: false,
           items: [
-            { text: '配置指南', link: '/manual/configuration/' },
+            { text: '配置指南',
+              collapsed: true,
+              items: [
+                { text: '配置概览', link: '/manual/configuration/' },
+                { text: '.env配置教程', link: '/manual/configuration/configuration_env_standard' },
+                { text: 'bot_config.toml配置教程', link: '/manual/configuration/configuration_standard' },
+                { text: 'bot_config.toml模型部分配置教程', link: '/manual/configuration/configuration_model_standard' },
+              ]
+            },
             { text: '标准配置教程', link: '/manual/configuration/configuration_standard' },
             { text: 'LPMM导入文件格式', link: '/manual/configuration/lpmm_knowledge_template' },
           ]

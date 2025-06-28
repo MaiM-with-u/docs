@@ -11,11 +11,11 @@ MaiBot 使用以下两个主要配置文件：
 
 ## 配置文件详细说明
 
+[.env配置教程](./configuration_env_standard.md)
+
 [bot_config配置教程](./configuration_standard)
 
-[bot_config模型配置教程](./configuration_model_standard)
-
-[.env配置教程](./configuration_env_standard.md)
+[bot_config模型部分配置教程](./configuration_model_standard)
 
 ## 知识库导入要求
 

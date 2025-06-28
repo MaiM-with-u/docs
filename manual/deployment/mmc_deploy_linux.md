@@ -115,7 +115,7 @@ cp template/bot_config_template.toml config/bot_config.toml
 cp template/template.env .env
 ```
 复制完成后打开`.env`并修改PORT为8000
-随后前往[配置指南(最新版)](/manual/configuration/configuration_standard)完成配置
+随后前往[配置指南](/manual/configuration/index)完成配置
 
 ### MaiBot Napcat Adapter 配置
 

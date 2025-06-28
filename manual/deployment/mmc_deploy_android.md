@@ -158,7 +158,7 @@ vim .env
 #修改.env，开头的port改成8000
 ```
 
-**随后前往 [MaiBot文档中心配置指南](/manual/configuration/configuration_standard.md)完成配置**
+**随后前往 [MaiBot文档中心配置指南](/manual/configuration/index.md)完成配置**
 **大部分的问题都是在这一步发生的，上述文档有看不懂的内容欢迎找群友沟通**
 
 然后配置MaiBot-Napcat-Adapter

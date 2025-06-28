@@ -118,7 +118,7 @@ docker compose up -d && sleep 15 && docker compose down
 vim docker-config/mmc/bot_config.toml
 ```
 > 请根据需要自行修改
-> 配置文件相关说明见[配置指南](/manual/configuration/configuration_standard.md)
+> 配置文件相关说明见[配置指南](/manual/configuration/index.md)
 
 ---
 
