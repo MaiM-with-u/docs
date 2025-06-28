@@ -55,6 +55,16 @@ wget https://github.com/MaiM-with-u/MaiBot-Napcat-Adapter/raw/refs/heads/main/te
 [//]: # (> - `ONEBOT_WS_URLS`配置可替换成`ws://maim-bot-napcat:8095`)
 [//]: # (> - `nonebot-qq`配置可替换成`http://maim-bot-adapters:18002/api/message`)
 
+**预留数据库文件**
+```bash
+#MacOS/Linux
+mkdir data && touch ./data/MaiBot.db ./data/maibot_statistics.html
+```
+```cmd
+#windows
+mkdir data && type nul > ./data/MaiBot.db && type nul > ./data/maibot_statistics.html
+```
+
 ### 2.2 ✏️ 修改相关配置
 ```bash
 vim docker-config/mmc/.env
