@@ -230,7 +230,7 @@ mkdir -p data/MaiMBot/lpmm_raw_data
 然后运行命令：
 
 ```bash
-docker run -it -v ./data/MaiMBot:/MaiMBot/data -v ./docker-config/mmc:/MaiMBot/config -v ./docker-config/mmc/.env:/MaiMBot/.env --network maim-bot_maim_bot  --entrypoint bash sengokucola/maimbot:main "scripts/run_lpmm.sh"
+docker run -it -v ./data/MaiMBot:/MaiMBot/data -v ./docker-config/mmc:/MaiMBot/config -v ./docker-config/mmc/.env:/MaiMBot/.env --network maim-bot_maim_bot  --entrypoint bash sengokucola/maibot:latest "scripts/run_lpmm.sh"
 ```
 
 :::tip
