@@ -56,12 +56,13 @@ wget https://github.com/MaiM-with-u/MaiBot-Napcat-Adapter/raw/refs/heads/main/te
 [//]: # (> - `nonebot-qq`配置可替换成`http://maim-bot-adapters:18002/api/message`)
 
 **预留数据库文件**
+
+`MacOS/Linux`
 ```bash
-#MacOS/Linux
 mkdir data && touch ./data/MaiBot.db ./data/maibot_statistics.html
 ```
+`Windows`
 ```cmd
-#windows
 mkdir data && type nul > ./data/MaiBot.db && type nul > ./data/maibot_statistics.html
 ```
 
@@ -101,13 +102,17 @@ port = 8000          # 麦麦在.env文件中设置的ws端口
 ```bash
 vim docker-compose.yml
 # 取消注释以下两行（23-24行）
-- EULA_AGREE=35362b6ea30f12891d46ef545122e84a  # 同意EULA
-- PRIVACY_AGREE=2402af06e133d2d10d9c6c643fdc9333 # 同意EULA
+- EULA_AGREE=bda99dca873f5d8044e9987eac417e01  # 同意EULA
+- PRIVACY_AGREE=42dddb3cbe2b784b45a2781407b298a1 # 同意EULA
 ```
 当前配置完成后目录结构应如下
 ```text
 .
 ├── docker-compose.yml
+├── data
+    ├── MaiMbot
+        ├── maibot_statitics.html
+        └── MaiBot.db
 └── docker-config
     ├── adapters
     │   └── config.toml
@@ -142,13 +147,13 @@ docker compose up -d
 ```bash
 docker compose ps
 ```
-正常应显示 4 个容器（maim-bot-core、maim-bot-adapters、maim-bot-mongo、maim-bot-napcat）状态为 `running`
+正常应显示 4 个容器（maim-bot-core、maim-bot-adapters、maim-bot-napcat）状态为 `running`
 ```bash                                                                                                                                                                                                                                                                              
-NAME                IMAGE                           COMMAND                  SERVICE    CREATED          STATUS          PORTS
-maim-bot-adapters   unclas/maimbot-adapter:latest   "python main.py"         adapters   34 minutes ago   Up 34 minutes   8095/tcp
-maim-bot-core       sengokucola/maimbot:main        "python bot.py"          core       34 minutes ago   Up 34 minutes   8000/tcp
-maim-bot-mongo      mongo:latest                    "docker-entrypoint.s…"   mongodb    34 minutes ago   Up 34 minutes   27017/tcp
-maim-bot-napcat     mlikiowa/napcat-docker:latest   "bash entrypoint.sh"     napcat     34 minutes ago   Up 34 minutes   0.0.0.0:6099->6099/tcp, [::]:6099->6099/tcp
+NAME                IMAGE                           COMMAND                  SERVICE     CREATED          STATUS          PORTS
+maim-bot-adapters   unclas/maimbot-adapter:latest   "python main.py"         adapters    34 minutes ago   Up 34 minutes   8095/tcp
+maim-bot-core       sengokucola/maimbot:main        "python bot.py"          core        34 minutes ago   Up 34 minutes   8000/tcp
+maim-bot-napcat     mlikiowa/napcat-docker:latest   "bash entrypoint.sh"     napcat      34 minutes ago   Up 34 minutes   0.0.0.0:6099->6099/tcp, [::]:6099->6099/tcp
+sqlite-web          coleifer/sqlite-web             "/bin/ash -c 'sqlite…"   sqlite-web  34 minutes ago   Up 34 minutes   0.0.0.0:8120->8080/tcp   
 ```
 
 ### 4.3 📜 实时日志监控
@@ -176,7 +181,7 @@ docker compose logs -f
 
 ## ❓ 常见问题排查
 1. ❌ **容器启动失败**：
-   - 🔍 检查端口冲突（18002/8000/8095/6099/27017）
+   - 🔍 检查端口冲突（18002/8000/8095/6099/8120）
       > 如未映射请忽略
    - 🔑 验证 `.env` 文件中的 API 密钥有效性
 
