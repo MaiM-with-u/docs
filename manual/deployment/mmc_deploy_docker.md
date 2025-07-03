@@ -70,7 +70,7 @@ wget https://github.com/MaiM-with-u/MaiBot-Napcat-Adapter/raw/refs/heads/main/te
 `MacOS/Linux`
 
 ```bash
-mkdir data && touch ./data/MaiMBot/maibot_statistics.html
+mkdir -p data/MaiMBot && touch ./data/MaiMBot/maibot_statistics.html
 ```
 
 `Windows`
