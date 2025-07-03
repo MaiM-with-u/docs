@@ -76,7 +76,7 @@ mkdir -p data/MaiMBot && touch ./data/MaiMBot/maibot_statistics.html
 `Windows`
 
 ```cmd
-mkdir data  && type nul > ./data/MaiMBot/maibot_statistics.html
+mkdir data\MaiMBot && type nul > .\data\MaiMBot\maibot_statistics.html
 ```
 
 ### 2.2 ✏️ 修改相关配置
