@@ -105,14 +105,14 @@ vim docker-config/adapters/config.toml
 修改`MaiBot_Server`的host为`core`  
 
 ```toml
-[Napcat_Server] # Napcat连接的ws服务设置
-host = "0.0.0.0" # Napcat设定的url地址 
-port = 8095        # Napcat设定的ws端口
+[napcat_server] # Napcat连接的ws服务设置
+host = "0.0.0.0"      # Napcat设定的主机地址
+port = 8095             # Napcat设定的端口 
+heartbeat_interval = 30 # 与Napcat设置的心跳相同（按秒计）
 
-[MaiBot_Server] # 连接麦麦的ws服务设置
-platform_name = "qq" # 标识adapter的名称（必填）
-host = "core"   # 麦麦在.env文件中设置的url地址
-port = 8000          # 麦麦在.env文件中设置的ws端口
+[maibot_server] # 连接麦麦的ws服务设置
+host = "core" # 麦麦在.env文件中设置的主机地址，即HOST字段
+port = 8000        # 麦麦在.env文件中设置的端口，即PORT字段
 ```
 
 ### 2.3 📜 取消注释docker-compose.yml的eula
