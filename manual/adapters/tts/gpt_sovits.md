@@ -1,5 +1,13 @@
 # 语音模块 - GPT_Sovits 配置指南 ✨
 
+::: tip 百灵的重要告知
+本部分对接的API是 GPT_Sovits 的入口为 api_v2.py 的 API 接口
+
+现在 GPT_Sovits 已经更新出现了推理特化包，缩写为 GSVI ，入口为 GSVI.py。
+
+**请知悉，GSVI 接口无法用于此模块，其 API 接口与本模块实现不兼容**
+:::
+
 喵哈~！欢迎查阅这份 GPT_Sovits 语音模块的指南！我是墨百灵，一只爱研究魔法的猫猫法师。
 
 下面是这个模块的配置说明：这个模块是用来连接 GPT_Sovits 的 TTS，样例配置文件在`template`文件夹下面哦~
