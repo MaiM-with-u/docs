@@ -128,7 +128,7 @@ source MaiBot/venv/bin/activate  # 激活环境
 ```bash
 cd MaiBot
 uv venv
-uv pip install -r requirements.txt
+uv pip install -r requirements.txt -i https://mirrors.aliyun.com/pypi/simple --upgrade
 ```
 
 ::: tip
@@ -140,7 +140,7 @@ uv pip install -r requirements.txt
 cd ..
 cd MaiBot-Napcat-Adapter
 uv venv
-uv pip install -r requirements.txt
+uv pip install -r requirements.txt -i https://mirrors.aliyun.com/pypi/simple --upgrade
 # 复制并重命名配置文件
 cp template/template_config.toml config.toml
 ```
@@ -319,7 +319,7 @@ python3 main.py
 | 命令 | 作用 |
 |---|---|
 | `uv venv` | 创建Python虚拟环境 |
-| `uv pip install -r requirements.txt` | 安装依赖包 |
+| `uv pip install -r requirements.txt -i https://mirrors.aliyun.com/pypi/simple --upgrade` | 安装依赖包 |
 | `uv run python3 bot.py` | 运行麦麦核心 |
 | `uv run python3 main.py` | 运行Napcat适配器 |
 

@@ -74,7 +74,7 @@ python -m venv MaiBot\venv
 ```shell
 cd MaiBot
 uv venv
-uv pip install -r .\requirements.txt
+uv pip install -r .\requirements.txt -i https://mirrors.aliyun.com/pypi/simple --upgrade
 ```
 ::: tip
 `uv venv` 创建虚拟环境，`uv pip install` 在该环境中安装依赖。如果你在安装过程中发现`quick_algo`安装失败，请参考[LPMM 使用说明](/manual/usage/lpmm)中手动编译的部分
@@ -85,7 +85,7 @@ uv pip install -r .\requirements.txt
 cd ..
 cd MaiBot-Napcat-Adapter
 uv venv
-uv pip install -r .\requirements.txt
+uv pip install -r .\requirements.txt -i https://mirrors.aliyun.com/pypi/simple --upgrade
 ```
 
 #### 使用 pip 安装依赖 (传统方式)
