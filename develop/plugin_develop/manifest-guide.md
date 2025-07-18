@@ -147,7 +147,7 @@ python scripts/manifest_tool.py validate src/plugins/my_plugin
 ## 📋 字段说明
 
 ### 基本信息
-- `manifest_version`: manifest格式版本，当前为3
+- `manifest_version`: manifest格式版本，当前为1
 - `name`: 插件显示名称（必需）
 - `version`: 插件版本号（必需）
 - `description`: 插件功能描述（必需）
