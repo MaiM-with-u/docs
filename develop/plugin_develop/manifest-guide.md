@@ -38,11 +38,7 @@ MaiBot插件系统现在强制要求每个插件都必须包含一个 `_manifest
   "description": "插件功能描述",
   "author": {
     "name": "作者名称"
-  },
-    "host_application": {
-    "min_version": "0.8.0",
-    "max_version": "0.8.0"
-  },
+  }
 }
 ```
 
@@ -53,6 +49,10 @@ MaiBot插件系统现在强制要求每个插件都必须包含一个 `_manifest
 ```json
 {
   "license": "MIT",
+  "host_application": {
+    "min_version": "1.0.0",
+    "max_version": "4.0.0"
+  },
   "homepage_url": "https://github.com/your-repo",
   "repository_url": "https://github.com/your-repo",
   "keywords": ["关键词1", "关键词2"],
@@ -147,7 +147,7 @@ python scripts/manifest_tool.py validate src/plugins/my_plugin
 ## 📋 字段说明
 
 ### 基本信息
-- `manifest_version`: manifest格式版本，当前为3
+- `manifest_version`: manifest格式版本，当前为1
 - `name`: 插件显示名称（必需）
 - `version`: 插件版本号（必需）
 - `description`: 插件功能描述（必需）
@@ -165,9 +165,11 @@ python scripts/manifest_tool.py validate src/plugins/my_plugin
 - `categories`: 分类数组（可选，建议填写）
 
 ### 兼容性
-- `host_application`: 主机应用兼容性（可选）
+- `host_application`: 主机应用兼容性（可选，建议填写）
   - `min_version`: 最低兼容版本
   - `max_version`: 最高兼容版本
+
+⚠️ 在不填写的情况下，插件将默认支持所有版本。**（由于我们在不同版本对插件系统进行了大量的重构，这种情况几乎不可能。）**
 
 ### 国际化
 - `default_locale`: 默认语言（可选）
@@ -185,23 +187,12 @@ python scripts/manifest_tool.py validate src/plugins/my_plugin
 2. **编码格式**：manifest文件必须使用UTF-8编码
 3. **JSON格式**：文件必须是有效的JSON格式
 4. **必需字段**：`manifest_version`、`name`、`version`、`description`、`author.name`是必需的
-5. **版本兼容**：当前只支持manifest_version = 3
+5. **版本兼容**：当前只支持`manifest_version = 1`
 
 ## 🔍 常见问题
 
-### Q: 为什么要强制要求manifest文件？
-A: Manifest文件提供了插件的标准化元数据，使得插件管理、依赖检查、版本兼容性验证等功能成为可能。
-
 ### Q: 可以不填写可选字段吗？
 A: 可以。所有标记为"可选"的字段都可以不填写，但建议至少填写`license`和`keywords`。
-
-### Q: 如何快速为所有插件创建manifest？
-A: 可以编写脚本批量处理：
-```bash
-# 扫描并为每个缺少manifest的插件创建最小化manifest
-python scripts/manifest_tool.py scan src/plugins
-# 然后手动为每个插件运行create-minimal命令
-```
 
 ### Q: manifest验证失败怎么办？
 A: 根据验证器的错误提示修复相应问题。错误会导致插件加载失败，警告不会。
@@ -210,5 +201,5 @@ A: 根据验证器的错误提示修复相应问题。错误会导致插件加�
 
 查看内置插件的manifest文件作为参考：
 - `src/plugins/built_in/core_actions/_manifest.json`
-- `src/plugins/built_in/doubao_pic_plugin/_manifest.json`
 - `src/plugins/built_in/tts_plugin/_manifest.json`
+- `src/plugins/hello_world_plugin/_manifest.json`

@@ -2,12 +2,11 @@
 
 ## 📖 什么是工具系统
 
-工具系统是MaiBot的信息获取能力扩展组件，**专门用于在Focus模式下扩宽麦麦能够获得的信息量**。如果说Action组件功能五花八门，可以拓展麦麦能做的事情，那么Tool就是在某个过程中拓宽了麦麦能够获得的信息量。
+工具系统是MaiBot的信息获取能力扩展组件。如果说Action组件功能五花八门，可以拓展麦麦能做的事情，那么Tool就是在某个过程中拓宽了麦麦能够获得的信息量。
 
 ### 🎯 工具系统的特点
 
 - 🔍 **信息获取增强**：扩展麦麦获取外部信息的能力
-- 🎯 **Focus模式专用**：仅在专注聊天模式下工作，必须开启工具处理器
 - 📊 **数据丰富**：帮助麦麦获得更多背景信息和实时数据
 - 🔌 **插件式架构**：支持独立开发和注册新工具
 - ⚡ **自动发现**：工具会被系统自动识别和注册
@@ -17,7 +16,6 @@
 | 特征 | Action | Command | Tool |
 |-----|-------|---------|------|
 | **主要用途** | 扩展麦麦行为能力 | 响应用户指令 | 扩展麦麦信息获取 |
-| **适用模式** | 所有模式 | 所有模式 | 仅Focus模式 |
 | **触发方式** | 麦麦智能决策 | 用户主动触发 | LLM根据需要调用 |
 | **目标** | 让麦麦做更多事情 | 提供具体功能 | 让麦麦知道更多信息 |
 | **使用场景** | 增强交互体验 | 功能服务 | 信息查询和分析 |
@@ -54,7 +52,7 @@ class MyTool(BaseTool):
         "required": ["query"]
     }
     
-    async def execute(self, function_args, message_txt=""):
+    async def execute(self, function_args: Dict[str, Any]):
         """执行工具逻辑"""
         # 实现工具功能
         result = f"查询结果: {function_args.get('query')}"
@@ -63,9 +61,6 @@ class MyTool(BaseTool):
             "name": self.name,
             "content": result
         }
-
-# 注册工具
-register_tool(MyTool)
 ```
 
 ### 属性说明
@@ -80,7 +75,7 @@ register_tool(MyTool)
 
 | 方法 | 参数 | 返回值 | 说明 |
 |-----|------|--------|------|
-| `execute` | `function_args`, `message_txt` | `dict` | 执行工具核心逻辑 |
+| `execute` | `function_args` | `dict` | 执行工具核心逻辑 |
 
 ## 🔄 自动注册机制
 
@@ -88,28 +83,14 @@ register_tool(MyTool)
 
 1. **文件扫描**：系统自动遍历 `tool_can_use` 目录中的所有Python文件
 2. **类识别**：寻找继承自 `BaseTool` 的工具类
-3. **自动注册**：调用 `register_tool()` 的工具会被注册到系统中
+3. **自动注册**：只需要实现对应的类并把文件放在正确文件夹中就可自动注册
 4. **即用即加载**：工具在需要时被实例化和调用
 
-### 注册流程
-
-```python
-# 1. 创建工具类
-class WeatherTool(BaseTool):
-    name = "weather_query"
-    description = "查询指定城市的天气信息"
-    # ...
-
-# 2. 注册工具（在文件末尾）
-register_tool(WeatherTool)
-
-# 3. 系统自动发现（无需手动操作）
-# discover_tools() 函数会自动完成注册
-```
+---
 
 ## 🎨 完整工具示例
 
-### 天气查询工具
+完成一个天气查询工具
 
 ```python
 from src.tools.tool_can_use.base_tool import BaseTool, register_tool
@@ -192,102 +173,9 @@ class WeatherTool(BaseTool):
 💧 湿度: {humidity}%
 ━━━━━━━━━━━━━━━━━━
         """.strip()
-
-# 注册工具
-register_tool(WeatherTool)
 ```
 
-### 知识查询工具
-
-```python
-from src.tools.tool_can_use.base_tool import BaseTool, register_tool
-
-class KnowledgeSearchTool(BaseTool):
-    """知识搜索工具 - 查询百科知识和专业信息"""
-    
-    name = "knowledge_search"
-    description = "搜索百科知识、专业术语解释、历史事件等信息"
-    
-    parameters = {
-        "type": "object",
-        "properties": {
-            "query": {
-                "type": "string",
-                "description": "要搜索的知识关键词或问题"
-            },
-            "category": {
-                "type": "string",
-                "description": "知识分类：science(科学)、history(历史)、technology(技术)、general(通用)等",
-                "enum": ["science", "history", "technology", "general"]
-            },
-            "language": {
-                "type": "string",
-                "description": "结果语言：zh(中文)、en(英文)",
-                "enum": ["zh", "en"]
-            }
-        },
-        "required": ["query"]
-    }
-    
-    async def execute(self, function_args, message_txt=""):
-        """执行知识搜索"""
-        try:
-            query = function_args.get("query")
-            category = function_args.get("category", "general")
-            language = function_args.get("language", "zh")
-            
-            # 执行搜索逻辑
-            search_results = await self._search_knowledge(query, category, language)
-            
-            # 格式化结果
-            result = self._format_search_results(query, search_results)
-            
-            return {
-                "name": self.name,
-                "content": result
-            }
-            
-        except Exception as e:
-            return {
-                "name": self.name,
-                "content": f"知识搜索失败: {str(e)}"
-            }
-    
-    async def _search_knowledge(self, query: str, category: str, language: str) -> list:
-        """执行知识搜索"""
-        # 这里实现实际的搜索逻辑
-        # 可以对接维基百科API、百度百科API等
-        
-        # 示例返回数据
-        return [
-            {
-                "title": f"{query}的定义",
-                "summary": f"关于{query}的详细解释...",
-                "source": "Wikipedia"
-            }
-        ]
-    
-    def _format_search_results(self, query: str, results: list) -> str:
-        """格式化搜索结果"""
-        if not results:
-            return f"未找到关于 '{query}' 的相关信息"
-        
-        formatted_text = f"📚 关于 '{query}' 的搜索结果:\n\n"
-        
-        for i, result in enumerate(results[:3], 1):  # 限制显示前3条
-            title = result.get("title", "无标题")
-            summary = result.get("summary", "无摘要")
-            source = result.get("source", "未知来源")
-            
-            formatted_text += f"{i}. **{title}**\n"
-            formatted_text += f"   {summary}\n"
-            formatted_text += f"   📖 来源: {source}\n\n"
-        
-        return formatted_text.strip()
-
-# 注册工具
-register_tool(KnowledgeSearchTool)
-```
+---
 
 ## 📊 工具开发步骤
 
@@ -323,86 +211,21 @@ class MyNewTool(BaseTool):
             "name": self.name,
             "content": "执行结果"
         }
-
-register_tool(MyNewTool)
 ```
 
-### 3. 测试工具
-
-创建测试文件验证工具功能：
-
-```python
-import asyncio
-from my_new_tool import MyNewTool
-
-async def test_tool():
-    tool = MyNewTool()
-    result = await tool.execute({"param": "value"})
-    print(result)
-
-asyncio.run(test_tool())
-```
-
-### 4. 系统集成
+### 3. 系统集成
 
 工具创建完成后，系统会自动发现和注册，无需额外配置。
 
-## ⚙️ 工具处理器配置
-
-### 启用工具处理器
-
-工具系统仅在Focus模式下工作，需要确保工具处理器已启用：
-
-```python
-# 在Focus模式配置中
-focus_config = {
-    "enable_tool_processor": True,  # 必须启用
-    "tool_timeout": 30,             # 工具执行超时时间（秒）
-    "max_tools_per_message": 3      # 单次消息最大工具调用数
-}
-```
-
-### 工具使用流程
-
-1. **用户发送消息**：在Focus模式下发送需要信息查询的消息
-2. **LLM判断需求**：麦麦分析消息，判断是否需要使用工具获取信息
-3. **选择工具**：根据需求选择合适的工具
-4. **调用工具**：执行工具获取信息
-5. **整合回复**：将工具获取的信息整合到回复中
-
-### 使用示例
-
-```python
-# 用户消息示例
-"今天北京的天气怎么样？"
-
-# 系统处理流程：
-# 1. 麦麦识别这是天气查询需求
-# 2. 调用 weather_query 工具
-# 3. 获取北京天气信息
-# 4. 整合信息生成回复
-
-# 最终回复：
-"根据最新天气数据，北京今天晴天，温度22°C，湿度45%，适合外出活动。"
-```
+---
 
 ## 🚨 注意事项和限制
 
 ### 当前限制
 
-1. **模式限制**：仅在Focus模式下可用
-2. **独立开发**：需要单独编写，暂未完全融入插件系统
-3. **适用范围**：主要适用于信息获取场景
-4. **配置要求**：必须开启工具处理器
-
-### 未来改进
-
-工具系统在之后可能会面临以下修改：
-
-1. **插件系统融合**：更好地集成到插件系统中
-2. **模式扩展**：可能扩展到其他聊天模式
-3. **配置简化**：简化配置和部署流程
-4. **性能优化**：提升工具调用效率
+1. **独立开发**：需要单独编写，暂未完全融入插件系统
+2. **适用范围**：主要适用于信息获取场景
+3. **配置要求**：必须开启工具处理器
 
 ### 开发建议
 
