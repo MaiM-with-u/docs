@@ -5,9 +5,9 @@ Logging API模块提供了获取本体logger的功能，允许插件记录日志
 ## 导入方式
 
 ```python
-from src.plugin_system.apis import logging_api
+from src.plugin_system.apis import get_logger
 # 或者
-from src.plugin_system import logging_api
+from src.plugin_system import get_logger
 ```
 
 ## 主要功能
