@@ -8,10 +8,16 @@
 高版本（0.6.3+）版本启用了新版知识库，使用说明在[这里](/manual/usage/lpmm)
 :::
 
+::: info
+本教程推荐使用 [uv](https://docs.astral.sh/uv/) 作为 Python 包管理器，它提供了更快的包安装速度和更好的依赖管理体验。当然，传统的 pip 和 conda 方式依然可用。
+:::
+
 ## 系统要求
 python >= 3.10
 
 OS: Windows10 或 Windows11
+
+uv >= 0.1.0 (推荐使用最新版本)
 
 ## 部署步骤
 
@@ -28,11 +34,22 @@ git clone https://github.com/MaiM-with-u/MaiBot-Napcat-Adapter.git
 
 ```
 
-### 一、环境配置
+### 二、环境配置
 
-两种方式任选其一
+#### 安装 uv (推荐)
 
-#### Conda 版
+首先安装 uv 包管理器，可以通过以下命令快速安装：
+```shell
+# 使用 pip 安装 uv
+pip install uv
+```
+或者从 [uv官方文档](https://docs.astral.sh/uv/getting-started/installation/) 下载安装包进行安装。
+
+::: tip
+使用 uv 时需要先运行 `uv venv` 创建虚拟环境，然后使用 `uv pip install` 安装依赖，或者直接使用 `uv run` 命令来自动管理虚拟环境。
+:::
+
+#### Conda 版 (传统方式)
 
 假定你已经安装好了Conda，只需要创建一个python**版本大于等于3.10**的虚拟环境即可。
 ```shell
@@ -40,7 +57,7 @@ conda create -n MaiBotEnv python=3.12
 conda activate MaiBotEnv
 ```
 
-#### 虚拟环境版
+#### 虚拟环境版 (传统方式)
 
 1. 首先，在[官网](https://www.python.org/)下载python，并安装**大于等于3.10的版本**并添加系统变量。  
 2. 随后在 `MaiM-with-u` 文件夹创建Python虚拟环境并激活
@@ -50,6 +67,28 @@ python -m venv MaiBot\venv
 ```
 
 ### 三、依赖安装
+
+#### 使用 uv 安装依赖 (推荐)
+
+1. 进入下载的麦麦repo文件夹，创建虚拟环境并安装依赖
+```shell
+cd MaiBot
+uv venv
+uv pip install -r .\requirements.txt -i https://mirrors.aliyun.com/pypi/simple --upgrade
+```
+::: tip
+`uv venv` 创建虚拟环境，`uv pip install` 在该环境中安装依赖。如果你在安装过程中发现`quick_algo`安装失败，请参考[LPMM 使用说明](/manual/usage/lpmm)中手动编译的部分
+:::
+
+2. 随后回到上一级文件夹（此处为MaiM-with-u），再进入MaiBot-NapCat-Adapter文件夹，安装依赖
+```shell
+cd ..
+cd MaiBot-Napcat-Adapter
+uv venv
+uv pip install -r .\requirements.txt -i https://mirrors.aliyun.com/pypi/simple --upgrade
+```
+
+#### 使用 pip 安装依赖 (传统方式)
 
 1. 进入下载的麦麦repo文件夹
 2. pip安装所需依赖
@@ -123,6 +162,28 @@ port = 8000          # 麦麦在.env文件中设置的端口，即PORT字段
 3. 其余字段请参考 Napcat Adapter 的[配置指南](/manual/adapters/napcat)
 
 ### 七、运行
+
+#### 使用 uv 运行 (推荐)
+
+1. 首先启动Napcat
+
+2. 随后进入麦麦本体的文件夹，使用 uv 运行
+```shell
+cd MaiBot
+uv run python .\bot.py
+```
+3. 然后打开一个新的窗口，进入Adapter的文件夹，运行
+```shell
+cd MaiBot-Napcat-Adapter
+uv run python .\main.py
+```
+
+::: tip
+`uv run` 会自动激活项目的虚拟环境并运行命令，无需手动激活虚拟环境。
+:::
+
+#### 使用传统方式运行
+
 1. 首先启动Napcat
 
 2. 随后进入麦麦本体的文件夹，运行

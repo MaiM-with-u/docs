@@ -194,7 +194,7 @@ expression_selector_processor = true # 是否启用表达方式选择处理器
 - `working_memory_processor` 是工作记忆处理器，消耗量较高，不建议轻易开启。
 - `expression_selector_processor` 负责选择合适的表达方式进行回复。
 
-## 如何开启麦麦的禁言和画图功能（需要更新）
+## 如何开启麦麦的禁言功能
 
 麦麦的画图和禁言功能目前作为示例插件，默认不启用
 
@@ -203,13 +203,18 @@ expression_selector_processor = true # 是否启用表达方式选择处理器
 如果需要开启禁言插件
  - 首先麦麦必须是管理员
  - 你需要安装最新适配器
- - MMC安装目录/src/plugins/test_plugin/actions/mute_action.py文件中第26行，将`default = False`改为`default = True`
+ - MMC安装目录src/plugins/built_in/mute_plugin/config.toml文件中第8行，将`enabled = false`改为`enabled = true`
 
+## 如何开启麦麦的豆包绘图功能
 如果需要开启豆包绘图插件
  - 你必须在火山平台开通绘图服务获得key
- - MMC安装目录/src/plugins/test_plugin_pic/actions/pic_action.py文件中第37行，将`default = False`改为`default = True`
+ - 先将[doubao_pic_plugin](https://github.com/schxar/doubao_pic_plugin) 克隆到 plugins 目录下
+```python
+git clone https://github.com/schxar/doubao_pic_plugin.git plugins/doubao_pic_plugin
+```
+ - 在MMC安装目录plugins/doubao_pic_plugin/config.toml中，将`enabled = false`改为`enabled = true`
  - 修改后，至少启动一次focus模式
- - 将你的绘图key填写到同文件夹的后缀为.toml的配置文件中，重启
+ - 将你的绘图key也填入config.toml配置文件中，重启
 
 ## 我对麦麦的说话风格不满意，我想要调整它
 
@@ -233,4 +238,3 @@ expression_style = "回复尽量简短一些。可以参考贴吧，知乎和微
 - 在`normal`模式下，配置文件中设置的`replyer_1`模型和`replyer_2`模型会直接影响麦麦的说话风格，你可以修改这两个模型。
 - 在`focus`模式下，`replyer_1`模型对麦麦的说话风格有最直接的影响（因为它也负责表达），可以优先更换这个模型。
 - `planner`模型也会影响麦麦的决策能力，谨慎替换。
-

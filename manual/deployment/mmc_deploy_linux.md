@@ -2,9 +2,15 @@
 
 - 以下内容假设你对Linux系统有一定的了解，如果觉得难以理解，请用Docker部署[Docker部署指南](mmc_deploy_docker)或者使用Windows系统部署[Windows部署指南](mmc_deploy_windows)
 
+::: info
+本教程推荐使用 [uv](https://docs.astral.sh/uv/) 作为 Python 包管理器，它提供了更快的包安装速度和更好的依赖管理体验。当然，传统的 pip 和 conda 方式依然可用。
+:::
+
 ## 📋 环境要求
 - ⚙️ 最低系统配置：2 核 CPU / 2GB 内存 / 5GB 磁盘空间
 - 🐧 本教程测试环境：Debian Server 12.0 64bit
+- 🐍 Python >= 3.10
+- 📦 uv >= 0.1.0 (推荐使用最新版本)
 
 ## 一、 克隆麦麦，获取必要的文件
 1. 通过 git clone 将 [麦麦 repo](https://github.com/MaiM-with-u/MaiBot) clone 到本地
@@ -41,13 +47,31 @@ sudo update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.12
 sudo update-alternatives --config python3
 ```
 
-### 创建虚拟环境
-方法1：使用venv(推荐)
+### 安装 uv (推荐)
+
+安装 uv 包管理器：
+```bash
+# 使用 pip 安装 uv
+pip3 install uv
+```
+或者使用官方安装脚本：
+```bash
+curl -LsSf https://astral.sh/uv/install.sh | sh
+```
+
+::: tip
+使用 uv 时需要先运行 `uv venv` 创建虚拟环境，然后使用 `uv pip install` 安装依赖，或者直接使用 `uv run` 命令来自动管理虚拟环境。
+:::
+
+### 传统方式环境配置
+
+#### 方法1：使用venv
 ```bash
 python3 -m venv MaiBot/venv      # 创建虚拟环境    
 source MaiBot/venv/bin/activate  # 激活环境
 ```
-方法2：使用conda（需先安装Miniconda或Anaconda）
+
+#### 方法2：使用conda（需先安装Miniconda或Anaconda）
 ```bash
 wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
 bash Miniconda3-latest-Linux-x86_64.sh
@@ -56,6 +80,29 @@ conda activate MaiBotEnv
 ```
 
 ## 三、依赖安装
+
+### 使用 uv 安装依赖 (推荐)
+
+1. 进入MaiBot文件夹，创建虚拟环境并安装依赖
+```bash
+cd MaiBot
+uv venv
+uv pip install -r requirements.txt -i https://mirrors.aliyun.com/pypi/simple --upgrade
+```
+::: tip
+`uv venv` 创建虚拟环境，`uv pip install` 在该环境中安装依赖。如果你在安装过程中发现`quick_algo`安装失败，请参考[LPMM 使用说明](/manual/usage/lpmm)中手动编译的部分
+:::
+
+2. 回到上一级文件夹，再进入MaiBot-Napcat-Adapter文件夹，安装依赖
+```bash
+cd ..
+cd MaiBot-Napcat-Adapter
+uv venv
+uv pip install -r requirements.txt -i https://mirrors.aliyun.com/pypi/simple --upgrade
+```
+
+### 使用传统方式安装依赖
+
 ```bash
 cd MaiBot
 pip install uv -i https://mirrors.aliyun.com/pypi/simple
@@ -140,48 +187,50 @@ port = 8000          # 麦麦在.env文件中设置的端口，即PORT字段
 ```
 3. 其余字段请参考 Napcat Adapter 的[配置指南](/manual/adapters/napcat)
 
-## 七、配置MongoDB（将在下个版本移除）
-### 安装MongoDB
-1. 安装依赖工具
-```bash
-# Ubuntu/Debian
-sudo apt update # 更新apt
-sudo apt install -y gnupg curl wget # 下载工具
-```
-2. 导入 MongoDB 官方 GPG 密钥
-```bash
-# 下载并添加密钥（兼容 Debian/Ubuntu）
-curl -fsSL https://pgp.mongodb.com/server-7.0.asc | sudo gpg -o /usr/share/keyrings/mongodb-server-7.0.gpg --dearmor
-```
-3. 添加 MongoDB 官方仓库
-```bash
-# 根据系统版本自动匹配仓库（以 Ubuntu 22.04/Debian 12 为例）
-# 如果是其他版本，将 `jammy`（Ubuntu）或 `bookworm`（Debian）替换为你的系统代号
-OS_CODENAME=$(lsb_release -sc)  # 自动获取系统代号
-echo "deb [ arch=amd64,arm64 signed-by=/usr/share/keyrings/mongodb-server-7.0.gpg ] https://repo.mongodb.org/apt/${OS_CODENAME:0:6}/mongodb-org/7.0 main" | sudo tee /etc/apt/sources.list.d/mongodb-org-7.0.list
-```
-4. 更新仓库并安装 MongoDB
-```bash
-sudo apt update
-sudo apt install -y mongodb-org
-```
-### 启动与验证服务
-1. 启动 MongoDB 服务
-```bash
-sudo systemctl start mongod
-sudo systemctl enable mongod  # 开机自启
-```
-2. 检查运行状态并测试连接
-```bash
-sudo systemctl status mongod  
-# 应显示 "Active: active (running)"
-mongosh --eval "show dbs"  
-# 应列出默认数据库（admin, local）
-```
 ## 启动麦麦
 
-### 启动麦麦核心
-到MaiBot下运行`python3 bot.py`
+### 使用 uv 运行 (推荐)
+
+#### 前台运行
+启动麦麦核心：
+```bash
+cd MaiBot
+uv run python3 bot.py
+```
+
+开一个新窗口或者终端启动Napcat适配器：
+```bash
+cd MaiBot-Napcat-Adapter
+uv run python3 main.py
+```
+
+#### 后台运行
+如需在后台运行请使用screen
+
+启动麦麦核心：
+```bash
+cd MaiBot
+# 启动一个screen
+screen -S mmc
+# 运行mmc
+uv run python3 bot.py
+```
+> 等待程序运行至eula检查部分，输入`同意`或`confirmed`，代表已经阅读并确认同意更新后的EULA和隐私条款
+
+> 按`Ctrl+a`, 再按`d`, 即可退出screen, 此时,程序仍在后台执行;  
+
+启动麦麦的adapter：
+```bash
+cd ../MaiBot-Napcat-Adapter
+screen -S mmc-adapter
+# 运行adapter
+uv run python3 main.py
+```
+
+### 传统方式运行
+
+#### 前台运行
+启动麦麦核心：
 ```bash
 # 在MaiBot目录下操作
 cd MaiBot
@@ -193,7 +242,7 @@ cd MaiBot-Napcat-Adapter
 python3 main.py
 ```
 
-### 后台运行麦麦
+#### 后台运行
 如需在后台运行请使用screen
 启动麦麦核心前运行`screen -S mmc`
 ```bash
@@ -219,6 +268,15 @@ python3 main.py
 
 ## 命令速查表
 
+### uv 相关命令 (推荐)
+| 命令 | 用途 |
+|------|------|
+| `uv venv` | 创建Python虚拟环境 |
+| `uv pip install -r requirements.txt -i https://mirrors.aliyun.com/pypi/simple --upgrade` | 安装依赖包 |
+| `uv run python3 bot.py` | 运行麦麦核心 |
+| `uv run python3 main.py` | 运行Napcat适配器 |
+
+### 传统方式命令
 | 命令 | 用途 |
 |------|------|
 | `source MaiBot/venv/bin/activate` | 激活Python虚拟环境（使用venv） |
@@ -226,7 +284,7 @@ python3 main.py
 | `python3 bot.py` | 启动麦麦核心 |
 | `python3 main.py` | 启动Napcat适配器|
 
-后台运行相关：
+### 后台运行相关
 | 命令 | 用途 |
 |------|------|
 | `screen -S mmc` | 创建一个名为mmc的screen会话运行麦麦核心 |
