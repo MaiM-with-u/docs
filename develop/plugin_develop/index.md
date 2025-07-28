@@ -57,6 +57,9 @@ Command vs Action 选择指南
 - [🔌 插件API](api/plugin-manage-api.md) - 插件加载和管理接口
 - [🧩 组件API](api/component-manage-api.md) - 组件注册和管理接口
 
+### 日志API
+- [📜 日志API](api/logging-api.md) - logger实例获取接口
+
 ## 实验性
 
 这些功能将在未来重构或移除

@@ -207,10 +207,12 @@ export default defineConfig({
                 { text: 'LLM API', link: '/develop/plugin_develop/api/llm-api' },
                 { text: '回复生成器API', link: '/develop/plugin_develop/api/generator-api' },
                 { text: '表情包API', link: '/develop/plugin_develop/api/emoji-api' },
-                { text: '配置API', link: '/develop/plugin_develop/api/config-api' },
+                { text: '人物信息API', link: '/develop/plugin_develop/api/person-api' },
                 { text: '数据库API', link: '/develop/plugin_develop/api/database-api' },
-                { text: '人格API', link: '/develop/plugin_develop/api/person-api' },
-                { text: '工具API', link: '/develop/plugin_develop/api/utils-api' },
+                { text: '配置API', link: '/develop/plugin_develop/api/config-api' },
+                { text: '插件API', link: '/develop/plugin_develop/api/plugin-manage-api' },
+                { text: '组件API', link: '/develop/plugin_develop/api/component-manage-api' },
+                { text: '日志API', link: '/develop/plugin_develop/api/logging-api' },
               ]
             },
 
