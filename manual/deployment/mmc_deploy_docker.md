@@ -124,6 +124,40 @@ vim docker-compose.yml
 - PRIVACY_AGREE=42dddb3cbe2b784b45a2781407b298a1 # 同意EULA
 ```
 
+**如果不使用sqlite-web则取消chat2db的注释并给sqlite-web部分加上注释（或者删除）**
+
+
+```bash
+  #sqlite-web:
+  #  # 注意：coleifer/sqlite-web 镜像不支持arm64
+  #  image: coleifer/sqlite-web
+  #  container_name: sqlite-web
+  #  restart: always
+  #  ports:
+  #    - "8120:8080"
+  #  volumes:
+  #    - ./data/MaiMBot:/data/MaiMBot
+  #  environment:
+  #    - SQLITE_DATABASE=MaiMBot/MaiBot.db  # 你的数据库文件
+  #  networks:
+  #    - maim_bot
+
+  # chat2db占用相对较高但是功能强大
+  # 内存占用约600m，内存充足推荐选此
+   chat2db:
+     image: chat2db/chat2db:latest
+     container_name: maim-bot-chat2db
+     restart: always
+     ports:
+       - "10824:10824"
+     volumes:
+       - ./data/MaiMBot:/data/MaiMBot
+     networks:
+       - maim_bot
+```
+
+
+
 当前配置完成后目录结构应如下
 
 ```text
@@ -174,7 +208,7 @@ docker compose up -d
 docker compose ps
 ```
 
-正常应显示 4 个容器（maim-bot-core、maim-bot-adapters、maim-bot-napcat）状态为 `running`
+正常应显示 4 个容器（maim-bot-core、maim-bot-adapters、maim-bot-napcat、sqlite-web[或chat2db]）状态为 `running`
 
 ```bash
 NAME                IMAGE                           COMMAND                  SERVICE     CREATED          STATUS          PORTS
@@ -209,12 +243,21 @@ docker compose logs -f
 > 例：
 > ![Napcat配置](/images/mmc-napcat-client.png)
 
+
+### 5.3 chat2db参数设置（如果启用）
+
+访问 `http://<服务器IP>:10824` 完成 chat2db 的配置
+>数据库选择`SQLite`,`file`为`/data/MaiMBot/MaiBot.db`
+>例：
+>![chat2db配置](/image/mmc-chat2db.png)
+
+
 ---
 
 ## ❓ 常见问题排查
 
 1. ❌ **容器启动失败**：
-   - 🔍 检查端口冲突（18002/8000/8095/6099/8120）
+   - 🔍 检查端口冲突（18002/8000/8095/6099/8120/10824）
       > 如未映射请忽略
    - 🔑 验证 `.env` 文件中的 API 密钥有效性
 
