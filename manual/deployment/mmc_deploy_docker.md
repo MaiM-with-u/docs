@@ -119,7 +119,7 @@ port = 8000        # 麦麦在.env文件中设置的端口，即PORT字段
 
 ```bash
 vim docker-compose.yml
-# 取消注释以下两行（23-24行）
+# 取消注释以下两行（30-31行）
 - EULA_AGREE=bda99dca873f5d8044e9987eac417e01  # 同意EULA
 - PRIVACY_AGREE=42dddb3cbe2b784b45a2781407b298a1 # 同意EULA
 ```
