@@ -10,6 +10,7 @@
 
 - [🧱 Action组件详解](action-components.md) - 掌握最核心的Action组件
 - [💻 Command组件详解](command-components.md) - 学习直接响应命令的组件
+- [🔧 Tool组件详解](tool-components.md) - 了解如何扩展信息获取能力
 - [⚙️ 配置文件系统指南](configuration-guide.md) - 学会使用自动生成的插件配置文件
 - [📄 Manifest系统指南](manifest-guide.md) - 了解插件元数据管理和配置架构
 
@@ -43,10 +44,10 @@ Command vs Action 选择指南
 - [LLM API](api/llm-api.md) - 大语言模型交互接口，可以使用内置LLM生成内容
 - [✨ 回复生成器API](api/generator-api.md) - 智能回复生成接口，可以使用内置风格化生成器
 
-### 表情包api
+### 表情包API
 - [😊 表情包API](api/emoji-api.md) - 表情包选择和管理接口
 
-### 关系系统api
+### 关系系统API
 - [人物信息API](api/person-api.md) - 用户信息，处理麦麦认识的人和关系的接口
 
 ### 数据与配置API
@@ -59,11 +60,8 @@ Command vs Action 选择指南
 
 ### 日志API
 - [📜 日志API](api/logging-api.md) - logger实例获取接口
-
-## 实验性
-
-这些功能将在未来重构或移除
-- [🔧 工具系统详解](tool-system.md) - 工具系统的使用和开发
+### 工具API
+- [🔧 工具API](api/tool-api.md) - tool获取接口
 
 
 

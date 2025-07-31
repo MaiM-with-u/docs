@@ -195,7 +195,7 @@ export default defineConfig({
             { text: 'Manifest系统指南', link: '/develop/plugin_develop/manifest-guide' },
             { text: 'Actions系统', link: '/develop/plugin_develop/action-components' },
             { text: '命令处理系统', link: '/develop/plugin_develop/command-components' },
-            { text: '工具系统', link: '/develop/plugin_develop/tool-system' },
+            { text: '工具系统', link: '/develop/plugin_develop/command-components' },
             { text: '配置管理指南', link: '/develop/plugin_develop/configuration-guide' },
             { text: '依赖管理', link: '/develop/plugin_develop/dependency-management' },
             { text: 'API参考',
@@ -213,6 +213,7 @@ export default defineConfig({
                 { text: '插件API', link: '/develop/plugin_develop/api/plugin-manage-api' },
                 { text: '组件API', link: '/develop/plugin_develop/api/component-manage-api' },
                 { text: '日志API', link: '/develop/plugin_develop/api/logging-api' },
+                { text: '工具API', link: '/develop/plugin_develop/api/tool-api'}
               ]
             },
 

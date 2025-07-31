@@ -100,7 +100,19 @@ def get_registered_command_info(command_name: str) -> Optional[CommandInfo]:
 **Returns:**
 - `Optional[CommandInfo]` - Command 信息对象，如果 Command 不存在则返回 `None`。
 
-### 8. 获取指定 EventHandler 的注册信息
+### 8. 获取指定 Tool 的注册信息
+```python
+def get_registered_tool_info(tool_name: str) -> Optional[ToolInfo]:
+```
+获取指定 Tool 的注册信息。
+
+**Args:**
+- `tool_name` (str): Tool 名称。
+
+**Returns:**
+- `Optional[ToolInfo]` - Tool 信息对象，如果 Tool 不存在则返回 `None`。
+
+### 9. 获取指定 EventHandler 的注册信息
 ```python
 def get_registered_event_handler_info(event_handler_name: str) -> Optional[EventHandlerInfo]:
 ```
@@ -112,7 +124,7 @@ def get_registered_event_handler_info(event_handler_name: str) -> Optional[Event
 **Returns:**
 - `Optional[EventHandlerInfo]` - EventHandler 信息对象，如果 EventHandler 不存在则返回 `None`。
 
-### 9. 全局启用指定组件
+### 10. 全局启用指定组件
 ```python
 def globally_enable_component(component_name: str, component_type: ComponentType) -> bool:
 ```
@@ -125,11 +137,13 @@ def globally_enable_component(component_name: str, component_type: ComponentType
 **Returns:**
 - `bool` - 启用成功返回 `True`，否则返回 `False`。
 
-### 10. 全局禁用指定组件
+### 11. 全局禁用指定组件
 ```python
 async def globally_disable_component(component_name: str, component_type: ComponentType) -> bool:
 ```
 全局禁用指定组件。
+
+**此函数是异步的，确保在异步环境中调用。**
 
 **Args:**
 - `component_name` (str): 组件名称。
@@ -138,7 +152,7 @@ async def globally_disable_component(component_name: str, component_type: Compon
 **Returns:**
 - `bool` - 禁用成功返回 `True`，否则返回 `False`。
 
-### 11. 局部启用指定组件
+### 12. 局部启用指定组件
 ```python
 def locally_enable_component(component_name: str, component_type: ComponentType, stream_id: str) -> bool:
 ```
@@ -152,7 +166,7 @@ def locally_enable_component(component_name: str, component_type: ComponentType,
 **Returns:**
 - `bool` - 启用成功返回 `True`，否则返回 `False`。
 
-### 12. 局部禁用指定组件
+### 13. 局部禁用指定组件
 ```python
 def locally_disable_component(component_name: str, component_type: ComponentType, stream_id: str) -> bool:
 ```
@@ -166,7 +180,7 @@ def locally_disable_component(component_name: str, component_type: ComponentType
 **Returns:**
 - `bool` - 禁用成功返回 `True`，否则返回 `False`。
 
-### 13. 获取指定消息流中禁用的组件列表
+### 14. 获取指定消息流中禁用的组件列表
 ```python
 def get_locally_disabled_components(stream_id: str, component_type: ComponentType) -> list[str]:
 ```

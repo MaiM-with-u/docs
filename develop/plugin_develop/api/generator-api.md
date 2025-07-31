@@ -17,7 +17,7 @@ from src.plugin_system import generator_api
 def get_replyer(
     chat_stream: Optional[ChatStream] = None,
     chat_id: Optional[str] = None,
-    model_configs: Optional[List[Dict[str, Any]]] = None,
+    model_set_with_weight: Optional[List[Tuple[TaskConfig, float]]] = None,
     request_type: str = "replyer",
 ) -> Optional[DefaultReplyer]:
 ```
@@ -30,7 +30,7 @@ def get_replyer(
 **Args:**
 - `chat_stream`: 聊天流对象
 - `chat_id`: 聊天ID（实际上就是`stream_id`）
-- `model_configs`: 模型配置
+- `model_set_with_weight`: 模型配置列表，每个元素为 `(TaskConfig, weight)` 元组
 - `request_type`: 请求类型，用于记录LLM使用情况，可以不写
 
 **Returns:**
@@ -58,8 +58,8 @@ async def generate_reply(
     enable_splitter: bool = True,
     enable_chinese_typo: bool = True,
     return_prompt: bool = False,
-    model_configs: Optional[List[Dict[str, Any]]] = None,
-    request_type: str = "",
+    model_set_with_weight: Optional[List[Tuple[TaskConfig, float]]] = None,
+    request_type: str = "generator_api",
 ) -> Tuple[bool, List[Tuple[str, Any]], Optional[str]]:
 ```
 生成回复
@@ -77,7 +77,8 @@ async def generate_reply(
 - `enable_splitter`: 是否启用分割器
 - `enable_chinese_typo`: 是否启用中文错别字
 - `return_prompt`: 是否返回提示词
-- `model_configs`: 模型配置，可选
+- `model_set_with_weight`: 模型配置列表，每个元素为 `(TaskConfig, weight)` 元组
+- `request_type`: 请求类型（可选，记录LLM使用）
 - `request_type`: 请求类型，用于记录LLM使用情况
 
 **Returns:**
@@ -108,7 +109,7 @@ async def rewrite_reply(
     chat_id: Optional[str] = None,
     enable_splitter: bool = True,
     enable_chinese_typo: bool = True,
-    model_configs: Optional[List[Dict[str, Any]]] = None,
+    model_set_with_weight: Optional[List[Tuple[TaskConfig, float]]] = None,
     raw_reply: str = "",
     reason: str = "",
     reply_to: str = "",
@@ -125,7 +126,7 @@ async def rewrite_reply(
 - `chat_id`: 聊天ID（实际上就是`stream_id`）
 - `enable_splitter`: 是否启用分割器
 - `enable_chinese_typo`: 是否启用中文错别字
-- `model_configs`: 模型配置，可选
+- `model_set_with_weight`: 模型配置列表，每个元素为 (TaskConfig, weight) 元组
 - `raw_reply`: 原始回复内容
 - `reason`: 重写原因
 - `reply_to`: 回复目标，格式为 `{发送者的person_name:消息内容}`
@@ -174,7 +175,7 @@ reply_set = [
 async def generate_response_custom(
     chat_stream: Optional[ChatStream] = None,
     chat_id: Optional[str] = None,
-    model_configs: Optional[List[Dict[str, Any]]] = None,
+    model_set_with_weight: Optional[List[Tuple[TaskConfig, float]]] = None,
     prompt: str = "",
 ) -> Optional[str]:
 ```
@@ -185,7 +186,7 @@ async def generate_response_custom(
 **Args:**
 - `chat_stream`: 聊天流对象
 - `chat_id`: 聊天ID（备用）
-- `model_configs`: 模型配置列表
+- `model_set_with_weight`: 模型集合配置列表
 - `prompt`: 自定义提示词
 
 **Returns:**
