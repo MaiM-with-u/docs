@@ -137,19 +137,7 @@ pip install quick-algo
 source ./venv/bin/activate
 ```
 
-运行`raw_data_preprocessor.py`开始分割文本
-
-```bash
-python ./scripts/raw_data_preprocessor.py
-```
-
-你会在`data/imported_lpmm_data`目录下看到一个`当前月-日-时-分-imported-data.json`文件，里面是处理好的数据。
-
-当然，你也可以把其他人分享出来的imported-data.json文件放到`data/imported_lpmm_data`目录下，直接使用。
-
-这个文件命名不再像之前一样必须严格规范，可以使用自己喜欢的命名方式。但需要保证文件后缀为`.json`。
-
-随后，运行`info_extraction.py`来进行实体提取。
+运行`info_extraction.py`来进行文本分割 & 实体提取。
 
 ```bash
 python ./scripts/info_extraction.py
