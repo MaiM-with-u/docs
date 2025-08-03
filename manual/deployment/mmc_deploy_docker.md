@@ -249,7 +249,7 @@ docker compose logs -f
 访问 `http://<服务器IP>:10824` 完成 chat2db 的配置
 >数据库选择`SQLite`,`file`为`/data/MaiMBot/MaiBot.db`
 >例：
->![chat2db配置](/image/mmc-chat2db.png)
+>![chat2db配置](/images/mmc-chat2db.png)
 
 
 ---
