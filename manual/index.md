@@ -16,8 +16,10 @@
 
 - **使用**
   - [麦麦使用说明](/manual/usage/)
+  - [使用插件]
   - [LPMM使用说明](/manual/usage/lpmm)
   - [备份你的麦麦](/manual/usage/backup)
+
 
 - **其他**
   - [最终用户许可协议](/manual/other/EULA)
