@@ -132,7 +132,7 @@ uv pip install -r requirements.txt -i https://mirrors.aliyun.com/pypi/simple --u
 ```
 
 ::: tip
-如果你在这里发现`quick_algo`安装失败，请参考[LPMM 使用说明](/manual/usage/lpmm)中手动编译的部分
+如果你在这里发现`quick_algo`安装失败，请参考[LPMM 使用说明](/manual/usage/features/lpmm)中手动编译的部分
 :::
 
 2. 回到上一级文件夹，进入MaiBot-Napcat-Adapter文件夹，安装依赖：
@@ -153,7 +153,7 @@ pip3 install -r requirements.txt
 ```
 
 ::: tip
-如果你在这里发现`quick_algo`安装失败，请参考[LPMM 使用说明](/manual/usage/lpmm)中手动编译的部分
+如果你在这里发现`quick_algo`安装失败，请参考[LPMM 使用说明](/manual/usage/features/lpmm)中手动编译的部分
 :::
 
 回到上一级文件夹，再进入MaiBot-Napcat-Adapter文件夹，安装依赖：
