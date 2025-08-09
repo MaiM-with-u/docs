@@ -8,11 +8,11 @@
 
 ## 一键包安装
 
-待完善
+- [一键包](onekey_deploy)
 
 ## 启动器安装
 
-待完善
+- [启动器](launcher_deploy)
 
 ## 手动部署 - 部署方式
 
@@ -30,7 +30,6 @@
 
 - [使用旧版adapter的windows部署](./old/mmc_deploy_windows_old)
 
-:::
 
 ## 故障排除
 

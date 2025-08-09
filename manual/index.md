@@ -25,7 +25,9 @@
 ### 其他
 
 [最终用户许可协议](/manual/other/EULA)
+
 [提问的艺术(麦麦版本)](/manual/other/ask_art)
+
 [如何避免提出0/1问题](/manual/other/questions-with-yes-or-no-answers)
 
 ::: details 旧版相关内容

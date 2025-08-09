@@ -5,7 +5,7 @@
 ## 文档导航
 
 ### 插件和适配器
-- [(0.8.x) 插件开发指南v0.2](/develop/plugin_develop/)
+- [插件开发指南v0.3](/develop/plugin_develop/)
 - [Adapter 开发指南](/develop/adapter_develop/)
 - [Maim_Message参考](/develop/maim_message/index)
 
