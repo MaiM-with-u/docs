@@ -9,7 +9,7 @@
 }
 
 .doc-card {
-  background: linear-gradient(135deg, #ff6b35 0%, #3b82f6 100%);
+  background: linear-gradient(135deg, #ff8c00 0%, #32cd32 100%);
   border-radius: 15px;
   padding: 15px;
   color: white !important;
@@ -33,7 +33,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(135deg, #3b82f6 0%, #ff6b35 100%);
+  background: linear-gradient(135deg, #32cd32 0%, #ff8c00 100%);
   opacity: 0;
   transition: opacity 0.3s ease;
   z-index: 1;
@@ -73,7 +73,7 @@
   font-size: 1.8em;
   margin: 40px 0 20px 0;
   color: #333;
-  border-bottom: 3px solid #ff9a56;
+  border-bottom: 3px solid #32cd32;
   padding-bottom: 10px;
 }
 
