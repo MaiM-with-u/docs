@@ -9,12 +9,12 @@
   <div class="card-content">
     <p>我们现有的插件列表已经可以在插件展示网站上查看。</p>
     <div class="website-links">
-      <div class="primary-link">
+      <a href="https://maim-with-u.github.io/plugin-repo" class="primary-link" target="_blank">
         <span class="link-text">主站：maim-with-u.github.io/plugin-repo</span>
-      </div>
-      <div class="backup-link">
+      </a>
+      <a href="https://plugins.maibot.chat" class="backup-link" target="_blank">
         <span class="link-text">备用：plugins.maibot.chat</span>
-      </div>
+      </a>
     </div>
   </div>
 </div>
@@ -53,6 +53,9 @@
   border: 1px solid #d1d5da;
   border-radius: 6px;
   transition: all 0.2s ease;
+  text-decoration: none;
+  display: block;
+  cursor: pointer;
 }
 
 .primary-link:hover, .backup-link:hover {
