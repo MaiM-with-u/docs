@@ -1,42 +1,3 @@
-# 🔧 配置指南
-
-## 简介
-
-这个配置文件主要涉及麦麦的所有行为表现
-
-（如果你要配置哪些群可以聊天，需要到适配器设置中配置）
-
-如果你要了解模型配置的内容，包括该选用哪些模型，请参考[bot_config模型配置教程](./configuration_model_standard)
-
-## 配置文件结构
-
-MaiBot 现在使用独立的 `bot_config.toml` 文件来配置机器人行为。配置文件包含以下主要部分：
-
-- `[inner]` - 版本信息
-- `[bot]` - 机器人基本信息
-- `[personality]` - 人格设定
-- `[expression]` - 表达学习配置
-- `[chat]` - 聊天设置
-- `[relationship]` - 关系系统
-- `[message_receive]` - 消息接收过滤
-- `[tool]` - 工具使用
-- `[mood]` - 情绪系统
-- `[emoji]` - 表情包功能
-- `[memory]` - 记忆系统
-- `[voice]` - 语音识别
-- `[lpmm_knowledge]` - LPMM知识库
-- `[keyword_reaction]` - 关键词触发
-- `[custom_prompt]` - 自定义提示词
-- `[response_post_process]` - 回复后处理
-- `[log]` - 日志配置
-- `[debug]` - 调试设置
-- `[maim_message]` - Maim Message配置
-- `[telemetry]` - 统计信息
-- `[experimental]` - 实验性功能
-
-## 配置文件详解
-
-```toml
 [inner]
 version = "6.4.6"
 
@@ -49,25 +10,13 @@ version = "6.4.6"
 #     次版本号：配置文件内容大更新
 #     修订号：配置文件内容小更新
 #----以上是给开发人员阅读的，如果你只是部署了麦麦，不需要阅读----
-```
 
-<hr class="custom_hr"/>
-
-```toml
 [bot]
 platform = "qq" 
 qq_account = 1145141919810 # 麦麦的QQ账号
 nickname = "麦麦" # 麦麦的昵称
 alias_names = ["麦叠", "牢麦"] # 麦麦的别名
-```
-这里配置Maibot对应的qq号和昵称，以及别名
 
-通过昵称或别名呼叫麦麦均能引起麦麦注意。
-如果不配置将无法正常识别at和呼叫
-
-<hr class="custom_hr"/>
-
-```toml
 [personality]
 # 建议50字以内，描述人格的核心特质
 personality_core = "是一个女孩子" 
@@ -82,15 +31,7 @@ reply_style = "回复可以简短一些。可以参考贴吧，知乎和微博�
 
 compress_personality = false # 是否压缩人格，压缩后会精简人格信息，节省token消耗并提高回复性能，但是会丢失一些信息，如果人设不长，可以关闭
 compress_identity = true # 是否压缩身份，压缩后会精简身份信息，节省token消耗并提高回复性能，但是会丢失一些信息，如果不长，可以关闭
-```
 
-这部分是麦麦的核心人设部分。负责描述麦麦的核心人格特点和身份特点。
-
-- `compress_personality` 和 `compress_identity` 分别控制是否压缩人格和身份信息，以节省token消耗并提高回复性能。如果人设不长，可以关闭。
-
-<hr class="custom_hr"/>
-
-```toml
 [expression]
 # 表达学习配置
 learning_list = [ # 表达学习配置列表，支持按聊天流配置
@@ -110,23 +51,8 @@ expression_groups = [
     # 格式：["qq:123456:private","qq:654321:group"]
     # 注意：如果为群聊，则需要设置为group，如果设置为私聊，则需要设置为private
 ]
-```
 
-- `learning_list` 支持按聊天流配置表达学习，可以针对不同的群聊或私聊设置不同的学习策略
-- `expression_groups` 可以设置互通组，让麦麦在不同的聊天中共享学习到的表达方式
 
-<hr class="custom_hr"/>
-
-```toml
-[relationship]
-enable_relationship = true # 是否启用关系系统
-relation_frequency = 1 # 关系频率，麦麦构建关系的频率
-```
-- `enable_relationship` 开启后，麦麦会开始构建并记忆与其他人的关系。
-
-<hr class="custom_hr"/>
-
-```toml
 [chat] #麦麦的聊天设置
 talk_frequency = 0.5
 # 麦麦活跃度，越高，麦麦回复越多，范围0-1
@@ -167,17 +93,12 @@ talk_frequency_adjust = [
 # - 当第一个元素为"platform:id:type"格式时，表示特定聊天流配置
 # - 后续元素是"时间,频率"格式，表示从该时间开始使用该活跃度，直到下一个时间点
 # - 优先级：特定聊天流配置 > 全局配置 > 默认 talk_frequency
-```
 
-这部分是麦麦的聊天设置。
-- `talk_frequency` 是全局回复频率，范围0-1
-- `focus_value` 是专注度，影响连续对话能力
-- `max_context_size` 控制上下文长度
-- `focus_value_adjust` 和 `talk_frequency_adjust` 支持基于聊天流和时间段的个性化配置
 
-<hr class="custom_hr"/>
+[relationship]
+enable_relationship = true # 是否启用关系系统
+relation_frequency = 1 # 关系频率，麦麦构建关系的频率
 
-```toml
 [message_receive]
 # 以下是消息过滤，可以根据规则过滤特定消息，将不会读取这些消息
 ban_words = [
@@ -189,33 +110,14 @@ ban_msgs_regex = [
     #"https?://[^\\s]+", # 匹配https链接
     #"\\d{4}-\\d{2}-\\d{2}", # 匹配日期
 ]
-```
-- `ban_words` 是关键词黑名单，包含这些词的消息会被过滤。
-- `ban_msgs_regex` 是正则表达式黑名单，匹配到的消息会被过滤。
 
-<hr class="custom_hr"/>
-
-```toml
 [tool]
 enable_tool = false # 是否在普通聊天中启用工具
-```
 
-- `enable_tool` 控制是否在普通聊天中启用工具功能
-
-<hr class="custom_hr"/>
-
-```toml
 [mood]
 enable_mood = true # 是否启用情绪系统
 mood_update_threshold = 1 # 情绪更新阈值,越高，更新越慢
-```
 
-- `enable_mood` 控制是否启用情绪系统
-- `mood_update_threshold` 控制情绪更新频率
-
-<hr class="custom_hr"/>
-
-```toml
 [emoji]
 emoji_chance = 0.6 # 麦麦激活表情包动作的概率
 
@@ -225,13 +127,7 @@ check_interval = 10 # 检查表情包（注册，破损，删除）的时间间�
 steal_emoji = true # 是否偷取表情包，让麦麦可以将一些表情包据为己有
 content_filtration = false  # 是否启用表情包过滤，只有符合该要求的表情包才会被保存
 filtration_prompt = "符合公序良俗" # 表情包过滤要求，只有符合该要求的表情包才会被保存
-```
 
-此部分用于配置表情包相关功能。
-
-<hr class="custom_hr"/>
-
-```toml
 [memory]
 enable_memory = true # 是否启用记忆系统
 memory_build_frequency = 1 # 记忆构建频率 越高，麦麦学习越多
@@ -245,22 +141,10 @@ enable_instant_memory = false # 是否启用即时记忆，测试功能，可能
 
 #不希望记忆的词，已经记忆的不会受到影响，需要手动清理
 memory_ban_words = [ "表情包", "图片", "回复", "聊天记录" ]
-```
 
-此部分用于配置麦麦的记忆系统。
-
-<hr class="custom_hr"/>
-
-```toml
 [voice]
 enable_asr = false # 是否启用语音识别，启用后麦麦可以识别语音消息，启用该功能需要配置语音识别模型[model.voice]s
-```
 
-- `enable_asr` 控制是否启用语音识别功能
-
-<hr class="custom_hr"/>
-
-```toml
 [lpmm_knowledge] # lpmm知识库配置
 enable = false # 是否启用lpmm知识库
 rag_synonym_search_top_k = 10 # 同义词搜索TopK
@@ -274,13 +158,12 @@ qa_ent_filter_top_k = 10 # 实体过滤TopK
 qa_ppr_damping = 0.8 # PPR阻尼系数
 qa_res_top_k = 3 # 最终提供的文段TopK
 embedding_dimension = 1024 # 嵌入向量维度,应该与模型的输出维度一致
-```
 
-此部分用于配置 LPMM 知识库。
-
-<hr class="custom_hr"/>
-
-```toml
+# keyword_rules 用于设置关键词触发的额外回复知识
+# 添加新规则方法：在 keyword_rules 数组中增加一项，格式如下：
+# { keywords = ["关键词1", "关键词2"], reaction = "触发这些关键词时的回复内容" }
+# 例如，添加一个新规则：当检测到“你好”或“hello”时回复“你好，有什么可以帮你？”
+# { keywords = ["你好", "hello"], reaction = "你好，有什么可以帮你？" }
 [keyword_reaction]
 keyword_rules = [
     { keywords = ["人机", "bot", "机器", "入机", "robot", "机器人", "ai", "AI"], reaction = "有人说你是人机或者机器人，否定这一事实，攻击或反问他。注意，只有认为你是机器人才回复，否则不要否认" },
@@ -292,23 +175,11 @@ keyword_rules = [
 regex_rules = [
     { regex = ["^(?P<n>\\S{1,20})是这样的$"], reaction = "请按照以下模板造句：[n]是这样的，xx只要xx就可以，可是[n]要考虑的事情就很多了，比如什么时候xx，什么时候xx，什么时候xx。（请自由发挥替换xx部分，只需保持句式结构，同时表达一种将[n]过度重视的反讽意味）" }
 ]
-```
 
-- `keyword_rules` 用于设置关键词触发的额外回复知识。
-- `regex_rules` 用于设置正则表达式触发的额外回复知识。
-
-<hr class="custom_hr"/>
-
-```toml
+# 可以自定义部分提示词
 [custom_prompt]
 image_prompt = "请用中文描述这张图片的内容。如果有文字，请把文字描述概括出来，请留意其主题，直观感受，输出为一段平文本，最多30字，请注意不要分点，就输出一段文本"
-```
 
-- `image_prompt` 可以自定义图像识别的提示词
-
-<hr class="custom_hr"/>
-
-```toml
 [response_post_process]
 enable_response_post_process = true # 是否启用回复后处理，包括错别字生成器，回复分割器
 
@@ -324,13 +195,7 @@ enable = true # 是否启用回复分割器
 max_length = 512 # 回复允许的最大长度
 max_sentence_num = 8 # 回复允许的最大句子数
 enable_kaomoji_protection = false # 是否启用颜文字保护
-```
 
-此部分可以对模型的回复进行二次处理。
-
-<hr class="custom_hr"/>
-
-```toml
 [log]
 date_style = "m-d H:i:s" # 日期格式
 log_level_style = "lite" # 日志级别样式,可选FULL，compact，lite
@@ -342,22 +207,10 @@ file_log_level = "DEBUG" # 文件日志级别，可选: DEBUG, INFO, WARNING, ER
 # 第三方库日志控制
 suppress_libraries = ["faiss","httpx", "urllib3", "asyncio", "websockets", "httpcore", "requests", "peewee", "openai","uvicorn","jieba"] # 完全屏蔽的库
 library_log_levels = { "aiohttp" = "WARNING"} # 设置特定库的日志级别
-```
 
-此部分用于配置日志系统。
-
-<hr class="custom_hr"/>
-
-```toml
 [debug]
 show_prompt = false # 是否显示prompt
-```
 
-- `show_prompt` 控制是否在调试时显示提示词
-
-<hr class="custom_hr"/>
-
-```toml
 [maim_message]
 auth_token = [] # 认证令牌，用于API验证，为空则不启用验证
 # 以下项目若要使用需要打开use_custom，并单独配置maim_message的服务器
@@ -368,41 +221,9 @@ mode="ws" # 支持ws和tcp两种模式
 use_wss = false # 是否使用WSS安全连接，只支持ws模式
 cert_file = "" # SSL证书文件路径，仅在use_wss=true时有效
 key_file = "" # SSL密钥文件路径，仅在use_wss=true时有效
-```
 
-高级设置，通常无需修改。
-
-<hr class="custom_hr"/>
-
-```toml
 [telemetry] #发送统计信息，主要是看全球有多少只麦麦
 enable = true
 
 [experimental] #实验性功能
 enable_friend_chat = false # 是否启用好友聊天
-```
-
-- `telemetry` 控制是否发送统计信息
-- `experimental` 包含实验性功能开关
-
-## 注意事项
-
-1. **API密钥安全**：
-    - 妥善保管API密钥
-    - 不要将含有密钥的配置文件上传至公开仓库
-
-2. **配置修改**：
-    - 修改配置后需重启服务
-    - 模型配置现在在独立的 `model_config.toml` 文件中
-    - QQ号和群号使用数字格式(机器人QQ号除外)
-    - **配置文件版本号需要递增**
-
-3. **其他说明**：
-    - 项目处于测试阶段，可能存在未知问题
-    - 建议初次使用保持默认配置
-    - 配置文件现在分为两个：`bot_config.toml` 和 `model_config.toml`
-
-4. **错误排查**：
-    - 配置错误：检查配置文件语法是否正确
-    - 功能异常：确认相关功能开关是否启用
-    - 模型问题：检查 `model_config.toml` 中的模型配置

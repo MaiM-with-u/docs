@@ -174,6 +174,13 @@ cp template/template.env .env
     - `[Napcat_Server]`字段的port,应该与Napcat设置的反向代理的url相同（这里是8095）
     - `[Napcat_Server]`字段的heartbeat,应该与Napcat设置的反向代理的心跳间隔相同（注意，Napcat中的间隔为毫秒，填入时请转化为秒，这里是30）
     - `[MaiBot_Server]`字段的port,应该与麦麦本体的`.env`中的`PORT`相同（此处为8000）
+
+```ini
+HOST=127.0.0.1
+PORT=8000
+```
+麦麦主程序.env文件中的这部分负责配置MaiBot监听的端口和地址。
+
 ```toml
 [Napcat_Server] # Napcat连接的ws服务设置
 host = "localhost" # Napcat设定的主机地址

@@ -9,21 +9,9 @@
 - [Adapter 开发指南](/develop/adapter_develop/)
 - [Maim_Message参考](/develop/maim_message/index)
 
-### MMC工作方式
 
-- [文件与项目结构](/develop/structure/index)
-  - [文件结构](/develop/structure/file_structure)
-  - [消息处理流程](/develop/structure/message_flow_direction)
-
-
-### 规范
-
+### 开发资源和规范
 - [开发者与代码规范](/develop/develop_standard)
 - [贡献指南](#贡献指南v1-0)
-
-
-### 开发资源
-
 - [GitHub仓库](https://github.com/MaiM-with-u/MaiBot)
-- [开发者社区](https://github.com/MaiM-with-u/MaiBot/discussions)
-- [问题跟踪](https://github.com/MaiM-with-u/MaiBot/issues)
+- [汇报问题](https://github.com/MaiM-with-u/MaiBot/issues)

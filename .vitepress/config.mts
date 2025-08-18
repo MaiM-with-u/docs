@@ -16,7 +16,6 @@ export default defineConfig({
     nav: [
       { text: '首页', link: '/' },
       { text: '用户手册', link: '/manual/' },
-      { text: '常见问题', link: '/faq/' },
       { text: '开发文档', link: '/develop/' },
       {
         text: '官方Q群', items: [
@@ -40,34 +39,36 @@ export default defineConfig({
         {
           text: '用户手册',
           items: [
-            { text: '介绍', link: '/manual/' }
+            { text: '主页', link: '/manual/' }
           ]
         },
         {
-          text: '部署方法',
+          text: '安装方法',
           collapsed: false,
           items: [
             { text: '部署概览', link: '/manual/deployment/' },
             { text: 'Windows部署', link: '/manual/deployment/mmc_deploy_windows' },
             { text: 'Linux部署', link: '/manual/deployment/mmc_deploy_linux' },
             { text: 'Docker部署', link: '/manual/deployment/mmc_deploy_docker' },
-            { text: 'Android部署', link: '/manual/deployment/mmc_deploy_android' },
-            { text: 'Adapter部署(旧版)', link: '/manual/deployment/old/mmc_deploy_windows_old' },
-            {
-              text: '0.5.x旧版部署方法',
-              collapsed: true,
-              items: [
-                { text: 'Docker部署(推荐)', link: '/manual/deployment/old/docker_deploy' },
-                { text: 'Linux手动部署', link: '/manual/deployment/old/manual_deploy_linux' },
-                { text: 'Windows手动部署', link: '/manual/deployment/old/manual_deploy_windows' },
-                { text: '群晖NAS部署', link: '/manual/deployment/old/synology_deploy' },
-                { text: '新手Linux部署', link: '/manual/deployment/old/linux_deploy_guide_for_beginners' },
-              ]
-            },
+            { text: 'Android部署', link: '/manual/deployment/mmc_deploy_android' }
           ]
         },
         {
-          text: 'Adapter 广场',
+          text: '功能介绍',
+          collapsed: false,
+          items: [
+            { text: '麦麦使用说明', link: '/manual/usage/' },
+            { text: '聊天控制系统', link: '/manual/usage/features/chat' },
+            { text: '记忆系统', link: '/manual/usage/features/memory' },
+            { text: '表达学习', link: '/manual/usage/features/expression' },
+            { text: '个性系统', link: '/manual/usage/features/personality' },
+            { text: 'LPMM知识库', link: '/manual/usage/features/lpmm' },
+            { text: 'LPMM手动编译说明', link: '/manual/usage/compile_and_install'},
+            { text: '备份你的麦麦', link: '/manual/usage/backup.md' },
+          ]
+        },
+        {
+          text: '适配器列表',
           collapsed: false,
           items: [
             { text: 'Adapters 文档中心', link: '/manual/adapters' },
@@ -84,41 +85,24 @@ export default defineConfig({
           ]
         },
         {
-          text: '插件广场',
+          text: '插件',
           collapsed: false,
           items: [
             { text: '插件概述', link: '/manual/plugins/' },
           ]
         },
         {
-          text: '配置方法',
+          text: '配置详解',
           collapsed: false,
           items: [
-            { text: '配置指南',
-              collapsed: true,
-              items: [
-                { text: '配置概览', link: '/manual/configuration/' },
-                { text: '.env配置教程', link: '/manual/configuration/configuration_env_standard' },
-                { text: 'bot_config.toml配置教程', link: '/manual/configuration/configuration_standard' },
-                { text: 'bot_config.toml模型部分配置教程', link: '/manual/configuration/configuration_model_standard' },
-              ]
-            },
-            { text: '标准配置教程', link: '/manual/configuration/configuration_standard' },
+            { text: '配置概览', link: '/manual/configuration/' },
+            { text: '麦麦设置配置教程', link: '/manual/configuration/configuration_standard' },
+            { text: '模型设置配置教程', link: '/manual/configuration/configuration_model_standard' },
             { text: 'LPMM导入文件格式', link: '/manual/configuration/lpmm_knowledge_template' },
           ]
         },
         {
-          text: '使用指南',
-          collapsed: false,
-          items: [
-            { text: '麦麦使用说明', link: '/manual/usage/' },
-            { text: 'LPMM使用说明', link: '/manual/usage/features/lpmm' },
-            { text: 'LPMM手动编译说明', link: '/manual/usage/compile_and_install'},
-            { text: '备份你的麦麦', link: '/manual/usage/backup.md' },
-          ]
-        },
-        {
-          text: '其他',
+          text: '常见问题',
           collapsed: false,
           items: [
             { text: '最终用户许可协议', link: '/manual/other/EULA' },
@@ -167,15 +151,6 @@ export default defineConfig({
           items: [
             { text: '介绍', link: '/develop/' },
             { text: '开发者与代码规范', link: '/develop/develop_standard' },
-          ]
-        },
-        {
-          text: '项目结构',
-          collapsed: false,
-          items: [
-            { text: '架构概述', link: '/develop/structure/' },
-            { text: '文件结构', link: '/develop/structure/file_structure' },
-            { text: '消息处理流程', link: '/develop/structure/message_flow_direction' },
           ]
         },
         {

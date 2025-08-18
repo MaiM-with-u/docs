@@ -1,9 +1,7 @@
 ## 表达学习（Expression Learning）
 
 ### 这有什么用？
-- 通过自动学习群体/私聊中的常见说法与语气，沉淀为可复用的两类表达：
-  - 语言风格（style）：习惯用语、口头禅、梗的表达方式。
-  - 句法特点（grammar）：句长、常见语病、简化写法等表达结构。
+- 通过自动学习群体/私聊中的常见说法与语气，沉淀为可复用的表达
 - 回复阶段会基于已学习的表达进行加权抽样与筛选，从而生成更贴合当前聊天语境的回复，提高拟人化与融群感。
 - 学到的表达会按活跃度进行权重累积与自然衰减，长期保持“常用更常用，冷门会被淘汰”的效果。
 
@@ -11,11 +9,11 @@
 - 文件：`config/bot_config.toml`
 - 区块：`[expression]`
 
-该区块包含两个与“表达学习”相关的选项：`expression_learning` 与 `expression_groups`。
+该区块包含两个与“表达学习”相关的选项：`learning_list` 与 `expression_groups`。
 
 ---
 
-### 选项一：expression_learning（开关与学习强度）
+### 选项一：learning_list（开关与学习强度）
 
 - 作用：为全局或某个特定聊天流配置“是否使用表达”“是否进行学习”“学习强度”。
 - 格式：
@@ -23,9 +21,9 @@
 ```toml
 [expression]
 expression_learning = [
-  ["", "enable", "enable", 1.0],                # 全局：使用表达=开，学习=开，强度=1.0
-  ["qq:1919810:group", "enable", "enable", 1.5], # 指定群聊：使用表达=开，学习=开，强度=1.5
-  ["qq:114514:private", "enable", "disable", 0.5] # 指定私聊：使用表达=开，学习=关，强度=0.5
+  ["", "enable", "enable", "1.0"],                # 全局：使用表达=开，学习=开，强度=1.0
+  ["qq:1919810:group", "enable", "enable", "1.5"], # 指定群聊：使用表达=开，学习=开，强度=1.5
+  ["qq:114514:private", "enable", "disable", "0.5"] # 指定私聊：使用表达=开，学习=关，强度=0.5
 ]
 ```
 
@@ -73,10 +71,16 @@ expression_groups = [
 ```toml
 [expression]
 # 表达学习配置
-expression_learning = [
-  ["", "enable", "enable", 1.0],
-  ["qq:1919810:group", "enable", "enable", 1.5],
-  ["qq:114514:private", "enable", "disable", 0.5]
+learning_list = [ # 表达学习配置列表，支持按聊天流配置
+    ["", "enable", "enable", "1.0"],  # 全局配置：使用表达，启用学习，学习强度1.0
+    ["qq:1919810:group", "enable", "enable", "1.5"],  # 特定群聊配置：使用表达，启用学习，学习强度1.5
+    ["qq:114514:private", "enable", "disable", "0.5"],  # 特定私聊配置：使用表达，禁用学习，学习强度0.5
+    # 格式说明：
+    # 第一位: chat_stream_id，空字符串表示全局配置
+    # 第二位: 是否使用学到的表达 ("enable"/"disable")
+    # 第三位: 是否学习表达 ("enable"/"disable") 
+    # 第四位: 学习强度（浮点数），影响学习频率，最短学习时间间隔 = 300/学习强度（秒）
+    # 学习强度越高，学习越频繁；学习强度越低，学习越少
 ]
 
 expression_groups = [
@@ -88,16 +92,14 @@ expression_groups = [
 
 ```toml
 [expression]
-expression_learning = [["", "enable", "disable", 1.0]]
+learning_list = [["", "enable", "disable", 1.0]]
 ```
 
 如需完全关闭表达（全局）：
 
 ```toml
 [expression]
-expression_learning = [["", "disable", "disable", 1.0]]
+learning_list = [["", "disable", "disable", 1.0]]
 ```
-
-以上配置即刻生效，无需改动代码。
 
 

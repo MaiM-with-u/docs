@@ -12,9 +12,6 @@ hero:
     - theme: brand
       text: 用户指南
       link: /manual/
-    - theme: brand
-      text: 常见问题
-      link: /faq/
     - theme: alt
       text: 开发文档
       link: /develop/
