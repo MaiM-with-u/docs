@@ -4,8 +4,6 @@
 
 本文档默认你熟悉 Kubernetes 和 Helm，因此不会详细说明每一部分的作用。
 
----
-
 ## 📋 环境要求
 
 - ✅ 已部署 Kubernetes（可以是单节点集群）
@@ -82,7 +80,7 @@ helm show values oci://reg.mikumikumi.xyz/maibot/maibot --version 0.10.0-alpha.0
 
    - `core_bot_config`: 对应core的`bot_config.toml`。详见[配置指南](https://docs.mai-mai.org/manual/configuration/configuration_standard)。
 
-::: info
+::: tip
 编辑完毕后，请妥善保存此 values 文件。
 :::
 
@@ -105,11 +103,11 @@ adapter 的配置文件会通过 job 在部署时动态生成，因此部署会�
 
 如果是首次部署，在 adapter 的配置文件生成完毕之前，adapter Pod 可能会启动失败。这是正常现象，等待一分钟左右即可自行启动。
 
-::: info
+::: tip
 adapter 的配置文件生成任务是通过 Helm Chart 的 post-install hook 实现的，仅会在每次 helm install/upgrade/rollback 时触发。
 :::
 
-::: info
+::: tip
 你可以在集群内部署多个麦麦的安装实例，只要这些实例的名字不同即可。
 :::
 
@@ -119,13 +117,13 @@ adapter 的配置文件生成任务是通过 Helm Chart 的 post-install hook �
 
 - 如果捆绑部署了 napcat，且配置了 Ingress，那么可以在浏览器中打开类似 `https://napcat.example.com/` 的网址（values 中配置的域名），抵达控制台。
 
-- 如果捆绑部署了 napcat，但未配置 Ingress，那么需要查看 napcat 的 Service，通过端口转发（默认为6099）或NodePort访问控制台的端口。
+- 如果捆绑部署了 napcat，但未配置 Ingress，那么需要查看 napcat 的 Service，通过端口转发（默认为6099）或 NodePort 访问控制台的端口。
 
 - 如果未捆绑部署，决定使用外部 napcat 实例，请打开外部 napcat 的控制台。
 
 进入控制台后，登录麦麦使用的 QQ，随后立即修改控制台密码。
 
-连接步骤：
+连接麦麦的步骤：
 
 1. 进入`网络配置`，新建`Websocket客户端`。
 
@@ -144,7 +142,7 @@ adapter 的配置文件生成任务是通过 Helm Chart 的 post-install hook �
      ws://maimai-maibot-adapter:8095/
      ```
 
-     ::: info
+     ::: tip
      k8s 的集群内 DNS 名称规则：[Service 与 Pod 的 DNS](https://kubernetes.io/zh-cn/docs/concepts/services-networking/dns-pod-service/)。
      :::
      
@@ -159,8 +157,6 @@ adapter 的配置文件生成任务是通过 Helm Chart 的 post-install hook �
 ### 🎉 六、测试麦麦
 
 现在可以发消息给麦麦，测试是否可用。
-
----
 
 ## ⏫ 升级麦麦
 
