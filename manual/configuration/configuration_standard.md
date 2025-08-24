@@ -38,7 +38,7 @@ MaiBot 现在使用独立的 `bot_config.toml` 文件来配置机器人行为。
 
 ```toml
 [inner]
-version = "6.4.6"
+version = "6.7.1"
 
 #----以下是给开发人员阅读的，如果你只是部署了麦麦，不需要阅读----
 #如果你想要修改配置文件，请递增version的值
@@ -80,13 +80,21 @@ identity = "年龄为19岁,是女孩子,身高为160cm,有黑色的短发"
 # 描述麦麦说话的表达风格，表达习惯，如要修改，可以酌情新增内容
 reply_style = "回复可以简短一些。可以参考贴吧，知乎和微博的回复风格，回复不要浮夸，不要用夸张修辞，平淡一些。不要浮夸，不要夸张修辞。"
 
-compress_personality = false # 是否压缩人格，压缩后会精简人格信息，节省token消耗并提高回复性能，但是会丢失一些信息，如果人设不长，可以关闭
-compress_identity = true # 是否压缩身份，压缩后会精简身份信息，节省token消耗并提高回复性能，但是会丢失一些信息，如果不长，可以关闭
+# 描述麦麦的行为风格，会影响麦麦什么时候回复，什么时候使用动作，麦麦考虑的可就多了
+plan_style = "当你刚刚发送了消息，没有人回复时，不要选择action，如果有别的动作（非回复）满足条件，可以选择，当你一次发送了太多消息，为了避免打扰聊天节奏，不要选择动作"
+
+# 麦麦的兴趣，会影响麦麦对什么话题进行回复（这个配置项暂时未启用
+interest = "对技术相关话题，游戏和动漫相关话题感兴趣，也对日常话题感兴趣，不喜欢太过沉重严肃的话题"
 ```
 
 这部分是麦麦的核心人设部分。负责描述麦麦的核心人格特点和身份特点。
 
-- `compress_personality` 和 `compress_identity` 分别控制是否压缩人格和身份信息，以节省token消耗并提高回复性能。如果人设不长，可以关闭。
+- `personality_core`: 人格核心特质，建议50字以内
+- `personality_side`: 人格细节描述
+- `identity`: 外貌、性别、身高、职业等身份描述
+- `reply_style`: 说话的表达风格和习惯
+- `plan_style`: 行为风格，影响麦麦的回复和动作选择
+- `interest`: 兴趣偏好，影响麦麦对话题的回复倾向
 
 <hr class="custom_hr"/>
 
@@ -135,6 +143,10 @@ focus_value = 0.5
 
 max_context_size = 20 # 上下文长度
 
+interest_rate_mode = "fast" #激活值计算模式，可选fast或者accurate
+
+planner_size = 2.5 # 副规划器大小，越小，麦麦的动作执行能力越精细，但是消耗更多token，调大可以缓解429类错误
+
 mentioned_bot_inevitable_reply = true # 提及 bot 大概率回复
 at_bot_inevitable_reply = true # @bot 或 提及bot 大概率回复
 
@@ -173,6 +185,8 @@ talk_frequency_adjust = [
 - `talk_frequency` 是全局回复频率，范围0-1
 - `focus_value` 是专注度，影响连续对话能力
 - `max_context_size` 控制上下文长度
+- `interest_rate_mode` 控制激活值计算模式，可选"fast"或"accurate"
+- `planner_size` 控制副规划器大小，调大可以缓解429类错误
 - `focus_value_adjust` 和 `talk_frequency_adjust` 支持基于聊天流和时间段的个性化配置
 
 <hr class="custom_hr"/>
@@ -219,7 +233,7 @@ mood_update_threshold = 1 # 情绪更新阈值,越高，更新越慢
 [emoji]
 emoji_chance = 0.6 # 麦麦激活表情包动作的概率
 
-max_reg_num = 60 # 表情包最大注册数量
+max_reg_num = 100 # 表情包最大注册数量
 do_replace = true # 开启则在达到最大数量时删除（替换）表情包，关闭则达到最大数量时不会继续收集表情包
 check_interval = 10 # 检查表情包（注册，破损，删除）的时间间隔(分钟)
 steal_emoji = true # 是否偷取表情包，让麦麦可以将一些表情包据为己有

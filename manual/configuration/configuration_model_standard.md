@@ -17,7 +17,7 @@ MaiBot 现在使用独立的 `model_config.toml` 文件来配置模型和API服�
 ```toml
 [[api_providers]] # API服务提供商（可以配置多个）
 name = "DeepSeek"                       # API服务商名称（可随意命名，在models的api-provider中需使用这个命名）
-base_url = "https://api.deepseek.cn/v1" # API服务商的BaseURL
+base_url = "https://api.deepseek.com/v1" # API服务商的BaseURL
 api_key = "your-api-key-here"           # API密钥（请替换为实际的API密钥）
 client_type = "openai"                  # 请求客户端（可选，默认值为"openai"，使用gimini等Google系模型时请配置为"gemini"）
 max_retry = 2                           # 最大重试次数（单个模型API调用失败，最多重试的次数）
@@ -50,7 +50,18 @@ client_type = "gemini"
 max_retry = 2
 timeout = 30
 retry_interval = 10
+
+[[api_providers]] # 阿里 百炼 API服务商配置
+name = "BaiLian"
+base_url = "https://dashscope.aliyuncs.com/compatible-mode/v1"
+api_key = "your-bailian-key"
+client_type = "openai"
+max_retry = 2
+timeout = 15
+retry_interval = 5
 ```
+
+<hr class="custom_hr"/>
 
 ## 模型定义配置，如何定义你的AI模型
 
@@ -85,6 +96,8 @@ price_out = 0
 enable_thinking = false # 不启用思考
 ```
 
+<hr class="custom_hr"/>
+
 ## 任务模型配置
 
 ### **必填：组件模型**
@@ -98,7 +111,7 @@ temperature = 0.2                        # 模型温度，新V3建议0.1-0.3
 max_tokens = 800                         # 最大输出token数
 
 [model_task_config.utils_small] # 在麦麦的一些组件中使用的小模型，消耗量较大，建议使用速度较快的小模型
-model_list = ["qwen3-8b"]
+model_list = ["qwen3-8b","qwen3-30b"]
 temperature = 0.7
 max_tokens = 800
 ```
@@ -113,22 +126,28 @@ max_tokens = 800
 ```toml
 [model_task_config.replyer] # 首要回复模型，还用于表达器和表达方式学习
 model_list = ["siliconflow-deepseek-v3"]
-temperature = 0.2                        # 模型温度，新V3建议0.1-0.3
+temperature = 0.3                        # 模型温度，新V3建议0.1-0.3
 max_tokens = 800
 
-[model_task_config.planner] #决策：负责决定麦麦该做什么的模型
+[model_task_config.planner] #决策：负责决定麦麦该什么时候回复的模型
 model_list = ["siliconflow-deepseek-v3"]
+temperature = 0.3
+max_tokens = 800
+
+[model_task_config.planner_small] #副决策：负责决定麦麦该做什么的模型
+model_list = ["qwen3-30b"]
 temperature = 0.3
 max_tokens = 800
 
 [model_task_config.emotion] #负责麦麦的情绪变化
-model_list = ["siliconflow-deepseek-v3"]
-temperature = 0.3
+model_list = ["qwen3-30b"]
+temperature = 0.7
 max_tokens = 800
 ```
 
 - `replyer`: **首要回复模型**，负责生成主要回复内容
-- `planner`: **决策模型**，负责决定麦麦的行动
+- `planner`: **决策模型**，负责决定麦麦什么时候回复
+- `planner_small`: **副决策模型**，负责决定麦麦该做什么
 - `emotion`: **情绪模型**，负责处理情绪变化
 
 ### **图像和语音模型**
@@ -149,7 +168,7 @@ model_list = ["sensevoice-small"]
 
 ```toml
 [model_task_config.tool_use] #工具调用模型，需要使用支持工具调用的模型
-model_list = ["qwen3-14b"]
+model_list = ["qwen3-30b"]
 temperature = 0.7
 max_tokens = 800
 
@@ -176,7 +195,7 @@ temperature = 0.2
 max_tokens = 800
 
 [model_task_config.lpmm_qa] # 问答模型
-model_list = ["deepseek-r1-distill-qwen-32b"]
+model_list = ["qwen3-30b"]
 temperature = 0.7
 max_tokens = 800
 ```
@@ -185,35 +204,9 @@ max_tokens = 800
 - `lpmm_rdf_build`: 根据实体**构建RDF三元组**
 - `lpmm_qa`: 基于知识库进行**问答**
 
-## 配置示例
+<hr class="custom_hr"/>
 
-### 完整配置示例
 
-```toml
-[inner]
-version = "1.3.0"
-
-[[api_providers]]
-name = "SiliconFlow"
-base_url = "https://api.siliconflow.cn/v1"
-api_key = "your-siliconflow-api-key"
-client_type = "openai"
-max_retry = 2
-timeout = 30
-retry_interval = 10
-
-[[models]]
-model_identifier = "Pro/deepseek-ai/DeepSeek-V3"
-name = "siliconflow-deepseek-v3"
-api_provider = "SiliconFlow"
-price_in = 2.0
-price_out = 8.0
-
-[model_task_config.replyer]
-model_list = ["siliconflow-deepseek-v3"]
-temperature = 0.2
-max_tokens = 800
-```
 
 ## 注意事项
 
