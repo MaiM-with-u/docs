@@ -10,7 +10,7 @@
     <p>我们现有的插件列表已经可以在插件展示网站上查看。</p>
     <div class="website-links">
       <a href="https://plugins.maibot.chat" class="backup-link" target="_blank">
-        <span class="link-text">备用：plugins.maibot.chat</span>
+        <span class="link-text">plugins.maibot.chat</span>
       </a>
     </div>
   </div>
