@@ -28,6 +28,9 @@
 - [Android部署](mmc_deploy_android)
 
 
+- [Kubernetes部署](mmc_deploy_kubernetes)
+
+
 - [使用旧版adapter的windows部署](./old/mmc_deploy_windows_old)
 
 
