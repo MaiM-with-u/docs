@@ -210,6 +210,37 @@ python scripts/manifest_tool.py validate src/plugins/my_plugin
   - `plugin_type`: 插件类型
   - `components`: 组件列表
 
+## 示例文件
+
+以下是一个遵循了上述良好实践的 `manifest.json` 文件范例。
+
+```json
+{
+  "manifest_version": 1, # 说明文件版本
+  "name": "示例插件", # 插件名称
+  "version": "1.0.0", # 插件版本
+  "description": "这是一个示例插件", # 插件介绍
+  "author": { # 插件作者信息
+    "name": "MaiBot 团队", # 插件作者名称
+    "url": "https://github.com/MaiM-with-u", # 插件作者主页
+  },
+  "license": "MIT", # 插件许可版本
+
+  "host_application": {
+    "min_version": "0.7.0", # 插件适配麦麦最低版本
+    "max_version": "0.8.0" # （可选）插件适配麦麦最高版本
+  },
+  "homepage_url": "https://github.com/MaiM-with-u", # （可选）插件主页
+  "repository_url": "https://github.com/MaiM-with-u/plugin-repo", # （可选）插件仓库地址
+  "keywords": ["Example"], # 插件关键词
+  "categories": ["Other"], # 插件分类
+  
+  "default_locale": "CN", # 插件默认语言
+  "locales_path": "_locales" # （可选）插件语言文件夹
+}
+```
+
+
 ## ⚠️ 注意事项
 
 1. **强制要求**：所有插件必须包含`_manifest.json`文件，否则无法加载
