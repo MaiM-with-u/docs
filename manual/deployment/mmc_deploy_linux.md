@@ -52,7 +52,9 @@ sudo update-alternatives --config python3
 安装 uv 包管理器：
 ```bash
 # 使用 pip 安装 uv
-pip3 install uv
+pip3 install uv --break-system-packages -i https://mirrors.huaweicloud.com/repository/pypi/simple/
+echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.bashrc
+source ~/.bashrc
 ```
 或者使用官方安装脚本：
 ```bash
