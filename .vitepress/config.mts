@@ -50,7 +50,8 @@ export default defineConfig({
             { text: 'Windows部署', link: '/manual/deployment/mmc_deploy_windows' },
             { text: 'Linux部署', link: '/manual/deployment/mmc_deploy_linux' },
             { text: 'Docker部署', link: '/manual/deployment/mmc_deploy_docker' },
-            { text: 'Android部署', link: '/manual/deployment/mmc_deploy_android' }
+            { text: 'Android部署', link: '/manual/deployment/mmc_deploy_android' },
+            { text: 'Kubernetes部署', link: '/manual/deployment/mmc_deploy_kubernetes' }
           ]
         },
         {
