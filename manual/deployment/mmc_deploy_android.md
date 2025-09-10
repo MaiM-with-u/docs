@@ -101,7 +101,7 @@ python3 --version
 ```bash
 # 使用 pip 安装 uv
 pip3 install uv --break-system-packages -i https://mirrors.huaweicloud.com/repository/pypi/simple/
-echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.bashrc
+grep -qF 'export PATH="$HOME/.local/bin:$PATH"' ~/.bashrc || echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.bashrc
 source ~/.bashrc
 ```
 
