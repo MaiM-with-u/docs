@@ -226,6 +226,7 @@ cd ../MaiBot
 mkdir config
 # 复制并重命名配置文件
 cp template/bot_config_template.toml config/bot_config.toml
+cp template/model_config_template.toml config/model_config.toml
 cp template/template.env .env
 vim .env
 #修改.env，开头的port改成8000

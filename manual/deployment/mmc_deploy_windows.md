@@ -133,7 +133,7 @@ Maim-with-u
 ### 六、配置 MaiBot 和 Adapter
 
 #### MaiBot配置
-1. 在`MaiBot`文件夹中新建一个`config`文件夹，手动复制`template`文件夹中的`bot_config_template.toml`到`config`目录下并改名为`bot_config.toml`
+1. 在`MaiBot`文件夹中新建一个`config`文件夹，手动复制`template`文件夹中的`bot_config_template.toml`和`model_config_template.toml`到`config`目录下并改名为`bot_config.toml`和`model_config.toml`
 2. 然后手动复制`template`文件夹中的`template.env`到根目录并重命名为`.env`
 3. 打开`.env`并修改PORT为8000
 4. 剩余的内容参考[配置指南](/manual/configuration/index)
