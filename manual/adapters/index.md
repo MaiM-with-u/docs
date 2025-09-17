@@ -16,6 +16,7 @@
 - [Discord](https://github.com/2829798842/MaiBot-Discord-Adapter)
 - [Telegram](https://github.com/MaiM-with-u/maibot-telegram-adapter)
 - 微信 - Adapter
+- [Milky协议 适配器](https://github.com/ShinKanji/MaiBot-Milky-Adapter)
 
 ## Amaidesu
 - [Amaidesu](https://github.com/MaiM-with-u/Amaidesu)
