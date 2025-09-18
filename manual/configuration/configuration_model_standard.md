@@ -8,9 +8,19 @@
 
 MaiBot 现在使用独立的 `model_config.toml` 文件来配置模型和API服务商。配置文件包含以下主要部分：
 
+- `[inner]` - 版本信息
 - `[[api_providers]]` - API服务提供商配置
-- `[[models]]` - 模型定义配置  
+- `[[models]]` - 模型定义配置
 - `[model_task_config.*]` - 麦麦模块使用模型配置
+
+## 配置文件详解
+
+```toml
+[inner]
+version = "1.7.0"
+
+# 配置文件版本号迭代规则同bot_config.toml
+```
 
 ## API服务商配置
 
@@ -96,6 +106,45 @@ price_out = 0
 enable_thinking = false # 不启用思考
 ```
 
+### 更多模型示例
+
+```toml
+[[models]]
+model_identifier = "deepseek-ai/DeepSeek-V3"
+name = "siliconflow-deepseek-v3"
+api_provider = "SiliconFlow"
+price_in = 2.0
+price_out = 8.0
+
+[[models]]
+model_identifier = "Qwen/Qwen3-30B-A3B-Instruct-2507"
+name = "qwen3-30b"
+api_provider = "SiliconFlow"
+price_in = 0.7
+price_out = 2.8
+
+[[models]]
+model_identifier = "Qwen/Qwen2.5-VL-72B-Instruct"
+name = "qwen2.5-vl-72b"
+api_provider = "SiliconFlow"
+price_in = 4.13
+price_out = 4.13
+
+[[models]]
+model_identifier = "FunAudioLLM/SenseVoiceSmall"
+name = "sensevoice-small"
+api_provider = "SiliconFlow"
+price_in = 0
+price_out = 0
+
+[[models]]
+model_identifier = "BAAI/bge-m3"
+name = "bge-m3"
+api_provider = "SiliconFlow"
+price_in = 0
+price_out = 0
+```
+
 <hr class="custom_hr"/>
 
 ## 任务模型配置
@@ -105,8 +154,8 @@ enable_thinking = false # 不启用思考
 这些模型是麦麦运行所**必须**的模型，但是并不直接生成回复，而是参与记忆，图像识别，关系，情感等等功能。
 
 ```toml
-[model_task_config.utils] # 在麦麦的一些组件中使用的模型，例如表情包模块，取名模块，关系模块，是麦麦必须的模型
-model_list = ["siliconflow-deepseek-v3"] # 使用的模型列表，每个子项对应上面的模型名称(name)
+[model_task_config.utils] # 在麦麦的一些组件中使用的模型，例如表情包模块，取名模块，关系模块，麦麦的情绪变化等，是麦麦必须的模型
+model_list = ["siliconflow-deepseek-v3","qwen3-30b"] # 使用的模型列表，每个子项对应上面的模型名称(name)
 temperature = 0.2                        # 模型温度，新V3建议0.1-0.3
 max_tokens = 800                         # 最大输出token数
 
@@ -124,6 +173,11 @@ max_tokens = 800
 这些模型负责生成回复，并进行决策。
 
 ```toml
+[model_task_config.tool_use] #工具调用模型，需要使用支持工具调用的模型
+model_list = ["qwen3-30b"]
+temperature = 0.7
+max_tokens = 800
+
 [model_task_config.replyer] # 首要回复模型，还用于表达器和表达方式学习
 model_list = ["siliconflow-deepseek-v3"]
 temperature = 0.3                        # 模型温度，新V3建议0.1-0.3
@@ -133,22 +187,11 @@ max_tokens = 800
 model_list = ["siliconflow-deepseek-v3"]
 temperature = 0.3
 max_tokens = 800
-
-[model_task_config.planner_small] #副决策：负责决定麦麦该做什么的模型
-model_list = ["qwen3-30b"]
-temperature = 0.3
-max_tokens = 800
-
-[model_task_config.emotion] #负责麦麦的情绪变化
-model_list = ["qwen3-30b"]
-temperature = 0.7
-max_tokens = 800
 ```
 
+- `tool_use`: **工具调用模型**，需要使用支持工具调用的模型
 - `replyer`: **首要回复模型**，负责生成主要回复内容
 - `planner`: **决策模型**，负责决定麦麦什么时候回复
-- `planner_small`: **副决策模型**，负责决定麦麦该做什么
-- `emotion`: **情绪模型**，负责处理情绪变化
 
 ### **图像和语音模型**
 
@@ -164,19 +207,14 @@ model_list = ["sensevoice-small"]
 - `vlm`: **识图**用的，需要用一个支持图像理解的模型
 - `voice`: **语音识别**用的，需要支持语音转文字的模型
 
-### **工具和嵌入模型**
+### **嵌入模型**
 
 ```toml
-[model_task_config.tool_use] #工具调用模型，需要使用支持工具调用的模型
-model_list = ["qwen3-30b"]
-temperature = 0.7
-max_tokens = 800
-
-[model_task_config.embedding] #嵌入模型
+#嵌入模型
+[model_task_config.embedding]
 model_list = ["bge-m3"]
 ```
 
-- `tool_use`: **工具调用模型**，负责在需要时调用外部工具或插件。你需要选用支持工具调用（function calling）的模型
 - `embedding`: **知识库**会用到，可以使用其他嵌入模型
 
 ### **LPMM知识库模型**
@@ -184,6 +222,8 @@ model_list = ["bge-m3"]
 如果启用了`lpmm_knowledge`，则需要配置以下模型。
 
 ```toml
+#------------LPMM知识库模型------------
+
 [model_task_config.lpmm_entity_extract] # 实体提取模型
 model_list = ["siliconflow-deepseek-v3"]
 temperature = 0.2

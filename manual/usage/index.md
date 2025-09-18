@@ -105,15 +105,6 @@
 </div>
 
 <div class="feature-cards">
-  <a href="/manual/usage/features/memory" class="feature-card memory-card">
-    <div class="feature-card-content">
-      <h3>🧠 记忆</h3>
-      <p>麦麦使用图来存储记忆，并定期从聊天内容中生成记忆。麦麦会根据当前聊天内容的关键词进行记忆提取，并且会定时进行遗忘和记忆整合。</p>
-    </div>
-  </a>
-</div>
-
-<div class="feature-cards">
   <a href="/manual/usage/features/lpmm" class="feature-card lpmm-card">
     <div class="feature-card-content">
       <h3>📚 LPMM知识库</h3>
