@@ -60,7 +60,6 @@ export default defineConfig({
           items: [
             { text: '麦麦使用说明', link: '/manual/usage/' },
             { text: '聊天控制系统', link: '/manual/usage/features/chat' },
-            { text: '记忆系统', link: '/manual/usage/features/memory' },
             { text: '表达学习', link: '/manual/usage/features/expression' },
             { text: '个性系统', link: '/manual/usage/features/personality' },
             { text: 'LPMM知识库', link: '/manual/usage/features/lpmm' },
