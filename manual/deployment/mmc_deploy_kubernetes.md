@@ -21,21 +21,23 @@
 
 你可以在 MaiBot 代码仓库的 [helm-chart-release 分支](https://github.com/MaiM-with-u/MaiBot/tree/helm-chart-release/helm-chart) 中查看所有可用的 Helm Chart 版本以及对应的麦麦版本。
 
+本文档后续以`<MAIBOT_VERSION>`等字样作为 Helm Chart 版本的占位符，请将其替换为你需要安装的实际版本。
+
 如果你想查看 Chart 的信息：
 ```shell
-helm show chart oci://reg.mikumikumi.xyz/maibot/maibot --version 0.10.0-alpha.0
+helm show chart oci://reg.mikumikumi.xyz/maibot/maibot --version <MAIBOT_VERSION>
 ```
 
 如果你想拉取完整的 Chart 到本地：
 ```shell
-helm pull oci://reg.mikumikumi.xyz/maibot/maibot --version 0.10.0-alpha.0
+helm pull oci://reg.mikumikumi.xyz/maibot/maibot --version <MAIBOT_VERSION>
 ```
 
 ### 📝 二、获取并修改 Chart 的 values 文件
 
 将 Chart 的 values 文件输出到 `maibot.yaml` 中：
 ```shell
-helm show values oci://reg.mikumikumi.xyz/maibot/maibot --version 0.10.0-alpha.0 > maibot.yaml
+helm show values oci://reg.mikumikumi.xyz/maibot/maibot --version <MAIBOT_VERSION> > maibot.yaml
 ```
 
 编辑 `maibot.yaml` 文件，按需配置选项。
@@ -44,7 +46,7 @@ helm show values oci://reg.mikumikumi.xyz/maibot/maibot --version 0.10.0-alpha.0
 
 `values.yaml`分为几个大部分。
 
-1. EULA & PRIVACY: 用户必须同意这里的协议才能成功部署麦麦。
+1. `EULA` & `PRIVACY`: 用户必须同意这里的协议才能成功部署麦麦。
 
 2. `adapter`: 麦麦的Adapter的部署配置。
 
@@ -96,7 +98,7 @@ kubectl create ns bot
 根据刚才编辑好的 `maibot.yaml`，将麦麦部署到 `bot` 命名空间中。为此安装实例取一个名字，例如 `maimai`。
 
 ```shell
-helm install maimai oci://reg.mikumikumi.xyz/maibot/maibot --namespace bot --version 0.10.0-alpha.0 --values maibot.yaml
+helm install maimai oci://reg.mikumikumi.xyz/maibot/maibot --namespace bot --version <MAIBOT_VERSION> --values maibot.yaml
 ```
 
 adapter 的配置文件会通过 job 在部署时动态生成，因此部署会花费一分钟左右，耐心等待即可。
@@ -152,7 +154,9 @@ adapter 的配置文件生成任务是通过 Helm Chart 的 post-install hook �
 
 4. 心跳间隔与 values 中的 `config.adapter_config.napcat_server.heartbeat_interval`保持一致（默认一致，不需要修改）。
 
-5. 点击保存，观察 adapter 和 core 的日志，查看是否成功连接。
+5. 为了提升安全性，可以为 adapter 与 Napcat 之间的连接设置 Token。Token 需要与 values 中的 `config.adapter_config.napcat_server.token`保持一致。默认不启用 Token。
+
+6. 点击保存，观察 adapter 和 core 的日志，查看是否成功连接。
 
 ### 🎉 六、测试麦麦
 
