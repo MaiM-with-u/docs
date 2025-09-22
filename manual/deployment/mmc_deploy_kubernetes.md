@@ -17,9 +17,9 @@
 
 麦麦的 Helm Chart 发布在`oci://reg.mikumikumi.xyz/maibot/maibot`。
 
-部署麦麦之前请先确认你要部署的版本。目前 Chart 的最新版本为 `0.10.0-alpha.0`，对应麦麦的版本为 `0.10.0-alpha`。
+部署麦麦之前请先确认你要部署的版本。
 
-你可以在麦麦的 GitHub 仓库中查找到所有支持的 Chart 版本。
+你可以在 MaiBot 代码仓库的 [helm-chart-release 分支](https://github.com/MaiM-with-u/MaiBot/tree/helm-chart-release/helm-chart) 中查看所有可用的 Helm Chart 版本以及对应的麦麦版本。
 
 如果你想查看 Chart 的信息：
 ```shell
