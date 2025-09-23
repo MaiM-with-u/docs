@@ -21,7 +21,7 @@
 
 - 新消息较少
 - planner决定选择no_reply：可以修改配置文件中的plan_style和interest，此配置会明显影响麦麦的回复和其他动作行为
-- talk_value较低
+- talk_value较高
 
 ```toml
 
