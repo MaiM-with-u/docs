@@ -182,7 +182,9 @@ Helm Chart 的开发通常会滞后主版本一段时间。当麦麦有了新的
 
    通常 values 文件主体不会有大变动，而 config 部分会有较多变动，需要特别关注。
 
-4. 升级麦麦实例：
+4. 备份麦麦的各个组件的存储卷。这不是必须的，但是是推荐做法，用于在升级出现问题时回滚。
+
+5. 升级麦麦实例：
    ```shell
    helm upgrade maimai oci://reg.mikumikumi.xyz/maibot/maibot --namespace bot --version <NEW_VERSION> --values maibot.yaml
    ```
@@ -203,10 +205,14 @@ helm upgrade maimai oci://reg.mikumikumi.xyz/maibot/maibot --namespace bot --ver
 
 如果不慎改错了配置，可以使用`helm rollback`命令回滚部署配置：
 ```shell
+helm history maimai --namespace bot  # 查看麦麦的所有部署版本历史
 helm rollback maimai --namespace bot  # 回到麦麦的上一个版本
+helm rollback maimai <HISTORY_INDEX> --namespace bot  # 回到麦麦的指定版本
 ```
 
-注意，这里回滚的只是麦麦的部署配置（如镜像版本）和各个组件的配置文件，麦麦保存的实际数据无法回滚。请谨慎操作，建议在回滚前备份麦麦的存储卷数据。
+注意，这种方法回滚的只是麦麦的部署配置（如镜像版本）和各个组件的配置文件，麦麦保存的实际数据无法直接回滚，请谨慎操作。
+
+此方法也支持跨版本回滚，但存在风险。如果将麦麦由新版本回滚到旧版本，发现麦麦长时间无法启动，这可能是由于麦麦的新版数据无法被旧版本识别。这个时候需要将之前备份的旧版本的存储卷数据还原回去，才有可能恢复。
 
 ## 🗑 卸载麦麦
 
