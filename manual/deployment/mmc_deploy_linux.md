@@ -161,6 +161,7 @@ cd MaiBot
 mkdir config
 # 复制并重命名配置文件
 cp template/bot_config_template.toml config/bot_config.toml
+cp template/model_config_template.toml config/model_config.toml
 cp template/template.env .env
 ```
 复制完成后打开`.env`并修改PORT为8000
