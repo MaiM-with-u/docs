@@ -10,10 +10,6 @@
 
 - [一键包](onekey_deploy)
 
-## 启动器安装
-
-- [启动器](launcher_deploy)
-
 ## 手动部署 - 部署方式
 
 - [Windows](mmc_deploy_windows)
@@ -24,6 +20,7 @@
 
 - [Docker部署](mmc_deploy_docker)
 
+## 手动部署 - 其他部署方式
 
 - [Android部署](mmc_deploy_android)
 
