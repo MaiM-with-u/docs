@@ -17,25 +17,27 @@
 
 麦麦的 Helm Chart 发布在`oci://reg.mikumikumi.xyz/maibot/maibot`。
 
-部署麦麦之前请先确认你要部署的版本。目前 Chart 的最新版本为 `0.10.0-alpha.0`，对应麦麦的版本为 `0.10.0-alpha`。
+部署麦麦之前请先确认你要部署的版本。
 
-你可以在麦麦的 GitHub 仓库中查找到所有支持的 Chart 版本。
+你可以在 MaiBot 代码仓库的 [helm-chart-release 分支](https://github.com/MaiM-with-u/MaiBot/tree/helm-chart-release/helm-chart) 中查看所有可用的 Helm Chart 版本以及对应的麦麦版本。
+
+本文档后续以`<MAIBOT_VERSION>`等字样作为 Helm Chart 版本的占位符，请将其替换为你需要安装的实际版本。
 
 如果你想查看 Chart 的信息：
 ```shell
-helm show chart oci://reg.mikumikumi.xyz/maibot/maibot --version 0.10.0-alpha.0
+helm show chart oci://reg.mikumikumi.xyz/maibot/maibot --version <MAIBOT_VERSION>
 ```
 
 如果你想拉取完整的 Chart 到本地：
 ```shell
-helm pull oci://reg.mikumikumi.xyz/maibot/maibot --version 0.10.0-alpha.0
+helm pull oci://reg.mikumikumi.xyz/maibot/maibot --version <MAIBOT_VERSION>
 ```
 
 ### 📝 二、获取并修改 Chart 的 values 文件
 
 将 Chart 的 values 文件输出到 `maibot.yaml` 中：
 ```shell
-helm show values oci://reg.mikumikumi.xyz/maibot/maibot --version 0.10.0-alpha.0 > maibot.yaml
+helm show values oci://reg.mikumikumi.xyz/maibot/maibot --version <MAIBOT_VERSION> > maibot.yaml
 ```
 
 编辑 `maibot.yaml` 文件，按需配置选项。
@@ -44,7 +46,7 @@ helm show values oci://reg.mikumikumi.xyz/maibot/maibot --version 0.10.0-alpha.0
 
 `values.yaml`分为几个大部分。
 
-1. EULA & PRIVACY: 用户必须同意这里的协议才能成功部署麦麦。
+1. `EULA` & `PRIVACY`: 用户必须同意这里的协议才能成功部署麦麦。
 
 2. `adapter`: 麦麦的Adapter的部署配置。
 
@@ -96,7 +98,7 @@ kubectl create ns bot
 根据刚才编辑好的 `maibot.yaml`，将麦麦部署到 `bot` 命名空间中。为此安装实例取一个名字，例如 `maimai`。
 
 ```shell
-helm install maimai oci://reg.mikumikumi.xyz/maibot/maibot --namespace bot --version 0.10.0-alpha.0 --values maibot.yaml
+helm install maimai oci://reg.mikumikumi.xyz/maibot/maibot --namespace bot --version <MAIBOT_VERSION> --values maibot.yaml
 ```
 
 adapter 的配置文件会通过 job 在部署时动态生成，因此部署会花费一分钟左右，耐心等待即可。
@@ -152,7 +154,9 @@ adapter 的配置文件生成任务是通过 Helm Chart 的 post-install hook �
 
 4. 心跳间隔与 values 中的 `config.adapter_config.napcat_server.heartbeat_interval`保持一致（默认一致，不需要修改）。
 
-5. 点击保存，观察 adapter 和 core 的日志，查看是否成功连接。
+5. 为了提升安全性，可以为 adapter 与 Napcat 之间的连接设置 Token。Token 需要与 values 中的 `config.adapter_config.napcat_server.token`保持一致。默认不启用 Token。
+
+6. 点击保存，观察 adapter 和 core 的日志，查看是否成功连接。
 
 ### 🎉 六、测试麦麦
 
@@ -178,7 +182,9 @@ Helm Chart 的开发通常会滞后主版本一段时间。当麦麦有了新的
 
    通常 values 文件主体不会有大变动，而 config 部分会有较多变动，需要特别关注。
 
-4. 升级麦麦实例：
+4. 备份麦麦的各个组件的存储卷。这不是必须的，但是是推荐做法，用于在升级出现问题时回滚。
+
+5. 升级麦麦实例：
    ```shell
    helm upgrade maimai oci://reg.mikumikumi.xyz/maibot/maibot --namespace bot --version <NEW_VERSION> --values maibot.yaml
    ```
@@ -199,10 +205,14 @@ helm upgrade maimai oci://reg.mikumikumi.xyz/maibot/maibot --namespace bot --ver
 
 如果不慎改错了配置，可以使用`helm rollback`命令回滚部署配置：
 ```shell
+helm history maimai --namespace bot  # 查看麦麦的所有部署版本历史
 helm rollback maimai --namespace bot  # 回到麦麦的上一个版本
+helm rollback maimai <HISTORY_INDEX> --namespace bot  # 回到麦麦的指定版本
 ```
 
-注意，这里回滚的只是麦麦的部署配置（如镜像版本）和各个组件的配置文件，麦麦保存的实际数据无法回滚。请谨慎操作，建议在回滚前备份麦麦的存储卷数据。
+注意，这种方法回滚的只是麦麦的部署配置（如镜像版本）和各个组件的配置文件，麦麦保存的实际数据无法直接回滚，请谨慎操作。
+
+此方法也支持跨版本回滚，但存在风险。如果将麦麦由新版本回滚到旧版本，发现麦麦长时间无法启动，这可能是由于麦麦的新版数据无法被旧版本识别。这个时候需要将之前备份的旧版本的存储卷数据还原回去，才有可能恢复。
 
 ## 🗑 卸载麦麦
 
