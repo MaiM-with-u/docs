@@ -51,7 +51,7 @@ curl -fsSL https://raw.githubusercontent.com/Puiching-Memory/appstore/MaiBot/app
 1. 打开`应用日志`，找到NapCat WebUI 临时token
 2. 打开web UI，使用临时token登录
 3. 在`网络配置`中，添加新的webSocket客户端，地址填写ws://adapters:8095
-4. (可选)，添加新的http服务器，地址填写0.0.0.0:port
+4. (可选)，添加新的http服务器，地址填写 0.0.0.0:<端口号>
 
 #### 安装后，MaiBot需要调整配置：
 1. 进入`应用安装目录`
