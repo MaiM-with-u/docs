@@ -32,8 +32,8 @@ sudo zypper install -y curl
 ## 一行命令安装
 
 ```bash
-curl -fsSL -o install.bash https://raw.githubusercontent.com/Puiching-Memory/appstore/MaiBot/apps/maibot/install.bash
-bash install.bash
+curl -fsSL -o install_MaiBot_1Panel.bash https://raw.githubusercontent.com/Puiching-Memory/appstore/MaiBot/apps/maibot/install.bash
+bash install_MaiBot_1Panel.bash
 ```
 
 ## 在1Panel面板中完成后续部署
