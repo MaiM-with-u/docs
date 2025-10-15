@@ -84,7 +84,7 @@ curl -fsSL https://raw.githubusercontent.com/Puiching-Memory/appstore/MaiBot/app
 - [ ] 1Panel 目前不接受小于1w星的应用上架
 - [ ] 不支持arm64架构
 
-## ELUA
+## EULA
 - 安装默认同意MaiBot EULA（不确定该策略是否合理，请在issue中反馈）
 
 ## 参考
