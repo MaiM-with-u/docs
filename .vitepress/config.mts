@@ -58,6 +58,7 @@ export default defineConfig({
           text: '社区提供的部署方案',
           collapsed: false,
           items: [
+            { text: '1Panel 部署', link: '/manual/deployment/community/1panel' },
             { text: 'Linux一键脚本部署', link: '/manual/deployment/community/linux_one_key' }
           ]
         },
