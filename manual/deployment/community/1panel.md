@@ -51,7 +51,7 @@ bash install_MaiBot_1Panel.bash
 #### 安装后，NapCat需要调整配置：
 1. 打开`应用日志`，找到NapCat WebUI 临时token
 2. 打开web UI，使用临时token登录
-3. 在`网络配置`中，添加新的webSocket客户端，地址填写ws://adapters:8095
+3. 在`网络配置`中，添加新的webSocket客户端
 4. (可选)，添加新的http服务器，地址填写 0.0.0.0:<端口号>
 
 #### 安装后，MaiBot需要调整配置：
