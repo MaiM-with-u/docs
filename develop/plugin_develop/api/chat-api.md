@@ -10,10 +10,6 @@ from src.plugin_system import chat_api
 from src.plugin_system.apis import chat_api
 ```
 
-一种**Deprecated**方式：
-```python
-from src.plugin_system.apis.chat_api import ChatManager
-```
 
 ## 主要功能
 
