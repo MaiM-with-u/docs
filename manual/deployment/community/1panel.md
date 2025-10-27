@@ -36,6 +36,8 @@ curl -fsSL -o install_MaiBot_1Panel.bash https://raw.githubusercontent.com/Puich
 bash install_MaiBot_1Panel.bash
 ```
 
+1panel提供的Docker镜像在拉取napcat镜像时会出现问题，建议添加更多镜像源，参考：https://status.anye.xyz/
+
 ## 在1Panel面板中完成后续部署
 
 > [!WARNING]  
@@ -83,7 +85,6 @@ bash install_MaiBot_1Panel.bash
 ## 代办事项
 
 - [ ] 1Panel 目前不接受小于1w星的应用上架
-- [ ] 不支持arm64架构
 
 ## EULA
 - 安装默认同意MaiBot EULA（不确定该策略是否合理，请在issue中反馈）
