@@ -18,6 +18,9 @@
 - [Linux](mmc_deploy_linux)
 
 
+- [macOS](mmc_deploy_macos)
+
+
 - [Docker部署](mmc_deploy_docker)
 
 ## 手动部署 - 其他部署方式
