@@ -238,16 +238,7 @@ cp template/model_config_template.toml config/model_config.toml
 cp template/template.env .env
 ```
 
-3. 编辑 `.env` 文件，设置监听端口：
-
-```bash
-# 使用文本编辑器打开 .env 文件
-nano .env
-# 或使用 vim
-vim .env
-```
-
-修改以下内容：
+3. 使用 VSCode 或其他编辑器打开 `.env` 文件，设置监听端口：
 
 ```ini
 HOST=127.0.0.1
