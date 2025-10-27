@@ -22,9 +22,8 @@ class ExampleAction(BaseAction):
     action_name = "example_action" # 动作的唯一标识符
     action_description = "这是一个示例动作" # 动作描述
     activation_type = ActionActivationType.ALWAYS # 这里以 ALWAYS 为例
-    mode_enable = ChatMode.ALL # 一般取ALL，表示在所有聊天模式下都可用
-    associated_types = ["text", "emoji", ...] # 关联类型
-    parallel_action = False # 是否允许与其他Action并行执行
+    associated_types = ["text", "emoji", ...] # 关联类型,该插件会用到什么类型的数据
+    parallel_action = False # 更大概率不与其他动作一起使用
     action_parameters = {"param1": "参数1的说明", "param2": "参数2的说明", ...}
     # Action使用场景描述 - 帮助LLM判断何时"选择"使用
     action_require = ["使用场景描述1", "使用场景描述2", ...]
@@ -64,11 +63,9 @@ class ExampleAction(BaseAction):
 
 ---
 
-## 🎯 Action 调用的决策机制
+## Action 调用的决策机制
 
 Action采用**两层决策机制**来优化性能和决策质量：
-
-> 设计目的：在加载许多插件的时候降低LLM决策压力，避免让麦麦在过多的选项中纠结。
 
 **第一层：激活控制（Activation Control）**
 
@@ -78,7 +75,7 @@ Action采用**两层决策机制**来优化性能和决策质量：
 
 在Action被激活后，使用条件决定麦麦什么时候会 **“选择”** 使用这个Action。
 
-### 决策参数详解 🔧
+### 决策参数详解 
 
 #### 第一层：ActivationType 激活类型说明
 
@@ -86,7 +83,6 @@ Action采用**两层决策机制**来优化性能和决策质量：
 | ----------- | ---------------------------------------- | ---------------------- |
 | [`NEVER`](#never-激活)     | 从不激活，Action对麦麦不可见               | 临时禁用某个Action      |
 | [`ALWAYS`](#always-激活)    | 永远激活，Action总是在麦麦的候选池中        | 核心功能，如回复、不回复 |
-| [`LLM_JUDGE`](#llm_judge-激活) | 通过LLM智能判断当前情境是否需要激活此Action | 需要智能判断的复杂场景   |
 | `RANDOM`    | 基于随机概率决定是否激活                   | 增加行为随机性的功能     |
 | `KEYWORD`   | 当检测到特定关键词时激活                   | 明确触发条件的功能       |
 
@@ -107,8 +103,6 @@ class DisabledAction(BaseAction):
 
 `ActionActivationType.ALWAYS` 会使得 Action 永远会被激活，即一直在 Action 候选池中
 
-这种激活方式常用于核心功能，如回复或不回复。
-
 ```python
 class AlwaysActivatedAction(BaseAction):
     activation_type = ActionActivationType.ALWAYS  # 永远激活
@@ -118,37 +112,11 @@ class AlwaysActivatedAction(BaseAction):
         return True, "执行了核心功能"
 ```
 
-#### `LLM_JUDGE` 激活
-
-`ActionActivationType.LLM_JUDGE`会使得这个 Action 根据 LLM 的判断来决定是否加入候选池。
-
-而 LLM 的判断是基于代码中预设的`llm_judge_prompt`和自动提供的聊天上下文进行的。
-
-因此使用此种方法需要实现`llm_judge_prompt`属性。
-
-```python
-class LLMJudgedAction(BaseAction):
-    activation_type = ActionActivationType.LLM_JUDGE  # 通过LLM判断激活
-    # LLM判断提示词
-    llm_judge_prompt = (
-    "判定是否需要使用这个动作的条件：\n"
-    "1. 用户希望调用XXX这个动作\n"
-    "...\n"
-    "请回答\"是\"或\"否\"。\n"
-    )
-
-    async def execute(self) -> Tuple[bool, str]:
-        # 根据LLM判断是否执行
-        return True, "执行了LLM判断功能"
-```
-
 #### `RANDOM` 激活
 
 `ActionActivationType.RANDOM`会使得这个 Action 根据随机概率决定是否加入候选池。
 
-概率则由代码中的`random_activation_probability`控制。在内部实现中我们使用了`random.random()`来生成一个0到1之间的随机数，并与这个概率进行比较。
-
-因此使用这个方法需要实现`random_activation_probability`属性。
+使用这个方法需要实现`random_activation_probability`属性。
 
 ```python
 class SurpriseAction(BaseAction):
@@ -165,9 +133,7 @@ class SurpriseAction(BaseAction):
 
 `ActionActivationType.KEYWORD`会使得这个 Action 在检测到特定关键词时激活。
 
-关键词由代码中的`activation_keywords`定义，而`keyword_case_sensitive`则控制关键词匹配时是否区分大小写。在内部实现中，我们使用了`in`操作符来检查消息内容是否包含这些关键词。
-
-因此，使用此种方法需要实现`activation_keywords`和`keyword_case_sensitive`属性。
+关键词由代码中的`activation_keywords`定义，而`keyword_case_sensitive`则控制关键词匹配时是否区分大小写。使用此种方法需要实现`activation_keywords`和`keyword_case_sensitive`属性。
 
 ```python
 class GreetingAction(BaseAction):
@@ -214,7 +180,7 @@ class EmojiAction(BaseAction):
 
 1. **第一层激活判断**：
 
-    - 使用随机数进行决策，当`random.random() < self.random_activation_probability`时，麦麦才"知道"可以使用这个Action
+    - 使用随机数进行决策，有10%的概率，麦麦"知道"可以使用这个Action
 2. **第二层使用决策**：
 
    - 即使Action被激活，麦麦还会根据 `action_require` 中的条件判断是否真正选择使用
