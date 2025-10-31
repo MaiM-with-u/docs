@@ -29,7 +29,7 @@ sudo zypper install -y curl
 
 :::
 
-## 一行命令安装
+## 安装
 
 ```bash
 curl -fsSL -o install_MaiBot_1Panel.bash https://raw.githubusercontent.com/Puiching-Memory/appstore/MaiBot/apps/maibot/install.bash
@@ -88,6 +88,11 @@ bash install_MaiBot_1Panel.bash
 
 ## EULA
 - 安装默认同意MaiBot EULA（不确定该策略是否合理，请在issue中反馈）
+
+## 兼容性矩阵
+|        MaiBot版本        |          Adapters版本           | NapCat版本 |     SQLite版本     | ChatDB版本 |
+| :----------------------: | :-----------------------------: | :--------: | :----------------: | :--------: |
+| 0.11.0<br/>(dev-6d70cf7) | 0.11.0<br/>(dev-20251005093201) |   4.9.14   | 0.6.5<br/>(latest) |   0.3.7    |
 
 ## 参考
 
