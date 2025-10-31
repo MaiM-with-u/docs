@@ -19,7 +19,7 @@
 
 部署麦麦之前请先确认你要部署的版本。
 
-你可以在 MaiBot 代码仓库的 [helm-chart 分支](https://github.com/MaiM-with-u/MaiBot/tree/helm-chart/helm-chart) 中查看所有可用的 Helm Chart 版本以及对应的麦麦版本。
+你可以在 MaiBot 代码仓库的 [helm-chart 分支](https://github.com/Mai-with-u/MaiBot/tree/helm-chart/helm-chart) 中查看所有可用的 Helm Chart 版本以及对应的麦麦版本。
 
 本文档后续以`<MAIBOT_VERSION>`等字样作为 Helm Chart 版本的占位符，请将其替换为你需要安装的实际版本。
 
