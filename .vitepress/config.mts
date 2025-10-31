@@ -49,9 +49,17 @@ export default defineConfig({
             { text: '部署概览', link: '/manual/deployment/' },
             { text: 'Windows部署', link: '/manual/deployment/mmc_deploy_windows' },
             { text: 'Linux部署', link: '/manual/deployment/mmc_deploy_linux' },
+            { text: 'macOS部署', link: '/manual/deployment/mmc_deploy_macos' },
             { text: 'Docker部署', link: '/manual/deployment/mmc_deploy_docker' },
             { text: 'Android部署', link: '/manual/deployment/mmc_deploy_android' },
             { text: 'Kubernetes部署', link: '/manual/deployment/mmc_deploy_kubernetes' }
+          ]
+        },
+        {
+          text: '社区提供的部署方案',
+          collapsed: false,
+          items: [
+            { text: 'Linux一键脚本部署', link: '/manual/deployment/community/linux_one_key' }
           ]
         },
         {
